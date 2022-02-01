@@ -1,7 +1,3 @@
-# Auto Drawer
-
-Auto drawer is a program that draws an image by controlling mouse movement and mouse clicks. Original logic by CoePSX on Autoit.
-
-Please see the wiki for how to use: https://github.com/rainzhao2000/autodrawer/wiki
-
-<img src="./autodrawerdemo.gif" width="600" />
+# Roblox Auto-Draw
+This Autodraw software was forked from https://github.com/rainzhao2000/autodrawer, which has been modified in order to work better for more software and games, such as Roblox.
+Documentation will be coming soon.
