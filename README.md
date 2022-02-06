@@ -15,6 +15,8 @@ Documentation will be coming soon.
  Install the latest autodrawer from [here](https://github.com/Siydge/autodraw-roblox/releases).
  
 # Support
+
+Join (the Discord)[https://discord.gg/rwvUFraDnb] for help, as we are active on there!
  
 ## Windows
 
@@ -26,10 +28,6 @@ Mac and Linux are not supported, as WPF is Windows-Only.
 
 Mac users may like [Parallels](https://www.parallels.com/au/products/desktop/), and Linux users may like [KVM-based solutions](https://wiki.archlinux.org/title/QEMU)
 
-#Documentation?
+# Documentation?
 
 Documentation has not started yet.
-
-#Support?
-
-Join (the Discord)[https://discord.gg/rwvUFraDnb] for help, as we are active on there!
