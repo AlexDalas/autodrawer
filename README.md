@@ -16,7 +16,7 @@ Documentation will be coming soon.
  
 # Support
 
-Join (the Discord)[https://discord.gg/rwvUFraDnb] for help, as we are active on there!
+Join [the Discord](https://discord.gg/rwvUFraDnb) for help, as we are active on there!
  
 ## Windows
 
