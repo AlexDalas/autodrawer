@@ -1,3 +1,0 @@
-## Interval
-
-TBD
