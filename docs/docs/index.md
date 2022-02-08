@@ -1,4 +1,4 @@
-## Welcome to AutoDraw Documentation!
+## Introduction
 
  Welcome! This is where the Documentation is for the Autodraw program. It is still is in use.
  
