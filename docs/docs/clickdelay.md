@@ -1,3 +1,0 @@
-## Click Delay
-
-TBD
