@@ -30,4 +30,4 @@ Mac users may like [Parallels](https://www.parallels.com/au/products/desktop/), 
 
 # Documentation?
 
-Documentation has not started yet.
+Documentation can [be found here](https://siydge.github.io/autodraw-roblox/docs)
