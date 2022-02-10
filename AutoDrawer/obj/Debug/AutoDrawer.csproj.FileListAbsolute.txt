@@ -30,3 +30,13 @@ C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\AutoD
 C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\AutoDrawer.csproj.CoreCompileInputs.cache
 C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\AutoDrawer.exe
 C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\AutoDrawer.pdb
+C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\bin\Debug\SimWinMouse.dll
+C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\AutoDrawer.csproj.CopyComplete
+C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\SettingsForm.g.cs
+C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\InfoForm.g.cs
+C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\SettingsForm.baml
+C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\InfoForm.baml
+C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\a.g.cs
+C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\a.baml
+C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\PathSeqForm.g.cs
+C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\PathSeqForm.baml

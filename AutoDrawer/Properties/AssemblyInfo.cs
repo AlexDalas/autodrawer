@@ -7,12 +7,12 @@ using System.Windows;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("AutoDrawer")]
+[assembly: AssemblyTitle("Roblox AutoDraw")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("AutoDrawer")]
-[assembly: AssemblyCopyright("Copyright ©  2022")]
+[assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
