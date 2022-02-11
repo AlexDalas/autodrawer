@@ -416,14 +416,14 @@ namespace AutoDrawer
                     if (LockedLast)
                     {
                         //m.Location() = new System.Drawing.Point((int)(LastX - m.Width / 2), (int)(LastY - m.Height / 2));
-                        m.Top = (int)(LastY - m.Height / 2);
+                        m.Top = (int)(LastY - m.Height / 2) - 11.5;
                         m.Left = (int)(LastX - m.Width / 2);
                     }
                     else
                     {
                         //m.Location = new System.Drawing.Point(xpos, ypos);
 
-                        m.Top = (int)(System.Windows.Forms.Cursor.Position.Y - m.Height / 2);
+                        m.Top = (int)(System.Windows.Forms.Cursor.Position.Y - m.Height / 2) - 11.5;
                         m.Left = (int)(System.Windows.Forms.Cursor.Position.X - m.Width / 2);
                     }
                 }
@@ -438,11 +438,10 @@ namespace AutoDrawer
         {
             Window3 mw = new Window3();
             CursorOffset = mw.CursorOffset;
-            FreeDraw2 = mw.FreeDraw;
             if (CursorOffset)
             {
                 xOffset = mw.xOffset;
-                yOffset = mw.yOffset;
+                yOffset = mw.yOffset + 21;
             }
             else
             {

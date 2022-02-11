@@ -7,10 +7,11 @@
         mc:Ignorable="d"
         WindowStyle="None"
         ResizeMode="CanMinimize"
-        Title="PreviewForm" Height="50" Width="300">
+        Title="PreviewForm" Height="100" Width="300"
+        Topmost="True">
 
-    <Grid Background="#FF2C302E">
-        <Image x:Name="pictureBox1" HorizontalAlignment="Left" Height="37" Margin="0,13,0,0" VerticalAlignment="Top" Width="116"/>
-        <Label Content="Shift to Draw, ALT to stop, CTRL to lock last pos" HorizontalAlignment="Center" VerticalAlignment="Top" Height="13" Width="200" FontSize="8" Foreground="White" Padding="5,0,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+    <Grid Background="#7F2C302E">
+        <Image x:Name="pictureBox1" Margin="0,22,0,0"/>
+        <Label Content="Shift to Draw, ALT to stop, CTRL to lock last pos" HorizontalAlignment="Center" VerticalAlignment="Top" Height="21" Width="300" Foreground="White" Padding="5,0,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
     </Grid>
 </Window>

@@ -23,21 +23,25 @@ namespace AutoDrawer
             App.Current.MainWindow.Topmost = true;
             if (imagePreview.Width < 300)
             {
-                //pictureBox1.Anchor = AnchorStyles.None;
-                //CenterPictureBox(pictureBox1, imagePreview);
-
+                CenterPictureBox(pictureBox1, imagePreview, true);
             }
             else
             {
-                //pictureBox1.Source = ConvertBitmap(imagePreview);
+                CenterPictureBox(pictureBox1, imagePreview, false);
             }
         }
-        private void CenterPictureBox(PictureBox picBox, Bitmap picImage)
+        private void CenterPictureBox(System.Windows.Controls.Image picBox, Bitmap picImage, bool u3)
         {
-            picBox.Image = picImage;
-            picBox.Location = new System.Drawing.Point((picBox.Parent.ClientSize.Width / 2) - (picImage.Width / 2),
-                                        (picBox.Parent.ClientSize.Height / 2) - (picImage.Height / 2));
-            picBox.Refresh();
+            picBox.Source = ConvertBitmap(picImage);
+            picBox.Height = picImage.Height+21;
+            this.Height = picImage.Height + 21;
+            if (!u3)
+            {
+                this.Width = picImage.Width;
+            }
+            //picBox.Location = new System.Drawing.Point((picBox.Parent.ClientSize.Width / 2) - (picImage.Width / 2),
+            //(picBox.Parent.ClientSize.Height / 2) - (picImage.Height / 2));
+            // picBox.Refresh();
         }
         public BitmapImage ConvertBitmap(Bitmap bitmap)
         {

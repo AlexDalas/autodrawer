@@ -20,7 +20,6 @@ namespace AutoDrawer
     public partial class Window3 : Window
     {
         public bool CursorOffset = false;
-        public bool FreeDraw = false;
         public int xOffset = 0;
         public int yOffset = 0;
         public bool sCC = false;
@@ -66,11 +65,6 @@ namespace AutoDrawer
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
             CursorOffset = (bool)cursorBox.IsChecked;
-        }
-
-        private void CheckBox_Checked_1(object sender, RoutedEventArgs e)
-        {
-            FreeDraw = (bool)FreeDrawCheck.IsChecked;
         }
 
         private void CheckBox_Checked_2(object sender, RoutedEventArgs e)
