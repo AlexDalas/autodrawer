@@ -50,10 +50,6 @@ namespace AutoDrawer
         ArrayList stack;
         //also if image transparent, it goes black bkg
         //Doesnt list. I generated property but the thing itself doesnt work. it doesnt error tho. see the pathintegers file for more
-        PathIntegers horizontal = new PathIntegers { name = "horizontal - 12345678", path = 12345678 };
-        PathIntegers vertical = new PathIntegers { name = "vertical - 14627358", path = 14627358 };
-        PathIntegers diagonal = new PathIntegers { name = "diagonal - 26573481", path = 26573481 };
-        PathIntegers spiral = new PathIntegers { name = "spiral - 14678532", path = 14678532 };
         public static int pathInt;
         public static bool pathIntAllowed = true;
         bool Started;
@@ -84,12 +80,7 @@ namespace AutoDrawer
             interval = int.Parse(intervalInput.Text);
             clickdelay = Convert.ToInt32(clickdelayInput.Text);
             clickdelay = int.Parse(clickdelayInput.Text);
-            pathList.Items.Add(horizontal);
-            pathList.Items.Add(vertical);
-            pathList.Items.Add(diagonal);
-            //pathList.Items.Add(spiral);
-            pathList.SelectedIndex = 1;
-            pathInt = ((PathIntegers)pathList.SelectedValue).path;
+            pathList.SelectedIndex = 2;
             refreshDir();
         }
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -352,7 +343,18 @@ namespace AutoDrawer
             {
                 if (!Started)
                 {
-                    pathInt = ((PathIntegers)pathList.SelectedItem).path;
+                    if (pathList.SelectedIndex.ToString() == "0")
+                    {
+                        pathInt = 12345678;
+                    }else
+                    if (pathList.SelectedIndex.ToString() == "1")
+                    {
+                        pathInt = 14627358;
+                    }else
+                    if (pathList.SelectedIndex.ToString() == "2")
+                    {
+                        pathInt = 26573481;
+                    }
                 }
             }
             catch (Exception){}
@@ -379,11 +381,6 @@ namespace AutoDrawer
             Started = true;
             try
             {
-                if (pathInt != 0)
-                {
-                    pathList.UnselectAll();
-                    pathInt = PathSeqForm.pathInt;
-                }
                 int imageTest = imagePreview.Width;
                 PreviewForm m = new PreviewForm();
                 m.Show();
@@ -418,13 +415,16 @@ namespace AutoDrawer
                     }
                     if (LockedLast)
                     {
-                        m.Location = new System.Drawing.Point((int)(LastX - m.Width / 2), (int)(LastY - m.Height / 2));
+                        //m.Location() = new System.Drawing.Point((int)(LastX - m.Width / 2), (int)(LastY - m.Height / 2));
+                        m.Top = (int)(LastY - m.Height / 2);
+                        m.Left = (int)(LastX - m.Width / 2);
                     }
                     else
                     {
-                        int xpos = (int)(System.Windows.Forms.Cursor.Position.X - m.Width / 2);
-                        int ypos = (int)(System.Windows.Forms.Cursor.Position.Y - m.Height / 2);
-                        m.Location = new System.Drawing.Point(xpos, ypos);
+                        //m.Location = new System.Drawing.Point(xpos, ypos);
+
+                        m.Top = (int)(System.Windows.Forms.Cursor.Position.Y - m.Height / 2);
+                        m.Left = (int)(System.Windows.Forms.Cursor.Position.X - m.Width / 2);
                     }
                 }
             }
@@ -780,29 +780,10 @@ namespace AutoDrawer
             PathSeqForm m = new PathSeqForm();
             m.Show();
         }
-        //still need to set up
-        private void customButton_Click(object sender, EventArgs e)
-        {
-            //PathSeqForm m = new PathSeqForm();
-            //m.FormClosed += new FormClosedEventHandler(Form1_FormClosed);
-        }
-
-        void Form1_FormClosed(object sender, FormClosedEventArgs e)
-        {
-
-        }
-
     }
     class Position
     {
         public int x { get; set; }
         public int y { get; set; }
     }
-
-    class PathIntegers
-    {
-        public string name { get; set; }
-        public int path { get; set; }
-    }
-
 }

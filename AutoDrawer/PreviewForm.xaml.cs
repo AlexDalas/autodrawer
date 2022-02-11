@@ -1,20 +1,26 @@
 ﻿using System;
 using System.Drawing;
 using System.IO;
+using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Media.Imaging;
 
 namespace AutoDrawer
 {
-    public partial class PreviewForm : Form
+    /// <summary>
+    /// Interaction logic for PreviewForm.xaml
+    /// </summary>
+    public partial class PreviewForm : Window
     {
         Bitmap imagePreview = MainWindow.imagePreview;
+
+
         public PreviewForm()
         {
             //This errors out for some reason, need fix
             //this one errors because the class names are not the same. When they are the same, it all breaks
-            //InitializeComponent();
-            App.Current.MainWindow.Topmost = true; 
+            InitializeComponent();
+            App.Current.MainWindow.Topmost = true;
             if (imagePreview.Width < 300)
             {
                 //pictureBox1.Anchor = AnchorStyles.None;
@@ -33,7 +39,7 @@ namespace AutoDrawer
                                         (picBox.Parent.ClientSize.Height / 2) - (picImage.Height / 2));
             picBox.Refresh();
         }
-        public BitmapImage ConvertBitmap(System.Drawing.Bitmap bitmap)
+        public BitmapImage ConvertBitmap(Bitmap bitmap)
         {
             MemoryStream ms = new MemoryStream();
             bitmap.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);

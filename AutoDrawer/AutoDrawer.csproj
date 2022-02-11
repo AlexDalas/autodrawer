@@ -60,23 +60,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="a.xaml.cs">
-      <DependentUpon>a.xaml</DependentUpon>
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="InfoForm.xaml.cs">
       <DependentUpon>InfoForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="PathSeqForm.xaml.cs">
       <DependentUpon>PathSeqForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PreviewForm.xaml.cs">
+      <DependentUpon>PreviewForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SettingsForm.xaml.cs">
       <DependentUpon>SettingsForm.xaml</DependentUpon>
     </Compile>
-    <Page Include="a.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -94,6 +89,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PathSeqForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PreviewForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
