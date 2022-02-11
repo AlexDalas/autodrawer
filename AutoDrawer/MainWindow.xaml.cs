@@ -53,7 +53,10 @@ namespace AutoDrawer
         PathIntegers horizontal = new PathIntegers { name = "horizontal - 12345678", path = 12345678 };
         PathIntegers vertical = new PathIntegers { name = "vertical - 14627358", path = 14627358 };
         PathIntegers diagonal = new PathIntegers { name = "diagonal - 26573481", path = 26573481 };
-        int pathInt;
+        PathIntegers spiral = new PathIntegers { name = "spiral - 14678532", path = 14678532 };
+        public static int pathInt;
+        public static bool pathIntAllowed = true;
+        bool Started;
         bool finished;
 
         public void SetCursorPos(int posX, int posY)
@@ -84,8 +87,9 @@ namespace AutoDrawer
             pathList.Items.Add(horizontal);
             pathList.Items.Add(vertical);
             pathList.Items.Add(diagonal);
-            pathList.SelectedIndex = 2;
-            pathInt = ((PathIntegers)pathList.SelectedItem).path;
+            //pathList.Items.Add(spiral);
+            pathList.SelectedIndex = 1;
+            pathInt = ((PathIntegers)pathList.SelectedValue).path;
             refreshDir();
         }
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -342,16 +346,16 @@ namespace AutoDrawer
                 clickdelay = 0;
             }
         }
-
         private void pathList_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
-                pathInt = ((PathIntegers)pathList.SelectedItem).path;
+                if (!Started)
+                {
+                    pathInt = ((PathIntegers)pathList.SelectedItem).path;
+                }
             }
-            catch (Exception)
-            {
-            }
+            catch (Exception){}
         }
 
         private void processButton_Click(object sender, EventArgs e)
@@ -367,6 +371,102 @@ namespace AutoDrawer
             catch (Exception)
             {
                 System.Windows.Forms.MessageBox.Show(new Form() { TopMost = true }, "No image was found\nMake sure you extracted the file.", "Process Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            }
+        }
+        private void startButton_Click(object sender, EventArgs e)
+        {
+            // Starts drawing
+            Started = true;
+            try
+            {
+                if (pathInt != 0)
+                {
+                    pathList.UnselectAll();
+                    pathInt = PathSeqForm.pathInt;
+                }
+                int imageTest = imagePreview.Width;
+                PreviewForm m = new PreviewForm();
+                m.Show();
+                WindowState = (WindowState)FormWindowState.Minimized;
+                while (true)
+                {
+                    System.Windows.Forms.Application.DoEvents();
+                    if (System.Windows.Forms.Control.ModifierKeys == Keys.Alt)
+                    {
+                        m.Close();
+                        break;
+                    }
+                    if (System.Windows.Forms.Control.ModifierKeys == Keys.Shift)
+                    {
+                        PreviosulyDrawn = true;
+                        if (!LockedLast)
+                        {
+                            LastX = System.Windows.Forms.Cursor.Position.X;
+                            LastY = System.Windows.Forms.Cursor.Position.Y;
+                        }
+                        m.Close();
+                        start();
+                        break;
+                    }
+                    if (System.Windows.Forms.Control.ModifierKeys == Keys.Control)
+                    {
+                        if (PreviosulyDrawn)
+                        {
+                            LockedLast = !LockedLast;
+                            NOP(1000000);
+                        }
+                    }
+                    if (LockedLast)
+                    {
+                        m.Location = new System.Drawing.Point((int)(LastX - m.Width / 2), (int)(LastY - m.Height / 2));
+                    }
+                    else
+                    {
+                        int xpos = (int)(System.Windows.Forms.Cursor.Position.X - m.Width / 2);
+                        int ypos = (int)(System.Windows.Forms.Cursor.Position.Y - m.Height / 2);
+                        m.Location = new System.Drawing.Point(xpos, ypos);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                System.Windows.Forms.MessageBox.Show(new Form() { TopMost = true }, "No image was found\nMake sure you extracted the file.", "Image Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            }
+        }
+
+        private void start()
+        {
+            Window3 mw = new Window3();
+            CursorOffset = mw.CursorOffset;
+            FreeDraw2 = mw.FreeDraw;
+            if (CursorOffset)
+            {
+                xOffset = mw.xOffset;
+                yOffset = mw.yOffset;
+            }
+            else
+            {
+                xOffset = 0;
+                yOffset = 0;
+            }
+            try
+            {
+                finished = draw();
+                if (finished == true)
+                {
+                    System.Windows.Forms.MessageBox.Show(new Form() { TopMost = true }, "Drawing Complete", "Done", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    Started = false;
+                }
+                else
+                {
+                    System.Windows.Forms.MessageBox.Show(new Form() { TopMost = true }, "Drawing halted", "Incomplete", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    Started = false;
+                }
+            }
+            catch (Exception)
+            {
+                System.Windows.Forms.MessageBox.Show(new Form() { TopMost = true }, "No image was found\nMake sure you extracted the file.", "Drawing Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                //Console.WriteLine("path: {0}", pathInt);
             }
         }
         private Bitmap MakeGrayscale3(Bitmap original)
@@ -425,91 +525,6 @@ namespace AutoDrawer
                 }
             }
             return image;
-        }
-
-        private void start()
-        {
-            Window3 mw = new Window3();
-            CursorOffset = mw.CursorOffset;
-            FreeDraw2 = mw.FreeDraw;
-            if (CursorOffset)
-            {
-                xOffset = mw.xOffset;
-                yOffset = mw.yOffset;
-            }
-            else
-            {
-                xOffset = 0;
-                yOffset = 0;
-            }
-            try
-            {
-                finished = draw();
-                if (finished == true)
-                    System.Windows.Forms.MessageBox.Show(new Form() { TopMost = true }, "Drawing Complete", "Done", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                else
-                    System.Windows.Forms.MessageBox.Show(new Form() { TopMost = true }, "Drawing halted", "Incomplete", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-            }
-            catch (Exception)
-            {
-                System.Windows.Forms.MessageBox.Show(new Form() { TopMost = true }, "No image was found\nMake sure you extracted the file.", "Drawing Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                //Console.WriteLine("path: {0}", pathInt);
-            }
-        }
-
-        private void startButton_Click(object sender, EventArgs e)
-        {
-            // Starts drawing
-            try
-            {
-                int imageTest = imagePreview.Width;
-                PreviewForm m = new PreviewForm();
-                m.Show();
-                WindowState = (WindowState)FormWindowState.Minimized;
-                while (true)
-                {
-                    System.Windows.Forms.Application.DoEvents();
-                    if (System.Windows.Forms.Control.ModifierKeys == Keys.Alt)
-                    {
-                        m.Close();
-                        break;
-                    }
-                    if (System.Windows.Forms.Control.ModifierKeys == Keys.Shift)
-                    {
-                        PreviosulyDrawn = true;
-                        if (!LockedLast)
-                        {
-                            LastX = System.Windows.Forms.Cursor.Position.X;
-                            LastY = System.Windows.Forms.Cursor.Position.Y;
-                        }
-                        m.Close();
-                        start();
-                        break;
-                    }
-                    if (System.Windows.Forms.Control.ModifierKeys == Keys.Control)
-                    {
-                        if (PreviosulyDrawn)
-                        {
-                            LockedLast = !LockedLast;
-                            NOP(1000000);
-                        }
-                    }
-                    if (LockedLast)
-                    {
-                        m.Location = new System.Drawing.Point((int)(LastX - m.Width / 2), (int)(LastY - m.Height / 2));
-                    }
-                    else
-                    {
-                        int xpos = (int)(System.Windows.Forms.Cursor.Position.X - m.Width / 2);
-                        int ypos = (int)(System.Windows.Forms.Cursor.Position.Y - m.Height / 2);
-                        m.Location = new System.Drawing.Point(xpos, ypos);
-                    }
-                }
-            }
-            catch (Exception)
-            {
-                System.Windows.Forms.MessageBox.Show(new Form() { TopMost = true }, "No image was found\nMake sure you extracted the file.", "Image Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-            }
         }
         private bool draw()
         {
@@ -774,20 +789,20 @@ namespace AutoDrawer
 
         void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
-            //pathList.ClearSelected();
-            //pathInt = PathSeqForm.pathInt;
+
         }
 
     }
-}
-class Position
-{
-    public int x { get; set; }
-    public int y { get; set; }
-}
+    class Position
+    {
+        public int x { get; set; }
+        public int y { get; set; }
+    }
 
-class PathIntegers
-{
-    public string name { get; set; }
-    public int path { get; set; }
+    class PathIntegers
+    {
+        public string name { get; set; }
+        public int path { get; set; }
+    }
+
 }

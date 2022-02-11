@@ -22,10 +22,19 @@ namespace AutoDrawer
     {
         public static int pathInt;
         string input;
+        public bool allowed;
 
         public PathSeqForm()
         {
             InitializeComponent();
+            if (!MainWindow.pathIntAllowed)
+            {
+                submitButton.Content = "Submit / Enable";
+            }
+            else
+            {
+                submitButton.Content = "Submit";
+            }
         }
 
         private void pathInput_TextChanged(object sender, EventArgs e)
@@ -37,8 +46,14 @@ namespace AutoDrawer
         {
             try
             {
-                pathInt = Convert.ToInt32(input);
-                pathInt = int.Parse(input);
+                try
+                {
+                    pathInt = Convert.ToInt32(input);
+                    pathInt = int.Parse(input);
+                }
+                catch{
+                    throw new Exception();
+                }
                 if (pathInt.ToString().Length < 8)
                     throw new Exception();
                 var digits = pathInt.ToString().Select(t => int.Parse(t.ToString())).ToArray();
@@ -49,14 +64,30 @@ namespace AutoDrawer
                         throw new Exception();
                     }
                 }
+                MainWindow.pathInt = pathInt;
+                MainWindow.pathIntAllowed = false;
                 Close();
             }
             catch (Exception)
             {
-                System.Windows.Forms.MessageBox.Show(new Form() { TopMost = true }, "Please enter a sequence of 8 integers from 1-8", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                if (!MainWindow.pathIntAllowed)
+                {
+                    enableDrawP();
+                    
+                }
+                else
+                {
+                    System.Windows.Forms.MessageBox.Show(new Form() { TopMost = true }, "Please enter a sequence of 8 integers from 1-8", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    MainWindow.pathIntAllowed = true;
+                }
             }
         }
-
+        public void enableDrawP()
+        {
+            System.Windows.Forms.MessageBox.Show(new Form() { TopMost = true }, "Enabled the drawing pattern!", "Enabled!", MessageBoxButtons.OK, MessageBoxIcon.None);
+            MainWindow.pathIntAllowed = true;
+            submitButton.Content = "Submit";
+        }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             this.Close();

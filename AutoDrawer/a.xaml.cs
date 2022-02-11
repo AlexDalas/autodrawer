@@ -11,9 +11,10 @@ namespace AutoDrawer
         Bitmap imagePreview = MainWindow.imagePreview;
         public PreviewForm()
         {
+            //This errors out for some reason, need fix
+            //this one errors because the class names are not the same. When they are the same, it all breaks
             //InitializeComponent();
             App.Current.MainWindow.Topmost = true; 
-            //This errors out for some reason, need fix
             if (imagePreview.Width < 300)
             {
                 //pictureBox1.Anchor = AnchorStyles.None;
@@ -24,12 +25,6 @@ namespace AutoDrawer
             {
                 //pictureBox1.Source = ConvertBitmap(imagePreview);
             }
-        }
-        private void Window_Deactivated(object sender, EventArgs e)
-        {
-            // The Window was deactivated 
-            App.Current.MainWindow.Topmost = false; 
-            App.Current.MainWindow.Topmost = true; 
         }
         private void CenterPictureBox(PictureBox picBox, Bitmap picImage)
         {

@@ -69,8 +69,8 @@
     <Grid Background="#FF2C302E">
         <Label Content="Enter custom path int sequence" HorizontalAlignment="Center" VerticalAlignment="Top" Height="25" Width="250" Foreground="White" Padding="5,0,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" Margin="0,9,0,0"/>
         <Image HorizontalAlignment="Left" Height="212" Margin="16,70,0,0" VerticalAlignment="Top" Width="215" Source="/Assets/pathguide.jpg"/>
-        <TextBox x:Name="pathInput" TextChanged="pathInput_TextChanged" HorizontalAlignment="Left" Margin="16,37,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="152" Height="27" FontSize="18" TextDecorations="{x:Null}" TextAlignment="Center"/>
-        <Button Content="Submit" HorizontalAlignment="Left" Margin="173,37,0,0" VerticalAlignment="Top" Height="28" Width="57" Click="enterButton_Click"/>
-        <Button Content="Close" HorizontalAlignment="Left" Margin="16,287,0,0" VerticalAlignment="Top" Height="20" Width="214" Foreground="White" Background="{x:Null}" Click="Button_Click"/>
+        <TextBox x:Name="pathInput" TextChanged="pathInput_TextChanged" HorizontalAlignment="Left" Margin="16,37,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="116" Height="27" FontSize="18" TextDecorations="{x:Null}" TextAlignment="Center"/>
+        <Button x:Name="submitButton" Content="Submit" HorizontalAlignment="Left" Margin="137,37,0,0" VerticalAlignment="Top" Height="28" Width="93" Click="enterButton_Click"/>
+        <Button x:Name="CloseBox" Content="Close" HorizontalAlignment="Left" Margin="16,287,0,0" VerticalAlignment="Top" Height="20" Width="214" Foreground="White" Background="{x:Null}" Click="Button_Click"/>
     </Grid>
 </Window>
