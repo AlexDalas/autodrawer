@@ -23,11 +23,8 @@ C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\AutoD
 C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\AutoDrawer_MarkupCompile.lref
 C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\AutoDrawer.csproj.AssemblyReference.cache
 C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\App.g.cs
-C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\bin\Debug\AutoDrawer.dll.config
-C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\bin\Debug\AutoDrawer.dll
 C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\bin\Debug\AutoDrawer.pdb
 C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\bin\Debug\SimWinMouse.dll
-C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\App.baml
 C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\MainWindow.baml
 C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\InfoForm.baml
 C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\PathSeqForm.baml
@@ -38,6 +35,8 @@ C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\AutoD
 C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\AutoDrawer.csproj.GenerateResource.cache
 C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\AutoDrawer.csproj.CoreCompileInputs.cache
 C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\AutoDrawer.csproj.CopyComplete
-C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\AutoDrawer.dll
 C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\AutoDrawer.pdb
 C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\AutoDrawer.csproj.SuggestedBindingRedirects.cache
+C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\bin\Debug\AutoDrawer.exe.config
+C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\bin\Debug\AutoDrawer.exe
+C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\AutoDrawer.exe
