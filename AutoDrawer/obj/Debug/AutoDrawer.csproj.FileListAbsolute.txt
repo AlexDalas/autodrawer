@@ -21,7 +21,6 @@ C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\Previ
 C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\SettingsForm.g.cs
 C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\AutoDrawer_MarkupCompile.cache
 C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\AutoDrawer_MarkupCompile.lref
-C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\AutoDrawer.csproj.AssemblyReference.cache
 C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\App.g.cs
 C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\bin\Debug\AutoDrawer.pdb
 C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\bin\Debug\SimWinMouse.dll
@@ -40,3 +39,7 @@ C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\AutoD
 C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\bin\Debug\AutoDrawer.exe.config
 C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\bin\Debug\AutoDrawer.exe
 C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\AutoDrawer.exe
+C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\bin\Debug\AutoDrawer.exe.manifest
+C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\bin\Debug\AutoDrawer.application
+C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\AutoDrawer.exe.manifest
+C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\AutoDrawer.application
