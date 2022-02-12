@@ -1,14 +1,10 @@
 # Roblox Auto-Draw
 This Autodraw software was forked from https://github.com/rainzhao2000/autodrawer, which has been modified in order to work better for more software and games, such as Roblox.
-Documentation will be coming soon.
-
-[Early beta](https://github.com/Siydge/autodraw-roblox/tree/early-beta) will include updates to net 6 and wpf, but is currently unusable
 
 Future documentation:
 
 # Auto-Draw
  This Autodraw software was forked from https://github.com/rainzhao2000/autodrawer, which has been modified in order to work better for more software and games, such as Roblox.
-Documentation will be coming soon.
  
 # Installation
 
@@ -20,7 +16,7 @@ Join [the Discord](https://discord.gg/rwvUFraDnb) for help, as we are active on 
  
 ## Windows
 
-This software officially supports Windows 10 and above. Any versions below may not work.
+This software officially supports Windows 10 and above. Any versions below may not work properly, but Windows 7 - 8(.1) *can* work.
 
 ## Mac, Linux
 
