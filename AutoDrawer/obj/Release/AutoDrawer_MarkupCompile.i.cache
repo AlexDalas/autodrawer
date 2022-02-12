@@ -4,15 +4,15 @@
 winexe
 C#
 .cs
-C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\
+C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Release\
 AutoDrawer
 none
 false
-DEBUG;TRACE
+TRACE
 C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\App.xaml
 5-519251300
 
-102018060183
+10-465860521
 16657854076
 MainWindow.xaml;InfoForm.xaml;PathSeqForm.xaml;PreviewForm.xaml;SettingsForm.xaml;
 

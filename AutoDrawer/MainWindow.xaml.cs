@@ -121,7 +121,8 @@ namespace AutoDrawer
             }
             catch
             {
-                Directory.CreateDirectory(@"%AppData%\AutoDraw\");
+                var cpath = Environment.ExpandEnvironmentVariables(@"%AppData%\AutoDraw\");
+                Directory.CreateDirectory(cpath);
                 StreamWriter sw = File.CreateText(fpath);
                 sw.Close();
                 lines = File.ReadAllLines(fpath); 
