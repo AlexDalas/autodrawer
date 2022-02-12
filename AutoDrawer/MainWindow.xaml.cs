@@ -33,8 +33,8 @@ namespace AutoDrawer
         public static Bitmap imagePreview;
         bool PreviosulyDrawn = false;
         bool LockedLast = false;
-        bool FreeDraw2 = false;
-        bool MDown = false;
+        //bool FreeDraw2 = false;
+        //bool MDown = false;
         int LastX;
         int LastY;
         bool CursorOffset = false;
@@ -98,7 +98,7 @@ namespace AutoDrawer
         public BitmapImage ConvertBitmap(Bitmap bitmap)
         {
             MemoryStream ms = new MemoryStream();
-            bitmap.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
+            bitmap.Save(ms, ImageFormat.Bmp);
             BitmapImage image = new BitmapImage();
             image.BeginInit();
             ms.Seek(0, SeekOrigin.Begin);
@@ -226,6 +226,7 @@ namespace AutoDrawer
             if (dialog.ShowDialog() == true)
             {
                 imageFile = new Bitmap(dialog.FileName);
+                if (dialog.FileName.EndsWith(".png")) FillPngWhite(imageFile);
                 pictureBox1.Source = ConvertBitmap(imageFile);
                 width = imageFile.Width;
                 height = imageFile.Height;
@@ -235,7 +236,71 @@ namespace AutoDrawer
                 imagePreview = image;
             }
         }
+        public Bitmap FillPngWhite(Bitmap bmp)
+        {
+            Bitmap originalBMP = bmp;
+            if (ContainsTransparent(originalBMP))
+                {
+                try
+                {
+                    if (bmp.PixelFormat != System.Drawing.Imaging.PixelFormat.Format32bppArgb)
+                        throw new ApplicationException("Not supported PNG image!");
+                }
+                catch { }
 
+                // Lock the bitmap's bits.  
+                System.Drawing.Rectangle rect = new System.Drawing.Rectangle(0, 0, bmp.Width, bmp.Height);
+                BitmapData bmpData = bmp.LockBits(rect, ImageLockMode.ReadWrite, bmp.PixelFormat);
+
+                // Get the address of the first line.
+                IntPtr ptr = bmpData.Scan0;
+
+                // Declare an array to hold the bytes of the bitmap.
+                int bytes = Math.Abs(bmpData.Stride) * bmp.Height;
+                byte[] rgbaValues = new byte[bytes];
+
+                // Copy the RGB values into the array.
+                Marshal.Copy(ptr, rgbaValues, 0, bytes);
+
+                // array consists of values RGBARGBARGBA
+                int counter;
+                for (counter = 0; counter < rgbaValues.Length; counter += 4)
+                {
+                    double t = rgbaValues[counter + 3] / 255.0; // transparency of pixel between 0 .. 1 , easier to do math with this
+                    double rt = 1 - t; // inverted value of transparency
+
+                    // C = C * t + W * (1-t) // alpha transparency for your case C-color, W-white (255)
+                    // same for each color
+                    rgbaValues[counter] = (byte)(rgbaValues[counter] * t + 255 * rt); // R color
+                    rgbaValues[counter + 1] = (byte)(rgbaValues[counter + 1] * t + 255 * rt); // G color
+                    rgbaValues[counter + 2] = (byte)(rgbaValues[counter + 2] * t + 255 * rt); // B color
+
+                    rgbaValues[counter + 3] = 255; // A = 255 => no transparency 
+                }
+                // Copy the RGB values back to the bitmap
+                Marshal.Copy(rgbaValues, 0, ptr, bytes);
+                    bmp.UnlockBits(bmpData);
+                    return bmp;
+                }
+            else
+            {
+                return originalBMP;
+            }
+        }
+        bool ContainsTransparent(Bitmap image)
+        {
+            for (int y = 0; y < image.Height; ++y)
+            {
+                for (int x = 0; x < image.Width; ++x)
+                {
+                    if (image.GetPixel(x, y).A != 255)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
         private void clearButton_Click(object sender, RoutedEventArgs e)
         {
             clear();
@@ -416,14 +481,14 @@ namespace AutoDrawer
                     if (LockedLast)
                     {
                         //m.Location() = new System.Drawing.Point((int)(LastX - m.Width / 2), (int)(LastY - m.Height / 2));
-                        m.Top = (int)(LastY - m.Height / 2) - 11.5;
+                        m.Top = (int)(LastY - m.Height / 2) - 22;
                         m.Left = (int)(LastX - m.Width / 2);
                     }
                     else
                     {
                         //m.Location = new System.Drawing.Point(xpos, ypos);
 
-                        m.Top = (int)(System.Windows.Forms.Cursor.Position.Y - m.Height / 2) - 11.5;
+                        m.Top = (int)(System.Windows.Forms.Cursor.Position.Y - m.Height / 2) - 22;
                         m.Left = (int)(System.Windows.Forms.Cursor.Position.X - m.Width / 2);
                     }
                 }
@@ -441,7 +506,7 @@ namespace AutoDrawer
             if (CursorOffset)
             {
                 xOffset = mw.xOffset;
-                yOffset = mw.yOffset + 21;
+                yOffset = mw.yOffset;
             }
             else
             {

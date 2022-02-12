@@ -9,12 +9,12 @@ AutoDrawer
 none
 false
 DEBUG;TRACE
-C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\App.xaml
-5-519251300
+
+6-9969621
 
 996282062
 16657854076
-MainWindow.xaml;InfoForm.xaml;PathSeqForm.xaml;PreviewForm.xaml;SettingsForm.xaml;
+App.xaml;MainWindow.xaml;InfoForm.xaml;PathSeqForm.xaml;PreviewForm.xaml;SettingsForm.xaml;
 
-False
+True
 

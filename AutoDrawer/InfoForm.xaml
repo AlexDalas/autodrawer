@@ -8,7 +8,8 @@
         Title="Info" Height="150" Width="300"
         ResizeMode="CanMinimize"
         WindowStartupLocation="CenterScreen"
-        WindowStyle="None">
+        WindowStyle="None"
+        Topmost="True">
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">

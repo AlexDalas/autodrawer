@@ -5,13 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutoDrawer"
         mc:Ignorable="d"
-        WindowStyle="None"
         ResizeMode="CanMinimize"
         Title="PreviewForm" Height="100" Width="300"
+        AllowsTransparency="True"
+        WindowStyle="None"
         Topmost="True">
-
-    <Grid Background="#7F2C302E">
-        <Image x:Name="pictureBox1" Margin="0,22,0,0"/>
+    <Window.Background>
+        <SolidColorBrush Opacity="0.5" Color="Black"></SolidColorBrush>
+    </Window.Background>
+    <Grid>
+        <Image x:Name="pictureBox1" Margin="0,22,0,0" Source="/Assets/InfoIcon.png" Opacity="0.5"/>
         <Label Content="Shift to Draw, ALT to stop, CTRL to lock last pos" HorizontalAlignment="Center" VerticalAlignment="Top" Height="21" Width="300" Foreground="White" Padding="5,0,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
     </Grid>
 </Window>
