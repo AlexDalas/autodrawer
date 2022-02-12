@@ -1,36 +1,42 @@
-E:\rain\Visual Studio 2015\Projects\AutoDrawer\AutoDrawer\bin\Debug\AutoDrawer.exe.config
-E:\rain\Visual Studio 2015\Projects\AutoDrawer\AutoDrawer\bin\Debug\AutoDrawer.exe
-E:\rain\Visual Studio 2015\Projects\AutoDrawer\AutoDrawer\bin\Debug\AutoDrawer.pdb
-E:\rain\Visual Studio 2015\Projects\AutoDrawer\AutoDrawer\obj\Debug\AutoDrawer.csprojResolveAssemblyReference.cache
-E:\rain\Visual Studio 2015\Projects\AutoDrawer\AutoDrawer\obj\Debug\AutoDrawer.Form1.resources
-E:\rain\Visual Studio 2015\Projects\AutoDrawer\AutoDrawer\obj\Debug\AutoDrawer.Properties.Resources.resources
-E:\rain\Visual Studio 2015\Projects\AutoDrawer\AutoDrawer\obj\Debug\AutoDrawer.csproj.GenerateResource.Cache
-E:\rain\Visual Studio 2015\Projects\AutoDrawer\AutoDrawer\obj\Debug\AutoDrawer.exe
-E:\rain\Visual Studio 2015\Projects\AutoDrawer\AutoDrawer\obj\Debug\AutoDrawer.pdb
-E:\rain\Visual Studio 2015\Projects\AutoDrawer\AutoDrawer\obj\Debug\AutoDrawer.Form2.resources
-E:\rain\projects\autodrawer\AutoDrawer\bin\Debug\AutoDrawer.exe.config
-E:\rain\projects\autodrawer\AutoDrawer\obj\Debug\AutoDrawer.exe
-E:\rain\projects\autodrawer\AutoDrawer\obj\Debug\AutoDrawer.pdb
-E:\rain\projects\autodrawer\AutoDrawer\bin\Debug\AutoDrawer.exe
-E:\rain\projects\autodrawer\AutoDrawer\bin\Debug\AutoDrawer.pdb
-E:\rain\projects\autodrawer\AutoDrawer\obj\Debug\AutoDrawer.csprojResolveAssemblyReference.cache
-E:\rain\projects\autodrawer\AutoDrawer\obj\Debug\AutoDrawer.Form1.resources
-E:\rain\projects\autodrawer\AutoDrawer\obj\Debug\AutoDrawer.Form2.resources
-E:\rain\projects\autodrawer\AutoDrawer\obj\Debug\AutoDrawer.Properties.Resources.resources
-E:\rain\projects\autodrawer\AutoDrawer\obj\Debug\AutoDrawer.csproj.GenerateResource.Cache
-E:\rain\projects\autodrawer\AutoDrawer\obj\Debug\AutoDrawer.Form3.resources
-C:\Users\catsi\Documents\GitHub\autodrawer\AutoDrawer\bin\Debug\AutoDrawer.exe.config
-C:\Users\catsi\Documents\GitHub\autodrawer\AutoDrawer\bin\Debug\AutoDrawer.exe
-C:\Users\catsi\Documents\GitHub\autodrawer\AutoDrawer\bin\Debug\AutoDrawer.pdb
-C:\Users\catsi\Documents\GitHub\autodrawer\AutoDrawer\obj\Debug\AutoDrawer.csproj.AssemblyReference.cache
-C:\Users\catsi\Documents\GitHub\autodrawer\AutoDrawer\obj\Debug\AutoDrawer.Properties.Resources.resources
-C:\Users\catsi\Documents\GitHub\autodrawer\AutoDrawer\obj\Debug\AutoDrawer.csproj.GenerateResource.cache
-C:\Users\catsi\Documents\GitHub\autodrawer\AutoDrawer\obj\Debug\AutoDrawer.csproj.CoreCompileInputs.cache
-C:\Users\catsi\Documents\GitHub\autodrawer\AutoDrawer\obj\Debug\AutoDrawer.exe
-C:\Users\catsi\Documents\GitHub\autodrawer\AutoDrawer\obj\Debug\AutoDrawer.pdb
-C:\Users\catsi\Documents\GitHub\autodrawer\AutoDrawer\bin\Debug\SimWinMouse.dll
-C:\Users\catsi\Documents\GitHub\autodrawer\AutoDrawer\obj\Debug\AutoDrawer.InfoForm.resources
-C:\Users\catsi\Documents\GitHub\autodrawer\AutoDrawer\obj\Debug\AutoDrawer.MainForm.resources
-C:\Users\catsi\Documents\GitHub\autodrawer\AutoDrawer\obj\Debug\AutoDrawer.PreviewForm.resources
-C:\Users\catsi\Documents\GitHub\autodrawer\AutoDrawer\obj\Debug\AutoDrawer.PathSeqForm.resources
-C:\Users\catsi\Documents\GitHub\autodrawer\AutoDrawer\obj\Debug\AutoDrawer.SettingsForm.resources
+C:\Users\Alex\source\repos\AutoDrawer\bin\Debug\AutoDrawer.exe.config
+C:\Users\Alex\source\repos\AutoDrawer\bin\Debug\AutoDrawer.exe
+C:\Users\Alex\source\repos\AutoDrawer\bin\Debug\AutoDrawer.pdb
+C:\Users\Alex\source\repos\AutoDrawer\obj\Debug\AutoDrawer.csproj.AssemblyReference.cache
+C:\Users\Alex\source\repos\AutoDrawer\obj\Debug\AutoDrawer.csproj.SuggestedBindingRedirects.cache
+C:\Users\Alex\source\repos\AutoDrawer\obj\Debug\MainWindow.g.cs
+C:\Users\Alex\source\repos\AutoDrawer\obj\Debug\App.g.cs
+C:\Users\Alex\source\repos\AutoDrawer\obj\Debug\AutoDrawer_MarkupCompile.cache
+C:\Users\Alex\source\repos\AutoDrawer\obj\Debug\AutoDrawer_MarkupCompile.lref
+C:\Users\Alex\source\repos\AutoDrawer\obj\Debug\MainWindow.baml
+C:\Users\Alex\source\repos\AutoDrawer\obj\Debug\AutoDrawer.g.resources
+C:\Users\Alex\source\repos\AutoDrawer\obj\Debug\AutoDrawer.Properties.Resources.resources
+C:\Users\Alex\source\repos\AutoDrawer\obj\Debug\AutoDrawer.csproj.GenerateResource.cache
+C:\Users\Alex\source\repos\AutoDrawer\obj\Debug\AutoDrawer.csproj.CoreCompileInputs.cache
+C:\Users\Alex\source\repos\AutoDrawer\obj\Debug\AutoDrawer.exe
+C:\Users\Alex\source\repos\AutoDrawer\obj\Debug\AutoDrawer.pdb
+C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\MainWindow.g.cs
+C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\InfoForm.g.cs
+C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\PathSeqForm.g.cs
+C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\PreviewForm.g.cs
+C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\SettingsForm.g.cs
+C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\AutoDrawer_MarkupCompile.cache
+C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\AutoDrawer_MarkupCompile.lref
+C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\AutoDrawer.csproj.AssemblyReference.cache
+C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\App.g.cs
+C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\bin\Debug\AutoDrawer.pdb
+C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\bin\Debug\SimWinMouse.dll
+C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\MainWindow.baml
+C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\InfoForm.baml
+C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\PathSeqForm.baml
+C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\PreviewForm.baml
+C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\SettingsForm.baml
+C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\AutoDrawer.g.resources
+C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\AutoDrawer.Properties.Resources.resources
+C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\AutoDrawer.csproj.GenerateResource.cache
+C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\AutoDrawer.csproj.CoreCompileInputs.cache
+C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\AutoDrawer.csproj.CopyComplete
+C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\AutoDrawer.pdb
+C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\AutoDrawer.csproj.SuggestedBindingRedirects.cache
+C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\bin\Debug\AutoDrawer.exe.config
+C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\bin\Debug\AutoDrawer.exe
+C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer\obj\Debug\AutoDrawer.exe
