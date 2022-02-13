@@ -143,9 +143,19 @@ namespace AutoDrawer
 
                 foreach (string file in files)
                 {
-                    if (file.EndsWith(".autodrawconfig"))
+                    if (file.EndsWith(".drawcfg"))
                     {
-                        Configs.Items.Add(file.Replace(dir, "").Replace("\\", "").Replace("/", "").Replace(".autodrawconfig", ""));
+                        Configs.Items.Add(file.Replace(dir, "").Replace("\\", "").Replace("/", "").Replace(".drawcfg", ""));
+                    }
+                    if (file.EndsWith(".autodrawconfig") || file.EndsWith(".autodrawconfi"))
+                    {
+                        try
+                        {
+                            File.Move(file, file.Replace(".autodrawconfig", ".drawcfg").Replace(".autodrawconfi", ".drawcfg"));
+                            Configs.Items.Add(file.Replace(dir, "").Replace("\\", "").Replace("/", "").Replace(".drawcfg", ""));
+                            refreshDir();
+                        }
+                        catch{  }
                     }
                 }
             }
@@ -173,7 +183,7 @@ namespace AutoDrawer
         {
             var dialog = new Microsoft.Win32.SaveFileDialog();
             dialog.Title = "Where do you want to save your current settings?";
-            dialog.Filter = "Config (*.autodrawconfig)|*.autodrawconfig";
+            dialog.Filter = "Config (*.drawcfg)|*.drawcfg";
             if (dialog.ShowDialog() == true)
             {
                 var fileName = dialog.FileName;
@@ -186,24 +196,19 @@ namespace AutoDrawer
             var fpath = @"%AppData%\AutoDraw\dir.txt";
             fpath = Environment.ExpandEnvironmentVariables(fpath);
             string[] lines = File.ReadAllLines(fpath);
-            int val = 0;
-            Int32.TryParse((string)Configs.SelectedItem, out val);
-            string text = Configs.Items[val].ToString();
             var name = lines[0];
-            var path = name + "\\" + text + ".autodrawconfig";
+            var path = name + "\\" + Configs.Items[Configs.SelectedIndex].ToString() + ".drawcfg";
             string[] theFile = File.ReadAllLines(path);
             intervalInput.Text = theFile[0];
             clickdelayInput.Text = theFile[1];
             blackThreshNumeric.Text = theFile[2];
             transThreshNumeric.Text = theFile[3];
-            Configs.UnselectAll();
-
         }
         private void Button_Click2(object sender, RoutedEventArgs e)
         {
             var dialog = new Microsoft.Win32.OpenFileDialog();
             dialog.Title = "Choose your config";
-            dialog.Filter = "Config (*.autodrawconfig)|*.autodrawconfig";
+            dialog.Filter = "Config (*.drawcfg)|*.drawcfg";
             if (dialog.ShowDialog() == true)
             {
                 var fileName = dialog.FileName;
@@ -844,6 +849,11 @@ namespace AutoDrawer
         {
             PathSeqForm m = new PathSeqForm();
             m.Show();
+        }
+
+        private void intervalInput_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
     class Position
