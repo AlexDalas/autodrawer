@@ -1,3 +1,0 @@
-## Settings and Info
-
-TBD
