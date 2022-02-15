@@ -850,11 +850,6 @@ namespace AutoDrawer
             PathSeqForm m = new PathSeqForm();
             m.Show();
         }
-
-        private void intervalInput_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
     }
     class Position
     {

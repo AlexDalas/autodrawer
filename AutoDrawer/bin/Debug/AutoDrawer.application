@@ -4,7 +4,7 @@
   <description asmv2:publisher="AutoDrawer" asmv2:product="AutoDrawer" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <deployment install="true" mapFileExtensions="true" />
   <compatibleFrameworks xmlns="urn:schemas-microsoft-com:clickonce.v2">
-    <framework targetVersion="4.8" profile="Full" supportedRuntime="4.0.30319" />
+    <framework targetVersion="4.6.1" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
     <dependentAssembly dependencyType="install" codebase="AutoDrawer.exe.manifest" size="4595">
@@ -14,7 +14,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>evTmns1wK9QO7LuPiIWeGHy/yKclSrpV7bGpGEoWqow=</dsig:DigestValue>
+        <dsig:DigestValue>y93060YvYy4k+QJ2EiALoVEvcVrroaa7E6lFsaFLnvo=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -50,7 +50,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>gUjgx/viHcnvGrW0mBSHR8Zpa08PngciebwvpFTXekE=</dsig:DigestValue>
+        <dsig:DigestValue>h9CoyDgIHYwdgEcXd/cCdMyLij7gKd35oc6W70FG/Tk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -75,13 +75,13 @@
       <dsig:DigestValue>CztuMy3zihOHMvr/GxScTa2vlJq2uL5hqVNnEbhESNE=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="AutoDrawer.exe.config" size="187">
+  <file name="AutoDrawer.exe.config" size="186">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>+CM46OnHRrXZXNLMx7+U3V3iubiYL//d8hGOR13lDhU=</dsig:DigestValue>
+      <dsig:DigestValue>1NgAxCSw4ibTXzWVy7D6Rw60Qih4Dn37KvGhG5Ora/s=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>
