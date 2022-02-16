@@ -122,10 +122,22 @@ namespace AutoDrawer
             catch
             {
                 var cpath = Environment.ExpandEnvironmentVariables(@"%AppData%\AutoDraw\");
-                Directory.CreateDirectory(cpath);
-                StreamWriter sw = File.CreateText(fpath);
-                sw.Close();
-                lines = File.ReadAllLines(fpath); 
+                
+                try
+                {
+                    Directory.CreateDirectory(cpath);
+                }
+                catch{ }
+                try
+                {
+                    StreamWriter sw = File.CreateText(fpath);
+                    sw.Close();
+                    lines = File.ReadAllLines(fpath); 
+                }
+                catch{
+                    File.WriteAllText(fpath, "");
+                    lines = File.ReadAllLines(fpath); 
+                }
             }
             int i = 1;
             string dir = "";
