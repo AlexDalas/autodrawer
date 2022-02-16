@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,7 +23,7 @@ namespace AutoDrawer
         public bool CursorOffset = false;
         public int xOffset = 0;
         public int yOffset = 0;
-        public bool sCC = false;
+        public bool CheckBoxCom = false;
         public Window3()
         {
             InitializeComponent();
@@ -69,7 +70,18 @@ namespace AutoDrawer
 
         private void CheckBox_Checked_2(object sender, RoutedEventArgs e)
         {
-            sCC = (bool)Scc.IsChecked;
+            CheckBoxCom = (bool)Scc.IsChecked;
+            if (CheckBoxCom) {
+                MainWindow m = new MainWindow();
+                m.LogFile("Started Log");
+            }
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            var fpath = @"%AppData%\AutoDraw\";
+            fpath = Environment.ExpandEnvironmentVariables(fpath);
+            Process.Start(fpath);
         }
     }
 }

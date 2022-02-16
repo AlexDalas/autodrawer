@@ -54,10 +54,18 @@ namespace AutoDrawer
         public static bool pathIntAllowed = true;
         bool Started;
         bool finished;
-
-        public void LogFile()
+        public void LogFile(string str)
         {
-
+            //Not done yet
+            str = str + " (" + DateTime.Now.ToString("hh:mm:ss") + ")" + "\n";
+            Window3 win = new Window3();
+            if ((bool)win.CheckBoxCom)
+            {
+                var spath = @"%AppData%\AutoDraw\logs\" + DateTime.Now.ToString("yyyy-MM-dd") + ".log";
+                spath = Environment.ExpandEnvironmentVariables(spath);
+                File.Create(spath);
+                File.AppendAllText(spath, str);
+            }
         }
         public void SetCursorPos(int posX, int posY)
         {
@@ -122,6 +130,16 @@ namespace AutoDrawer
             try
             {
                 lines = File.ReadAllLines(fpath); //make if not exist
+                try
+                {
+                    var cpath = Environment.ExpandEnvironmentVariables(@"%AppData%\AutoDraw\");
+                    Directory.CreateDirectory(cpath + "\\logs");
+                }
+                catch
+                {
+
+                }
+
             }
             catch
             {
@@ -130,8 +148,12 @@ namespace AutoDrawer
                 try
                 {
                     Directory.CreateDirectory(cpath);
+                    Directory.CreateDirectory(cpath+"\\logs");
                 }
-                catch{ }
+                catch
+                {
+                    Directory.CreateDirectory(cpath + "\\logs");
+                }
                 try
                 {
                     StreamWriter sw = File.CreateText(fpath);
