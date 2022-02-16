@@ -55,6 +55,10 @@ namespace AutoDrawer
         bool Started;
         bool finished;
 
+        public void LogFile()
+        {
+
+        }
         public void SetCursorPos(int posX, int posY)
         {
             SimWinInput.SimMouse.Act(SimWinInput.SimMouse.Action.MoveOnly, posX + xOffset, posY + yOffset);
@@ -234,12 +238,6 @@ namespace AutoDrawer
 
         private void uploadButton_Click(object sender, RoutedEventArgs e)
         {
-            upload();
-        }
-        private void upload()
-        {
-            // Show the Open File dialog. If the user clicks OK, load the
-            // picture that the user chose.
             var dialog = new Microsoft.Win32.OpenFileDialog();
             if (dialog.ShowDialog() == true)
             {
@@ -253,6 +251,18 @@ namespace AutoDrawer
                 image = imageFile;
                 imagePreview = image;
             }
+        }
+        private void uploadPath(string path)
+        {
+            imageFile = new Bitmap(path);
+            if (path.EndsWith(".png")) FillPngWhite(imageFile);
+            pictureBox1.Source = ConvertBitmap(imageFile);
+            width = imageFile.Width;
+            height = imageFile.Height;
+            widthInput.Text = width.ToString();
+            heightInput.Text = height.ToString();
+            image = imageFile;
+            imagePreview = image;
         }
         public Bitmap FillPngWhite(Bitmap bmp)
         {
@@ -861,6 +871,41 @@ namespace AutoDrawer
         {
             PathSeqForm m = new PathSeqForm();
             m.Show();
+        }
+
+        private void RecDrop(object sender, System.Windows.DragEventArgs e)
+        {
+            DragInd.Visibility = Visibility.Collapsed;
+            string[] files = (string[])e.Data.GetData(System.Windows.DataFormats.FileDrop);
+            try
+            {
+                uploadPath(files[0]);
+            }
+            catch
+            {
+                try
+                {
+                    if (files[0].EndsWith(".drawcfg") || files[0].EndsWith(".autodrawconfig") || files[0].EndsWith(".autodrawconfi"))
+                    {
+                        string[] lines = File.ReadAllLines(files[0]);
+                        int number;
+                        bool result = Int32.TryParse(lines[3], out number);
+                        intervalInput.Text = lines[0];
+                        clickdelayInput.Text = lines[1];
+                        blackThreshNumeric.Text = lines[2];
+                        transThreshNumeric.Text = lines[3];
+                    }
+                    else throw new ApplicationException("Invalid file!");
+                }catch{}
+            }
+        }
+        private void RecOver(object sender, System.Windows.DragEventArgs e)
+        {
+            DragInd.Visibility = Visibility.Visible;
+        }
+        private void RecExit(object sender, System.Windows.DragEventArgs e)
+        {
+            DragInd.Visibility = Visibility.Collapsed;
         }
     }
     class Position
