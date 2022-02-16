@@ -19,7 +19,7 @@ Mac and Linux are not natively supported, as WPF is Windows-Only.
 
 Mac users may like [Parallels](https://www.parallels.com/au/products/desktop/), and Linux users may like [KVM-based solutions](https://wiki.archlinux.org/title/QEMU)
 
-Note: Linux should be getting more support in v1.3 using WINE
+Note: Linux should be getting more support in v1.3 using WINE (join [the Discord](https://discord.gg/rwvUFraDnb) for updates)
 
 # Documentation?
 
