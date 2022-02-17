@@ -71,14 +71,14 @@ namespace AutoDrawer
         private void CheckBox_Checked_2(object sender, RoutedEventArgs e)
         {
             CheckBoxCom = (bool)Scc.IsChecked;
-            if (CheckBoxCom) {
-                MainWindow m = new MainWindow();
-                m.LogFile("Started Log");
-            }
+            MainWindow m = new MainWindow();
+            if (CheckBoxCom) m.LogFile("\n----\nStarted Log\n----");
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            MainWindow m = new MainWindow();
+            m.LogFile("Opening Log Folder");
             var fpath = @"%AppData%\AutoDraw\";
             fpath = Environment.ExpandEnvironmentVariables(fpath);
             Process.Start(fpath);

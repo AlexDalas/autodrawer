@@ -57,15 +57,27 @@ namespace AutoDrawer
         public void LogFile(string str)
         {
             //Not done yet
-            str = str + " (" + DateTime.Now.ToString("hh:mm:ss") + ")" + "\n";
+            str = str + " (" + DateTime.Now.ToString("hh:mm:ss") + ")";
             Window3 win = new Window3();
-            if ((bool)win.CheckBoxCom)
-            {
-                var spath = @"%AppData%\AutoDraw\logs\" + DateTime.Now.ToString("yyyy-MM-dd") + ".log";
+            //if ((bool)win.CheckBoxCom)
+            //{
+                var spath = @"%AppData%\AutoDraw\logs\";
                 spath = Environment.ExpandEnvironmentVariables(spath);
-                File.Create(spath);
-                File.AppendAllText(spath, str);
-            }
+                if (!Directory.Exists(spath)) Directory.CreateDirectory(spath);
+                spath = @"%AppData%\AutoDraw\logs\" + DateTime.Now.ToString("yyyyMMdd") + ".log";
+                spath = Environment.ExpandEnvironmentVariables(spath);
+                using (FileStream fs = new FileStream(spath, FileMode.Append, FileAccess.Write))
+                using (StreamWriter sw = new StreamWriter(fs))
+                {
+                    sw.WriteLine(str);
+                }
+            //}
+        }
+        void LogFile(object sender, UnhandledExceptionEventArgs args)
+        {
+            Exception e = (Exception)args.ExceptionObject;
+            LogFile("MyHandler caught: " + e.Message);
+            LogFile("Runtime terminating: "+ args.IsTerminating);
         }
         public void SetCursorPos(int posX, int posY)
         {
@@ -122,6 +134,7 @@ namespace AutoDrawer
         
         public void refreshDir()
         {
+            LogFile("Refreshing Directory");
             Configs.Items.Clear();
             var fpath = "";
             fpath = @"%AppData%\AutoDraw\dir.txt";
@@ -200,6 +213,7 @@ namespace AutoDrawer
         }
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
+            LogFile("Refreshing directory");
             refreshDir();
         }
         private void setDirectory(object sender, RoutedEventArgs e)
@@ -213,6 +227,7 @@ namespace AutoDrawer
                     var fpath = @"%AppData%\AutoDraw\dir.txt";
                     fpath = Environment.ExpandEnvironmentVariables(fpath);
                     File.WriteAllText(fpath, folder);
+                    LogFile("Set directory to "+fpath);
                     refreshDir();
                 }
             }
@@ -225,6 +240,7 @@ namespace AutoDrawer
             if (dialog.ShowDialog() == true)
             {
                 var fileName = dialog.FileName;
+                LogFile("Saving " + dialog.FileName);
                 File.WriteAllText(fileName, intervalInput.Text.ToString() + "\n"+clickdelayInput.Text.ToString() + "\n"+blackThreshNumeric.Text.ToString() + "\n"+transThreshNumeric.Text.ToString());
                 refreshDir();
             }
@@ -249,6 +265,7 @@ namespace AutoDrawer
             dialog.Filter = "Config (*.drawcfg)|*.drawcfg";
             if (dialog.ShowDialog() == true)
             {
+                LogFile("Selected " + dialog.FileName);
                 var fileName = dialog.FileName;
                 string[] lines = File.ReadAllLines(fileName);
                 intervalInput.Text = lines[0];
@@ -263,6 +280,7 @@ namespace AutoDrawer
             var dialog = new Microsoft.Win32.OpenFileDialog();
             if (dialog.ShowDialog() == true)
             {
+                LogFile("Uploaded image " + dialog.FileName + " via Upload Button");
                 imageFile = new Bitmap(dialog.FileName);
                 if (dialog.FileName.EndsWith(".png")) FillPngWhite(imageFile);
                 pictureBox1.Source = ConvertBitmap(imageFile);
@@ -276,6 +294,7 @@ namespace AutoDrawer
         }
         private void uploadPath(string path)
         {
+            LogFile("Uploaded image " + path + " via Drag/Drop");
             imageFile = new Bitmap(path);
             if (path.EndsWith(".png")) FillPngWhite(imageFile);
             pictureBox1.Source = ConvertBitmap(imageFile);
@@ -353,6 +372,7 @@ namespace AutoDrawer
         }
         private void clearButton_Click(object sender, RoutedEventArgs e)
         {
+            LogFile("Clearing Image");
             clear();
         }
 
@@ -379,6 +399,7 @@ namespace AutoDrawer
             }
             pictureBox1.Source = ConvertBitmap(image);
             imagePreview = image;
+            LogFile("Changing width to " + widthInput.Text);
         }
 
         private void heightInput_TextChanged(object sender, EventArgs e)
@@ -396,6 +417,7 @@ namespace AutoDrawer
             }
             pictureBox1.Source = ConvertBitmap(image);
             imagePreview = image;
+            LogFile("Changing height to " + heightInput.Text);
         }
         private Bitmap resizeImage(Bitmap imgToResize, System.Drawing.Size size)
         {
@@ -470,6 +492,7 @@ namespace AutoDrawer
                     {
                         pathInt = 26573481;
                     }
+                    LogFile("Changing Pattern to " + pathInt);
                 }
             }
             catch (Exception){}
@@ -478,6 +501,7 @@ namespace AutoDrawer
         private void processButton_Click(object sender, EventArgs e)
         {
             // Converts image to grayscale and applies thresholds
+            LogFile("Processing image");
             try
             {
                 Bitmap greyImage = MakeGrayscale3(image);
@@ -492,6 +516,7 @@ namespace AutoDrawer
         }
         private void startButton_Click(object sender, EventArgs e)
         {
+            LogFile("Starting drawing.\n{\n   Width: " + widthInput.Text+ "\n   Height: " + heightInput.Text+"\n   Interval: "+intervalInput.Text+ "\n   Click Delay: "+clickdelayInput.Text+ "\n   Black Threshold: "+blackThreshNumeric.Text+ "\n   Transparency Threshold: "+transThreshNumeric.Text+"\n}");
             // Starts drawing
             Started = true;
             try
@@ -546,6 +571,7 @@ namespace AutoDrawer
             catch (Exception)
             {
                 System.Windows.Forms.MessageBox.Show(new Form() { TopMost = true }, "No image was found\nMake sure you extracted the file.", "Image Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                LogFile("No image was found.");
             }
         }
 
@@ -570,16 +596,19 @@ namespace AutoDrawer
                 {
                     System.Windows.Forms.MessageBox.Show(new Form() { TopMost = true }, "Drawing Complete", "Done", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     Started = false;
+                    LogFile("Drawing Complete.");
                 }
                 else
                 {
                     System.Windows.Forms.MessageBox.Show(new Form() { TopMost = true }, "Drawing halted", "Incomplete", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     Started = false;
+                    LogFile("Drawing halted.");
                 }
             }
             catch (Exception)
             {
                 System.Windows.Forms.MessageBox.Show(new Form() { TopMost = true }, "No image was found\nMake sure you extracted the file.", "Drawing Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                LogFile("No image was found.");
                 //Console.WriteLine("path: {0}", pathInt);
             }
         }
@@ -902,6 +931,7 @@ namespace AutoDrawer
             try
             {
                 uploadPath(files[0]);
+                LogFile("Drag/Drop (Image).");
             }
             catch
             {
@@ -916,6 +946,7 @@ namespace AutoDrawer
                         clickdelayInput.Text = lines[1];
                         blackThreshNumeric.Text = lines[2];
                         transThreshNumeric.Text = lines[3];
+                        LogFile("Drag/Drop (Config)");
                     }
                     else throw new ApplicationException("Invalid file!");
                 }catch{}
