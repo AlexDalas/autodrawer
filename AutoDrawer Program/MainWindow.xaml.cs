@@ -73,12 +73,6 @@ namespace AutoDrawer
                 }
             //}
         }
-        void LogFile(object sender, UnhandledExceptionEventArgs args)
-        {
-            Exception e = (Exception)args.ExceptionObject;
-            LogFile("MyHandler caught: " + e.Message);
-            LogFile("Runtime terminating: "+ args.IsTerminating);
-        }
         public void SetCursorPos(int posX, int posY)
         {
             SimWinInput.SimMouse.Act(SimWinInput.SimMouse.Action.MoveOnly, posX + xOffset, posY + yOffset);
