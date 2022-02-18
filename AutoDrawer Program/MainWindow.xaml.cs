@@ -54,13 +54,14 @@ namespace AutoDrawer
         public static bool pathIntAllowed = true;
         bool Started;
         bool finished;
+        public bool CheckBoxCom;
         public void LogFile(string str)
         {
             //Not done yet
             str = str + " (" + DateTime.Now.ToString("hh:mm:ss") + ")";
             Window3 win = new Window3();
-            //if ((bool)win.CheckBoxCom)
-            //{
+            if (CheckBoxCom)
+            {
                 var spath = @"%AppData%\AutoDraw\logs\";
                 spath = Environment.ExpandEnvironmentVariables(spath);
                 if (!Directory.Exists(spath)) Directory.CreateDirectory(spath);
@@ -71,7 +72,7 @@ namespace AutoDrawer
                 {
                     sw.WriteLine(str);
                 }
-            //}
+            }
         }
         public void SetCursorPos(int posX, int posY)
         {
@@ -230,7 +231,7 @@ namespace AutoDrawer
         {
             var dialog = new Microsoft.Win32.SaveFileDialog();
             dialog.Title = "Where do you want to save your current settings?";
-            dialog.Filter = "Config (*.drawcfg)|*.drawcfg";
+            dialog.Filter = "Config (*.drawcfg)|*.drawcfg|Config (*.autodrawconfig)|*.autodrawconfig|Config (*.autodrawconfi)|*.autodrawconfi";
             if (dialog.ShowDialog() == true)
             {
                 var fileName = dialog.FileName;
@@ -256,7 +257,7 @@ namespace AutoDrawer
         {
             var dialog = new Microsoft.Win32.OpenFileDialog();
             dialog.Title = "Choose your config";
-            dialog.Filter = "Config (*.drawcfg)|*.drawcfg";
+            dialog.Filter = "Draw Config|*.drawcfg;*.autodrawconfig;*.autodrawconfi";
             if (dialog.ShowDialog() == true)
             {
                 LogFile("Selected " + dialog.FileName);

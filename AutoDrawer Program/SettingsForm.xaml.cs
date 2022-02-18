@@ -24,6 +24,9 @@ namespace AutoDrawer
         public int xOffset = 0;
         public int yOffset = 0;
         public bool CheckBoxCom = false;
+        int yNum = 0;
+        int xNum = 0;
+
         public Window3()
         {
             InitializeComponent();
@@ -32,9 +35,8 @@ namespace AutoDrawer
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+            Scc.IsChecked = CheckBoxCom;
         }
-        int yNum = 0;
-        int xNum = 0;
 
         public System.Drawing.Point Location { get; internal set; }
 
@@ -70,9 +72,18 @@ namespace AutoDrawer
 
         private void CheckBox_Checked_2(object sender, RoutedEventArgs e)
         {
-            CheckBoxCom = (bool)Scc.IsChecked;
             MainWindow m = new MainWindow();
-            if (CheckBoxCom) m.LogFile("\n----\nStarted Log\n----");
+            m.CheckBoxCom = true;
+            CheckBoxCom = true;
+            m.LogFile("\n----\nStarted Log\n----");
+        }
+
+        private void CheckBox_unChecked_2(object sender, RoutedEventArgs e)
+        {
+            MainWindow m = new MainWindow();
+            m.CheckBoxCom = false;
+            CheckBoxCom = false;
+            m.LogFile("\n----\nEnded Log\n----");
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
