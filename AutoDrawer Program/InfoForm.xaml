@@ -10,6 +10,9 @@
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         Topmost="True">
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="150" ResizeBorderThickness="{x:Static SystemParameters.WindowResizeBorderThickness}"/>
+    </WindowChrome.WindowChrome>
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -72,7 +75,7 @@
         <Label Content="Modified by Siydge to work on Roblox Games." HorizontalAlignment="Center" Margin="0,36,0,0" VerticalAlignment="Top" Height="27" Width="280" Foreground="White" Background="{x:Null}"/>
         <Label Content="Icons provided by icon-icons.com" HorizontalAlignment="Center" Margin="0,87,0,0" VerticalAlignment="Top" Height="25" Width="280" Foreground="White" Background="{x:Null}"/>
         <Label Content="This autodraw script is under the MIT Lisence." HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Width="280" Foreground="White" Background="{x:Null}"/>
-        <Button Content="Close" HorizontalAlignment="Center" Margin="0,116,0,0" VerticalAlignment="Top" Height="25" Width="280" Foreground="White" Background="{x:Null}" Click="Button_Click"/>
+        <Button WindowChrome.IsHitTestVisibleInChrome="True" Content="Close" HorizontalAlignment="Center" Margin="0,116,0,0" VerticalAlignment="Top" Height="25" Width="280" Foreground="White" Background="{x:Null}" Click="Button_Click"/>
 
     </Grid>
 </Window>
