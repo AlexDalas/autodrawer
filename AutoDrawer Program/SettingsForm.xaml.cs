@@ -43,15 +43,17 @@ namespace AutoDrawer
 
         private void CheckBox_Checked_2(object sender, RoutedEventArgs e)
         {
-            LogHandler.LogsEnabled = true;
-            LogHandler.LogFile("\n----\nStarted Log\n----");
+            if (LogHandler.LogsEnabled != true)
+            {
+                LogHandler.LogsEnabled = true;
+                LogHandler.LogFile("----\nStarted Log\n----");
+            }
         }
 
         private void CheckBox_unChecked_2(object sender, RoutedEventArgs e)
         {
-            LogHandler.LogFile("\n----\nEnded Log\n----");
+            LogHandler.LogFile("----\nEnded Log\n----");
             LogHandler.LogsEnabled = false;
-            LogHandler.LogsEnabled = true;
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -97,6 +99,21 @@ namespace AutoDrawer
             yNumeric.Text = yOffset.ToString();
             Scc.IsChecked = LogHandler.LogsEnabled;
             cursorBox.IsChecked = CursorOffset;
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            Process.Start("https://discord.gg/rwvUFraDnb");
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            Process.Start("https://github.com/Siydge/autodraw-roblox/releases/latest");
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            Process.Start("https://github.com/Siydge/autodraw-roblox/");
         }
     }
 }

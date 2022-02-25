@@ -494,7 +494,7 @@ namespace AutoDrawer
             }
             catch (Exception)
             {
-                System.Windows.Forms.MessageBox.Show(new Form() { TopMost = true }, "No image was found\nMake sure you extracted the file.", "Process Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                System.Windows.Forms.MessageBox.Show(new Form() { TopMost = true }, "No image was found. Did you upload an image?.", "Processing Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
         }
         private void startButton_Click(object sender, EventArgs e)
@@ -598,7 +598,15 @@ namespace AutoDrawer
         private Bitmap MakeGrayscale3(Bitmap original)
         {
             //create a blank bitmap the same size as original\
-            Bitmap newBitmap = new Bitmap(original.Width, original.Height);
+            Bitmap newBitmap;
+            try
+            {
+                newBitmap = new Bitmap(original.Width, original.Height);
+            }
+            catch
+            {
+                throw new ArgumentException("unprocessedImage");
+            }
             //get a graphics object from the new image
             Graphics g = Graphics.FromImage(newBitmap);
 

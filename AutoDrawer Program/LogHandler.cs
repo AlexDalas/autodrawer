@@ -21,7 +21,7 @@ namespace AutoDrawer
                 using (FileStream fs = new FileStream(spath, FileMode.Append, FileAccess.Write))
                 using (StreamWriter sw = new StreamWriter(fs))
                 {
-                    sw.WriteLine(str);
+                    sw.WriteLine(str+"\n");
                 }
             }
         }
