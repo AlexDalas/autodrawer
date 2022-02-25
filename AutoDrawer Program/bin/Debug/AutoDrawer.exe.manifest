@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AutoDrawer.exe" size="495064">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AutoDrawer.exe" size="495576">
       <assemblyIdentity name="AutoDrawer" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>DpMLOvyeFB8koyfeIFx03akX8olis2unZnSpjA90KL4=</dsig:DigestValue>
+        <dsig:DigestValue>V2tQJ7C17BxAaSkLsS2Q5AxJQDyfSj3FJdn4C3yFLrs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
