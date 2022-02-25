@@ -551,14 +551,14 @@ namespace AutoDrawer
                     if (LockedLast)
                     {
                         //m.Location() = new System.Drawing.Point((int)(LastX - m.Width / 2), (int)(LastY - m.Height / 2));
-                        m.Top = (int)(LastY - m.Height / 2) - 22;
+                        m.Top = (int)(LastY - m.Height / 2) - 11;
                         m.Left = (int)(LastX - m.Width / 2);
                     }
                     else
                     {
                         //m.Location = new System.Drawing.Point(xpos, ypos);
 
-                        m.Top = (int)(System.Windows.Forms.Cursor.Position.Y - m.Height / 2) - 22;
+                        m.Top = (int)(System.Windows.Forms.Cursor.Position.Y - m.Height / 2) - 11;
                         m.Left = (int)(System.Windows.Forms.Cursor.Position.X - m.Width / 2);
                     }
                 }
@@ -691,9 +691,11 @@ namespace AutoDrawer
                     {
                         xpos = xorigin + x;
                         ypos = yorigin + y;
+                        NOP(clickdelay * 3333);
                         SetCursorPos(xpos, ypos);
-                        NOP(clickdelay * 10000);
+                        NOP(clickdelay * 3333);
                         SetCursorPos(xpos, ypos + 1);
+                        NOP(clickdelay * 3333);
                         LeftClick(MOUSEEVENTF_LEFTDOWN, xpos, ypos);
                         cont = drawArea(stack, x, y, xorigin, yorigin);
                         LeftClick(MOUSEEVENTF_LEFTUP, xpos, ypos);
