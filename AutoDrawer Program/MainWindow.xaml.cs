@@ -48,8 +48,6 @@ namespace AutoDrawer
         int transparencyThreshold;
         int[,] pixelArray;
         ArrayList stack;
-        //also if image transparent, it goes black bkg
-        //Doesnt list. I generated property but the thing itself doesnt work. it doesnt error tho. see the pathintegers file for more
         public static int pathInt;
         public static bool pathIntAllowed = true;
         bool Started;
