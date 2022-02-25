@@ -74,13 +74,13 @@ namespace AutoDrawer
                 {
                     enableDrawP();
                     MainWindow m = new MainWindow();
-                    m.LogFile("Enabled custom drawing pattern "+pathInput.Text);
+                    LogHandler.LogFile("Enabled custom drawing pattern "+pathInput.Text);
                 }
                 else
                 {
                     System.Windows.Forms.MessageBox.Show(new Form() { TopMost = true }, "Please enter a sequence of 8 integers from 1-8", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     MainWindow m = new MainWindow();
-                    m.LogFile("User did not enter a sequence from 8 integers.");
+                    LogHandler.LogFile("User did not enter a sequence from 8 integers.");
                     MainWindow.pathIntAllowed = true;
                 }
             }
@@ -89,7 +89,7 @@ namespace AutoDrawer
         {
             System.Windows.Forms.MessageBox.Show(new Form() { TopMost = true }, "Enabled the drawing pattern!", "Enabled!", MessageBoxButtons.OK, MessageBoxIcon.None);
             MainWindow m = new MainWindow();
-            m.LogFile("Enabled Drawing Pattern!");
+            LogHandler.LogFile("Enabled Drawing Pattern!");
             MainWindow.pathIntAllowed = true;
             submitButton.Content = "Submit";
         }

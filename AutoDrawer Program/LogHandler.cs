@@ -5,11 +5,13 @@ namespace AutoDrawer
 {
     public class LogHandler
     {
+        public static bool LogsEnabled;
+
         public static void LogFile(string str)
         {
             str = str + " (" + DateTime.Now.ToString("hh:mm:ss") + ")";
             Window3 win = new Window3();
-            if (MainWindow.CheckBoxCom)
+            if (LogsEnabled)
             {
                 var spath = @"%AppData%\AutoDraw\logs\";
                 spath = Environment.ExpandEnvironmentVariables(spath);
