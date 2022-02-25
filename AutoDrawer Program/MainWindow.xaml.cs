@@ -255,8 +255,12 @@ namespace AutoDrawer
             var dialog = new Microsoft.Win32.OpenFileDialog();
             if (dialog.ShowDialog() == true)
             {
-                LogHandler.LogFile("Uploaded image " + dialog.FileName + " via Upload Button");
-                imageFile = new Bitmap(dialog.FileName);
+                try
+                {
+                    imageFile = new Bitmap(dialog.FileName);
+                }
+                catch
+                { System.Windows.Forms.MessageBox.Show(new Form() { TopMost = true }, "Image error. Is this even an image?", "Image Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk); return; }
                 if (dialog.FileName.EndsWith(".png")) FillPngWhite(imageFile);
                 pictureBox1.Source = ConvertBitmap(imageFile);
                 width = imageFile.Width;
@@ -265,6 +269,7 @@ namespace AutoDrawer
                 heightInput.Text = height.ToString();
                 image = imageFile;
                 imagePreview = image;
+                LogHandler.LogFile("Uploaded image " + dialog.FileName + " via Upload Button");
             }
         }
         private void uploadPath(string path)

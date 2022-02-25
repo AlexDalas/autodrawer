@@ -1,16 +1,1 @@
-
-AutoDrawer/.vs/AutoDrawer/project-colors.json
-AutoDrawer/.vs/AutoDrawer/v16/.suo
-AutoDrawer/.vs/AutoDrawer/v17/.suo
-AutoDrawer/bin/Debug/app.publish/AutoDrawer.exe
-AutoDrawer/bin/Debug/AutoDrawer.exe.config
-AutoDrawer/bin/Debug/AutoDrawer.exe.manifest
-AutoDrawer/bin/Debug/AutoDrawer.pdb
-AutoDrawer/bin/Debug/SimWinMouse.dll
-AutoDrawer/bin/Release/app.publish/AutoDrawer.exe
-AutoDrawer/bin/Release/AutoDrawer.application
-AutoDrawer/bin/Release/AutoDrawer.exe
-AutoDrawer/bin/Release/AutoDrawer.exe.config
-AutoDrawer/bin/Release/AutoDrawer.exe.manifest
-AutoDrawer/bin/Release/AutoDrawer.pdb
-AutoDrawer/bin/Release/SimWinMouse.dll
+AutoDrawer/bin/
