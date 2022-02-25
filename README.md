@@ -13,13 +13,15 @@ Join [the Discord](https://discord.gg/rwvUFraDnb) for help, as we are active on 
 
 This software officially supports Windows 10 and above. Any versions below may not work properly, but Windows 7 - 8(.1) *can* work.
 
-## Mac, Linux
+## Mac
 
-Mac and Linux are not natively supported, as WPF is Windows-Only. 
+Mac is not supported, as WPF is Windows-Only. 
 
-Mac users may like [Parallels](https://www.parallels.com/au/products/desktop/), and Linux users may like [KVM-based solutions](https://wiki.archlinux.org/title/QEMU)
+Mac users may use[Parallels](https://www.parallels.com/au/products/desktop/)
 
-Note: Linux should be getting more support in v1.3 using WINE (join [the Discord](https://discord.gg/rwvUFraDnb) for updates)
+## Linux
+
+Linux is (not yet) supported. Under v1.3, it should work fine under WINE. (join [the Discord](https://discord.gg/rwvUFraDnb) for updates)
 
 # Documentation
 
