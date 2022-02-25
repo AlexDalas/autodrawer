@@ -129,3 +129,4 @@ C:\Users\catsi\Documents\GitHub\autodraw-roblox\AutoDrawer Program\obj\Debug\Aut
 C:\Users\catsi\Documents\GitHub\autodraw-roblox\AutoDrawer Program\obj\Debug\AutoDrawer.application
 C:\Users\catsi\Documents\GitHub\autodraw-roblox\AutoDrawer Program\obj\Debug\AutoDrawer.exe
 C:\Users\catsi\Documents\GitHub\autodraw-roblox\AutoDrawer Program\obj\Debug\AutoDrawer.pdb
+C:\Users\catsi\Documents\GitHub\autodraw-roblox\AutoDrawer Program\bin\Debug\Microsoft.VisualStudio.DebuggerVisualizers.dll

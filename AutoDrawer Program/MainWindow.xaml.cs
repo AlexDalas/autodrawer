@@ -25,6 +25,7 @@ namespace AutoDrawer
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    /// 
 
     public partial class MainWindow : Window
     {
@@ -80,7 +81,7 @@ namespace AutoDrawer
             clickdelay = Convert.ToInt32(clickdelayInput.Text);
             clickdelay = int.Parse(clickdelayInput.Text);
             pathList.SelectedIndex = 2;
-            Console.WriteLine("Initialized Component shit");
+            Console.WriteLine("Initialized Component.");
             refreshDir();
         }
         private void Button_Click_1(object sender, RoutedEventArgs e)

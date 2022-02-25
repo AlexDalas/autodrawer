@@ -50,7 +50,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>PEhrPvxN2guyrMMJQkqgriumlyDiMhPiNa3rW4LUymQ=</dsig:DigestValue>
+        <dsig:DigestValue>BC05HW8ChwQbPboN+6Nv11FOTNxsUPISDyk8xvv7Huw=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.VisualStudio.DebuggerVisualizers.dll" size="32136">
+      <assemblyIdentity name="Microsoft.VisualStudio.DebuggerVisualizers" version="16.0.0.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>oG2b1JNCoQh47BqbP4O2ELoRj+Dz/9vDVDcg9C8NMtE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
