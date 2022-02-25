@@ -55,7 +55,6 @@ namespace AutoDrawer
         public bool CheckBoxCom;
         public void LogFile(string str)
         {
-            //Not done yet
             str = str + " (" + DateTime.Now.ToString("hh:mm:ss") + ")";
             Window3 win = new Window3();
             if (CheckBoxCom)
