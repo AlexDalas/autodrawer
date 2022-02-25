@@ -571,6 +571,7 @@ namespace AutoDrawer
         {
             Window3 mw = new Window3();
             CursorOffset = mw.CursorOffset;
+            CheckBoxCom = mw.CheckBoxCom;
             if (CursorOffset)
             {
                 xOffset = mw.xOffset;
