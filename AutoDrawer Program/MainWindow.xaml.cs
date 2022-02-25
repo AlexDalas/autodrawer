@@ -25,6 +25,7 @@ namespace AutoDrawer
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+
     public partial class MainWindow : Window
     {
         Bitmap imageFile;
@@ -52,7 +53,8 @@ namespace AutoDrawer
         public static bool pathIntAllowed = true;
         bool Started;
         bool finished;
-        public bool CheckBoxCom;
+        public static bool CheckBoxCom;
+
         public void LogFile(string str)
         {
             str = str + " (" + DateTime.Now.ToString("hh:mm:ss") + ")";
@@ -71,6 +73,7 @@ namespace AutoDrawer
                 }
             }
         }
+
         public void SetCursorPos(int posX, int posY)
         {
             SimWinInput.SimMouse.Act(SimWinInput.SimMouse.Action.MoveOnly, posX + xOffset, posY + yOffset);
@@ -97,6 +100,7 @@ namespace AutoDrawer
             clickdelay = Convert.ToInt32(clickdelayInput.Text);
             clickdelay = int.Parse(clickdelayInput.Text);
             pathList.SelectedIndex = 2;
+            Console.WriteLine("Initialized Component shit");
             refreshDir();
         }
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -123,7 +127,7 @@ namespace AutoDrawer
 
             return image;
         }
-        
+
         public void refreshDir()
         {
             LogFile("Refreshing Directory");
@@ -141,19 +145,17 @@ namespace AutoDrawer
                     Directory.CreateDirectory(cpath + "\\logs");
                 }
                 catch
-                {
-
-                }
+                { }
 
             }
             catch
             {
                 var cpath = Environment.ExpandEnvironmentVariables(@"%AppData%\AutoDraw\");
-                
+
                 try
                 {
                     Directory.CreateDirectory(cpath);
-                    Directory.CreateDirectory(cpath+"\\logs");
+                    Directory.CreateDirectory(cpath + "\\logs");
                 }
                 catch
                 {
@@ -163,11 +165,12 @@ namespace AutoDrawer
                 {
                     StreamWriter sw = File.CreateText(fpath);
                     sw.Close();
-                    lines = File.ReadAllLines(fpath); 
+                    lines = File.ReadAllLines(fpath);
                 }
-                catch{
+                catch
+                {
                     File.WriteAllText(fpath, "");
-                    lines = File.ReadAllLines(fpath); 
+                    lines = File.ReadAllLines(fpath);
                 }
             }
             int i = 1;
@@ -198,7 +201,7 @@ namespace AutoDrawer
                             Configs.Items.Add(file.Replace(dir, "").Replace("\\", "").Replace("/", "").Replace(".drawcfg", ""));
                             refreshDir();
                         }
-                        catch{  }
+                        catch { }
                     }
                 }
             }
@@ -219,7 +222,7 @@ namespace AutoDrawer
                     var fpath = @"%AppData%\AutoDraw\dir.txt";
                     fpath = Environment.ExpandEnvironmentVariables(fpath);
                     File.WriteAllText(fpath, folder);
-                    LogFile("Set directory to "+fpath);
+                    LogFile("Set directory to " + fpath);
                     refreshDir();
                 }
             }
@@ -233,7 +236,7 @@ namespace AutoDrawer
             {
                 var fileName = dialog.FileName;
                 LogFile("Saving " + dialog.FileName);
-                File.WriteAllText(fileName, intervalInput.Text.ToString() + "\n"+clickdelayInput.Text.ToString() + "\n"+blackThreshNumeric.Text.ToString() + "\n"+transThreshNumeric.Text.ToString());
+                File.WriteAllText(fileName, intervalInput.Text.ToString() + "\n" + clickdelayInput.Text.ToString() + "\n" + blackThreshNumeric.Text.ToString() + "\n" + transThreshNumeric.Text.ToString());
                 refreshDir();
             }
         }
@@ -301,7 +304,7 @@ namespace AutoDrawer
         {
             Bitmap originalBMP = bmp;
             if (ContainsTransparent(originalBMP))
-                {
+            {
                 try
                 {
                     if (bmp.PixelFormat != System.Drawing.Imaging.PixelFormat.Format32bppArgb)
@@ -340,9 +343,9 @@ namespace AutoDrawer
                 }
                 // Copy the RGB values back to the bitmap
                 Marshal.Copy(rgbaValues, 0, ptr, bytes);
-                    bmp.UnlockBits(bmpData);
-                    return bmp;
-                }
+                bmp.UnlockBits(bmpData);
+                return bmp;
+            }
             else
             {
                 return originalBMP;
@@ -425,7 +428,7 @@ namespace AutoDrawer
                 blackThreshold = Convert.ToInt32(blackThreshNumeric.Text);
                 blackThreshold = int.Parse(blackThreshNumeric.Text);
             }
-            catch{}
+            catch { }
         }
 
         private void transThresh_TextChanged(object sender, EventArgs e)
@@ -436,7 +439,7 @@ namespace AutoDrawer
                 transparencyThreshold = Convert.ToInt32(transThreshNumeric.Text);
                 transparencyThreshold = int.Parse(transThreshNumeric.Text);
             }
-            catch{}
+            catch { }
         }
 
         private void interval_TextChanged(object sender, EventArgs e)
@@ -475,11 +478,13 @@ namespace AutoDrawer
                     if (pathList.SelectedIndex.ToString() == "0")
                     {
                         pathInt = 12345678;
-                    }else
+                    }
+                    else
                     if (pathList.SelectedIndex.ToString() == "1")
                     {
                         pathInt = 14627358;
-                    }else
+                    }
+                    else
                     if (pathList.SelectedIndex.ToString() == "2")
                     {
                         pathInt = 26573481;
@@ -487,7 +492,7 @@ namespace AutoDrawer
                     LogFile("Changing Pattern to " + pathInt);
                 }
             }
-            catch (Exception){}
+            catch (Exception) { }
         }
 
         private void processButton_Click(object sender, EventArgs e)
@@ -508,7 +513,7 @@ namespace AutoDrawer
         }
         private void startButton_Click(object sender, EventArgs e)
         {
-            LogFile("Starting drawing.\n{\n   Width: " + widthInput.Text+ "\n   Height: " + heightInput.Text+"\n   Interval: "+intervalInput.Text+ "\n   Click Delay: "+clickdelayInput.Text+ "\n   Black Threshold: "+blackThreshNumeric.Text+ "\n   Transparency Threshold: "+transThreshNumeric.Text+"\n}");
+            LogFile("Starting drawing.\n{\n   Width: " + widthInput.Text + "\n   Height: " + heightInput.Text + "\n   Interval: " + intervalInput.Text + "\n   Click Delay: " + clickdelayInput.Text + "\n   Black Threshold: " + blackThreshNumeric.Text + "\n   Transparency Threshold: " + transThreshNumeric.Text + "\n}");
             // Starts drawing
             Started = true;
             try
@@ -570,12 +575,12 @@ namespace AutoDrawer
         private void start()
         {
             Window3 mw = new Window3();
-            CursorOffset = mw.CursorOffset;
-            CheckBoxCom = mw.CheckBoxCom;
+            CursorOffset = Window3.CursorOffset;
+            CheckBoxCom = Window3.CheckBoxCom;
             if (CursorOffset)
             {
-                xOffset = mw.xOffset;
-                yOffset = mw.yOffset;
+                xOffset = Window3.xOffset;
+                yOffset = Window3.yOffset;
             }
             else
             {
@@ -944,7 +949,8 @@ namespace AutoDrawer
                         LogFile("Drag/Drop (Config)");
                     }
                     else throw new ApplicationException("Invalid file!");
-                }catch{}
+                }
+                catch { }
             }
         }
         private void RecOver(object sender, System.Windows.DragEventArgs e)
@@ -956,6 +962,7 @@ namespace AutoDrawer
             DragInd.Visibility = Visibility.Collapsed;
         }
     }
+
     class Position
     {
         public int x { get; set; }

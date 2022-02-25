@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace AutoDrawer
 {
@@ -20,12 +10,10 @@ namespace AutoDrawer
     /// </summary>
     public partial class Window3 : Window
     {
-        public bool CursorOffset = false;
-        public int xOffset = 0;
-        public int yOffset = 0;
-        public bool CheckBoxCom = false;
-        int yNum = 0;
-        int xNum = 0;
+        public static bool CursorOffset = false;
+        public static bool CheckBoxCom = false;
+        public static int xOffset = 0;
+        public static int yOffset = 0;
 
         public Window3()
         {
@@ -35,35 +23,9 @@ namespace AutoDrawer
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-            Scc.IsChecked = CheckBoxCom;
         }
 
         public System.Drawing.Point Location { get; internal set; }
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            //y
-            try { 
-                yNum = Convert.ToInt32(yNumeric.Text);
-                yNum = int.Parse(yNumeric.Text);
-                yOffset = yNum;
-            }
-            catch
-            {}
-        }
-
-        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
-        {
-            //x
-            try
-            {
-                xNum = Convert.ToInt32(xNumeric.Text);
-                xNum = int.Parse(xNumeric.Text);
-                xOffset = xNum;
-            }
-            catch
-            {}
-        }
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
@@ -72,18 +34,15 @@ namespace AutoDrawer
 
         private void CheckBox_Checked_2(object sender, RoutedEventArgs e)
         {
-            MainWindow m = new MainWindow();
-            m.CheckBoxCom = true;
             CheckBoxCom = true;
-            m.LogFile("\n----\nStarted Log\n----");
+            LogHandler.LogFile("\n----\nStarted Log\n----");
         }
 
         private void CheckBox_unChecked_2(object sender, RoutedEventArgs e)
         {
-            MainWindow m = new MainWindow();
-            m.CheckBoxCom = false;
+            MainWindow.CheckBoxCom = false;
             CheckBoxCom = false;
-            m.LogFile("\n----\nEnded Log\n----");
+            LogHandler.LogFile("\n----\nEnded Log\n----");
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -93,6 +52,43 @@ namespace AutoDrawer
             var fpath = @"%AppData%\AutoDraw\";
             fpath = Environment.ExpandEnvironmentVariables(fpath);
             Process.Start(fpath);
+        }
+
+        private void xNumeric_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!xNumeric.IsLoaded) return;
+            try
+            {
+                var xNum = Convert.ToInt32(xNumeric.Text);
+                xNum = Int32.Parse(xNumeric.Text);
+                xOffset = (int)xNum;
+                Console.WriteLine(xOffset);
+            }
+            catch
+            { }
+        }
+
+        private void yNumeric_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!yNumeric.IsLoaded) return;
+            try
+            {
+                var yNum = Convert.ToInt32(yNumeric.Text);
+                yNum = Int32.Parse(yNumeric.Text);
+                yOffset = (int)yNum;
+                Console.WriteLine(yOffset);
+            }
+            catch
+            { }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            Console.WriteLine("Window Init");
+            xNumeric.Text = xOffset.ToString();
+            yNumeric.Text = yOffset.ToString();
+            Scc.IsChecked = CheckBoxCom;
+            cursorBox.IsChecked = CursorOffset;
         }
     }
 }

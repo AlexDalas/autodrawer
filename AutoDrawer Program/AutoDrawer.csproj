@@ -96,6 +96,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="LogHandler.cs" />
     <Compile Include="InfoForm.xaml.cs">
       <DependentUpon>InfoForm.xaml</DependentUpon>
     </Compile>

@@ -9,7 +9,7 @@
         ResizeMode="CanMinimize"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
-        Topmost="True">
+        Topmost="True" Loaded="Window_Loaded">
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -68,15 +68,19 @@
         </Style>
     </Window.Resources>
     <Grid Background="#EF2C302E">
-        <Button Content="Close" HorizontalAlignment="Center" Margin="0,215,0,0" VerticalAlignment="Top" Height="25" Width="280" Foreground="White" Background="{x:Null}" Click="Button_Click"/>
-        <CheckBox x:Name="cursorBox" Content="Cursor Offset" HorizontalAlignment="Center" Margin="0,8,0,0" VerticalAlignment="Top" Width="280" Height="34" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Foreground="White" Checked="CheckBox_Checked"/>
-        <CheckBox Content="Cursor Offset" HorizontalAlignment="Center" Margin="0,144,0,0" VerticalAlignment="Top" Width="280" Height="34" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Foreground="White" Visibility="Collapsed"/>
-        <CheckBox x:Name="Scc" Content="Log to file for this session" HorizontalAlignment="Left" Margin="10,165,0,0" VerticalAlignment="Top" Width="205" Height="34" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Foreground="White" Visibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Auto" Checked="CheckBox_Checked_2" Unchecked="CheckBox_unChecked_2" FontSize="12"/>
-        <Label Content="Offset Position" HorizontalAlignment="Center" Margin="0,43,0,0" VerticalAlignment="Top" Width="300" Foreground="White" FontSize="14" HorizontalContentAlignment="Center"/>
-        <TextBox x:Name="xNumeric" HorizontalAlignment="Left" Margin="10,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="33" Background="{x:Null}" FontSize="16" TextAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="White" Text="0" TextChanged="TextBox_TextChanged_1"/>
-        <TextBox x:Name="yNumeric" HorizontalAlignment="Left" Margin="170,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="33" Background="{x:Null}" FontSize="16" TextAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="White" TextChanged="TextBox_TextChanged" Text="0"/>
-        <Label Content="X" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Foreground="White" FontSize="8" HorizontalContentAlignment="Center" Height="12" Margin="50,63,0,0" Padding="0,0,0,0"/>
-        <Label Content="Y" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Foreground="White" FontSize="8" HorizontalContentAlignment="Center" Height="12" Margin="210,63,0,0" Padding="0,0,0,0"/>
-        <Button Content="Open Logs" HorizontalAlignment="Left" Margin="220,169,0,0" VerticalAlignment="Top" Height="25" Width="70" Foreground="White" Background="{x:Null}" Click="Button_Click_1"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="67*"/>
+            <ColumnDefinition Width="233*"/>
+        </Grid.ColumnDefinitions>
+        <Button Content="Close" HorizontalAlignment="Center" Margin="10,215,10,0" VerticalAlignment="Top" Height="25" Width="280" Foreground="White" Background="{x:Null}" Click="Button_Click" Grid.ColumnSpan="2"/>
+        <CheckBox x:Name="cursorBox" Content="Cursor Offset" HorizontalAlignment="Center" Margin="10,8,10,0" VerticalAlignment="Top" Width="280" Height="34" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Foreground="White" Checked="CheckBox_Checked" Grid.ColumnSpan="2"/>
+        <CheckBox Content="Cursor Offset" HorizontalAlignment="Center" Margin="10,144,10,0" VerticalAlignment="Top" Width="280" Height="34" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Foreground="White" Visibility="Collapsed" Grid.ColumnSpan="2"/>
+        <CheckBox x:Name="Scc" Content="Log to file for this session" HorizontalAlignment="Left" Margin="10,165,0,0" VerticalAlignment="Top" Width="205" Height="34" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Foreground="White" Visibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Auto" Checked="CheckBox_Checked_2" Unchecked="CheckBox_unChecked_2" FontSize="12" Grid.ColumnSpan="2"/>
+        <Label Content="Offset Position" HorizontalAlignment="Center" Margin="0,43,0,0" VerticalAlignment="Top" Width="300" Foreground="White" FontSize="14" HorizontalContentAlignment="Center" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="xNumeric" HorizontalAlignment="Left" Margin="10,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="33" Background="{x:Null}" FontSize="16" TextAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="White" Text="0" Grid.ColumnSpan="2" TextChanged="xNumeric_TextChanged"/>
+        <TextBox x:Name="yNumeric" HorizontalAlignment="Left" Margin="102.976,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="33" Background="{x:Null}" FontSize="16" TextAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="White" Text="0" Grid.Column="1" TextChanged="yNumeric_TextChanged"/>
+        <Label Content="X" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Foreground="White" FontSize="8" HorizontalContentAlignment="Center" Height="12" Margin="50,63,0,0" Padding="0,0,0,0" Grid.ColumnSpan="2"/>
+        <Label Content="Y" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Foreground="White" FontSize="8" HorizontalContentAlignment="Center" Height="12" Margin="142.976,63,0,0" Padding="0,0,0,0" Grid.Column="1"/>
+        <Button Content="Open Logs" HorizontalAlignment="Left" Margin="152.976,169,0,0" VerticalAlignment="Top" Height="25" Width="70" Foreground="White" Background="{x:Null}" Click="Button_Click_1" Grid.Column="1"/>
     </Grid>
 </Window>
