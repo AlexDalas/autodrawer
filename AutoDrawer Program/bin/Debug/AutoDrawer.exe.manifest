@@ -43,14 +43,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AutoDrawer.exe" size="494552">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AutoDrawer.exe" size="495576">
       <assemblyIdentity name="AutoDrawer" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>BC05HW8ChwQbPboN+6Nv11FOTNxsUPISDyk8xvv7Huw=</dsig:DigestValue>
+        <dsig:DigestValue>mz7iCdU3jf7z8fiPKdD00eCeT3ZLe3cLe1unrjwiyKA=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Gma.System.MouseKeyHook.dll" size="57344">
+      <assemblyIdentity name="Gma.System.MouseKeyHook" version="5.6.130.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>pnpCQBNUTIJwwSYz4uHih81c8LPy6B6NggSzegPaWe8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
