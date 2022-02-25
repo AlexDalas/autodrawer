@@ -2,5 +2,5 @@
 AutoDrawer Program/.vs/AutoDrawer/project-colors.json
 AutoDrawer Program/.vs/AutoDrawer/v16/.suo
 AutoDrawer Program/.vs/AutoDrawer/v17/.suo
-AutoDrawer Program/bin/
+AutoDrawer Program/bin/*
 AutoDrawer Program/obj/Debug/AutoDrawer.csproj.FileListAbsolute.txt
