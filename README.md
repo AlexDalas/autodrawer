@@ -25,4 +25,4 @@ Linux is (not yet) supported. Under v1.3, it should work fine under WINE. (join 
 
 # Documentation
 
-Documentation can [be found here](https://siydge.github.io/autodraw-roblox/docs)
+Documentation can [be found here](https://siydge.github.io/autodraw-roblox/)
