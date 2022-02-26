@@ -90,6 +90,6 @@
         <Button WindowChrome.IsHitTestVisibleInChrome="True" Content="Discord" HorizontalAlignment="Left" Margin="10,178,0,0" VerticalAlignment="Top" Height="25" Width="80" Foreground="White" Background="{x:Null}" Grid.ColumnSpan="2" Click="Button_Click_2"/>
         <Button WindowChrome.IsHitTestVisibleInChrome="True" Content="Latest Release" HorizontalAlignment="Left" Margin="38,178,0,0" VerticalAlignment="Top" Height="25" Width="90" Foreground="White" Background="{x:Null}" Grid.Column="1" Click="Button_Click_3"/>
         <Button WindowChrome.IsHitTestVisibleInChrome="True" Content="GitHub" HorizontalAlignment="Left" Margin="143,178,0,0" VerticalAlignment="Top" Height="25" Width="80" Foreground="White" Background="{x:Null}" Grid.Column="1" Click="Button_Click_4"/>
-        <Button WindowChrome.IsHitTestVisibleInChrome="True" Content="Open Console" HorizontalAlignment="Left" Margin="133,87,0,0" VerticalAlignment="Top" Height="26" Width="90" Foreground="White" Background="{x:Null}" Grid.Column="1"/>
+        <Button WindowChrome.IsHitTestVisibleInChrome="True" Content="Open Console" HorizontalAlignment="Left" Margin="133,87,0,0" VerticalAlignment="Top" Height="26" Width="90" Foreground="White" Background="{x:Null}" Grid.Column="1" Click="Button_Click_7"/>
     </Grid>
 </Window>

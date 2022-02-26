@@ -41,7 +41,7 @@ namespace AutoDrawer {
     public partial class MainWindow : System.Windows.Window, System.Windows.Markup.IComponentConnector {
         
         
-        #line 87 "..\..\MainWindow.xaml"
+        #line 88 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Image PictureBox;
         
@@ -49,7 +49,7 @@ namespace AutoDrawer {
         #line hidden
         
         
-        #line 97 "..\..\MainWindow.xaml"
+        #line 98 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.TextBox heightInput;
         
@@ -57,7 +57,7 @@ namespace AutoDrawer {
         #line hidden
         
         
-        #line 98 "..\..\MainWindow.xaml"
+        #line 99 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.TextBox widthInput;
         
@@ -65,7 +65,7 @@ namespace AutoDrawer {
         #line hidden
         
         
-        #line 99 "..\..\MainWindow.xaml"
+        #line 100 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button startButton;
         
@@ -73,7 +73,7 @@ namespace AutoDrawer {
         #line hidden
         
         
-        #line 100 "..\..\MainWindow.xaml"
+        #line 101 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button processButton;
         
@@ -81,7 +81,7 @@ namespace AutoDrawer {
         #line hidden
         
         
-        #line 101 "..\..\MainWindow.xaml"
+        #line 102 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button uploadButton;
         
@@ -89,7 +89,7 @@ namespace AutoDrawer {
         #line hidden
         
         
-        #line 102 "..\..\MainWindow.xaml"
+        #line 103 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button clearButton;
         
@@ -97,7 +97,7 @@ namespace AutoDrawer {
         #line hidden
         
         
-        #line 105 "..\..\MainWindow.xaml"
+        #line 106 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button SettingsButton;
         
@@ -105,7 +105,7 @@ namespace AutoDrawer {
         #line hidden
         
         
-        #line 106 "..\..\MainWindow.xaml"
+        #line 107 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button InfoButton;
         
@@ -113,7 +113,7 @@ namespace AutoDrawer {
         #line hidden
         
         
-        #line 109 "..\..\MainWindow.xaml"
+        #line 110 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.TextBox blackThreshNumeric;
         
@@ -121,7 +121,7 @@ namespace AutoDrawer {
         #line hidden
         
         
-        #line 110 "..\..\MainWindow.xaml"
+        #line 111 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.TextBlock BlackThresholdLabel;
         
@@ -129,7 +129,7 @@ namespace AutoDrawer {
         #line hidden
         
         
-        #line 111 "..\..\MainWindow.xaml"
+        #line 112 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.TextBox transThreshNumeric;
         
@@ -137,7 +137,7 @@ namespace AutoDrawer {
         #line hidden
         
         
-        #line 112 "..\..\MainWindow.xaml"
+        #line 113 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.TextBlock AlphaThresholdLabel;
         
@@ -145,7 +145,7 @@ namespace AutoDrawer {
         #line hidden
         
         
-        #line 113 "..\..\MainWindow.xaml"
+        #line 114 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.TextBox intervalInput;
         
@@ -153,7 +153,7 @@ namespace AutoDrawer {
         #line hidden
         
         
-        #line 114 "..\..\MainWindow.xaml"
+        #line 115 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.TextBlock IntervalLabel;
         
@@ -161,7 +161,7 @@ namespace AutoDrawer {
         #line hidden
         
         
-        #line 115 "..\..\MainWindow.xaml"
+        #line 116 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.TextBox clickdelayInput;
         
@@ -169,7 +169,7 @@ namespace AutoDrawer {
         #line hidden
         
         
-        #line 116 "..\..\MainWindow.xaml"
+        #line 117 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.TextBlock ClickDelayLabel;
         
@@ -177,7 +177,7 @@ namespace AutoDrawer {
         #line hidden
         
         
-        #line 117 "..\..\MainWindow.xaml"
+        #line 118 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Image Icon;
         
@@ -185,7 +185,7 @@ namespace AutoDrawer {
         #line hidden
         
         
-        #line 118 "..\..\MainWindow.xaml"
+        #line 119 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.TextBlock Title;
         
@@ -193,7 +193,7 @@ namespace AutoDrawer {
         #line hidden
         
         
-        #line 119 "..\..\MainWindow.xaml"
+        #line 120 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button Close;
         
@@ -201,7 +201,7 @@ namespace AutoDrawer {
         #line hidden
         
         
-        #line 121 "..\..\MainWindow.xaml"
+        #line 122 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.ListBox pathList;
         
@@ -209,7 +209,7 @@ namespace AutoDrawer {
         #line hidden
         
         
-        #line 126 "..\..\MainWindow.xaml"
+        #line 127 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button customButton;
         
@@ -217,7 +217,7 @@ namespace AutoDrawer {
         #line hidden
         
         
-        #line 127 "..\..\MainWindow.xaml"
+        #line 128 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.TextBlock label5;
         
@@ -225,7 +225,7 @@ namespace AutoDrawer {
         #line hidden
         
         
-        #line 128 "..\..\MainWindow.xaml"
+        #line 129 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button SaveSettings;
         
@@ -233,7 +233,7 @@ namespace AutoDrawer {
         #line hidden
         
         
-        #line 129 "..\..\MainWindow.xaml"
+        #line 130 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button LoadSettings;
         
@@ -241,7 +241,7 @@ namespace AutoDrawer {
         #line hidden
         
         
-        #line 130 "..\..\MainWindow.xaml"
+        #line 131 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.ListBox Configs;
         
@@ -249,7 +249,7 @@ namespace AutoDrawer {
         #line hidden
         
         
-        #line 131 "..\..\MainWindow.xaml"
+        #line 132 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button setDirectoryButton;
         
@@ -257,7 +257,7 @@ namespace AutoDrawer {
         #line hidden
         
         
-        #line 132 "..\..\MainWindow.xaml"
+        #line 133 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button RefreshDirectory;
         
@@ -265,7 +265,7 @@ namespace AutoDrawer {
         #line hidden
         
         
-        #line 135 "..\..\MainWindow.xaml"
+        #line 136 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Shapes.Rectangle DragInd;
         
@@ -328,7 +328,7 @@ namespace AutoDrawer {
             case 3:
             this.heightInput = ((System.Windows.Controls.TextBox)(target));
             
-            #line 97 "..\..\MainWindow.xaml"
+            #line 98 "..\..\MainWindow.xaml"
             this.heightInput.TextChanged += new System.Windows.Controls.TextChangedEventHandler(this.heightInput_TextChanged);
             
             #line default
@@ -337,7 +337,7 @@ namespace AutoDrawer {
             case 4:
             this.widthInput = ((System.Windows.Controls.TextBox)(target));
             
-            #line 98 "..\..\MainWindow.xaml"
+            #line 99 "..\..\MainWindow.xaml"
             this.widthInput.TextChanged += new System.Windows.Controls.TextChangedEventHandler(this.widthInput_TextChanged);
             
             #line default
@@ -346,7 +346,7 @@ namespace AutoDrawer {
             case 5:
             this.startButton = ((System.Windows.Controls.Button)(target));
             
-            #line 99 "..\..\MainWindow.xaml"
+            #line 100 "..\..\MainWindow.xaml"
             this.startButton.Click += new System.Windows.RoutedEventHandler(this.startButton_Click);
             
             #line default
@@ -355,7 +355,7 @@ namespace AutoDrawer {
             case 6:
             this.processButton = ((System.Windows.Controls.Button)(target));
             
-            #line 100 "..\..\MainWindow.xaml"
+            #line 101 "..\..\MainWindow.xaml"
             this.processButton.Click += new System.Windows.RoutedEventHandler(this.processButton_Click);
             
             #line default
@@ -364,7 +364,7 @@ namespace AutoDrawer {
             case 7:
             this.uploadButton = ((System.Windows.Controls.Button)(target));
             
-            #line 101 "..\..\MainWindow.xaml"
+            #line 102 "..\..\MainWindow.xaml"
             this.uploadButton.Click += new System.Windows.RoutedEventHandler(this.uploadButton_Click);
             
             #line default
@@ -373,7 +373,7 @@ namespace AutoDrawer {
             case 8:
             this.clearButton = ((System.Windows.Controls.Button)(target));
             
-            #line 102 "..\..\MainWindow.xaml"
+            #line 103 "..\..\MainWindow.xaml"
             this.clearButton.Click += new System.Windows.RoutedEventHandler(this.clearButton_Click);
             
             #line default
@@ -382,7 +382,7 @@ namespace AutoDrawer {
             case 9:
             this.SettingsButton = ((System.Windows.Controls.Button)(target));
             
-            #line 105 "..\..\MainWindow.xaml"
+            #line 106 "..\..\MainWindow.xaml"
             this.SettingsButton.Click += new System.Windows.RoutedEventHandler(this.SettingsButton_Click);
             
             #line default
@@ -391,7 +391,7 @@ namespace AutoDrawer {
             case 10:
             this.InfoButton = ((System.Windows.Controls.Button)(target));
             
-            #line 106 "..\..\MainWindow.xaml"
+            #line 107 "..\..\MainWindow.xaml"
             this.InfoButton.Click += new System.Windows.RoutedEventHandler(this.InfoButton_Click_1);
             
             #line default
@@ -400,7 +400,7 @@ namespace AutoDrawer {
             case 11:
             this.blackThreshNumeric = ((System.Windows.Controls.TextBox)(target));
             
-            #line 109 "..\..\MainWindow.xaml"
+            #line 110 "..\..\MainWindow.xaml"
             this.blackThreshNumeric.TextChanged += new System.Windows.Controls.TextChangedEventHandler(this.blackThresh_TextChanged);
             
             #line default
@@ -412,7 +412,7 @@ namespace AutoDrawer {
             case 13:
             this.transThreshNumeric = ((System.Windows.Controls.TextBox)(target));
             
-            #line 111 "..\..\MainWindow.xaml"
+            #line 112 "..\..\MainWindow.xaml"
             this.transThreshNumeric.TextChanged += new System.Windows.Controls.TextChangedEventHandler(this.transThresh_TextChanged);
             
             #line default
@@ -424,7 +424,7 @@ namespace AutoDrawer {
             case 15:
             this.intervalInput = ((System.Windows.Controls.TextBox)(target));
             
-            #line 113 "..\..\MainWindow.xaml"
+            #line 114 "..\..\MainWindow.xaml"
             this.intervalInput.TextChanged += new System.Windows.Controls.TextChangedEventHandler(this.interval_TextChanged);
             
             #line default
@@ -436,7 +436,7 @@ namespace AutoDrawer {
             case 17:
             this.clickdelayInput = ((System.Windows.Controls.TextBox)(target));
             
-            #line 115 "..\..\MainWindow.xaml"
+            #line 116 "..\..\MainWindow.xaml"
             this.clickdelayInput.TextChanged += new System.Windows.Controls.TextChangedEventHandler(this.clickDelay_TextChanged);
             
             #line default
@@ -454,7 +454,7 @@ namespace AutoDrawer {
             case 21:
             this.Close = ((System.Windows.Controls.Button)(target));
             
-            #line 119 "..\..\MainWindow.xaml"
+            #line 120 "..\..\MainWindow.xaml"
             this.Close.Click += new System.Windows.RoutedEventHandler(this.Close_Click);
             
             #line default
@@ -462,7 +462,7 @@ namespace AutoDrawer {
             return;
             case 22:
             
-            #line 120 "..\..\MainWindow.xaml"
+            #line 121 "..\..\MainWindow.xaml"
             ((System.Windows.Controls.Button)(target)).Click += new System.Windows.RoutedEventHandler(this.Minimize_Click);
             
             #line default
@@ -471,7 +471,7 @@ namespace AutoDrawer {
             case 23:
             this.pathList = ((System.Windows.Controls.ListBox)(target));
             
-            #line 121 "..\..\MainWindow.xaml"
+            #line 122 "..\..\MainWindow.xaml"
             this.pathList.SelectionChanged += new System.Windows.Controls.SelectionChangedEventHandler(this.pathList_SelectedIndexChanged);
             
             #line default
@@ -480,7 +480,7 @@ namespace AutoDrawer {
             case 24:
             this.customButton = ((System.Windows.Controls.Button)(target));
             
-            #line 126 "..\..\MainWindow.xaml"
+            #line 127 "..\..\MainWindow.xaml"
             this.customButton.Click += new System.Windows.RoutedEventHandler(this.customButton_Click);
             
             #line default
@@ -492,7 +492,7 @@ namespace AutoDrawer {
             case 26:
             this.SaveSettings = ((System.Windows.Controls.Button)(target));
             
-            #line 128 "..\..\MainWindow.xaml"
+            #line 129 "..\..\MainWindow.xaml"
             this.SaveSettings.Click += new System.Windows.RoutedEventHandler(this.SaveSettings_Click);
             
             #line default
@@ -501,7 +501,7 @@ namespace AutoDrawer {
             case 27:
             this.LoadSettings = ((System.Windows.Controls.Button)(target));
             
-            #line 129 "..\..\MainWindow.xaml"
+            #line 130 "..\..\MainWindow.xaml"
             this.LoadSettings.Click += new System.Windows.RoutedEventHandler(this.LoadSettings_Click);
             
             #line default
@@ -510,7 +510,7 @@ namespace AutoDrawer {
             case 28:
             this.Configs = ((System.Windows.Controls.ListBox)(target));
             
-            #line 130 "..\..\MainWindow.xaml"
+            #line 131 "..\..\MainWindow.xaml"
             this.Configs.SelectionChanged += new System.Windows.Controls.SelectionChangedEventHandler(this.ListBoxConfig);
             
             #line default
@@ -519,7 +519,7 @@ namespace AutoDrawer {
             case 29:
             this.setDirectoryButton = ((System.Windows.Controls.Button)(target));
             
-            #line 131 "..\..\MainWindow.xaml"
+            #line 132 "..\..\MainWindow.xaml"
             this.setDirectoryButton.Click += new System.Windows.RoutedEventHandler(this.setDirectory);
             
             #line default
@@ -528,7 +528,7 @@ namespace AutoDrawer {
             case 30:
             this.RefreshDirectory = ((System.Windows.Controls.Button)(target));
             
-            #line 132 "..\..\MainWindow.xaml"
+            #line 133 "..\..\MainWindow.xaml"
             this.RefreshDirectory.Click += new System.Windows.RoutedEventHandler(this.RefreshDirectory_Click);
             
             #line default
