@@ -10,6 +10,9 @@ namespace AutoDrawer
         public static void LogFile(string str)
         {
             str = str + " (" + DateTime.Now.ToString("hh:mm:ss") + ")";
+            //ConsoleWindow.ListConsole.Text = str + "\n" + ConsoleWindow.ListConsole.Text;
+            Console.WriteLine(str);
+            Window3 win = new Window3();
             if (LogsEnabled)
             {
                 var spath = @"%AppData%\AutoDraw\logs\";

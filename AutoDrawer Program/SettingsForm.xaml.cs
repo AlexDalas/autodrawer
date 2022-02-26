@@ -150,5 +150,11 @@ namespace AutoDrawer
             LogHandler.LogFile("Sent webhook to " + LogsText.Text);
             System.Windows.Forms.MessageBox.Show(new Form() { TopMost = true }, "Webhook sent!", "Success", MessageBoxButtons.OK, MessageBoxIcon.None);
         }
+
+        private void Button_Click_6(object sender, RoutedEventArgs e)
+        {
+            ConsoleWindow cw = new ConsoleWindow();
+            cw.Show();
+        }
     }
 }
