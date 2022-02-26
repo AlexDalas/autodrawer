@@ -20,6 +20,8 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
+using System.Windows.Controls.Primitives;
 
 namespace AutoDrawer
 {
@@ -410,41 +412,88 @@ namespace AutoDrawer
             imageFile = null;
             image = null;
             imagePreview = null;
+            GC.Collect();
+        }
+        public Regex nubmerRegex = new Regex("[^0-9]+");
+        public Regex nubmerRegexDec = new Regex("[^0-9.]+");
+        public double Scale = 1;
+        private void ScaleSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (ScaleInput == null) return;
+            Scale = (int)ScaleSlider.Value/100;
+            ScaleInput.Text = nubmerRegexDec.Replace(Math.Round(ScaleSlider.Value).ToString(), "");
+        }
+
+        private void ScaleSlider_DragCompleted(object sender, DragCompletedEventArgs e)
+        {
+            if (image != null)
+            {
+                try
+                {
+                    Scale = (double)(ScaleSlider.Value / 100);
+                    widthInput.Text = Math.Round(imageFile.Size.Width * Scale).ToString();
+                    heightInput.Text = Math.Round(imageFile.Size.Height * Scale).ToString();
+                    /*image = ResizeImage(imageFile, new System.Drawing.Size(
+                        (int)Math.Round(imageFile.Size.Width * Scale),
+                        (int)Math.Round(imageFile.Size.Height * Scale)
+                    ));*/
+                }
+                catch (Exception)
+                {
+                    ScaleInput.Text = "100";
+                }
+                PictureBox.Source = ConvertBitmap(image);
+                imagePreview = image;
+                LogHandler.LogFile("Changing Scale to " + ScaleInput.Text);
+                GC.Collect();
+            }
+        }
+        private void ScaleInput_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            
         }
         private void WidthInput_TextChanged(object sender, EventArgs e)
         {
             // Change in width of image
-            try
+            if (image != null)
             {
-                width = Convert.ToInt32(widthInput.Text);
-                width = int.Parse(widthInput.Text);
-                image = ResizeImage(imageFile, new System.Drawing.Size(width, height));
+                try
+                {
+                    widthInput.Text = nubmerRegex.Replace(widthInput.Text, "");
+                    width = int.Parse(widthInput.Text);
+                    image = ResizeImage(imageFile, new System.Drawing.Size(width, height));
+                }
+                catch (Exception)
+                {
+                    width = image.Width;
+                }
+                PictureBox.Source = ConvertBitmap(image);
+                imagePreview = image;
+                LogHandler.LogFile("Changing width to " + widthInput.Text);
+                GC.Collect();
             }
-            catch (Exception)
-            {
-                width = image.Width;
-            }
-            PictureBox.Source = ConvertBitmap(image);
-            imagePreview = image;
-            LogHandler.LogFile("Changing width to " + widthInput.Text);
         }
 
         private void HeightInput_TextChanged(object sender, EventArgs e)
         {
             // Change in height of image
-            try
+            if (image != null)
             {
-                height = Convert.ToInt32(heightInput.Text);
-                height = int.Parse(heightInput.Text);
-                image = ResizeImage(imageFile, new System.Drawing.Size(width, height));
+                try
+                {
+                    height = Convert.ToInt32(heightInput.Text);
+                    height = int.Parse(heightInput.Text);
+                    image = ResizeImage(imageFile, new System.Drawing.Size(width, height));
+                }
+                catch (Exception)
+                {
+                    height = image.Height;
+                }
+                PictureBox.Source = ConvertBitmap(image);
+                imagePreview = image;
+                LogHandler.LogFile("Changing height to " + heightInput.Text);
+                GC.Collect();
             }
-            catch (Exception)
-            {
-                height = image.Height;
-            }
-            PictureBox.Source = ConvertBitmap(image);
-            imagePreview = image;
-            LogHandler.LogFile("Changing height to " + heightInput.Text);
         }
         private Bitmap ResizeImage(Bitmap imgToResize, System.Drawing.Size size)
         {
@@ -537,6 +586,8 @@ namespace AutoDrawer
                 processedImage = Scan(greyImage, blackThreshold, transparencyThreshold);
                 PictureBox.Source = ConvertBitmap(processedImage);
                 imagePreview = processedImage;
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
             }
             catch (Exception)
             {

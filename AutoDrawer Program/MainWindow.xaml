@@ -6,11 +6,11 @@
         xmlns:local="clr-namespace:AutoDrawer"
         mc:Ignorable="d"
         Icon="Assets/Icon.ico"
-        Title="AutoDrawUI" Height="500" Width="800"
+        Title="AutoDrawUI" Height="520" Width="800"
         ResizeMode="CanMinimize"
         WindowStartupLocation="CenterScreen"
         AllowsTransparency="True"
-        WindowStyle="None">
+        WindowStyle="None" MinWidth="800" MinHeight="520">
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -75,64 +75,104 @@
     </WindowChrome.WindowChrome>
     <Grid Background="#FF2C302E" AllowDrop="True" DragEnter="RecOver" DragLeave="RecExit" DragDrop.Drop="RecDrop">
         <Grid.RowDefinitions>
-            <RowDefinition Height="30*"/>
-            <RowDefinition Height="23*"/>
+            <RowDefinition/>
+            <RowDefinition Height="110"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="104*"/>
-            <ColumnDefinition Width="283*"/>
-            <ColumnDefinition Width="13*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="340"/>
         </Grid.ColumnDefinitions>
-        <Rectangle Style="{DynamicResource RectangleStyle1}" HorizontalAlignment="Left" Height="420" Margin="10,10,0,0" VerticalAlignment="Top" Width="459" Grid.ColumnSpan="2" Fill="White" Grid.RowSpan="2"/>
-        <Image Style="{DynamicResource ImageStyle1}" x:Name="PictureBox" Stretch="Uniform" Margin="10,10,305,70" Grid.ColumnSpan="2" Height="420" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" RenderTransformOrigin="0.5,0.5" OpacityMask="Black" Grid.RowSpan="2">
-            <Image.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Image.RenderTransform>
-        </Image>
-        <TextBox x:Name="heightInput" HorizontalAlignment="Left" WindowChrome.IsHitTestVisibleInChrome="True" TextChanged="HeightInput_TextChanged" Margin="35,181,0,0" TextWrapping="Wrap" Width="222" FontSize="16" TextAlignment="Center" Grid.Column="1" Background="#FF474A48" BorderBrush="Black" Foreground="White" BorderThickness="1,1,1,1" FontFamily="Segoe UI Light" Grid.Row="1" Height="25" VerticalAlignment="Top"/>
-        <TextBox x:Name="widthInput" HorizontalAlignment="Left" WindowChrome.IsHitTestVisibleInChrome="True" TextChanged="WidthInput_TextChanged" Margin="12,181,0,0" TextWrapping="Wrap" Width="220" FontSize="16" TextAlignment="Center" Grid.ColumnSpan="2" Background="#FF474A48" BorderBrush="Black" Foreground="White" BorderThickness="1,1,1,1" FontFamily="Segoe UI Light" Grid.Row="1" Height="25" VerticalAlignment="Top"/>
-        <Button x:Name="startButton" Content="Start" Margin="273,157,0,0" WindowChrome.IsHitTestVisibleInChrome="True" VerticalAlignment="Top" Height="49" FontSize="30" HorizontalAlignment="Left" Width="310" Grid.Column="1" Foreground="White" Background="#FF3A3D3B" BorderBrush="Black" BorderThickness="1,1,1,1" Click="StartButton_Click" Grid.ColumnSpan="2" Grid.Row="1"/>
-        <Button x:Name="processButton" Click="ProcessButton_Click" WindowChrome.IsHitTestVisibleInChrome="True" Content="Process Image" Margin="273,115,0,0" VerticalAlignment="Top" Height="38" FontSize="24" HorizontalAlignment="Left" Width="310" Grid.Column="1" Foreground="White" Background="#FF3A3D3B" BorderBrush="Black" BorderThickness="1,1,1,1" FontFamily="Segoe UI Light" Grid.ColumnSpan="2" Grid.Row="1"/>
-        <Button x:Name="uploadButton" Content="Upload Image" WindowChrome.IsHitTestVisibleInChrome="True" Margin="273,69,0,0" VerticalAlignment="Top" Height="39" FontSize="22" HorizontalAlignment="Left" Width="153" Grid.Column="1" Foreground="White" Background="#FF3A3D3B" BorderBrush="Black" BorderThickness="1,1,1,1" FontFamily="Segoe UI Light" Click="UploadButton_Click" Grid.Row="1"/>
-        <Button x:Name="clearButton" Content="Clear Image" WindowChrome.IsHitTestVisibleInChrome="True" Margin="430,69,0,0" VerticalAlignment="Top" Height="39" FontSize="22" HorizontalAlignment="Left" Width="153" Grid.Column="1" Foreground="White" Background="#FF3A3D3B" BorderBrush="Black" BorderThickness="1,1,1,1" FontFamily="Segoe UI Light" Click="ClearButton_Click" Grid.ColumnSpan="2" Grid.Row="1"/>
-        <TextBlock HorizontalAlignment="Left" Margin="13,156,0,0" TextWrapping="Wrap" Text="Width" VerticalAlignment="Top" Width="219" TextAlignment="Center" Height="25" FontSize="16" Grid.ColumnSpan="2" Foreground="#FFF1F1F1" FontFamily="Segoe UI Light" ScrollViewer.VerticalScrollBarVisibility="Disabled" Grid.Row="1"/>
-        <TextBlock Margin="35,155,309,0" TextWrapping="Wrap" Text="Height" TextAlignment="Center" FontSize="16" Height="26" VerticalAlignment="Top" Grid.Column="1" Foreground="#FFF1F1F1" FontFamily="Segoe UI Light" ScrollViewer.VerticalScrollBarVisibility="Disabled" Grid.Row="1"/>
-        <Button x:Name="SettingsButton" Content="Settings" WindowChrome.IsHitTestVisibleInChrome="True" Click="SettingsButton_Click" Margin="274,45,0,0" VerticalAlignment="Top" Height="36" FontSize="22" HorizontalAlignment="Left" Width="110" Grid.Column="1" Foreground="White" Background="#FF3A3D3B" BorderBrush="Black" BorderThickness="1,1,1,1" FontFamily="Segoe UI Light"/>
-        <Button x:Name="InfoButton" Margin="389,45,0,0" VerticalAlignment="Top" WindowChrome.IsHitTestVisibleInChrome="True" Height="36" FontSize="22" HorizontalAlignment="Left" Width="36" Grid.Column="1" Foreground="White" Background="#FF3A3D3B" BorderBrush="Black" BorderThickness="1,1,1,1" FontFamily="Segoe UI Light" Click="InfoButton_Click_1">
-            <Image Height="32" Width="32" Source="/Assets/InfoIcon.png"/>
-        </Button>
-        <TextBox x:Name="blackThreshNumeric" Margin="273,39,0,0" WindowChrome.IsHitTestVisibleInChrome="True" TextWrapping="Wrap" FontSize="16" TextAlignment="Center" HorizontalAlignment="Left" Width="153" Grid.Column="1" Background="#FF474A48" BorderBrush="Black" Foreground="White" Text="127" BorderThickness="1,1,1,1" FontFamily="Segoe UI Light" TextChanged="BlackThresh_TextChanged" Grid.Row="1" Height="24" VerticalAlignment="Top"/>
-        <TextBlock x:Name="BlackThresholdLabel" Margin="274,16,0,0" TextWrapping="Wrap" Text="Black Threshold" VerticalAlignment="Top" TextAlignment="Center" Height="20" FontSize="14" HorizontalAlignment="Left" Width="152" Grid.Column="1" Foreground="#FFF1F1F1" FontFamily="Segoe UI Light" Grid.Row="1"/>
-        <TextBox x:Name="transThreshNumeric" Margin="430,39,0,0" WindowChrome.IsHitTestVisibleInChrome="True" TextWrapping="Wrap" FontSize="16" TextAlignment="Center" HorizontalAlignment="Left" Width="153" Grid.Column="1" Background="#FF474A48" BorderBrush="Black" Foreground="White" Text="200" BorderThickness="1,1,1,1" FontFamily="Segoe UI Light" Grid.ColumnSpan="2" TextChanged="TransThresh_TextChanged" Grid.Row="1" Height="24" VerticalAlignment="Top"/>
-        <TextBlock x:Name="AlphaThresholdLabel" Margin="430,16,0,0" TextWrapping="Wrap" Text="Transparency Threshold" VerticalAlignment="Top" TextAlignment="Center" Height="20" FontSize="14" HorizontalAlignment="Left" Width="153" Grid.Column="1" Foreground="#FFF1F1F1" FontFamily="Segoe UI Light" Grid.ColumnSpan="2" Grid.Row="1"/>
-        <TextBox x:Name="intervalInput" Margin="273,271,0,0" WindowChrome.IsHitTestVisibleInChrome="True" TextWrapping="Wrap" FontSize="16" TextAlignment="Center" HorizontalAlignment="Left" Width="153" Grid.Column="1" Background="#FF474A48" BorderBrush="Black" Foreground="White" Text="10000" BorderThickness="1,1,1,1" FontFamily="Segoe UI Light" TextChanged="Interval_TextChanged" Height="24" VerticalAlignment="Top" Grid.RowSpan="2"/>
-        <TextBlock x:Name="IntervalLabel" Margin="274,247,0,0" TextWrapping="Wrap" Text="Interval" VerticalAlignment="Top" TextAlignment="Center" Height="20" FontSize="14" HorizontalAlignment="Left" Width="152" Grid.Column="1" Foreground="#FFF1F1F1" FontFamily="Segoe UI Light"/>
-        <TextBox x:Name="clickdelayInput" Margin="430,271,0,0" WindowChrome.IsHitTestVisibleInChrome="True" TextWrapping="Wrap" FontSize="16" TextAlignment="Center" HorizontalAlignment="Left" Width="153" Grid.Column="1" Background="#FF474A48" BorderBrush="Black" Foreground="White" Text="1000" BorderThickness="1,1,1,1" FontFamily="Segoe UI Light" Grid.ColumnSpan="2" TextChanged="ClickDelay_TextChanged" Height="24" VerticalAlignment="Top" Grid.RowSpan="2"/>
-        <TextBlock x:Name="ClickDelayLabel" Margin="430,247,0,0" TextWrapping="Wrap" Text="Click Delay" VerticalAlignment="Top" TextAlignment="Center" Height="20" FontSize="14" HorizontalAlignment="Left" Width="153" Grid.Column="1" Foreground="#FFF1F1F1" FontFamily="Segoe UI Light" Grid.ColumnSpan="2"/>
-        <Image x:Name="Icon" HorizontalAlignment="Left" Height="26" VerticalAlignment="Top" Width="26" Source="/Assets/Icon_Light.ico" Margin="274,11,0,0" Grid.Column="1"/>
-        <TextBlock x:Name="Title" HorizontalAlignment="Left" Margin="305,11,0,0" TextWrapping="Wrap" Text="AutoDrawer v1.3" VerticalAlignment="Top" Width="216" TextAlignment="Left" Height="24" FontSize="16" Foreground="White" Grid.Column="1"/>
-        <Button x:Name="Close" Content="X" HorizontalAlignment="Left" Margin="550,5,0,0" VerticalAlignment="Top" Width="36" Click="Close_Click" WindowChrome.IsHitTestVisibleInChrome="True" Grid.Column="1" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" FontSize="18" Height="32" TextBlock.Foreground="White" FontWeight="Bold" Grid.ColumnSpan="2"/>
-        <Button Content="-" HorizontalAlignment="Left" Margin="514,3,0,0" VerticalAlignment="Top" Width="36" Click="Minimize_Click" WindowChrome.IsHitTestVisibleInChrome="True" Grid.Column="1" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" FontSize="18" Height="34" TextBlock.Foreground="White" FontWeight="Bold"/>
-        <ListBox x:Name="pathList" SelectionChanged="PathList_SelectedIndexChanged" WindowChrome.IsHitTestVisibleInChrome="True" Margin="433,171,9,43" Grid.Column="1" Background="#FF484A49" BorderBrush="Black" Foreground="White" BorderThickness="1,1,1,1" FontFamily="Segoe UI Light" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.ColumnSpan="2">
-            <ListBoxItem Content="horizontal - 12345678"/>
-            <ListBoxItem Content="vertical - 14627358"/>
-            <ListBoxItem Content="diagonal - 26573481"/>
-        </ListBox>
-        <Button x:Name="customButton" Click="CustomButton_Click" WindowChrome.IsHitTestVisibleInChrome="True" Content="Custom Pattern" Margin="273,207,0,0" VerticalAlignment="Top" Height="33" FontSize="16" HorizontalAlignment="Left" Width="153" Grid.Column="1" Foreground="White" Background="#FF3A3D3B" BorderBrush="Black" BorderThickness="1,1,1,1" FontFamily="Segoe UI Light"/>
-        <TextBlock x:Name="label5" Margin="273,177,0,0" TextWrapping="Wrap" Text="Drawing Pattern" VerticalAlignment="Top" TextAlignment="Center" Height="25" FontSize="18" HorizontalAlignment="Left" Width="152" Grid.Column="1" Foreground="#FFF1F1F1" FontFamily="Segoe UI Light"/>
-        <Button x:Name="SaveSettings" Content="Save Config" Margin="274,126,0,0" VerticalAlignment="Top" WindowChrome.IsHitTestVisibleInChrome="True" Height="36" FontSize="22" HorizontalAlignment="Left" Width="152" Grid.Column="1" Foreground="White" Background="#FF3A3D3B" BorderBrush="Black" Click="SaveSettings_Click" BorderThickness="1,1,1,1" FontFamily="Segoe UI Light"/>
-        <Button x:Name="LoadSettings" Content="Load Config" Margin="274,86,0,0" VerticalAlignment="Top" WindowChrome.IsHitTestVisibleInChrome="True" Height="36" FontSize="22" HorizontalAlignment="Left" Width="152" Grid.Column="1" Foreground="White" Background="#FF3A3D3B" BorderBrush="Black" Click="LoadSettings_Click" BorderThickness="1,1,1,1" FontFamily="Segoe UI Light"/>
-        <ListBox x:Name="Configs" SelectionChanged="ListBoxConfig" WindowChrome.IsHitTestVisibleInChrome="True" Margin="433,45,9,0" Grid.Column="1" Background="#FF353735" BorderBrush="Black" Foreground="White" BorderThickness="1,1,1,1" FontFamily="Segoe UI Light" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Auto" Grid.ColumnSpan="2" Height="97" VerticalAlignment="Top"/>
-        <Button x:Name="setDirectoryButton" Content="Set Directory" Margin="433,141,0,0" VerticalAlignment="Top" WindowChrome.IsHitTestVisibleInChrome="True" Height="22" FontSize="11" HorizontalAlignment="Left" Width="131" Grid.Column="1" Foreground="White" Background="#FF3A3D3B" BorderBrush="Black" Click="SetDirectory" BorderThickness="1,1,1,1" FontFamily="Segoe UI Light" Padding="0,0,0,0"/>
-        <Button x:Name="RefreshDirectory" Margin="561,141,0,0" VerticalAlignment="Top" Height="22" FontSize="11" WindowChrome.IsHitTestVisibleInChrome="True" HorizontalAlignment="Left" Width="22" Grid.Column="1" Foreground="White" Background="#FF3A3D3B" BorderBrush="Black" BorderThickness="1,1,1,1" FontFamily="Segoe UI Light" Padding="0,0,0,0" Click="RefreshDirectory_Click" Grid.ColumnSpan="2">
-            <Image Height="12" Width="12" Source="/Assets/RefreshIcon.png"/>
-        </Button>
-        <Rectangle x:Name="DragInd" HorizontalAlignment="Left" Height="500" Margin="0,0,0,0" VerticalAlignment="Top" Width="800" Grid.ColumnSpan="3" Grid.RowSpan="2" Fill="#33000000" Visibility="Collapsed"/>
+        <Grid Margin="10,10,0,0" Background="#FF3A3D3B">
+            <Image Style="{DynamicResource ImageStyle1}" x:Name="PictureBox" Stretch="Uniform" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" RenderTransformOrigin="0.5,0.5" OpacityMask="Black" Margin="0">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+        </Grid>
+        <Grid Margin="10,5,0,5" Background="#FF333735" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="65"/>
+            </Grid.RowDefinitions>
+            <Grid Margin="5,21,5,5" Grid.Row="1" Background="#FF2C302E">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="109*"/>
+                    <ColumnDefinition Width="31*"/>
+                    <ColumnDefinition Width="79*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.ColumnSpan="3" Margin="3,10,0,5" Grid.Column="1">
+                    <TextBox x:Name="heightInput" WindowChrome.IsHitTestVisibleInChrome="True" TextChanged="HeightInput_TextChanged" TextWrapping="Wrap" FontSize="16" TextAlignment="Center" Background="#FF474A48" BorderBrush="Black" Foreground="White" BorderThickness="1,1,1,1" FontFamily="Segoe UI Light" Height="25" VerticalAlignment="Bottom" Margin="0,0,225,0"/>
+                    <TextBox x:Name="widthInput" WindowChrome.IsHitTestVisibleInChrome="True" TextChanged="WidthInput_TextChanged" TextWrapping="Wrap" FontSize="16" TextAlignment="Center" Background="#FF474A48" BorderBrush="Black" Foreground="White" BorderThickness="1,1,1,1" FontFamily="Segoe UI Light" Height="25" VerticalAlignment="Bottom" Margin="222,0,0,0"/>
+                </Grid>
+            </Grid>
+            <Grid Margin="5,5,5,0" Background="#FF2C302E">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="57*"/>
+                    <ColumnDefinition Width="318*"/>
+                    <ColumnDefinition Width="74*"/>
+                </Grid.ColumnDefinitions>
+                <Slider x:Name="ScaleSlider" Margin="5,0,0,0" WindowChrome.IsHitTestVisibleInChrome="True" VerticalContentAlignment="Center" Grid.Column="1" VerticalAlignment="Center" Maximum="200" TickPlacement="TopLeft" Foreground="#FF6F7A73" Background="#00000000" ValueChanged="ScaleSlider_ValueChanged" Thumb.DragCompleted="ScaleSlider_DragCompleted" TickFrequency="10" Value="100" Minimum="1" SmallChange="1"/>
+                <TextBox x:Name="ScaleInput" WindowChrome.IsHitTestVisibleInChrome="True" TextWrapping="Wrap" FontSize="16" TextAlignment="Center" Background="#FF474A48" BorderBrush="Black" Foreground="White" BorderThickness="1,1,1,1" FontFamily="Segoe UI Light" Margin="5,0" MaxLines="1" MaxLength="4" Grid.Column="2" Text="100" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" MinHeight="25" VerticalAlignment="Center" AcceptsReturn="True" UndoLimit="20" TextChanged="ScaleInput_TextChanged" Height="25"/>
+                <TextBlock TextWrapping="Wrap" TextAlignment="Right" FontSize="16" Foreground="#FFF1F1F1" FontFamily="Segoe UI Light" ScrollViewer.VerticalScrollBarVisibility="Disabled" RenderTransformOrigin="0.5,0.5" Margin="5,0,0,2.9" VerticalAlignment="Center" Padding="0.3,0,0,0"><Run Text="Scale: "/><Run Text=" "/></TextBlock>
+            </Grid>
+            <TextBlock Margin="10,0,236,40" TextWrapping="Wrap" Text="Width" TextAlignment="Right" FontSize="16" Foreground="#FFF1F1F1" FontFamily="Segoe UI Light" ScrollViewer.VerticalScrollBarVisibility="Disabled" Height="24" VerticalAlignment="Bottom" Grid.Row="1"/>
+            <TextBlock Margin="237,0,5,40" TextWrapping="Wrap" Text="Height" TextAlignment="Left" FontSize="16" Foreground="#FFF1F1F1" FontFamily="Segoe UI Light" ScrollViewer.VerticalScrollBarVisibility="Disabled" Height="24" VerticalAlignment="Bottom" Grid.Row="1"/>
+        </Grid>
+        <Grid Grid.Column="1" Margin="10,10,10,5" Grid.RowSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="0*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35"/>
+                <RowDefinition/>
+                <RowDefinition Height="5"/>
+            </Grid.RowDefinitions>
+            <Button x:Name="startButton" Content="Start" Margin="5,0" WindowChrome.IsHitTestVisibleInChrome="True" FontSize="30" Foreground="White" Background="#FF3A3D3B" BorderBrush="Black" BorderThickness="1,1,1,1" Click="StartButton_Click" Grid.Row="1" Height="49" VerticalAlignment="Bottom" Grid.ColumnSpan="2"/>
+            <Button x:Name="processButton" Click="ProcessButton_Click" WindowChrome.IsHitTestVisibleInChrome="True" Content="Process Image" Margin="5,0,5,53" VerticalAlignment="Bottom" Height="38" FontSize="24" Foreground="White" Background="#FF3A3D3B" BorderBrush="Black" BorderThickness="1,1,1,1" FontFamily="Segoe UI Light" Grid.Row="1" Grid.ColumnSpan="2"/>
+            <Button x:Name="uploadButton" Content="Upload Image" WindowChrome.IsHitTestVisibleInChrome="True" Margin="5,0,0,98" VerticalAlignment="Bottom" Height="39" FontSize="22" Foreground="White" Background="#FF3A3D3B" BorderBrush="Black" BorderThickness="1,1,1,1" FontFamily="Segoe UI Light" Click="UploadButton_Click" HorizontalAlignment="Left" Width="153" Grid.Row="1"/>
+            <Button x:Name="clearButton" Content="Clear Image" WindowChrome.IsHitTestVisibleInChrome="True" Margin="0,0,5,98" VerticalAlignment="Bottom" Height="39" FontSize="22" HorizontalAlignment="Right" Width="152" Foreground="White" Background="#FF3A3D3B" BorderBrush="Black" BorderThickness="1,1,1,1" FontFamily="Segoe UI Light" Click="ClearButton_Click" Grid.Row="1"/>
+            <Button x:Name="SettingsButton" Content="Settings" WindowChrome.IsHitTestVisibleInChrome="True" Click="SettingsButton_Click" Margin="5,7,201.667,0" FontSize="22" Foreground="White" Background="#FF3A3D3B" BorderBrush="Black" BorderThickness="1,1,1,1" FontFamily="Segoe UI Light" HorizontalAlignment="Left" Width="110" Grid.Row="1" Height="36" VerticalAlignment="Top"/>
+            <Button x:Name="InfoButton" Margin="115,7,0,0" WindowChrome.IsHitTestVisibleInChrome="True" FontSize="22" Foreground="White" Background="#FF3A3D3B" BorderBrush="Black" BorderThickness="1,1,1,1" FontFamily="Segoe UI Light" Click="InfoButton_Click_1" Grid.Row="1" Height="36" VerticalAlignment="Top" HorizontalAlignment="Left" Width="36">
+                <Image Height="32" Width="32" Source="/Assets/InfoIcon.png"/>
+            </Button>
+            <TextBox x:Name="blackThreshNumeric" Margin="5,284,159.667,0" WindowChrome.IsHitTestVisibleInChrome="True" TextWrapping="Wrap" FontSize="16" TextAlignment="Center" Background="#FF474A48" BorderBrush="Black" Foreground="White" Text="127" BorderThickness="1,1,1,1" FontFamily="Segoe UI Light" TextChanged="BlackThresh_TextChanged" Height="24" VerticalAlignment="Top" HorizontalAlignment="Left" Width="153" Grid.Row="1"/>
+            <TextBlock x:Name="BlackThresholdLabel" Margin="5,261,159.667,0" TextWrapping="Wrap" Text="Black Threshold" TextAlignment="Center" FontSize="14" Foreground="#FFF1F1F1" FontFamily="Segoe UI Light" HorizontalAlignment="Left" Width="152" Grid.Row="1" Height="20" VerticalAlignment="Top"/>
+            <TextBox x:Name="transThreshNumeric" Margin="0,284,5,0" WindowChrome.IsHitTestVisibleInChrome="True" TextWrapping="Wrap" FontSize="16" TextAlignment="Center" HorizontalAlignment="Right" Width="153" Background="#FF474A48" BorderBrush="Black" Foreground="White" Text="200" BorderThickness="1,1,1,1" FontFamily="Segoe UI Light" TextChanged="TransThresh_TextChanged" Height="24" VerticalAlignment="Top" Grid.Row="1"/>
+            <TextBlock x:Name="AlphaThresholdLabel" Margin="0,261,5,0" TextWrapping="Wrap" Text="Transparency Threshold" VerticalAlignment="Top" TextAlignment="Center" Height="20" FontSize="14" Foreground="#FFF1F1F1" FontFamily="Segoe UI Light" HorizontalAlignment="Right" Width="153" Grid.Row="1"/>
+            <TextBox x:Name="intervalInput" Margin="5,233,159.667,0" WindowChrome.IsHitTestVisibleInChrome="True" TextWrapping="Wrap" FontSize="16" TextAlignment="Center" Background="#FF474A48" BorderBrush="Black" Foreground="White" Text="10000" BorderThickness="1,1,1,1" FontFamily="Segoe UI Light" TextChanged="Interval_TextChanged" Height="24" VerticalAlignment="Top" HorizontalAlignment="Left" Width="153" Grid.Row="1"/>
+            <TextBlock x:Name="IntervalLabel" Margin="5,209,159.667,0" TextWrapping="Wrap" Text="Interval" VerticalAlignment="Top" TextAlignment="Center" Height="20" FontSize="14" Foreground="#FFF1F1F1" FontFamily="Segoe UI Light" HorizontalAlignment="Left" Width="152" Grid.Row="1"/>
+            <TextBox x:Name="clickdelayInput" Margin="0,233,5,0" WindowChrome.IsHitTestVisibleInChrome="True" TextWrapping="Wrap" FontSize="16" TextAlignment="Center" Background="#FF474A48" BorderBrush="Black" Foreground="White" Text="1000" BorderThickness="1,1,1,1" FontFamily="Segoe UI Light" TextChanged="ClickDelay_TextChanged" Height="24" VerticalAlignment="Top" HorizontalAlignment="Right" Width="153" Grid.Row="1"/>
+            <TextBlock x:Name="ClickDelayLabel" Margin="0,209,5,0" TextWrapping="Wrap" Text="Click Delay" VerticalAlignment="Top" TextAlignment="Center" Height="20" FontSize="14" Foreground="#FFF1F1F1" FontFamily="Segoe UI Light" HorizontalAlignment="Right" Width="153" Grid.Row="1"/>
+            <Image x:Name="Icon" Height="26" VerticalAlignment="Top" Source="/Assets/Icon_Light.ico" Margin="0,8,285.667,0" HorizontalAlignment="Right" Width="26"/>
+            <TextBlock x:Name="Title" Margin="0,8,64.667,0" TextWrapping="Wrap" Text="AutoDrawer v1.3" VerticalAlignment="Top" TextAlignment="Left" Height="24" FontSize="16" Foreground="White" HorizontalAlignment="Right" Width="216"/>
+            <Button x:Name="Close" Content="X" Margin="0,2,0,0" VerticalAlignment="Top" Click="Close_Click" WindowChrome.IsHitTestVisibleInChrome="True" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" FontSize="18" Height="32" TextBlock.Foreground="White" FontWeight="Bold" HorizontalAlignment="Right" Width="36" Grid.ColumnSpan="2"/>
+            <Button Content="-" Margin="0,0,35.667,0" VerticalAlignment="Top" Click="Minimize_Click" WindowChrome.IsHitTestVisibleInChrome="True" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" FontSize="18" Height="34" TextBlock.Foreground="White" FontWeight="Bold" HorizontalAlignment="Right" Width="36"/>
+            <ListBox x:Name="pathList" SelectionChanged="PathList_SelectedIndexChanged" WindowChrome.IsHitTestVisibleInChrome="True" Margin="0,133,5,0" Background="#FF484A49" BorderBrush="Black" Foreground="White" BorderThickness="1,1,1,1" FontFamily="Segoe UI Light" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Right" VerticalAlignment="Top" Height="69" Width="140" Grid.Row="1">
+                <ListBoxItem Content="horizontal - 12345678"/>
+                <ListBoxItem Content="vertical - 14627358"/>
+                <ListBoxItem Content="diagonal - 26573481"/>
+            </ListBox>
+            <Button x:Name="customButton" Click="CustomButton_Click" WindowChrome.IsHitTestVisibleInChrome="True" Content="Custom Pattern" Margin="5,169,159.667,0" VerticalAlignment="Top" Height="33" FontSize="16" Foreground="White" Background="#FF3A3D3B" BorderBrush="Black" BorderThickness="1,1,1,1" FontFamily="Segoe UI Light" HorizontalAlignment="Left" Width="153" Grid.Row="1"/>
+            <TextBlock x:Name="label5" Margin="5,139,160.667,0" TextWrapping="Wrap" Text="Drawing Pattern" TextAlignment="Center" FontSize="18" Foreground="#FFF1F1F1" FontFamily="Segoe UI Light" HorizontalAlignment="Left" Width="152" Height="25" VerticalAlignment="Top" Grid.Row="1"/>
+            <Button x:Name="SaveSettings" Content="Save Config" Margin="5,88,159.667,0" VerticalAlignment="Top" WindowChrome.IsHitTestVisibleInChrome="True" Height="36" FontSize="22" HorizontalAlignment="Left" Width="152" Foreground="White" Background="#FF3A3D3B" BorderBrush="Black" Click="SaveSettings_Click" BorderThickness="1,1,1,1" FontFamily="Segoe UI Light" Grid.Row="1"/>
+            <Button x:Name="LoadSettings" Content="Load Config" Margin="5,48,159.667,0" WindowChrome.IsHitTestVisibleInChrome="True" FontSize="22" Foreground="White" Background="#FF3A3D3B" BorderBrush="Black" Click="LoadSettings_Click" BorderThickness="1,1,1,1" FontFamily="Segoe UI Light" HorizontalAlignment="Left" Width="152" Grid.Row="1" Height="36" VerticalAlignment="Top"/>
+            <ListBox x:Name="Configs" SelectionChanged="ListBoxConfig" WindowChrome.IsHitTestVisibleInChrome="True" Margin="0,7,5,0" Background="#FF353735" BorderBrush="Black" Foreground="White" BorderThickness="1,1,1,1" FontFamily="Segoe UI Light" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Auto" HorizontalAlignment="Right" Width="150" Grid.Row="1" Height="97" VerticalAlignment="Top"/>
+            <Button x:Name="setDirectoryButton" Content="Set Directory" Margin="0,103,27,0" VerticalAlignment="Top" WindowChrome.IsHitTestVisibleInChrome="True" Height="22" FontSize="11" Foreground="White" Background="#FF3A3D3B" BorderBrush="Black" Click="SetDirectory" BorderThickness="1,1,1,1" FontFamily="Segoe UI Light" Padding="0,0,0,0" HorizontalAlignment="Right" Width="128" Grid.Row="1"/>
+            <Button x:Name="RefreshDirectory" Margin="0,103,5,0" VerticalAlignment="Top" Height="22" FontSize="11" WindowChrome.IsHitTestVisibleInChrome="True" HorizontalAlignment="Right" Width="22" Foreground="White" Background="#FF3A3D3B" BorderBrush="Black" BorderThickness="1,1,1,1" FontFamily="Segoe UI Light" Padding="0,0,0,0" Click="RefreshDirectory_Click" Grid.Row="1">
+                <Image Height="12" Width="12" Source="/Assets/RefreshIcon.png"/>
+            </Button>
+        </Grid>
+        <Rectangle x:Name="DragInd" HorizontalAlignment="Left" Height="500" Margin="0,0,0,0" VerticalAlignment="Top" Width="800" Fill="#33000000" Visibility="Collapsed" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
     </Grid>
 </Window>
