@@ -25,4 +25,4 @@ Mac users may use [Parallels](https://www.parallels.com/au/products/desktop/)
 
 # Documentation
 
-Documentation can [be found here](https://siydge.github.io/autodraw-roblox/)
+Documentation can [be found here](https://siydge.github.io/autodraw-roblox/docs)
