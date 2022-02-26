@@ -20,15 +20,15 @@ using System.Windows.Forms;
 namespace AutoDrawer
 {
     /// <summary>
-    /// Interaction logic for Window3.xaml
+    /// Interaction logic for Settings.xaml
     /// </summary>
-    public partial class Window3 : Window
+    public partial class SettingsWindow : Window
     {
         public static bool CursorOffset = false;
         public static int xOffset = 0;
         public static int yOffset = 0;
 
-        public Window3()
+        public SettingsWindow()
         {
             InitializeComponent();
         }

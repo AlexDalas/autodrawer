@@ -10,12 +10,12 @@ namespace AutoDrawer
     /// <summary>
     /// Interaction logic for PreviewForm.xaml
     /// </summary>
-    public partial class PreviewForm : Window
+    public partial class PreviewWindow : Window
     {
         Bitmap imagePreview = MainWindow.imagePreview;
 
 
-        public PreviewForm()
+        public PreviewWindow()
         {
             //This errors out for some reason, need fix
             //this one errors because the class names are not the same. When they are the same, it all breaks

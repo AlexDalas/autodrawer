@@ -67,10 +67,8 @@ namespace AutoDrawer
 
         public MainWindow()
         {
-            HotkeySystem.Subscribe();
-            //HotkeySystem.KeyPress += KeyPressed;
-
             InitializeComponent();
+            HotkeySystem.Subscribe();
             blackThreshold = Convert.ToInt32(blackThreshNumeric.Text);
             blackThreshold = int.Parse(blackThreshNumeric.Text);
             transparencyThreshold = Convert.ToInt32(transThreshNumeric.Text);
@@ -93,13 +91,13 @@ namespace AutoDrawer
             this.Topmost = false;
             this.Focus();
         }
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Close_Click(object sender, RoutedEventArgs e)
         {
             //X button
             System.Windows.Application.Current.Shutdown();
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void Minimize_Click(object sender, RoutedEventArgs e)
         {
             //Minimize button
             WindowState = WindowState.Minimized;
@@ -196,7 +194,7 @@ namespace AutoDrawer
                 }
             }
         }
-        private void Button_Click_3(object sender, RoutedEventArgs e)
+        private void RefreshDirectory_Click(object sender, RoutedEventArgs e)
         {
             LogHandler.LogFile("Refreshing directory");
             refreshDir();
@@ -217,7 +215,7 @@ namespace AutoDrawer
                 }
             }
         }
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void SaveSettings_Click(object sender, RoutedEventArgs e)
         {
             var dialog = new Microsoft.Win32.SaveFileDialog();
             dialog.Title = "Where do you want to save your current settings?";
@@ -243,7 +241,7 @@ namespace AutoDrawer
             blackThreshNumeric.Text = theFile[2];
             transThreshNumeric.Text = theFile[3];
         }
-        private void Button_Click2(object sender, RoutedEventArgs e)
+        private void LoadSettings_Click(object sender, RoutedEventArgs e)
         {
             var dialog = new Microsoft.Win32.OpenFileDialog();
             dialog.Title = "Choose your config";
@@ -272,7 +270,7 @@ namespace AutoDrawer
                 catch
                 { System.Windows.Forms.MessageBox.Show(new Form() { TopMost = true }, "Image error. Is this even an image?", "Image Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk); return; }
                 if (dialog.FileName.EndsWith(".png")) FillPngWhite(imageFile);
-                pictureBox1.Source = ConvertBitmap(imageFile);
+                PictureBox.Source = ConvertBitmap(imageFile);
                 width = imageFile.Width;
                 height = imageFile.Height;
                 widthInput.Text = width.ToString();
@@ -287,7 +285,7 @@ namespace AutoDrawer
             LogHandler.LogFile("Uploaded image " + path + " via Drag/Drop");
             imageFile = new Bitmap(path);
             if (path.EndsWith(".png")) FillPngWhite(imageFile);
-            pictureBox1.Source = ConvertBitmap(imageFile);
+            PictureBox.Source = ConvertBitmap(imageFile);
             width = imageFile.Width;
             height = imageFile.Height;
             widthInput.Text = width.ToString();
@@ -369,7 +367,7 @@ namespace AutoDrawer
         private void clear()
         {
             // Clear the picture.
-            pictureBox1.Source = null;
+            PictureBox.Source = null;
             imageFile = null;
             image = null;
             imagePreview = null;
@@ -387,7 +385,7 @@ namespace AutoDrawer
             {
                 width = image.Width;
             }
-            pictureBox1.Source = ConvertBitmap(image);
+            PictureBox.Source = ConvertBitmap(image);
             imagePreview = image;
             LogHandler.LogFile("Changing width to " + widthInput.Text);
         }
@@ -405,7 +403,7 @@ namespace AutoDrawer
             {
                 height = image.Height;
             }
-            pictureBox1.Source = ConvertBitmap(image);
+            PictureBox.Source = ConvertBitmap(image);
             imagePreview = image;
             LogHandler.LogFile("Changing height to " + heightInput.Text);
         }
@@ -498,7 +496,7 @@ namespace AutoDrawer
             {
                 Bitmap greyImage = MakeGrayscale3(image);
                 processedImage = scan(greyImage, blackThreshold, transparencyThreshold);
-                pictureBox1.Source = ConvertBitmap(processedImage);
+                PictureBox.Source = ConvertBitmap(processedImage);
                 imagePreview = processedImage;
             }
             catch (Exception)
@@ -514,7 +512,7 @@ namespace AutoDrawer
             try
             {
                 int imageTest = imagePreview.Width;
-                PreviewForm m = new PreviewForm();
+                PreviewWindow m = new PreviewWindow();
                 m.Show();
                 WindowState = (WindowState)FormWindowState.Minimized;
                 bool CloseRequested = false;
@@ -580,12 +578,12 @@ namespace AutoDrawer
 
         private void start()
         {
-            Window3 mw = new Window3();
-            CursorOffset = Window3.CursorOffset;
+            SettingsWindow mw = new SettingsWindow();
+            CursorOffset = SettingsWindow.CursorOffset;
             if (CursorOffset)
             {
-                xOffset = Window3.xOffset;
-                yOffset = Window3.yOffset;
+                xOffset = SettingsWindow.xOffset;
+                yOffset = SettingsWindow.yOffset;
             }
             else
             {
@@ -743,7 +741,7 @@ namespace AutoDrawer
                 }
             }
             HotkeySystem.KeyPress += StopRequest;
-
+            
             while (true)
             {
 
@@ -941,7 +939,7 @@ namespace AutoDrawer
 
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
-            Window3 m = new Window3();
+            SettingsWindow m = new SettingsWindow();
             m.Show();
         }
 
