@@ -22,10 +22,6 @@ using System.Drawing.Drawing2D;
 
 namespace AutoDrawer
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    /// 
 
     public partial class MainWindow : Window
     {
@@ -71,6 +67,9 @@ namespace AutoDrawer
 
         public MainWindow()
         {
+            HotkeySystem.Subscribe();
+            //HotkeySystem.KeyPress += KeyPressed;
+
             InitializeComponent();
             blackThreshold = Convert.ToInt32(blackThreshNumeric.Text);
             blackThreshold = int.Parse(blackThreshNumeric.Text);
@@ -83,6 +82,16 @@ namespace AutoDrawer
             pathList.SelectedIndex = 2;
             Console.WriteLine("Initialized Component.");
             refreshDir();
+        }
+        public void ToFront()
+        {
+            // <3 I don't like writing 6 lines over and over
+            this.Show();
+            this.WindowState = WindowState.Normal;
+            this.Activate();
+            this.Topmost = true;
+            this.Topmost = false;
+            this.Focus();
         }
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
@@ -508,12 +517,23 @@ namespace AutoDrawer
                 PreviewForm m = new PreviewForm();
                 m.Show();
                 WindowState = (WindowState)FormWindowState.Minimized;
+                bool CloseRequested = false;
+                void StopRequest(object _sender, Keys key)
+                {
+                    if (key == Keys.LMenu || key == Keys.Alt)
+                    {
+                        CloseRequested = true;
+                    }
+                }
+                HotkeySystem.KeyPress += StopRequest;
                 while (true)
                 {
                     System.Windows.Forms.Application.DoEvents();
-                    if (System.Windows.Forms.Control.ModifierKeys == Keys.Alt)
+                    if (CloseRequested == true)
                     {
                         m.Close();
+                        HotkeySystem.KeyPress -= StopRequest;
+                        
                         break;
                     }
                     if (System.Windows.Forms.Control.ModifierKeys == Keys.Shift)
@@ -673,7 +693,7 @@ namespace AutoDrawer
             int xpos = xorigin;
             int ypos = yorigin;
             bool cont = true;
-
+            
             // Draw all the areas
             stack = new ArrayList();
             for (int y = 0; y < image.Height; y++)
@@ -712,13 +732,27 @@ namespace AutoDrawer
         private bool drawArea(ArrayList stack, int x, int y, int xorigin, int yorigin)
         {
             bool cont;
+            bool CloseRequested = false;
             var path = pathInt.ToString().Select(t => int.Parse(t.ToString())).ToArray();
+
+            void StopRequest(object _sender, Keys e)
+            {
+                if (e == Keys.LMenu || e == Keys.Alt)
+                {
+                    CloseRequested = true;
+                }
+            }
+            HotkeySystem.KeyPress += StopRequest;
 
             while (true)
             {
+
                 System.Windows.Forms.Application.DoEvents();
-                if (System.Windows.Forms.Control.ModifierKeys == Keys.Alt)
+                if (CloseRequested == true)
+                {
                     return false;
+                    HotkeySystem.KeyPress -= StopRequest;
+                }
                 NOP(interval);
                 SetCursorPos(xorigin + x, yorigin + y);
                 pixelArray[x, y] = 2;

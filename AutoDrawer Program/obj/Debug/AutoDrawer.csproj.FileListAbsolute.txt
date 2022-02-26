@@ -131,5 +131,4 @@ C:\Users\catsi\Documents\GitHub\autodraw-roblox\AutoDrawer Program\obj\Debug\Aut
 C:\Users\catsi\Documents\GitHub\autodraw-roblox\AutoDrawer Program\obj\Debug\AutoDrawer.pdb
 C:\Users\catsi\Documents\GitHub\autodraw-roblox\AutoDrawer Program\bin\Debug\Microsoft.VisualStudio.DebuggerVisualizers.dll
 C:\Users\catsi\Documents\GitHub\autodraw-roblox\AutoDrawer Program\bin\Debug\Gma.System.MouseKeyHook.dll
-C:\Users\catsi\Documents\GitHub\autodraw-roblox\AutoDrawer Program\obj\Debug\AutoDrawer.csproj.CopyComplete
 C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer Program\bin\Debug\Gma.System.MouseKeyHook.dll

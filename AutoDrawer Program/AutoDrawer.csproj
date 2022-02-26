@@ -100,7 +100,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Class1.cs" />
+    <Compile Include="HotkeySys.cs" />
     <Compile Include="LogHandler.cs" />
     <Compile Include="InfoForm.xaml.cs">
       <DependentUpon>InfoForm.xaml</DependentUpon>
