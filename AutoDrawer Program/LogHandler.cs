@@ -12,7 +12,6 @@ namespace AutoDrawer
             str = str + " (" + DateTime.Now.ToString("hh:mm:ss") + ")";
             //ConsoleWindow.ListConsole.Text = str + "\n" + ConsoleWindow.ListConsole.Text;
             Console.WriteLine(str);
-            SettingsWindow win = new SettingsWindow();
             if (LogsEnabled)
             {
                 var spath = @"%AppData%\AutoDraw\logs\";

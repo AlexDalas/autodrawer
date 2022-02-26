@@ -17,6 +17,7 @@ namespace AutoDrawer
 
         private static void KeyPressed(object sender, KeyEventArgs e)
         {
+            LogHandler.LogFile("Key Pressed: "+e.KeyCode.ToString());
             KeyPress?.Invoke(null, e.KeyCode);
         }
         public static void Subscribe()

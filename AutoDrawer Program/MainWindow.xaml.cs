@@ -19,6 +19,7 @@ using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
+using System.Threading.Tasks;
 
 namespace AutoDrawer
 {
@@ -51,16 +52,42 @@ namespace AutoDrawer
         bool Started;
         bool finished;
 
+        public const SimWinInput.SimMouse.Action MOUSEEVENTF_LEFTDOWN = SimWinInput.SimMouse.Action.LeftButtonDown;
+        public const SimWinInput.SimMouse.Action MOUSEEVENTF_LEFTUP = SimWinInput.SimMouse.Action.LeftButtonUp;
+
+        [DllImport("user32.dll")]
+        public static extern void mouse_event(int dwFlags, int dx, int dy, int cButtons, int dwExtraInfo); // Used only for WINE/Linux
+
         public void SetCursorPos(int posX, int posY)
         {
             SimWinInput.SimMouse.Act(SimWinInput.SimMouse.Action.MoveOnly, posX + xOffset, posY + yOffset);
         }
-        public void LeftClick(SimWinInput.SimMouse.Action Action, int posX, int posY)
+        public void LeftClick(SimWinInput.SimMouse.Action action, int posX, int posY)
         {
-            SimWinInput.SimMouse.Act(Action, posX + xOffset, posY + yOffset);
+            if (!WineDetect.WineDetected)
+            {
+                SimWinInput.SimMouse.Act(action, posX + xOffset, posY + yOffset);
+            }
+            else
+            {
+                int Chosen = 0x02;
+                int MOUSEEVENTF_LEFTDOWN_Linux = 0x02;
+                int MOUSEEVENTF_LEFTUP_Linux = 0x04;
+                if(action == MOUSEEVENTF_LEFTDOWN)
+                {
+                    Chosen = MOUSEEVENTF_LEFTDOWN_Linux;
+                }
+                else if(action == MOUSEEVENTF_LEFTUP)
+                {
+                    Chosen = MOUSEEVENTF_LEFTUP_Linux;
+                }
+                else
+                {
+                    System.Windows.Forms.MessageBox.Show("Ruh Roh! Something went wrong for Linux!","Something Broke! :(");
+                }
+                mouse_event(Chosen, posX + xOffset, posY + yOffset, 0, 0);
+            }
         }
-        public const SimWinInput.SimMouse.Action MOUSEEVENTF_LEFTDOWN = SimWinInput.SimMouse.Action.LeftButtonDown;
-        public const SimWinInput.SimMouse.Action MOUSEEVENTF_LEFTUP = SimWinInput.SimMouse.Action.LeftButtonUp;
 
         public System.Drawing.Color TransparencyKey { get; private set; }
         public RectangleF DisplayRectangle { get; private set; }
@@ -68,6 +95,14 @@ namespace AutoDrawer
         public MainWindow()
         {
             InitializeComponent();
+            if (!WineDetect.HasChecked)
+            {
+                WineDetect.RunChecks();
+                if (WineDetect.WineDetected)
+                {
+                    System.Windows.Forms.MessageBox.Show("Linux is HIGHLY Experimental, and will most likely not work!", "Wine Detected");
+                }
+            }
             HotkeySystem.Subscribe();
             blackThreshold = Convert.ToInt32(blackThreshNumeric.Text);
             blackThreshold = int.Parse(blackThreshNumeric.Text);
@@ -79,7 +114,7 @@ namespace AutoDrawer
             clickdelay = int.Parse(clickdelayInput.Text);
             pathList.SelectedIndex = 2;
             Console.WriteLine("Initialized Component.");
-            refreshDir();
+            RefreshDir();
         }
         public void ToFront()
         {
@@ -116,11 +151,11 @@ namespace AutoDrawer
             return image;
         }
 
-        public void refreshDir()
+        public void RefreshDir()
         {
             LogHandler.LogFile("Refreshing Directory");
             Configs.Items.Clear();
-            var fpath = "";
+            string fpath;
             fpath = @"%AppData%\AutoDraw\dir.txt";
             fpath = Environment.ExpandEnvironmentVariables(fpath);
             string[] lines;
@@ -187,7 +222,7 @@ namespace AutoDrawer
                         {
                             File.Move(file, file.Replace(".autodrawconfig", ".drawcfg").Replace(".autodrawconfi", ".drawcfg"));
                             Configs.Items.Add(file.Replace(dir, "").Replace("\\", "").Replace("/", "").Replace(".drawcfg", ""));
-                            refreshDir();
+                            RefreshDir();
                         }
                         catch { }
                     }
@@ -197,9 +232,9 @@ namespace AutoDrawer
         private void RefreshDirectory_Click(object sender, RoutedEventArgs e)
         {
             LogHandler.LogFile("Refreshing directory");
-            refreshDir();
+            RefreshDir();
         }
-        private void setDirectory(object sender, RoutedEventArgs e)
+        private void SetDirectory(object sender, RoutedEventArgs e)
         {
             using (var dialog = new FolderBrowserDialog())
             {
@@ -211,21 +246,23 @@ namespace AutoDrawer
                     fpath = Environment.ExpandEnvironmentVariables(fpath);
                     File.WriteAllText(fpath, folder);
                     LogHandler.LogFile("Set directory to " + fpath);
-                    refreshDir();
+                    RefreshDir();
                 }
             }
         }
         private void SaveSettings_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new Microsoft.Win32.SaveFileDialog();
-            dialog.Title = "Where do you want to save your current settings?";
-            dialog.Filter = "Config (*.drawcfg)|*.drawcfg|Config (*.autodrawconfig)|*.autodrawconfig|Config (*.autodrawconfi)|*.autodrawconfi";
+            var dialog = new Microsoft.Win32.SaveFileDialog
+            {
+                Title = "Where do you want to save your current settings?",
+                Filter = "Config (*.drawcfg)|*.drawcfg|Config (*.autodrawconfig)|*.autodrawconfig|Config (*.autodrawconfi)|*.autodrawconfi"
+            };
             if (dialog.ShowDialog() == true)
             {
                 var fileName = dialog.FileName;
                 LogHandler.LogFile("Saving " + dialog.FileName);
                 File.WriteAllText(fileName, intervalInput.Text.ToString() + "\n" + clickdelayInput.Text.ToString() + "\n" + blackThreshNumeric.Text.ToString() + "\n" + transThreshNumeric.Text.ToString());
-                refreshDir();
+                RefreshDir();
             }
         }
         private void ListBoxConfig(object sender, RoutedEventArgs e)
@@ -243,9 +280,11 @@ namespace AutoDrawer
         }
         private void LoadSettings_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new Microsoft.Win32.OpenFileDialog();
-            dialog.Title = "Choose your config";
-            dialog.Filter = "Draw Config|*.drawcfg;*.autodrawconfig;*.autodrawconfi";
+            var dialog = new Microsoft.Win32.OpenFileDialog
+            {
+                Title = "Choose your config",
+                Filter = "Draw Config|*.drawcfg;*.autodrawconfig;*.autodrawconfi"
+            };
             if (dialog.ShowDialog() == true)
             {
                 LogHandler.LogFile("Selected " + dialog.FileName);
@@ -258,7 +297,7 @@ namespace AutoDrawer
             }
         }
 
-        private void uploadButton_Click(object sender, RoutedEventArgs e)
+        private void UploadButton_Click(object sender, RoutedEventArgs e)
         {
             var dialog = new Microsoft.Win32.OpenFileDialog();
             if (dialog.ShowDialog() == true)
@@ -280,7 +319,7 @@ namespace AutoDrawer
                 LogHandler.LogFile("Uploaded image " + dialog.FileName + " via Upload Button");
             }
         }
-        private void uploadPath(string path)
+        private void UploadPath(string path)
         {
             LogHandler.LogFile("Uploaded image " + path + " via Drag/Drop");
             imageFile = new Bitmap(path);
@@ -358,13 +397,13 @@ namespace AutoDrawer
             }
             return false;
         }
-        private void clearButton_Click(object sender, RoutedEventArgs e)
+        private void ClearButton_Click(object sender, RoutedEventArgs e)
         {
             LogHandler.LogFile("Clearing Image");
-            clear();
+            Clear();
         }
 
-        private void clear()
+        private void Clear()
         {
             // Clear the picture.
             PictureBox.Source = null;
@@ -372,14 +411,14 @@ namespace AutoDrawer
             image = null;
             imagePreview = null;
         }
-        private void widthInput_TextChanged(object sender, EventArgs e)
+        private void WidthInput_TextChanged(object sender, EventArgs e)
         {
             // Change in width of image
             try
             {
                 width = Convert.ToInt32(widthInput.Text);
                 width = int.Parse(widthInput.Text);
-                image = resizeImage(imageFile, new System.Drawing.Size(width, height));
+                image = ResizeImage(imageFile, new System.Drawing.Size(width, height));
             }
             catch (Exception)
             {
@@ -390,14 +429,14 @@ namespace AutoDrawer
             LogHandler.LogFile("Changing width to " + widthInput.Text);
         }
 
-        private void heightInput_TextChanged(object sender, EventArgs e)
+        private void HeightInput_TextChanged(object sender, EventArgs e)
         {
             // Change in height of image
             try
             {
                 height = Convert.ToInt32(heightInput.Text);
                 height = int.Parse(heightInput.Text);
-                image = resizeImage(imageFile, new System.Drawing.Size(width, height));
+                image = ResizeImage(imageFile, new System.Drawing.Size(width, height));
             }
             catch (Exception)
             {
@@ -407,13 +446,13 @@ namespace AutoDrawer
             imagePreview = image;
             LogHandler.LogFile("Changing height to " + heightInput.Text);
         }
-        private Bitmap resizeImage(Bitmap imgToResize, System.Drawing.Size size)
+        private Bitmap ResizeImage(Bitmap imgToResize, System.Drawing.Size size)
         {
             // Resizes image
             return new Bitmap(imgToResize, size);
         }
 
-        private void blackThresh_TextChanged(object sender, EventArgs e)
+        private void BlackThresh_TextChanged(object sender, EventArgs e)
         {
             // Threshold at which a pixel is deemed black;
             try
@@ -424,7 +463,7 @@ namespace AutoDrawer
             catch { }
         }
 
-        private void transThresh_TextChanged(object sender, EventArgs e)
+        private void TransThresh_TextChanged(object sender, EventArgs e)
         {
             try
             {
@@ -435,7 +474,7 @@ namespace AutoDrawer
             catch { }
         }
 
-        private void interval_TextChanged(object sender, EventArgs e)
+        private void Interval_TextChanged(object sender, EventArgs e)
         {
             // Delay interval between the drawing of each pixel
             try
@@ -449,7 +488,7 @@ namespace AutoDrawer
             }
         }
 
-        private void clickDelay_TextChanged(object sender, EventArgs e)
+        private void ClickDelay_TextChanged(object sender, EventArgs e)
         {
             // Delay interval between the drawing of each pixel
             try
@@ -462,7 +501,7 @@ namespace AutoDrawer
                 clickdelay = 0;
             }
         }
-        private void pathList_SelectedIndexChanged(object sender, EventArgs e)
+        private void PathList_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
@@ -488,14 +527,14 @@ namespace AutoDrawer
             catch (Exception) { }
         }
 
-        private void processButton_Click(object sender, EventArgs e)
+        private void ProcessButton_Click(object sender, EventArgs e)
         {
             // Converts image to grayscale and applies thresholds
             LogHandler.LogFile("Processing image");
             try
             {
                 Bitmap greyImage = MakeGrayscale3(image);
-                processedImage = scan(greyImage, blackThreshold, transparencyThreshold);
+                processedImage = Scan(greyImage, blackThreshold, transparencyThreshold);
                 PictureBox.Source = ConvertBitmap(processedImage);
                 imagePreview = processedImage;
             }
@@ -504,7 +543,7 @@ namespace AutoDrawer
                 System.Windows.Forms.MessageBox.Show(new Form() { TopMost = true }, "No image was found. Did you upload an image?.", "Processing Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
         }
-        private void startButton_Click(object sender, EventArgs e)
+        private void StartButton_Click(object sender, EventArgs e)
         {
             LogHandler.LogFile("Starting drawing.\n{\n   Width: " + widthInput.Text + "\n   Height: " + heightInput.Text + "\n   Interval: " + intervalInput.Text + "\n   Click Delay: " + clickdelayInput.Text + "\n   Black Threshold: " + blackThreshNumeric.Text + "\n   Transparency Threshold: " + transThreshNumeric.Text + "\n}");
             // Starts drawing
@@ -516,25 +555,33 @@ namespace AutoDrawer
                 m.Show();
                 WindowState = (WindowState)FormWindowState.Minimized;
                 bool CloseRequested = false;
-                void StopRequest(object _sender, Keys key)
+                bool StartRequeted = false;
+                bool LockToLast = false;
+                void KeyRequest(object _sender, Keys key)
                 {
-                    if (key == Keys.LMenu || key == Keys.Alt)
+                    if (key == Keys.LMenu || key == Keys.Menu || key == Keys.Alt)
                     {
                         CloseRequested = true;
+                    }else if (key == Keys.Shift || key == Keys.ShiftKey || key == Keys.LShiftKey)
+                    {
+                        StartRequeted = true;
+                    }
+                    else if (key == Keys.Control || key == Keys.ControlKey || key == Keys.LControlKey)
+                    {
+                        LockToLast = !LockToLast;
                     }
                 }
-                HotkeySystem.KeyPress += StopRequest;
+                HotkeySystem.KeyPress += KeyRequest;
                 while (true)
                 {
                     System.Windows.Forms.Application.DoEvents();
                     if (CloseRequested == true)
                     {
                         m.Close();
-                        HotkeySystem.KeyPress -= StopRequest;
-                        
+                        HotkeySystem.KeyPress -= KeyRequest;
                         break;
                     }
-                    if (System.Windows.Forms.Control.ModifierKeys == Keys.Shift)
+                    if (StartRequeted == true)
                     {
                         PreviosulyDrawn = true;
                         if (!LockedLast)
@@ -543,27 +590,25 @@ namespace AutoDrawer
                             LastY = System.Windows.Forms.Cursor.Position.Y;
                         }
                         m.Close();
-                        start();
+                        HotkeySystem.KeyPress -= KeyRequest;
+                        Start();
                         break;
                     }
-                    if (System.Windows.Forms.Control.ModifierKeys == Keys.Control)
+                    if (LockToLast)
                     {
                         if (PreviosulyDrawn)
                         {
                             LockedLast = !LockedLast;
-                            NOP(1000000);
                         }
+                        LockToLast = false;
                     }
                     if (LockedLast)
                     {
-                        //m.Location() = new System.Drawing.Point((int)(LastX - m.Width / 2), (int)(LastY - m.Height / 2));
                         m.Top = (int)(LastY - m.Height / 2) - 11;
                         m.Left = (int)(LastX - m.Width / 2);
                     }
                     else
                     {
-                        //m.Location = new System.Drawing.Point(xpos, ypos);
-
                         m.Top = (int)(System.Windows.Forms.Cursor.Position.Y - m.Height / 2) - 11;
                         m.Left = (int)(System.Windows.Forms.Cursor.Position.X - m.Width / 2);
                     }
@@ -576,9 +621,8 @@ namespace AutoDrawer
             }
         }
 
-        private void start()
+        private async void Start()
         {
-            SettingsWindow mw = new SettingsWindow();
             CursorOffset = SettingsWindow.CursorOffset;
             if (CursorOffset)
             {
@@ -592,7 +636,7 @@ namespace AutoDrawer
             }
             try
             {
-                finished = draw();
+                finished = await Draw();
                 if (finished == true)
                 {
                     System.Windows.Forms.MessageBox.Show(new Form() { TopMost = true }, "Drawing Complete", "Done", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
@@ -655,7 +699,7 @@ namespace AutoDrawer
             return newBitmap;
         }
 
-        private Bitmap scan(Bitmap image, int blackThreshold, int transparencyThreshold)
+        private Bitmap Scan(Bitmap image, int blackThreshold, int transparencyThreshold)
         {
             // Scans each pixel in image and gives it a black or white value
             pixelArray = new int[image.Width, image.Height];
@@ -678,7 +722,7 @@ namespace AutoDrawer
             }
             return image;
         }
-        private bool draw()
+        private async Task<bool> Draw()
         {
             System.Drawing.Point mouseCenter = System.Windows.Forms.Cursor.Position;
             int xorigin = mouseCenter.X - (image.Width / 2);
@@ -688,8 +732,7 @@ namespace AutoDrawer
                 xorigin = LastX - (image.Width / 2);
                 yorigin = LastY - (image.Height / 2);
             }
-            int xpos = xorigin;
-            int ypos = yorigin;
+
             bool cont = true;
             
             // Draw all the areas
@@ -703,65 +746,78 @@ namespace AutoDrawer
                         return false;
                     if (pixelArray[x, y] == 1)
                     {
-                        xpos = xorigin + x;
-                        ypos = yorigin + y;
+                        int xpos = xorigin + x;
+                        int ypos = yorigin + y;
                         NOP(clickdelay * 3333);
                         SetCursorPos(xpos, ypos);
                         NOP(clickdelay * 3333);
                         SetCursorPos(xpos, ypos + 1);
                         NOP(clickdelay * 3333);
                         LeftClick(MOUSEEVENTF_LEFTDOWN, xpos, ypos);
-                        cont = drawArea(stack, x, y, xorigin, yorigin);
+                        cont = await DrawArea(stack, x, y, xorigin, yorigin);
                         LeftClick(MOUSEEVENTF_LEFTUP, xpos, ypos);
                         if (System.Windows.Forms.Control.ModifierKeys == Keys.Alt)
                             return false;
                     }
                     if (!cont)
                     {
-                        resetPixels();
+                        ResetPixels();
                         return false;
                     }
                 }
             }
-            resetPixels();
+            ResetPixels();
             return true;
         }
 
-        private bool drawArea(ArrayList stack, int x, int y, int xorigin, int yorigin)
+        private async Task<bool> DrawArea(ArrayList stack, int x, int y, int xorigin, int yorigin)
         {
             bool cont;
             bool CloseRequested = false;
+            bool Paused = false;
             var path = pathInt.ToString().Select(t => int.Parse(t.ToString())).ToArray();
 
-            void StopRequest(object _sender, Keys e)
+            void KeyRequest(object _sender, Keys e)
             {
                 if (e == Keys.LMenu || e == Keys.Alt)
                 {
                     CloseRequested = true;
                 }
+                if (e == Keys.F4)
+                {
+                    Paused = !Paused;
+                }
             }
-            HotkeySystem.KeyPress += StopRequest;
-            
+            HotkeySystem.KeyPress += KeyRequest;
+
             while (true)
             {
-
+                if (Paused)
+                {
+                    LeftClick(MOUSEEVENTF_LEFTUP, xorigin + x, yorigin + y);
+                    while (Paused)
+                    {
+                        await Task.Delay(1);
+                    }
+                    LeftClick(MOUSEEVENTF_LEFTDOWN, xorigin + x, yorigin + y);
+                }
                 System.Windows.Forms.Application.DoEvents();
                 if (CloseRequested == true)
                 {
+                    HotkeySystem.KeyPress -= KeyRequest;
                     return false;
-                    HotkeySystem.KeyPress -= StopRequest;
                 }
                 NOP(interval);
                 SetCursorPos(xorigin + x, yorigin + y);
                 pixelArray[x, y] = 2;
                 /*
-		        +---+---+---+
-		        | 1 | 2 | 3 |
-		        +---+---+---+
-		        | 4 |   | 5 |
-		        +---+---+---+
-		        | 6 | 7 | 8 |
-		        +---+---+---+
+                +---+---+---+
+                | 1 | 2 | 3 |
+                +---+---+---+
+                | 4 |   | 5 |
+                +---+---+---+
+                | 6 | 7 | 8 |
+                +---+---+---+
                 */
                 cont = false;
                 foreach (int i in Enumerable.Range(0, 7))
@@ -773,7 +829,7 @@ namespace AutoDrawer
                             {
                                 if (pixelArray[x - 1, y - 1] == 1)
                                 {
-                                    push(stack, x, y);
+                                    Push(stack, x, y);
                                     x -= 1;
                                     y -= 1;
                                     cont = true;
@@ -785,7 +841,7 @@ namespace AutoDrawer
                             {
                                 if (pixelArray[x, y - 1] == 1)
                                 {
-                                    push(stack, x, y);
+                                    Push(stack, x, y);
                                     y -= 1;
                                     cont = true;
                                 }
@@ -796,7 +852,7 @@ namespace AutoDrawer
                             {
                                 if (pixelArray[x + 1, y - 1] == 1)
                                 {
-                                    push(stack, x, y);
+                                    Push(stack, x, y);
                                     x += 1;
                                     y += 1;
                                     cont = true;
@@ -808,7 +864,7 @@ namespace AutoDrawer
                             {
                                 if (pixelArray[x - 1, y] == 1)
                                 {
-                                    push(stack, x, y);
+                                    Push(stack, x, y);
                                     x -= 1;
                                     cont = true;
                                 }
@@ -819,7 +875,7 @@ namespace AutoDrawer
                             {
                                 if (pixelArray[x + 1, y] == 1)
                                 {
-                                    push(stack, x, y);
+                                    Push(stack, x, y);
                                     x += 1;
                                     cont = true;
                                 }
@@ -830,7 +886,7 @@ namespace AutoDrawer
                             {
                                 if (pixelArray[x - 1, y + 1] == 1)
                                 {
-                                    push(stack, x, y);
+                                    Push(stack, x, y);
                                     x -= 1;
                                     y -= 1;
                                     cont = true;
@@ -842,7 +898,7 @@ namespace AutoDrawer
                             {
                                 if (pixelArray[x, y + 1] == 1)
                                 {
-                                    push(stack, x, y);
+                                    Push(stack, x, y);
                                     y += 1;
                                     cont = true;
                                 }
@@ -853,7 +909,7 @@ namespace AutoDrawer
                             {
                                 if (pixelArray[x + 1, y + 1] == 1)
                                 {
-                                    push(stack, x, y);
+                                    Push(stack, x, y);
                                     x += 1;
                                     y += 1;
                                     cont = true;
@@ -864,32 +920,32 @@ namespace AutoDrawer
                 }
                 if (cont)
                     continue;
-                if (!pop(stack, ref x, ref y))
+                if (!Pop(stack, ref x, ref y))
                     break;
             }
             return true;
         }
 
-        private void push(ArrayList stack, int x, int y)
+        private void Push(ArrayList stack, int x, int y)
         {
-            stack.Add(new Position { x = x, y = y });
+            stack.Add(new Position { X = x, Y = y });
         }
 
-        private bool pop(ArrayList stack, ref int x, ref int y)
+        private bool Pop(ArrayList stack, ref int x, ref int y)
         {
             if (stack.Count < 1)
                 return false;
 
             Position pos = (Position)stack[stack.Count - 1];
 
-            x = pos.x;
-            y = pos.y;
+            x = pos.X;
+            y = pos.Y;
 
             stack.Remove(pos);
             return true;
         }
 
-        private void resetPixels()
+        private void ResetPixels()
         {
             // Reset the pixels statuses
             for (int y = 0; y < image.Height; y++)
@@ -943,7 +999,7 @@ namespace AutoDrawer
             m.Show();
         }
 
-        private void customButton_Click(object sender, RoutedEventArgs e)
+        private void CustomButton_Click(object sender, RoutedEventArgs e)
         {
             PathSeqForm m = new PathSeqForm();
             m.Show();
@@ -955,7 +1011,7 @@ namespace AutoDrawer
             string[] files = (string[])e.Data.GetData(System.Windows.DataFormats.FileDrop);
             try
             {
-                uploadPath(files[0]);
+                UploadPath(files[0]);
                 LogHandler.LogFile("Drag/Drop (Image).");
             }
             catch
@@ -965,8 +1021,7 @@ namespace AutoDrawer
                     if (files[0].EndsWith(".drawcfg") || files[0].EndsWith(".autodrawconfig") || files[0].EndsWith(".autodrawconfi"))
                     {
                         string[] lines = File.ReadAllLines(files[0]);
-                        int number;
-                        bool result = Int32.TryParse(lines[3], out number);
+                        bool result = Int32.TryParse(lines[3], out int number);
                         intervalInput.Text = lines[0];
                         clickdelayInput.Text = lines[1];
                         blackThreshNumeric.Text = lines[2];
@@ -990,7 +1045,7 @@ namespace AutoDrawer
 
     class Position
     {
-        public int x { get; set; }
-        public int y { get; set; }
+        public int X { get; set; }
+        public int Y { get; set; }
     }
 }

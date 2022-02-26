@@ -55,3 +55,35 @@ C:\Users\catsi\Documents\GitHub\autodraw-roblox\AutoDrawer\obj\Release\AutoDrawe
 C:\Users\catsi\Documents\GitHub\autodraw-roblox\AutoDrawer\obj\Release\AutoDrawer.application
 C:\Users\catsi\Documents\GitHub\autodraw-roblox\AutoDrawer\obj\Release\AutoDrawer.exe
 C:\Users\catsi\Documents\GitHub\autodraw-roblox\AutoDrawer\obj\Release\AutoDrawer.pdb
+C:\Users\catsi\Documents\GitHub\autodraw-roblox\AutoDrawer Program\bin\Release\AutoDrawer.exe.config
+C:\Users\catsi\Documents\GitHub\autodraw-roblox\AutoDrawer Program\bin\Release\AutoDrawer.exe.manifest
+C:\Users\catsi\Documents\GitHub\autodraw-roblox\AutoDrawer Program\bin\Release\AutoDrawer.application
+C:\Users\catsi\Documents\GitHub\autodraw-roblox\AutoDrawer Program\bin\Release\AutoDrawer.exe
+C:\Users\catsi\Documents\GitHub\autodraw-roblox\AutoDrawer Program\bin\Release\AutoDrawer.pdb
+C:\Users\catsi\Documents\GitHub\autodraw-roblox\AutoDrawer Program\bin\Release\Gma.System.MouseKeyHook.dll
+C:\Users\catsi\Documents\GitHub\autodraw-roblox\AutoDrawer Program\bin\Release\Microsoft.VisualStudio.DebuggerVisualizers.dll
+C:\Users\catsi\Documents\GitHub\autodraw-roblox\AutoDrawer Program\bin\Release\SimWinMouse.dll
+C:\Users\catsi\Documents\GitHub\autodraw-roblox\AutoDrawer Program\obj\Release\AutoDrawer.csproj.AssemblyReference.cache
+C:\Users\catsi\Documents\GitHub\autodraw-roblox\AutoDrawer Program\obj\Release\ConsoleWindow.g.cs
+C:\Users\catsi\Documents\GitHub\autodraw-roblox\AutoDrawer Program\obj\Release\MainWindow.g.cs
+C:\Users\catsi\Documents\GitHub\autodraw-roblox\AutoDrawer Program\obj\Release\InfoForm.g.cs
+C:\Users\catsi\Documents\GitHub\autodraw-roblox\AutoDrawer Program\obj\Release\PathSeqForm.g.cs
+C:\Users\catsi\Documents\GitHub\autodraw-roblox\AutoDrawer Program\obj\Release\PreviewForm.g.cs
+C:\Users\catsi\Documents\GitHub\autodraw-roblox\AutoDrawer Program\obj\Release\SettingsForm.g.cs
+C:\Users\catsi\Documents\GitHub\autodraw-roblox\AutoDrawer Program\obj\Release\App.g.cs
+C:\Users\catsi\Documents\GitHub\autodraw-roblox\AutoDrawer Program\obj\Release\AutoDrawer_MarkupCompile.cache
+C:\Users\catsi\Documents\GitHub\autodraw-roblox\AutoDrawer Program\obj\Release\AutoDrawer_MarkupCompile.lref
+C:\Users\catsi\Documents\GitHub\autodraw-roblox\AutoDrawer Program\obj\Release\MainWindow.baml
+C:\Users\catsi\Documents\GitHub\autodraw-roblox\AutoDrawer Program\obj\Release\InfoForm.baml
+C:\Users\catsi\Documents\GitHub\autodraw-roblox\AutoDrawer Program\obj\Release\PathSeqForm.baml
+C:\Users\catsi\Documents\GitHub\autodraw-roblox\AutoDrawer Program\obj\Release\PreviewForm.baml
+C:\Users\catsi\Documents\GitHub\autodraw-roblox\AutoDrawer Program\obj\Release\SettingsForm.baml
+C:\Users\catsi\Documents\GitHub\autodraw-roblox\AutoDrawer Program\obj\Release\ConsoleWindow.baml
+C:\Users\catsi\Documents\GitHub\autodraw-roblox\AutoDrawer Program\obj\Release\AutoDrawer.g.resources
+C:\Users\catsi\Documents\GitHub\autodraw-roblox\AutoDrawer Program\obj\Release\AutoDrawer.Properties.Resources.resources
+C:\Users\catsi\Documents\GitHub\autodraw-roblox\AutoDrawer Program\obj\Release\AutoDrawer.csproj.GenerateResource.cache
+C:\Users\catsi\Documents\GitHub\autodraw-roblox\AutoDrawer Program\obj\Release\AutoDrawer.csproj.CoreCompileInputs.cache
+C:\Users\catsi\Documents\GitHub\autodraw-roblox\AutoDrawer Program\obj\Release\AutoDrawer.exe.manifest
+C:\Users\catsi\Documents\GitHub\autodraw-roblox\AutoDrawer Program\obj\Release\AutoDrawer.application
+C:\Users\catsi\Documents\GitHub\autodraw-roblox\AutoDrawer Program\obj\Release\AutoDrawer.exe
+C:\Users\catsi\Documents\GitHub\autodraw-roblox\AutoDrawer Program\obj\Release\AutoDrawer.pdb

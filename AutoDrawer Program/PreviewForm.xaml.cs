@@ -12,7 +12,7 @@ namespace AutoDrawer
     /// </summary>
     public partial class PreviewWindow : Window
     {
-        Bitmap imagePreview = MainWindow.imagePreview;
+        readonly Bitmap imagePreview = MainWindow.imagePreview;
 
 
         public PreviewWindow()

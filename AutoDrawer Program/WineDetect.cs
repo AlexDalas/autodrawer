@@ -17,29 +17,30 @@ namespace AutoDrawer
         public static bool WineDetected;
         public static bool RunningNT;
 
-        [DllImport("kernel32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
-        public static extern IntPtr GetModuleHandle([MarshalAs(UnmanagedType.LPWStr)] in string lpModuleName);
-        [DllImport("kernel32", CharSet = CharSet.Ansi, ExactSpelling = true, SetLastError = true)]
+        [DllImport("kernel32.dll")]
+        public static extern IntPtr GetModuleHandle(string moduleName);
+        [DllImport("kernel32.dll", CharSet = CharSet.Ansi, ExactSpelling = true, SetLastError = true)]
         static extern IntPtr GetProcAddress(IntPtr hModule, string procName);
-        // love you pinvoke.net, giving me the dllimports <3
+        // stinky pinvoke GetModuleHandle was changed to a wrong answer.
 
         public static void RunChecks() // Runs the checks for Wine.
         {
             IntPtr ntdllHandle = GetModuleHandle("ntdll.dll");
+            Console.WriteLine(ntdllHandle);
             RunningNT = (int)ntdllHandle != 0;
-            Console.WriteLine(RunningNT);
             if (RunningNT)
             {
                 IntPtr WineVersion = GetProcAddress(ntdllHandle, "wine_get_version");
 
                 WineDetected = (int)WineVersion != 0;
+                Console.WriteLine(WineVersion);
 
                 /* For later, if I add more functions
                 if ((int)WineVersion != 0) { WineDetected = true; }
                 else { WineDetected = false; }
                 */
             }
-            else { RunningNT = false; }
+            else { WineDetected = false; }
             HasChecked = true;
         }
 
