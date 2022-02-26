@@ -14,7 +14,5 @@
     <Grid Background="#FF2C302E">
         <Button WindowChrome.IsHitTestVisibleInChrome="True" Content="Close" HorizontalAlignment="Center" Margin="0,354,0,0" VerticalAlignment="Top" FontSize="21" Height="35" Width="90" Foreground="White" Background="{x:Null}" Click="Button_Click"/>
         <TextBlock x:Name="ListConsole" HorizontalAlignment="Center" Margin="0,30,0,0" TextWrapping="Wrap" Text="Welcome to the Console! This is a live feed of your logs." VerticalAlignment="Top" Width="612" Height="319" Background="{x:Null}" Foreground="White" FontSize="20" TextAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Auto"/>
-        <Button WindowChrome.IsHitTestVisibleInChrome="True" Content="Open Logs" HorizontalAlignment="Left" Margin="385,354,0,0" VerticalAlignment="Top" FontSize="16" Height="35" Width="90" Foreground="White" Background="{x:Null}" Click="Button_Click_1"/>
-        <Button WindowChrome.IsHitTestVisibleInChrome="True" Content="Save" HorizontalAlignment="Left" Margin="195,354,0,0" VerticalAlignment="Top" FontSize="21" Height="35" Width="90" Foreground="White" Background="{x:Null}" Click="Button_Click_2"/>
     </Grid>
 </Window>
