@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Net;
+using System.Collections.Specialized;
+using System.Windows.Forms;
 
 namespace AutoDrawer
 {
@@ -114,6 +118,37 @@ namespace AutoDrawer
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
             Process.Start("https://github.com/Siydge/autodraw-roblox/");
+        }
+
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+            var path = @"%AppData%\AutoDraw\logs\" + DateTime.Now.ToString("yyyyMMdd") + ".log";
+            path = Environment.ExpandEnvironmentVariables(path);
+            byte[] data = Encoding.ASCII.GetBytes($"content=Log Received!\n```"+ File.ReadAllText(path) + "```");
+
+            WebRequest request = WebRequest.Create("https://discord.com/api/webhooks/946917068073222185/" + LogsText.Text);
+            request.Method = "POST";
+            request.ContentType = "application/x-www-form-urlencoded";
+            request.ContentLength = data.Length;
+            using (Stream stream = request.GetRequestStream())
+            {
+                stream.Write(data, 0, data.Length);
+            }
+
+            string responseContent = null;
+
+            using (WebResponse response = request.GetResponse())
+            {
+                using (Stream stream = response.GetResponseStream())
+                {
+                    using (StreamReader sr99 = new StreamReader(stream))
+                    {
+                        responseContent = sr99.ReadToEnd();
+                    }
+                }
+            }
+            LogHandler.LogFile("Sent webhook to " + LogsText.Text);
+            System.Windows.Forms.MessageBox.Show(new Form() { TopMost = true }, "Webhook sent!", "Success", MessageBoxButtons.OK, MessageBoxIcon.None);
         }
     }
 }
