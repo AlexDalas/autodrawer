@@ -17,7 +17,7 @@ This software officially supports Windows 10 and above. Any versions below may n
 
 Mac is not supported, as WPF is Windows-Only. 
 
-Mac users may use[Parallels](https://www.parallels.com/au/products/desktop/)
+Mac users may use [Parallels](https://www.parallels.com/au/products/desktop/)
 
 ## Linux
 
