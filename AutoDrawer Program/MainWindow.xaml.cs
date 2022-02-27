@@ -799,6 +799,30 @@ namespace AutoDrawer
             
             // Draw all the areas
             stack = new ArrayList();
+
+            bool Paused = false;
+            var path = pathInt.ToString().Select(t => int.Parse(t.ToString())).ToArray();
+
+            void KeyRequest(object _sender, Keys e)
+            {
+                if (e == Keys.F4)
+                {
+                    Paused = !Paused;
+                }
+            }
+            async Task CheckPauseAsync(int x, int y)
+            {
+                if (Paused)
+                {
+                    LeftClick(MOUSEEVENTF_LEFTUP, xorigin + x, yorigin + y);
+                    while (Paused)
+                    {
+                        await Task.Delay(1);
+                    }
+                    LeftClick(MOUSEEVENTF_LEFTDOWN, xorigin + x, yorigin + y);
+                }
+            }
+
             for (int y = 0; y < image.Height; y++)
             {
                 for (int x = 0; x < image.Width; x++)
@@ -810,11 +834,13 @@ namespace AutoDrawer
                     {
                         int xpos = xorigin + x;
                         int ypos = yorigin + y;
-                        NOP(clickdelay * 3333);
-                        SetCursorPos(xpos, ypos);
-                        NOP(clickdelay * 3333);
+                        HotkeySystem.KeyPress += KeyRequest;
+                        NOP(clickdelay * 5000);
+                        await CheckPauseAsync(x,y);
                         SetCursorPos(xpos, ypos + 1);
-                        NOP(clickdelay * 3333);
+                        NOP(clickdelay * 5000);
+                        await CheckPauseAsync(x, y);
+                        HotkeySystem.KeyPress -= KeyRequest;
                         LeftClick(MOUSEEVENTF_LEFTDOWN, xpos, ypos);
                         cont = await DrawArea(stack, x, y, xorigin, yorigin);
                         LeftClick(MOUSEEVENTF_LEFTUP, xpos, ypos);
