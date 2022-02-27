@@ -811,11 +811,11 @@ namespace AutoDrawer
                         int xpos = xorigin + x;
                         int ypos = yorigin + y;
                         NOP(clickdelay * 3333);
-                        LeftClick(MOUSEEVENTF_LEFTDOWN, xpos, ypos);
                         SetCursorPos(xpos, ypos);
                         NOP(clickdelay * 3333);
                         SetCursorPos(xpos, ypos + 1);
                         NOP(clickdelay * 3333);
+                        LeftClick(MOUSEEVENTF_LEFTDOWN, xpos, ypos);
                         cont = await DrawArea(stack, x, y, xorigin, yorigin);
                         LeftClick(MOUSEEVENTF_LEFTUP, xpos, ypos);
                         if (System.Windows.Forms.Control.ModifierKeys == Keys.Alt)
