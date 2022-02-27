@@ -20,21 +20,45 @@ namespace AutoDrawer
     public partial class ConsoleWindow : Window
     {
         public static bool IsOpen;
+        public static string LogText;
 
+        private void UpdateLogs(object _, string text)
+        {
+            ListConsole.Text = LogText;
+        }
         public ConsoleWindow()
         {
             InitializeComponent();
+            ListConsole.Text = LogText;
+            LogHandler.LogSent += UpdateLogs;
             IsOpen = true;
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
         }
 
         private void ConsoleClosed(object sender, EventArgs e)
         {
+            LogHandler.LogSent -= UpdateLogs;
             IsOpen = false;
+        }
+
+        private void SaveConsole_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CloseConsole_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void ClearConsole_Click(object sender, RoutedEventArgs e)
+        {
+            LogText = "";
+            ListConsole.Text = LogText;
+        }
+
+        private void OpenConsole_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

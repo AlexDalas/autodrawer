@@ -7,11 +7,13 @@ namespace AutoDrawer
     {
         public static bool LogsEnabled;
 
+        public delegate void LogEventHandler(object sender, string NewLog);
+        public static event LogEventHandler LogSent;
         public static void LogFile(string str)
         {
             str = str + " (" + DateTime.Now.ToString("hh:mm:ss") + ")";
             //ConsoleWindow.ListConsole.Text = str + "\n" + ConsoleWindow.ListConsole.Text;
-            Console.WriteLine(str);
+            LogSent?.Invoke(null, str + "\n");
             if (LogsEnabled)
             {
                 var spath = @"%AppData%\AutoDraw\logs\";

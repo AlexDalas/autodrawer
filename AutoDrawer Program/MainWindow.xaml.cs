@@ -115,8 +115,13 @@ namespace AutoDrawer
             clickdelay = Convert.ToInt32(clickdelayInput.Text);
             clickdelay = int.Parse(clickdelayInput.Text);
             pathList.SelectedIndex = 2;
+            LogHandler.LogSent += UpdateLogs;
             Console.WriteLine("Initialized Component.");
             RefreshDir();
+        }
+        private void UpdateLogs(object _, string text)
+        {
+            ConsoleWindow.LogText += text;
         }
         public void ToFront()
         {
@@ -800,11 +805,11 @@ namespace AutoDrawer
                         int xpos = xorigin + x;
                         int ypos = yorigin + y;
                         NOP(clickdelay * 3333);
+                        LeftClick(MOUSEEVENTF_LEFTDOWN, xpos, ypos);
                         SetCursorPos(xpos, ypos);
                         NOP(clickdelay * 3333);
                         SetCursorPos(xpos, ypos + 1);
                         NOP(clickdelay * 3333);
-                        LeftClick(MOUSEEVENTF_LEFTDOWN, xpos, ypos);
                         cont = await DrawArea(stack, x, y, xorigin, yorigin);
                         LeftClick(MOUSEEVENTF_LEFTUP, xpos, ypos);
                         if (System.Windows.Forms.Control.ModifierKeys == Keys.Alt)
