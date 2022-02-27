@@ -157,5 +157,12 @@ namespace AutoDrawer
             cw.Show();
             this.Close();
         }
+
+        private void Button_Click_6(object sender, RoutedEventArgs e)
+        {
+            var fpath = @"%AppData%\AutoDraw\logs\";
+            fpath = Environment.ExpandEnvironmentVariables(fpath);
+            Process.Start("explorer.exe", fpath);
+        }
     }
 }

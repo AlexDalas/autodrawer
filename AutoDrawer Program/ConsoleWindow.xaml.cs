@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,7 +44,17 @@ namespace AutoDrawer
 
         private void SaveConsole_Click(object sender, RoutedEventArgs e)
         {
-
+            var dialog = new Microsoft.Win32.SaveFileDialog
+            {
+                Title = "Where do you want to save your log?",
+                Filter = "Log (*.log)|*.log"
+            };
+            if (dialog.ShowDialog() == true)
+            {
+                var fileName = dialog.FileName;
+                LogHandler.LogFile("Saving " + dialog.FileName);
+                File.WriteAllText(fileName, ListConsole.Text);
+            }
         }
 
         private void CloseConsole_Click(object sender, RoutedEventArgs e)
@@ -58,7 +70,9 @@ namespace AutoDrawer
 
         private void OpenConsole_Click(object sender, RoutedEventArgs e)
         {
-
+            var fpath = @"%AppData%\AutoDraw\logs\";
+            fpath = Environment.ExpandEnvironmentVariables(fpath);
+            Process.Start("explorer.exe", fpath);
         }
     }
 }

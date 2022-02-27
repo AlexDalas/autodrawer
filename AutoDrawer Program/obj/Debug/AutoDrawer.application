@@ -7,14 +7,14 @@
     <framework targetVersion="4.6.1" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="AutoDrawer.exe.manifest" size="5998">
+    <dependentAssembly dependencyType="install" codebase="AutoDrawer.exe.manifest" size="5261">
       <assemblyIdentity name="AutoDrawer.exe" version="1.0.0.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>1005p0qisI1xOmEMioMeks0zXqGqptuHnoaNPk/tEv0=</dsig:DigestValue>
+        <dsig:DigestValue>R5b4koz5pZj0YKM3tSUujFtKysJR4FNmjR7/ZRfYMwo=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

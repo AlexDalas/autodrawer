@@ -7,7 +7,6 @@
         mc:Ignorable="d"
         Icon="Assets/Icon.ico"
         Title="AutoDrawUI" Height="520" Width="800"
-        ResizeMode="CanMinimize"
         WindowStartupLocation="CenterScreen"
         AllowsTransparency="True"
         WindowStyle="None" MinWidth="800" MinHeight="520">
@@ -98,24 +97,29 @@
         <Grid Margin="10,5,0,5" Background="#FF333735" Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="35"/>
                 <RowDefinition Height="65"/>
             </Grid.RowDefinitions>
-            <Grid Margin="5,21,5,5" Grid.Row="1" Background="#FF2C302E">
+            <Grid Margin="5,21,5,5" Grid.Row="1" Background="#FF2C302E" Grid.ColumnSpan="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition Width="109*"/>
                     <ColumnDefinition Width="31*"/>
                     <ColumnDefinition Width="79*"/>
                 </Grid.ColumnDefinitions>
-                <Grid Grid.ColumnSpan="3" Margin="3,10,0,5" Grid.Column="1">
-                    <TextBox x:Name="heightInput" WindowChrome.IsHitTestVisibleInChrome="True" TextChanged="HeightInput_TextChanged" TextWrapping="Wrap" FontSize="16" TextAlignment="Center" Background="#FF474A48" BorderBrush="Black" Foreground="White" BorderThickness="1,1,1,1" FontFamily="Segoe UI Light" Height="25" VerticalAlignment="Bottom" Margin="0,0,225,0"/>
-                    <TextBox x:Name="widthInput" WindowChrome.IsHitTestVisibleInChrome="True" TextChanged="WidthInput_TextChanged" TextWrapping="Wrap" FontSize="16" TextAlignment="Center" Background="#FF474A48" BorderBrush="Black" Foreground="White" BorderThickness="1,1,1,1" FontFamily="Segoe UI Light" Height="25" VerticalAlignment="Bottom" Margin="222,0,0,0"/>
+                <Grid Grid.ColumnSpan="3" Margin="3,10,5,5" Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="72*"/>
+                        <ColumnDefinition Width="73*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox x:Name="widthInput" WindowChrome.IsHitTestVisibleInChrome="True" TextChanged="WidthInput_TextChanged" TextWrapping="Wrap" FontSize="16" TextAlignment="Center" Background="#FF474A48" BorderBrush="Black" Foreground="White" BorderThickness="1,1,1,1" FontFamily="Segoe UI Light" Height="25" VerticalAlignment="Center" Margin="0,0,6,0"/>
+                    <TextBox x:Name="heightInput" WindowChrome.IsHitTestVisibleInChrome="True" TextChanged="HeightInput_TextChanged" TextWrapping="Wrap" FontSize="16" TextAlignment="Center" Background="#FF474A48" BorderBrush="Black" Foreground="White" BorderThickness="1,1,1,1" FontFamily="Segoe UI Light" Height="25" VerticalAlignment="Center" Margin="6,0,0,0" Grid.Column="1"/>
                 </Grid>
             </Grid>
-            <Grid Margin="5,5,5,0" Background="#FF2C302E">
+            <Grid Margin="5,5,5,0" Background="#FF2C302E" Grid.ColumnSpan="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="57*"/>
                     <ColumnDefinition Width="318*"/>
@@ -125,8 +129,8 @@
                 <TextBox x:Name="ScaleInput" WindowChrome.IsHitTestVisibleInChrome="True" TextWrapping="Wrap" FontSize="16" TextAlignment="Center" Background="#FF474A48" BorderBrush="Black" Foreground="White" BorderThickness="1,1,1,1" FontFamily="Segoe UI Light" Margin="5,0" MaxLines="1" MaxLength="4" Grid.Column="2" Text="100" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" MinHeight="25" VerticalAlignment="Center" AcceptsReturn="True" UndoLimit="20" TextChanged="ScaleInput_TextChanged" Height="25"/>
                 <TextBlock TextWrapping="Wrap" TextAlignment="Right" FontSize="16" Foreground="#FFF1F1F1" FontFamily="Segoe UI Light" ScrollViewer.VerticalScrollBarVisibility="Disabled" RenderTransformOrigin="0.5,0.5" Margin="5,0,0,2.9" VerticalAlignment="Center" Padding="0.3,0,0,0"><Run Text="Scale: "/><Run Text=" "/></TextBlock>
             </Grid>
-            <TextBlock Margin="10,0,236,40" TextWrapping="Wrap" Text="Width" TextAlignment="Right" FontSize="16" Foreground="#FFF1F1F1" FontFamily="Segoe UI Light" ScrollViewer.VerticalScrollBarVisibility="Disabled" Height="24" VerticalAlignment="Bottom" Grid.Row="1"/>
-            <TextBlock Margin="237,0,5,40" TextWrapping="Wrap" Text="Height" TextAlignment="Left" FontSize="16" Foreground="#FFF1F1F1" FontFamily="Segoe UI Light" ScrollViewer.VerticalScrollBarVisibility="Disabled" Height="24" VerticalAlignment="Bottom" Grid.Row="1"/>
+            <TextBlock Margin="10,1,11,0" TextWrapping="Wrap" Text="Width" TextAlignment="Right" FontSize="16" Foreground="#FFF1F1F1" FontFamily="Segoe UI Light" ScrollViewer.VerticalScrollBarVisibility="Disabled" Height="24" VerticalAlignment="Top" Grid.Row="1"/>
+            <TextBlock Margin="12,0,5,40" TextWrapping="Wrap" Text="Height" TextAlignment="Left" FontSize="16" Foreground="#FFF1F1F1" FontFamily="Segoe UI Light" ScrollViewer.VerticalScrollBarVisibility="Disabled" Height="24" VerticalAlignment="Bottom" Grid.Row="1" Grid.Column="1"/>
         </Grid>
         <Grid Grid.Column="1" Margin="10,10,10,5" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>

@@ -215,24 +215,30 @@ namespace AutoDrawer
             }
             if (i == 1)
             {
-                string[] files = Directory.GetFiles(dir);
-
-                foreach (string file in files)
+                try
                 {
-                    if (file.EndsWith(".drawcfg"))
+                    string[] files = Directory.GetFiles(dir);
+                    foreach (string file in files)
                     {
-                        Configs.Items.Add(file.Replace(dir, "").Replace("\\", "").Replace("/", "").Replace(".drawcfg", ""));
-                    }
-                    if (file.EndsWith(".autodrawconfig") || file.EndsWith(".autodrawconfi"))
-                    {
-                        try
+                        if (file.EndsWith(".drawcfg"))
                         {
-                            File.Move(file, file.Replace(".autodrawconfig", ".drawcfg").Replace(".autodrawconfi", ".drawcfg"));
                             Configs.Items.Add(file.Replace(dir, "").Replace("\\", "").Replace("/", "").Replace(".drawcfg", ""));
-                            RefreshDir();
                         }
-                        catch { }
+                        if (file.EndsWith(".autodrawconfig") || file.EndsWith(".autodrawconfi"))
+                        {
+                            try
+                            {
+                                File.Move(file, file.Replace(".autodrawconfig", ".drawcfg").Replace(".autodrawconfi", ".drawcfg"));
+                                Configs.Items.Add(file.Replace(dir, "").Replace("\\", "").Replace("/", "").Replace(".drawcfg", ""));
+                                RefreshDir();
+                            }
+                            catch { }
+                        }
                     }
+                }
+                catch
+                {
+                    File.WriteAllText(fpath, "");
                 }
             }
         }
