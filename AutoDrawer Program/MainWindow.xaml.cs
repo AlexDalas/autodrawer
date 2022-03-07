@@ -66,29 +66,23 @@ namespace AutoDrawer
         }
         public void LeftClick(SimWinInput.SimMouse.Action action, int posX, int posY)
         {
-            if (!WineDetect.WineDetected)
+            if (true)//!WineDetect.WineDetected)
             {
                 SimWinInput.SimMouse.Act(action, posX + xOffset, posY + yOffset);
             }
-            else
+           /* else
             {
-                int Chosen = 0x02;
-                int MOUSEEVENTF_LEFTDOWN_Linux = 0x02;
-                int MOUSEEVENTF_LEFTUP_Linux = 0x04;
-                if(action == MOUSEEVENTF_LEFTDOWN)
+                if (action == SimWinInput.SimMouse.Action.LeftButtonDown)
                 {
-                    Chosen = MOUSEEVENTF_LEFTDOWN_Linux;
+                    Process.Start("Z:/usr/bin/xdotool", "mousedown 1");
+                    SimWinInput.SimMouse.Act(action, posX + xOffset, posY + yOffset);
                 }
-                else if(action == MOUSEEVENTF_LEFTUP)
+                else if (action == SimWinInput.SimMouse.Action.LeftButtonUp)
                 {
-                    Chosen = MOUSEEVENTF_LEFTUP_Linux;
+                    Process.Start("Z:/usr/bin/xdotool", "mouseup 1");
+                    SimWinInput.SimMouse.Act(action, posX + xOffset, posY + yOffset);
                 }
-                else
-                {
-                    System.Windows.Forms.MessageBox.Show("Ruh Roh! Something went wrong for Linux!","Something Broke! :(");
-                }
-                mouse_event(Chosen, posX + xOffset, posY + yOffset, 0, 0);
-            }
+            }*/
         }
 
         public System.Drawing.Color TransparencyKey { get; private set; }

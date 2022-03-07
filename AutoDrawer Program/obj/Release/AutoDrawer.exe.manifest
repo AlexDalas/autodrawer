@@ -50,7 +50,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>ofPw4AC5zMMcrQFluqwIb1UbX9yjhqxQM9IMGQLA5jI=</dsig:DigestValue>
+        <dsig:DigestValue>rY+CsI3vQhUPdBB5u2n0bBg6oh8bLNU81qij1kLisao=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -63,18 +63,6 @@
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
         <dsig:DigestValue>pnpCQBNUTIJwwSYz4uHih81c8LPy6B6NggSzegPaWe8=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.VisualStudio.DebuggerVisualizers.dll" size="32136">
-      <assemblyIdentity name="Microsoft.VisualStudio.DebuggerVisualizers" version="16.0.0.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>oG2b1JNCoQh47BqbP4O2ELoRj+Dz/9vDVDcg9C8NMtE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
