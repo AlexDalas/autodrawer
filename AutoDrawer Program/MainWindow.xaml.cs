@@ -112,6 +112,7 @@ namespace AutoDrawer
             LogHandler.LogSent += UpdateLogs;
             Console.WriteLine("Initialized Component.");
             RefreshDir();
+            refreshTheme();
         }
         private void UpdateLogs(object _, string text)
         {
@@ -1123,7 +1124,38 @@ namespace AutoDrawer
         {
             DragInd.Visibility = Visibility.Collapsed;
         }
-
+        public void refreshTheme()
+        {
+            var cpath = Environment.ExpandEnvironmentVariables(@"%AppData%\AutoDraw\");
+            try
+            {
+                Directory.CreateDirectory(cpath + "\\themes");
+            }catch{ }
+            try
+            {
+                var lines = File.ReadAllLines(cpath + "\\themes\\theme.txt"); //make if not exist
+            }
+            catch
+            {
+                File.Create(cpath + "\\themes\\theme.txt");
+                File.WriteAllText(cpath + "\\themes\\theme.txt", "dark");
+            }
+            var f = AppDomain.CurrentDomain.BaseDirectory;
+            if (!File.Exists(cpath + "\\themes\\dark.drawtheme"))
+            {
+                using (StreamWriter sw = File.CreateText(cpath + "\\themes\\dark.drawtheme"))
+                {
+                    sw.WriteLine("{\n    \"ver\": 1.4,\n    \"main\": {\n        \"text\": \"#FFFFFFFF\",\n        \"background\": \"#FF2C302E\",\n        \"image-background\": \"#FF3A3D3B\",\n        \"pattern-listbox\": \"#FF484A49\",\n        \"config-listbox\": \"#FF353735\",\n        \"loadconfig-button\": \"#FF3A3D3B\",\n        \"saveconfig-button\": \"#FF3A3D3B\",\n        \"settings-info-buttons\": \"#FF3A3D3B\",\n        \"pattern-button\": \"#FF3A3D3B\",\n        \"directory-buttons\": \"#FF3A3D3B\",\n        \"textbox-backgrounds\": \"#FF474A48\",\n        \"upload-buttons\": \"#FF3A3D3B\",\n        \"clear-buttons\": \"#FF3A3D3B\",\n        \"process-button\": \"#FF3A3D3B\",\n        \"start-button\": \"#FF3A3D3B\",\n        \"scalebar-background\": \"#00000000\",\n        \"width-textbox\": \"#FF474A48\",\n        \"height-textbox\": \"#FF474A48\"\n    },\n    \"settings\": {\n        \"text\": \"#FFFFFFFF\",\n        \"background\": \"#FF2C302E\",\n        \"buttons\": \"#FF2C302E\",\n        \"textbox\": \"#FF2C302E\",\n        \"checkbox-box\": \"#FFFFFFFF\",\n        \"close\": \"#FF2C302E\"\n    },\n    \"info\": {\n        \"text\": \"#FFFFFFFF\",\n        \"background\": \"#EF2C302E\",\n        \"close\": \"#EF2C302E\"\n    },\n    \"pattern\": {\n        \"text\": \"#FFFFFFFF\",\n        \"background\": \"#FF2C302E\",\n        \"image-background\": \"#FF3C3C3C\",\n        \"button\": \"#FF2C302E\",\n        \"textbox\": \"#FF2C302E\",\n        \"close\": \"#FF2C302E\"\n    },\n    \"console\": {\n        \"text\": \"#FFFFFFFF\",\n        \"background\": \"#FF2C302E\",\n        \"console-background\": \"#FF333735\",\n        \"button\": \"#FF2C302E\",\n        \"close\": \"#FF2C302E\"\n    },\n    \"preview\": {\n        \"text\": \"#FFFFFFFF\",\n        \"background\": \"#000000\"\n    }");
+                }
+            }
+            if (!File.Exists(cpath + "\\themes\\light.drawtheme"))
+            {
+                using (StreamWriter sw = File.CreateText(cpath + "\\themes\\light.drawtheme"))
+                {
+                    sw.WriteLine("{\n    \"ver\": 1.4,\n    \"main\": {\n        \"text\": \"#ffffffff\",\n        \"background\": \"#FFCED8D3\",\n        \"image-background\": \"#FFC7D2CB\",\n        \"pattern-listbox\": \"#FFAEBDB3\",\n        \"config-listbox\": \"#FFBEC5BE\",\n        \"loadconfig-button\": \"#FFC7D2CB\",\n        \"saveconfig-button\": \"#FFC7D2CB\",\n        \"settings-info-buttons\": \"#FFC7D2CB\",\n        \"pattern-button\": \"#FFC7D2CB\",\n        \"directory-buttons\": \"#FFC7D2CB\",\n        \"textbox-backgrounds\": \"#FFAEBDB3\",\n        \"upload-buttons\": \"#FFC7D2CB\",\n        \"clear-buttons\": \"#FFC7D2CB\",\n        \"process-button\": \"#FFC7D2CB\",\n        \"start-button\": \"#FFC7D2CB\",\n        \"scalebar-background\": \"#ffffffff\",\n        \"width-textbox\": \"#FFAEBDB3\",\n        \"height-textbox\": \"#FFAEBDB3\"\n    },\n    \"settings\": {\n        \"text\": \"#ffffffff\",\n        \"background\": \"#FFCED8D3\",\n        \"buttons\": \"#FFCED8D3\",\n        \"textbox\": \"#FFCED8D3\",\n        \"checkbox-box\": \"#ffffffff\",\n        \"close\": \"#FFCED8D3\"\n    },\n    \"info\": {\n        \"text\": \"#ffffffff\",\n        \"background\": \"#EFC9D8D0\",\n        \"close\": \"#EFC9D8D0\"\n    },\n    \"pattern\": {\n        \"text\": \"#ffffffff\",\n        \"background\": \"#FFCED8D3\",\n        \"image-background\": \"#EFBAC8C1\",\n        \"button\": \"#FFCED8D3\",\n        \"textbox\": \"#FFCED8D3\",\n        \"close\": \"#FFCED8D3\"\n    },\n    \"console\": {\n        \"text\": \"#ffffffff\",\n        \"background\": \"#FFCED8D3\",\n        \"console-background\": \"#FFBEC5BE\",\n        \"button\": \"#FFCED8D3\",\n        \"close\": \"#FFCED8D3\"\n    },\n    \"preview\": {\n        \"text\": \"#ffffffff\",\n        \"background\": \"#ffffff\"\n    }\n}");
+                }
+            }
+        }
         private void window_sizechanged(object sender, SizeChangedEventArgs e)
         {
             WinChr.CaptionHeight = System.Windows.Application.Current.MainWindow.Height;
