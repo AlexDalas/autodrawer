@@ -1123,6 +1123,11 @@ namespace AutoDrawer
         {
             DragInd.Visibility = Visibility.Collapsed;
         }
+
+        private void window_sizechanged(object sender, SizeChangedEventArgs e)
+        {
+            WinChr.CaptionHeight = System.Windows.Application.Current.MainWindow.Height;
+        }
     }
 
     class Position

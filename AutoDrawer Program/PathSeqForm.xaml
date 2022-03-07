@@ -12,7 +12,7 @@
         Topmost="True">
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="320" ResizeBorderThickness="{x:Static SystemParameters.WindowResizeBorderThickness}"/>
-    </WindowChrome.WindowChrome> 
+    </WindowChrome.WindowChrome>
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -72,9 +72,18 @@
     </Window.Resources>
     <Grid Background="#FF2C302E">
         <Label Content="Enter custom path int sequence" HorizontalAlignment="Center" VerticalAlignment="Top" Height="25" Width="250" Foreground="White" Padding="5,0,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" Margin="0,9,0,0"/>
-        <Image HorizontalAlignment="Left" Height="212" Margin="16,70,0,0" VerticalAlignment="Top" Width="215" Source="/Assets/pathguide.jpg"/>
-        <TextBox WindowChrome.IsHitTestVisibleInChrome="True" x:Name="pathInput" TextChanged="pathInput_TextChanged" HorizontalAlignment="Left" Margin="16,37,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="116" Height="27" FontSize="18" TextDecorations="{x:Null}" TextAlignment="Center"/>
-        <Button WindowChrome.IsHitTestVisibleInChrome="True" x:Name="submitButton" Content="Submit" HorizontalAlignment="Left" Margin="137,37,0,0" VerticalAlignment="Top" Height="28" Width="93" Click="enterButton_Click"/>
+        <Rectangle HorizontalAlignment="Left" Height="212" Margin="16,70,0,0" VerticalAlignment="Top" Width="214" Fill="#FF3C3C3C"/>
+        <TextBox WindowChrome.IsHitTestVisibleInChrome="True" x:Name="pathInput" TextChanged="pathInput_TextChanged" HorizontalAlignment="Left" Margin="16,37,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="116" Height="27" FontSize="18" TextDecorations="{x:Null}" TextAlignment="Center" Background="#FF2C302E"/>
+        <Button WindowChrome.IsHitTestVisibleInChrome="True" x:Name="submitButton" Content="Submit" HorizontalAlignment="Left" Margin="137,37,0,0" VerticalAlignment="Top" Height="28" Width="93" Click="enterButton_Click" Foreground="White" Background="#FF2C302E"/>
         <Button WindowChrome.IsHitTestVisibleInChrome="True" x:Name="CloseBox" Content="Close" HorizontalAlignment="Left" Margin="16,287,0,0" VerticalAlignment="Top" Height="20" Width="214" Foreground="White" Background="{x:Null}" Click="Button_Click"/>
+        <Label Content="+---+---+---+&#xA; |      |      |      |&#xA;+---+---+---+&#xA; |      |      |      |&#xA;+---+---+---+&#xA; |      |      |      |&#xA;+---+---+---+" HorizontalAlignment="Left" VerticalAlignment="Top" Height="212" Width="218" Foreground="White" Padding="5,0,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="22" Margin="12,70,0,0"/>
+        <Label Content="1" HorizontalAlignment="Left" Margin="65,95,0,0" VerticalAlignment="Top" Width="35" Background="{x:Null}" Foreground="White" Height="50" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="24"/>
+        <Label Content="2" HorizontalAlignment="Center" Margin="0,95,0,0" VerticalAlignment="Top" Width="34" Background="{x:Null}" Foreground="White" Height="50" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="24"/>
+        <Label Content="3" HorizontalAlignment="Left" Margin="149,95,0,0" VerticalAlignment="Top" Width="34" Background="{x:Null}" Foreground="White" Height="50" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="24"/>
+        <Label Content="4" HorizontalAlignment="Left" Margin="65,154,0,0" VerticalAlignment="Top" Width="34" Background="{x:Null}" Foreground="White" Height="50" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="24"/>
+        <Label Content="5" HorizontalAlignment="Left" Margin="149,154,0,0" VerticalAlignment="Top" Width="34" Background="{x:Null}" Foreground="White" Height="50" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="24"/>
+        <Label Content="6" HorizontalAlignment="Left" Margin="65,213,0,0" VerticalAlignment="Top" Width="34" Background="{x:Null}" Foreground="White" Height="50" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="24"/>
+        <Label Content="7" HorizontalAlignment="Center" Margin="0,213,0,0" VerticalAlignment="Top" Width="34" Background="{x:Null}" Foreground="White" Height="50" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="24"/>
+        <Label Content="8" HorizontalAlignment="Left" Margin="149,213,0,0" VerticalAlignment="Top" Width="34" Background="{x:Null}" Foreground="White" Height="50" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="24"/>
     </Grid>
 </Window>

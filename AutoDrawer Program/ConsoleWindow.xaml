@@ -17,7 +17,7 @@
             <RowDefinition Height="317"/>
             <RowDefinition Height="45"/>
         </Grid.RowDefinitions>
-        <Button WindowChrome.IsHitTestVisibleInChrome="True" Content="Close" Margin="248,0,334,5" VerticalAlignment="Bottom" FontSize="21" Height="35" Foreground="White" Background="{x:Null}" Click="CloseConsole_Click" HorizontalAlignment="Center" Width="80" Grid.Row="2"/>
+        <Button WindowChrome.IsHitTestVisibleInChrome="True" Content="Close" Margin="248,0,334,5" VerticalAlignment="Bottom" FontSize="21" Height="35" Foreground="White" Background="#FF2C302E" Click="CloseConsole_Click" HorizontalAlignment="Center" Width="80" Grid.Row="2"/>
         <Grid Margin="5,0,5,5" Grid.Row="1" Background="#FF333735">
             <TextBlock x:Name="ListConsole" TextWrapping="Wrap" Text="Welcome to the Console! This is a live feed of your logs." Foreground="White" TextAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Auto" FontFamily="Corbel" Margin="5" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
         </Grid>

@@ -11,7 +11,7 @@
         WindowStyle="None"
         Topmost="True">
     <Window.Background>
-        <SolidColorBrush Opacity="0.5" Color="Black"></SolidColorBrush>
+        <SolidColorBrush Opacity="0.5" Color="#000000"></SolidColorBrush>
     </Window.Background>
     <Grid>
         <Image x:Name="pictureBox1" Margin="0,22,0,0" Source="/Assets/InfoIcon.png" Opacity="0.5"/>
