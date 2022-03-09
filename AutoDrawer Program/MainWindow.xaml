@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AutoDrawer"
         mc:Ignorable="d"
         Icon="Assets/Icon.ico"
-        Title="AutoDrawUI" Height="520" Width="800"
+        Title="AutoDrawUI" Height="367.725" Width="595"
         WindowStartupLocation="CenterScreen"
         AllowsTransparency="True"
         WindowStyle="None" MinWidth="800" MinHeight="520" SizeChanged="window_sizechanged">
@@ -177,6 +177,6 @@
                 <Image Height="12" Width="12" Source="/Assets/RefreshIcon.png"/>
             </Button>
         </Grid>
-        <Rectangle x:Name="DragInd" HorizontalAlignment="Left" Height="520" Margin="0,0,0,0" VerticalAlignment="Top" Width="800" Fill="#33000000" Visibility="Collapsed" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+        <Rectangle x:Name="DragInd" Fill="#33000000" Visibility="Collapsed" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="0"/>
     </Grid>
 </Window>
