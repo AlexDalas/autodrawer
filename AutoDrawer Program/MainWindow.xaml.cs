@@ -1236,7 +1236,9 @@ namespace AutoDrawer
                 clearButton.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["clear-buttons"].ToString());
                 ScaleInput.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["scale-textbox"].ToString());
                 heightInput.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["height-textbox"].ToString());
-                widthInput.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["width-textbox"].ToString());
+                widthInput.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["width-textbox"].ToString());heightInput.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["height-textbox"].ToString());
+                widthInput.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["text"].ToString());
+                heightInput.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["text"].ToString());
                 ScaleSlider.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["process-button"].ToString());
                 processButton.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["process-button"].ToString());
                 startButton.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["start-button"].ToString());
