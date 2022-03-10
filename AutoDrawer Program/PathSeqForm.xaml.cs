@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,6 +30,7 @@ namespace AutoDrawer
         public PathSeqForm()
         {
             InitializeComponent();
+            refTheme();
             if (!MainWindow.pathIntAllowed)
             {
                 submitButton.Content = "Submit / Enable";
@@ -34,6 +38,37 @@ namespace AutoDrawer
             else
             {
                 submitButton.Content = "Submit";
+            }
+        }
+
+        public void refTheme()
+        {
+            var cpath = Environment.ExpandEnvironmentVariables(@"%AppData%\AutoDraw\");
+            var thm = File.ReadAllLines(cpath + "\\themes\\theme.txt");
+            string jsonFile = cpath + "\\themes\\" + thm[0] + ".drawtheme";
+            using (StreamReader file = File.OpenText(jsonFile))
+            using (JsonTextReader reader = new JsonTextReader(file))
+            {
+                JObject json = (JObject)JToken.ReadFrom(reader);
+                BrushConverter bc = new BrushConverter();
+                label.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["pattern"]["text"].ToString());
+                pathInput.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["pattern"]["textbox"].ToString());
+                pathInput.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["pattern"]["text"].ToString());
+                submitButton.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["pattern"]["text"].ToString());
+                submitButton.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["pattern"]["button"].ToString());
+                CloseBox.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["pattern"]["close"].ToString());
+                CloseBox.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["pattern"]["text"].ToString());
+                BKG.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["pattern"]["background"].ToString());
+                BKG2.Fill = (System.Windows.Media.Brush)bc.ConvertFrom(json["pattern"]["image-background"].ToString());
+                textOuter.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["pattern"]["text"].ToString());
+                t1.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["pattern"]["text"].ToString());
+                t2.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["pattern"]["text"].ToString());
+                t3.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["pattern"]["text"].ToString());
+                t4.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["pattern"]["text"].ToString());
+                t5.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["pattern"]["text"].ToString());
+                t6.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["pattern"]["text"].ToString());
+                t7.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["pattern"]["text"].ToString());
+                t8.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["pattern"]["text"].ToString());
             }
         }
 

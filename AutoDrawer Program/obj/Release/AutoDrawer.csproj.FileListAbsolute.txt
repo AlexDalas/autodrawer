@@ -92,8 +92,6 @@ C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer Program\bin\Rel
 C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer Program\bin\Release\AutoDrawer.application
 C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer Program\bin\Release\AutoDrawer.exe
 C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer Program\bin\Release\AutoDrawer.pdb
-C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer Program\bin\Release\Gma.System.MouseKeyHook.dll
-C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer Program\bin\Release\SimWinMouse.dll
 C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer Program\obj\Release\AutoDrawer.csproj.AssemblyReference.cache
 C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer Program\obj\Release\AutoDrawer.csproj.SuggestedBindingRedirects.cache
 C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer Program\obj\Release\ConsoleWindow.g.cs
@@ -120,3 +118,6 @@ C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer Program\obj\Rel
 C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer Program\obj\Release\AutoDrawer.csproj.CopyComplete
 C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer Program\obj\Release\AutoDrawer.exe
 C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer Program\obj\Release\AutoDrawer.pdb
+C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer Program\bin\Release\Newtonsoft.Json.xml
+C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer Program\bin\Release\System.Diagnostics.DiagnosticSource.xml
+C:\Users\Alex\Documents\GitHub\autodraw-roblox-SIydge\AutoDrawer Program\obj\Release\AutoDrawer.csproj.Fody.CopyLocal.cache

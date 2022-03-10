@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -34,6 +36,33 @@ namespace AutoDrawer
             ListConsole.Text = LogText;
             LogHandler.LogSent += UpdateLogs;
             IsOpen = true;
+            refTheme();
+        }
+
+        public void refTheme()
+        {
+            var cpath = Environment.ExpandEnvironmentVariables(@"%AppData%\AutoDraw\");
+            var thm = File.ReadAllLines(cpath + "\\themes\\theme.txt");
+            string jsonFile = cpath + "\\themes\\" + thm[0] + ".drawtheme";
+            using (StreamReader file = File.OpenText(jsonFile))
+            using (JsonTextReader reader = new JsonTextReader(file))
+            {
+                JObject json = (JObject)JToken.ReadFrom(reader);
+                BrushConverter bc = new BrushConverter();
+                label.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["console"]["text"].ToString());
+                ListConsole.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["console"]["text"].ToString());
+                close.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["console"]["close"].ToString());
+                BKG.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["console"]["background"].ToString());
+                BKG2.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["console"]["console-background"].ToString());
+                save.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["console"]["button"].ToString());
+                clear.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["console"]["button"].ToString());
+                open.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["console"]["button"].ToString());
+                save.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["console"]["text"].ToString());
+                clear.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["console"]["text"].ToString());
+                open.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["console"]["text"].ToString());
+                close.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["console"]["text"].ToString());
+
+            }
         }
 
         private void ConsoleClosed(object sender, EventArgs e)

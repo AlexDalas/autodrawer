@@ -70,12 +70,12 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <Grid Background="#EF2C302E">
-        <Label Content="Original Source from rainzhao2000 on GitHub." HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Height="26" Width="280" Foreground="White" Background="{x:Null}"/>
-        <Label Content="Modified by Siydge to work on Roblox Games." HorizontalAlignment="Center" Margin="0,36,0,0" VerticalAlignment="Top" Height="27" Width="280" Foreground="White" Background="{x:Null}"/>
-        <Label Content="Icons provided by icon-icons.com" HorizontalAlignment="Center" Margin="0,87,0,0" VerticalAlignment="Top" Height="25" Width="280" Foreground="White" Background="{x:Null}"/>
-        <Label Content="This autodraw script is under the MIT Lisence." HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Width="280" Foreground="White" Background="{x:Null}"/>
-        <Button WindowChrome.IsHitTestVisibleInChrome="True" Content="Close" HorizontalAlignment="Center" Margin="0,116,0,0" VerticalAlignment="Top" Height="25" Width="280" Foreground="White" Background="{x:Null}" Click="Button_Click"/>
+    <Grid x:Name="grid" Background="#EF2C302E">
+        <Label x:Name="t1" Content="Original Source from rainzhao2000 on GitHub." HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Height="26" Width="280" Foreground="White" Background="{x:Null}"/>
+        <Label x:Name="t2" Content="Modified by Siydge to work on Roblox Games." HorizontalAlignment="Center" Margin="0,36,0,0" VerticalAlignment="Top" Height="27" Width="280" Foreground="White" Background="{x:Null}"/>
+        <Label x:Name="t3" Content="Icons provided by icon-icons.com" HorizontalAlignment="Center" Margin="0,87,0,0" VerticalAlignment="Top" Height="25" Width="280" Foreground="White" Background="{x:Null}"/>
+        <Label x:Name="t4" Content="This autodraw script is under the MIT Lisence." HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Width="280" Foreground="White" Background="{x:Null}"/>
+        <Button x:Name="close" WindowChrome.IsHitTestVisibleInChrome="True" Content="Close" HorizontalAlignment="Center" Margin="0,116,0,0" VerticalAlignment="Top" Height="25" Width="280" Foreground="White" Background="{x:Null}" Click="Button_Click"/>
 
     </Grid>
 </Window>

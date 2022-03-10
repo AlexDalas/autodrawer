@@ -1,8 +1,11 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Drawing;
 using System.IO;
 using System.Windows;
 using System.Windows.Forms;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace AutoDrawer
@@ -22,6 +25,7 @@ namespace AutoDrawer
             InitializeComponent();
             this.Topmost = true;
             CenterPictureBox(pictureBox1, imagePreview);
+            refTheme();
         }
         private void CenterPictureBox(System.Windows.Controls.Image picBox, Bitmap picImage)
         {
@@ -31,6 +35,20 @@ namespace AutoDrawer
             if (picImage.Width > 300)
             {
                 this.Width = picImage.Width;
+            }
+        }
+        public void refTheme()
+        {
+            var cpath = Environment.ExpandEnvironmentVariables(@"%AppData%\AutoDraw\");
+            var thm = File.ReadAllLines(cpath + "\\themes\\theme.txt");
+            string jsonFile = cpath + "\\themes\\" + thm[0] + ".drawtheme";
+            using (StreamReader file = File.OpenText(jsonFile))
+            using (JsonTextReader reader = new JsonTextReader(file))
+            {
+                JObject json = (JObject)JToken.ReadFrom(reader);
+                BrushConverter bc = new BrushConverter();
+                Grid1.Color = (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(json["preview"]["background"].ToString());
+                TextLabel.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["preview"]["text"].ToString());
             }
         }
         public BitmapImage ConvertBitmap(Bitmap bitmap)

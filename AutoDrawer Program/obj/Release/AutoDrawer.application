@@ -4,17 +4,17 @@
   <description asmv2:publisher="AutoDrawer" asmv2:product="AutoDrawer" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <deployment install="true" mapFileExtensions="true" />
   <compatibleFrameworks xmlns="urn:schemas-microsoft-com:clickonce.v2">
-    <framework targetVersion="4.6.1" profile="Full" supportedRuntime="4.0.30319" />
+    <framework targetVersion="4.7.2" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="AutoDrawer.exe.manifest" size="5998">
+    <dependentAssembly dependencyType="install" codebase="AutoDrawer.exe.manifest" size="3956">
       <assemblyIdentity name="AutoDrawer.exe" version="1.0.0.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>mdyW8JjoIMiDeTm5FAVCh8gA8X6ZPcpy2xa3efGYy8o=</dsig:DigestValue>
+        <dsig:DigestValue>c2yiKFkAOgQVioTg212ZwgHrlK/hkgoZ1NVHGn1POdM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

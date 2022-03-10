@@ -16,6 +16,8 @@ using System.Windows.Shapes;
 using System.Net;
 using System.Collections.Specialized;
 using System.Windows.Forms;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace AutoDrawer
 {
@@ -31,13 +33,54 @@ namespace AutoDrawer
         public SettingsWindow()
         {
             InitializeComponent();
+            refTheme();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
-
+        public void refTheme()
+        {
+            var cpath = Environment.ExpandEnvironmentVariables(@"%AppData%\AutoDraw\");
+            var thm = File.ReadAllLines(cpath + "\\themes\\theme.txt");
+            string jsonFile = cpath + "\\themes\\" + thm[0] + ".drawtheme";
+            using (StreamReader file = File.OpenText(jsonFile))
+            using (JsonTextReader reader = new JsonTextReader(file))
+            {
+                JObject json = (JObject)JToken.ReadFrom(reader);
+                BrushConverter bc = new BrushConverter();
+                BKG.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["settings"]["background"].ToString());
+                SendLogs.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["settings"]["text"].ToString());
+                OpenConsole.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["settings"]["text"].ToString());
+                ManageTheme.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["settings"]["text"].ToString());
+                OpenLogs.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["settings"]["text"].ToString());
+                GH.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["settings"]["text"].ToString());
+                LR.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["settings"]["text"].ToString());
+                DC.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["settings"]["text"].ToString());
+                Scc.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["settings"]["text"].ToString());
+                xNumeric.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["settings"]["text"].ToString());
+                yNumeric.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["settings"]["text"].ToString());
+                xT.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["settings"]["text"].ToString());
+                yT.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["settings"]["text"].ToString());
+                offsetText.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["settings"]["text"].ToString());
+                cursorBox.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["settings"]["text"].ToString());
+                LogsText.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["settings"]["text"].ToString());
+                CloseB.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["settings"]["text"].ToString());
+                CloseB.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["settings"]["buttons"].ToString());
+                DC.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["settings"]["buttons"].ToString());
+                LR.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["settings"]["buttons"].ToString());
+                GH.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["settings"]["buttons"].ToString());
+                OpenLogs.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["settings"]["buttons"].ToString());
+                ManageTheme.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["settings"]["buttons"].ToString());
+                OpenConsole.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["settings"]["buttons"].ToString());
+                SendLogs.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["settings"]["buttons"].ToString());
+                LogsText.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["settings"]["textbox"].ToString());
+                cursorBox.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["settings"]["checkbox-box"].ToString());
+                xNumeric.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["settings"]["textbox"].ToString());
+                yNumeric.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["settings"]["textbox"].ToString());
+            }
+        }
         public System.Drawing.Point Location { get; internal set; }
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)

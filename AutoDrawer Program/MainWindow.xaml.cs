@@ -22,8 +22,9 @@ using System.Drawing.Drawing2D;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using System.Windows.Controls.Primitives;
-using System.Text.Json;
-
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using Microsoft.Win32;
 
 namespace AutoDrawer
 {
@@ -1128,34 +1129,118 @@ namespace AutoDrawer
         }
         public void refreshTheme()
         {
-            var cpath = Environment.ExpandEnvironmentVariables(@"%AppData%\AutoDraw\");
+            var cpath = Environment.ExpandEnvironmentVariables("%AppData%\\AutoDraw");
             try
             {
                 Directory.CreateDirectory(cpath + "\\themes");
-            }catch{ }
+            }
+            catch { }
             try
             {
-                var lines = File.ReadAllLines(cpath + "\\themes\\theme.txt"); //make if not exist
+                var a = File.ReadAllLines(cpath + "\\themes\\theme.txt"); //make if not exist
             }
             catch
             {
-                File.Create(cpath + "\\themes\\theme.txt");
-                File.WriteAllText(cpath + "\\themes\\theme.txt", "dark");
+                using (StreamWriter sw = File.CreateText(cpath + "\\themes\\theme.txt"))
+                {
+                    sw.WriteLine("dark");
+                }
             }
-            var f = AppDomain.CurrentDomain.BaseDirectory;
+            var thm = File.ReadAllLines(cpath + "\\themes\\theme.txt");
             if (!File.Exists(cpath + "\\themes\\dark.drawtheme"))
             {
                 using (StreamWriter sw = File.CreateText(cpath + "\\themes\\dark.drawtheme"))
                 {
-                    sw.WriteLine("{\n    \"ver\": 1.4,\n    \"main\": {\n        \"text\": \"#FFFFFFFF\",\n        \"background\": \"#FF2C302E\",\n        \"image-background\": \"#FF3A3D3B\",\n        \"pattern-listbox\": \"#FF484A49\",\n        \"config-listbox\": \"#FF353735\",\n        \"loadconfig-button\": \"#FF3A3D3B\",\n        \"saveconfig-button\": \"#FF3A3D3B\",\n        \"settings-info-buttons\": \"#FF3A3D3B\",\n        \"pattern-button\": \"#FF3A3D3B\",\n        \"directory-buttons\": \"#FF3A3D3B\",\n        \"textbox-backgrounds\": \"#FF474A48\",\n        \"upload-buttons\": \"#FF3A3D3B\",\n        \"clear-buttons\": \"#FF3A3D3B\",\n        \"process-button\": \"#FF3A3D3B\",\n        \"start-button\": \"#FF3A3D3B\",\n        \"scalebar-background\": \"#00000000\",\n        \"width-textbox\": \"#FF474A48\",\n        \"height-textbox\": \"#FF474A48\"\n    },\n    \"settings\": {\n        \"text\": \"#FFFFFFFF\",\n        \"background\": \"#FF2C302E\",\n        \"buttons\": \"#FF2C302E\",\n        \"textbox\": \"#FF2C302E\",\n        \"checkbox-box\": \"#FFFFFFFF\",\n        \"close\": \"#FF2C302E\"\n    },\n    \"info\": {\n        \"text\": \"#FFFFFFFF\",\n        \"background\": \"#EF2C302E\",\n        \"close\": \"#EF2C302E\"\n    },\n    \"pattern\": {\n        \"text\": \"#FFFFFFFF\",\n        \"background\": \"#FF2C302E\",\n        \"image-background\": \"#FF3C3C3C\",\n        \"button\": \"#FF2C302E\",\n        \"textbox\": \"#FF2C302E\",\n        \"close\": \"#FF2C302E\"\n    },\n    \"console\": {\n        \"text\": \"#FFFFFFFF\",\n        \"background\": \"#FF2C302E\",\n        \"console-background\": \"#FF333735\",\n        \"button\": \"#FF2C302E\",\n        \"close\": \"#FF2C302E\"\n    },\n    \"preview\": {\n        \"text\": \"#FFFFFFFF\",\n        \"background\": \"#000000\"\n    }");
+                    sw.WriteLine("{\n    \"ver\": 1.4,\n    \"hover-colour\": \"#FF474A48\",\n    \"main\": {\n        \"light-icons\": \"true\",\n        \"text\": \"#FFFFFFFF\",\n        \"background\": \"#FF2C302E\",\n        \"background-1\": \"#FF333735\",\n        \"background-2\": \"#FF2C302E\",\n        \"image-background\": \"#FF3A3D3B\",\n        \"pattern-listbox\": \"#FF484A49\",\n        \"config-listbox\": \"#FF353735\",\n        \"loadconfig-button\": \"#FF3A3D3B\",\n        \"saveconfig-button\": \"#FF3A3D3B\",\n        \"settings-info-buttons\": \"#FF3A3D3B\",\n        \"pattern-button\": \"#FF3A3D3B\",\n        \"directory-buttons\": \"#FF3A3D3B\",\n        \"textbox-backgrounds\": \"#FF474A48\",\n        \"upload-buttons\": \"#FF3A3D3B\",\n        \"clear-buttons\": \"#FF3A3D3B\",\n        \"process-button\": \"#FF3A3D3B\",\n        \"start-button\": \"#FF3A3D3B\",\n        \"scalebar-background\": \"#00000000\",\n        \"scale-textbox\": \"#FF474A48\",\n        \"width-textbox\": \"#FF474A48\",\n        \"height-textbox\": \"#FF474A48\"\n    },\n    \"settings\": {\n        \"text\": \"#FFFFFFFF\",\n        \"background\": \"#FF2C302E\",\n        \"buttons\": \"#FF2C302E\",\n        \"textbox\": \"#FF2C302E\",\n        \"checkbox-box\": \"#FFFFFFFF\",\n        \"close\": \"#FF2C302E\"\n    },\n    \"info\": {\n        \"text\": \"#FFFFFFFF\",\n        \"background\": \"#FF2C302E\",\n        \"close\": \"#EF2C302E\"\n    },\n    \"pattern\": {\n        \"text\": \"#FFFFFFFF\",\n        \"background\": \"#FF2C302E\",\n        \"image-background\": \"#FF3C3C3C\",\n        \"button\": \"#FF2C302E\",\n        \"textbox\": \"#FF2C302E\",\n        \"close\": \"#FF2C302E\"\n    },\n    \"console\": {\n        \"text\": \"#FFFFFFFF\",\n        \"background\": \"#FF2C302E\",\n        \"console-background\": \"#FF333735\",\n        \"button\": \"#FF2C302E\",\n        \"close\": \"#FF2C302E\"\n    },\n    \"preview\": {\n        \"text\": \"#FFFFFFFF\",\n        \"background\": \"#000000\"\n    }\n}");
                 }
             }
             if (!File.Exists(cpath + "\\themes\\light.drawtheme"))
             {
                 using (StreamWriter sw = File.CreateText(cpath + "\\themes\\light.drawtheme"))
                 {
-                    sw.WriteLine("{\n    \"ver\": 1.4,\n    \"main\": {\n        \"text\": \"#ffffffff\",\n        \"background\": \"#FFCED8D3\",\n        \"image-background\": \"#FFC7D2CB\",\n        \"pattern-listbox\": \"#FFAEBDB3\",\n        \"config-listbox\": \"#FFBEC5BE\",\n        \"loadconfig-button\": \"#FFC7D2CB\",\n        \"saveconfig-button\": \"#FFC7D2CB\",\n        \"settings-info-buttons\": \"#FFC7D2CB\",\n        \"pattern-button\": \"#FFC7D2CB\",\n        \"directory-buttons\": \"#FFC7D2CB\",\n        \"textbox-backgrounds\": \"#FFAEBDB3\",\n        \"upload-buttons\": \"#FFC7D2CB\",\n        \"clear-buttons\": \"#FFC7D2CB\",\n        \"process-button\": \"#FFC7D2CB\",\n        \"start-button\": \"#FFC7D2CB\",\n        \"scalebar-background\": \"#ffffffff\",\n        \"width-textbox\": \"#FFAEBDB3\",\n        \"height-textbox\": \"#FFAEBDB3\"\n    },\n    \"settings\": {\n        \"text\": \"#ffffffff\",\n        \"background\": \"#FFCED8D3\",\n        \"buttons\": \"#FFCED8D3\",\n        \"textbox\": \"#FFCED8D3\",\n        \"checkbox-box\": \"#ffffffff\",\n        \"close\": \"#FFCED8D3\"\n    },\n    \"info\": {\n        \"text\": \"#ffffffff\",\n        \"background\": \"#EFC9D8D0\",\n        \"close\": \"#EFC9D8D0\"\n    },\n    \"pattern\": {\n        \"text\": \"#ffffffff\",\n        \"background\": \"#FFCED8D3\",\n        \"image-background\": \"#EFBAC8C1\",\n        \"button\": \"#FFCED8D3\",\n        \"textbox\": \"#FFCED8D3\",\n        \"close\": \"#FFCED8D3\"\n    },\n    \"console\": {\n        \"text\": \"#ffffffff\",\n        \"background\": \"#FFCED8D3\",\n        \"console-background\": \"#FFBEC5BE\",\n        \"button\": \"#FFCED8D3\",\n        \"close\": \"#FFCED8D3\"\n    },\n    \"preview\": {\n        \"text\": \"#ffffffff\",\n        \"background\": \"#ffffff\"\n    }\n}");
+                    sw.WriteLine("{\n    \"ver\": 1.4,\n    \"hover-colour\": \"#FFC7D2CB\",\n    \"main\": {\n        \"light-icons\": \"false\",\n        \"text\": \"#FF000000\",\n        \"background\": \"#ffffffff\",\n        \"background-1\": \"#FFC7D2CB\",\n        \"background-2\": \"#FFAEBDB3\",\n        \"image-background\": \"#FFC7D2CB\",\n        \"pattern-listbox\": \"#FFAEBDB3\",\n        \"config-listbox\": \"#FFBEC5BE\",\n        \"loadconfig-button\": \"#FFC7D2CB\",\n        \"saveconfig-button\": \"#FFC7D2CB\",\n        \"settings-info-buttons\": \"#FFC7D2CB\",\n        \"pattern-button\": \"#FFC7D2CB\",\n        \"directory-buttons\": \"#FFC7D2CB\",\n        \"textbox-backgrounds\": \"#FFAEBDB3\",\n        \"upload-buttons\": \"#FFC7D2CB\",\n        \"clear-buttons\": \"#FFC7D2CB\",\n        \"process-button\": \"#FFC7D2CB\",\n        \"start-button\": \"#FFC7D2CB\",\n        \"scalebar-background\": \"#ffffffff\",\n        \"scale-textbox\": \"#FFAEBDB3\",\n        \"width-textbox\": \"#FFAEBDB3\",\n        \"height-textbox\": \"#FFAEBDB3\"\n    },\n    \"settings\": {\n        \"text\": \"#FF000000\",\n        \"background\": \"#FFCED8D3\",\n        \"buttons\": \"#FFCED8D3\",\n        \"textbox\": \"#FFCED8D3\",\n        \"checkbox-box\": \"#ffffffff\",\n        \"close\": \"#FFCED8D3\"\n    },\n    \"info\": {\n        \"text\": \"#FF000000\",\n        \"background\": \"#EFC9D8D0\",\n        \"close\": \"#EFC9D8D0\"\n    },\n    \"pattern\": {\n        \"text\": \"#FF000000\",\n        \"background\": \"#FFCED8D3\",\n        \"image-background\": \"#EFBAC8C1\",\n        \"button\": \"#FFCED8D3\",\n        \"textbox\": \"#FFCED8D3\",\n        \"close\": \"#FFCED8D3\"\n    },\n    \"console\": {\n        \"text\": \"#FF000000\",\n        \"background\": \"#FFCED8D3\",\n        \"console-background\": \"#FFBEC5BE\",\n        \"button\": \"#FFCED8D3\",\n        \"close\": \"#FFCED8D3\"\n    },\n    \"preview\": {\n        \"text\": \"#FF000000\",\n        \"background\": \"#ffffff\"\n    }\n}\n");
                 }
+            }
+            if (!File.Exists(cpath + "\\themes\\" + thm[0] + ".drawtheme"))
+            {
+                File.WriteAllText(cpath + "\\themes\\theme.txt", "dark");
+                thm = File.ReadAllLines(cpath + "\\themes\\theme.txt");
+            }
+            string jsonFile = cpath + "\\themes\\" + thm[0] + ".drawtheme";
+            using (StreamReader file = File.OpenText(jsonFile))
+            using (JsonTextReader reader = new JsonTextReader(file))
+            {
+                JObject json = (JObject)JToken.ReadFrom(reader);
+                BrushConverter bc = new BrushConverter();
+                if (json["main"]["light-icons"].ToString() == "true")
+                {
+                    Icon.Source = new BitmapImage(new Uri("/Assets/Icon_Light.ico", UriKind.Relative));
+                    icImage.Source = new BitmapImage(new Uri("/Assets/InfoIcon_Light.png", UriKind.Relative));
+                    rfImage.Source = new BitmapImage(new Uri("/Assets/RefreshIcon_Light.png", UriKind.Relative));
+                }
+                else
+                {
+                    Icon.Source = new BitmapImage(new Uri("/Assets/Icon.ico", UriKind.Relative));
+                    icImage.Source = new BitmapImage(new Uri("/Assets/InfoIcon.png", UriKind.Relative));
+                    rfImage.Source = new BitmapImage(new Uri("/Assets/RefreshIcon.png", UriKind.Relative));
+                }
+                //This part changes the highlight, it does not work.
+                //moColor.Value = (System.Windows.Media.Brush)bc.ConvertFrom(json["hover-colour"].ToString());
+                //ipColor.Value = (System.Windows.Media.Brush)bc.ConvertFrom(json["hover-colour"].ToString());
+                Title.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["text"].ToString());
+                BKG.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["background"].ToString());
+                BK1.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["background-1"].ToString());
+                BK2.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["background-2"].ToString());
+                BK3.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["background-2"].ToString());
+                customButton.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["text"].ToString());
+                label5.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["text"].ToString());
+                pathList.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["text"].ToString());
+                setDirectoryButton.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["text"].ToString());
+                Configs.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["text"].ToString());
+                SaveSettings.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["text"].ToString());
+                LoadSettings.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["text"].ToString());
+                SettingsButton.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["text"].ToString());
+                Close.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["text"].ToString());
+                Minimize.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["text"].ToString());
+                heightText.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["text"].ToString());
+                widthText.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["text"].ToString());
+                scale1.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["text"].ToString());
+                ScaleInput.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["text"].ToString());
+                startButton.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["text"].ToString());
+                processButton.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["text"].ToString());
+                uploadButton.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["text"].ToString());
+                clearButton.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["text"].ToString());
+                BlackThresholdLabel.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["text"].ToString());
+                IntervalLabel.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["text"].ToString());
+                ClickDelayLabel.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["text"].ToString());
+                AlphaThresholdLabel.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["text"].ToString());
+                transThreshNumeric.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["text"].ToString());
+                blackThreshNumeric.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["text"].ToString());
+                intervalInput.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["text"].ToString());
+                clickdelayInput.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["text"].ToString());
+                bkgPIC.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["image-background"].ToString());
+                pathList.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["pattern-listbox"].ToString());
+                Configs.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["config-listbox"].ToString());
+                SaveSettings.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["saveconfig-button"].ToString());
+                LoadSettings.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["loadconfig-button"].ToString());
+                InfoButton.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["settings-info-buttons"].ToString());
+                SettingsButton.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["settings-info-buttons"].ToString());
+                customButton.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["pattern-button"].ToString());
+                RefreshDirectory.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["directory-buttons"].ToString());
+                setDirectoryButton.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["directory-buttons"].ToString());
+                transThreshNumeric.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["textbox-backgrounds"].ToString());
+                blackThreshNumeric.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["textbox-backgrounds"].ToString());
+                clickdelayInput.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["textbox-backgrounds"].ToString());
+                intervalInput.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["textbox-backgrounds"].ToString());
+                uploadButton.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["upload-buttons"].ToString());
+                clearButton.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["clear-buttons"].ToString());
+                ScaleInput.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["scale-textbox"].ToString());
+                heightInput.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["height-textbox"].ToString());
+                widthInput.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["width-textbox"].ToString());
+                ScaleSlider.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["process-button"].ToString());
+                processButton.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["process-button"].ToString());
+                startButton.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["start-button"].ToString());
+            
             }
         }
         private void window_sizechanged(object sender, SizeChangedEventArgs e)

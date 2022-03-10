@@ -11,10 +11,10 @@
         WindowStyle="None"
         Topmost="True">
     <Window.Background>
-        <SolidColorBrush Opacity="0.5" Color="#000000"></SolidColorBrush>
+        <SolidColorBrush x:Name="Grid1" Opacity="0.5" Color="#000000"></SolidColorBrush>
     </Window.Background>
     <Grid>
         <Image x:Name="pictureBox1" Margin="0,22,0,0" Source="/Assets/InfoIcon.png" Opacity="0.5"/>
-        <Label Content="Shift to Draw, ALT to stop, CTRL to lock last pos" HorizontalAlignment="Center" VerticalAlignment="Top" Height="21" Width="300" Foreground="White" Padding="5,0,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label x:Name="TextLabel" Content="Shift to Draw, ALT to stop, CTRL to lock last pos" HorizontalAlignment="Center" VerticalAlignment="Top" Height="21" Width="300" Foreground="White" Padding="5,0,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
     </Grid>
 </Window>

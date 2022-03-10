@@ -43,50 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AutoDrawer.exe" size="510936">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AutoDrawer.exe" size="860632">
       <assemblyIdentity name="AutoDrawer" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>lHU1KT9BwskoXpn7nS8fkWZWNWp3Ohexgp7dAf8qPDU=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Gma.System.MouseKeyHook.dll" size="57344">
-      <assemblyIdentity name="Gma.System.MouseKeyHook" version="5.6.130.0" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>pnpCQBNUTIJwwSYz4uHih81c8LPy6B6NggSzegPaWe8=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.VisualStudio.DebuggerVisualizers.dll" size="32136">
-      <assemblyIdentity name="Microsoft.VisualStudio.DebuggerVisualizers" version="16.0.0.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>oG2b1JNCoQh47BqbP4O2ELoRj+Dz/9vDVDcg9C8NMtE=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SimWinMouse.dll" size="6656">
-      <assemblyIdentity name="SimWinMouse" version="1.0.2.0" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>p3E1wTb5QI+YkBX4IE/L7QdXovgFI2XotAKa5yKA97U=</dsig:DigestValue>
+        <dsig:DigestValue>iL0SzTnx9q3nCfV2MmOcWfaxRuck2LVDtlb5Pq+uUxg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -99,13 +63,13 @@
       <dsig:DigestValue>CztuMy3zihOHMvr/GxScTa2vlJq2uL5hqVNnEbhESNE=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="AutoDrawer.exe.config" size="186">
+  <file name="AutoDrawer.exe.config" size="567">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>1NgAxCSw4ibTXzWVy7D6Rw60Qih4Dn37KvGhG5Ora/s=</dsig:DigestValue>
+      <dsig:DigestValue>Xfq4XdjZx4B2FBMaoUNaNBnykbNM5KtGRIDd6UvYuaA=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>
