@@ -22,6 +22,8 @@ using System.Drawing.Drawing2D;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using System.Windows.Controls.Primitives;
+using System.Text.Json;
+
 
 namespace AutoDrawer
 {
