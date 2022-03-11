@@ -259,6 +259,12 @@ namespace AutoDrawer
         {
             refTheme();
             (System.Windows.Application.Current.MainWindow as MainWindow).refreshTheme();
+            try
+            {
+
+            }
+            catch { }
+
         }
 
         private void OpenThemesEX(object sender, RoutedEventArgs e)
