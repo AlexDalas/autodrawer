@@ -1163,7 +1163,7 @@ namespace AutoDrawer
         {
             string cpath = Environment.ExpandEnvironmentVariables("%AppData%\\AutoDraw");
             //0 for dark, 1 for light
-            string isLightMode = Registry.GetValue(@"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize", "AppsUseLightTheme", null).ToString();
+            string isLightMode = Registry.GetValue(@"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize", "SystemUsesLightTheme", null).ToString();
             try
             {
                 Directory.CreateDirectory(cpath + "\\themes");
