@@ -32,6 +32,10 @@ namespace AutoDrawer
         }
         public ConsoleWindow()
         {
+            var windowcount = 0;
+            foreach (var window in System.Windows.Application.Current.Windows)
+                if (window.ToString() == "AutoDrawer.ConsoleWindow") windowcount++;
+            if (windowcount > 1) this.Close();
             InitializeComponent();
             ListConsole.Text = LogText;
             LogHandler.LogSent += UpdateLogs;

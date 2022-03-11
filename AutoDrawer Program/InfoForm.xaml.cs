@@ -24,6 +24,10 @@ namespace AutoDrawer
     {
         public Window2()
         {
+            var windowcount = 0;
+            foreach (var window in System.Windows.Application.Current.Windows)
+                if (window.ToString() == "AutoDrawer.Window2") windowcount++;
+            if (windowcount > 1) this.Close();
             InitializeComponent();
             refTheme();
         }

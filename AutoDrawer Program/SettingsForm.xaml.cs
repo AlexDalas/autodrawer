@@ -31,7 +31,11 @@ namespace AutoDrawer
         public static int yOffset = 0;
 
         public SettingsWindow()
-        { 
+        {
+            var windowcount = 0;
+            foreach (var window in System.Windows.Application.Current.Windows)
+                if (window.ToString() == "AutoDrawer.SettingsWindow") windowcount++;
+            if (windowcount > 1) this.Close();
             InitializeComponent();
             refTheme();
             additemstolistbox();
@@ -217,9 +221,11 @@ namespace AutoDrawer
 
         private void Button_Click_7(object sender, RoutedEventArgs e)
         {
-            ConsoleWindow cw = new ConsoleWindow();
-            cw.Show();
-            this.Close();
+            try { 
+                ConsoleWindow cw = new ConsoleWindow();
+                cw.Show();
+                this.Close();
+            }catch{}
         }
 
         private void OpenLogs_Click(object sender, RoutedEventArgs e)

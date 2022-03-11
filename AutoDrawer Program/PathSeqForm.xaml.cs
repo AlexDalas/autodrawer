@@ -29,6 +29,10 @@ namespace AutoDrawer
 
         public PathSeqForm()
         {
+            var windowcount = 0;
+            foreach (var window in System.Windows.Application.Current.Windows)
+                if (window.ToString() == "AutoDrawer.PathSeqForm") windowcount++;
+            if (windowcount > 1) this.Close();
             InitializeComponent();
             refTheme();
             if (!MainWindow.pathIntAllowed)

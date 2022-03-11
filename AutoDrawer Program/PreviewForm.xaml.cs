@@ -19,9 +19,7 @@ namespace AutoDrawer
 
 
         public PreviewWindow()
-        {
-            //This errors out for some reason, need fix
-            //this one errors because the class names are not the same. When they are the same, it all breaks
+        { 
             InitializeComponent();
             this.Topmost = true;
             CenterPictureBox(pictureBox1, imagePreview);

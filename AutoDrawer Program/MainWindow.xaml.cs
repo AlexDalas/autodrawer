@@ -1099,20 +1099,29 @@ namespace AutoDrawer
         }
         private void InfoButton_Click_1(object sender, RoutedEventArgs e)
         {
-            Window2 m = new Window2();
-            m.Show();
+            try { 
+                Window2 m = new Window2();
+                m.Show();
+            }
+            catch { }
         }
 
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
             SettingsWindow m = new SettingsWindow();
-            m.Show();
+            try
+            {
+                m.Show();
+            }
+            catch { }
         }
 
         private void CustomButton_Click(object sender, RoutedEventArgs e)
         {
-            PathSeqForm m = new PathSeqForm();
-            m.Show();
+            try { 
+                PathSeqForm m = new PathSeqForm();
+                m.Show();
+            }catch{}
         }
 
         private void RecDrop(object sender, System.Windows.DragEventArgs e)
