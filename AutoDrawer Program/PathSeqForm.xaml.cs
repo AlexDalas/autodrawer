@@ -43,7 +43,7 @@ namespace AutoDrawer
 
         public void refTheme()
         {
-            var cpath = Environment.ExpandEnvironmentVariables(@"%AppData%\AutoDraw\");
+            string cpath = Environment.ExpandEnvironmentVariables("%AppData%\\AutoDraw");
             var thm = File.ReadAllLines(cpath + "\\themes\\theme.txt");
             string jsonFile = cpath + "\\themes\\" + thm[0] + ".drawtheme";
             using (StreamReader file = File.OpenText(jsonFile))

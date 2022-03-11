@@ -31,9 +31,19 @@ namespace AutoDrawer
         public static int yOffset = 0;
 
         public SettingsWindow()
-        {
+        { 
             InitializeComponent();
             refTheme();
+            additemstolistbox();
+            string cpath = Environment.ExpandEnvironmentVariables("%AppData%\\AutoDraw");
+            var thm = File.ReadAllLines(cpath + "\\themes\\theme.txt");
+            foreach (object item in Combox.Items)
+            {
+                if (item.ToString() == thm[0])
+                {
+                    Combox.SelectedItem = (item);
+                }
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -42,16 +52,28 @@ namespace AutoDrawer
         }
         public void refTheme()
         {
-            var cpath = Environment.ExpandEnvironmentVariables(@"%AppData%\AutoDraw\");
+            BrushConverter bc = new BrushConverter();
+            string cpath = Environment.ExpandEnvironmentVariables("%AppData%\\AutoDraw");
             var thm = File.ReadAllLines(cpath + "\\themes\\theme.txt");
             string jsonFile = cpath + "\\themes\\" + thm[0] + ".drawtheme";
             using (StreamReader file = File.OpenText(jsonFile))
             using (JsonTextReader reader = new JsonTextReader(file))
             {
                 JObject json = (JObject)JToken.ReadFrom(reader);
-                BrushConverter bc = new BrushConverter();
+                if (json["light-icons"].ToString() == "true")
+                {
+                    img.Source = new BitmapImage(new Uri("/Assets/RefreshIcon_Light.png", UriKind.Relative));
+                }
+                else
+                {
+                    img.Source = new BitmapImage(new Uri("/Assets/RefreshIcon.png", UriKind.Relative));
+                }
                 BKG.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["settings"]["background"].ToString());
+                Title.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["text"].ToString());
                 SendLogs.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["settings"]["text"].ToString());
+                OpenThemes.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["settings"]["text"].ToString());
+                Themetext.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["settings"]["text"].ToString());
+                offsetText1.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["settings"]["text"].ToString());
                 OpenConsole.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["settings"]["text"].ToString());
                 ManageTheme.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["settings"]["text"].ToString());
                 OpenLogs.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["settings"]["text"].ToString());
@@ -63,7 +85,6 @@ namespace AutoDrawer
                 yNumeric.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["settings"]["text"].ToString());
                 xT.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["settings"]["text"].ToString());
                 yT.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["settings"]["text"].ToString());
-                offsetText.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["settings"]["text"].ToString());
                 cursorBox.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["settings"]["text"].ToString());
                 LogsText.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["settings"]["text"].ToString());
                 CloseB.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["settings"]["text"].ToString());
@@ -201,11 +222,55 @@ namespace AutoDrawer
             this.Close();
         }
 
-        private void Button_Click_6(object sender, RoutedEventArgs e)
+        private void OpenLogs_Click(object sender, RoutedEventArgs e)
         {
             var fpath = @"%AppData%\AutoDraw\logs\";
             fpath = Environment.ExpandEnvironmentVariables(fpath);
             Process.Start("explorer.exe", fpath);
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var cpath = @"%AppData%\AutoDraw\themes\";
+            cpath = Environment.ExpandEnvironmentVariables(cpath);
+            string selectedText = (string)Combox.SelectedItem;
+            Console.WriteLine(selectedText);
+            File.WriteAllText(cpath + "\\theme.txt", selectedText);
+            RefreshAllThemes();
+        }
+        void additemstolistbox()
+        {
+            string fpath = Environment.ExpandEnvironmentVariables("%AppData%\\AutoDraw\\themes");
+            string[] allfiles = Directory.GetFiles(fpath, "*.*", SearchOption.AllDirectories);
+            foreach (var file in allfiles)
+            {
+                if (file.EndsWith(".drawtheme"))
+                if (file.EndsWith(".drawtheme"))
+                    Combox.Items.Add(file.Replace(fpath, "").Replace(".drawtheme", "").Replace("\\", ""));
+            }
+        }
+        void RefreshAllThemes()
+        {
+            refTheme();
+            (System.Windows.Application.Current.MainWindow as MainWindow).refreshTheme();
+        }
+
+        private void OpenThemesEX(object sender, RoutedEventArgs e)
+        {
+            var fpath = @"%AppData%\AutoDraw\themes\";
+            fpath = Environment.ExpandEnvironmentVariables(fpath);
+            Process.Start("explorer.exe", fpath);
+        }
+
+        private void OpenThemes_Copy_Click(object sender, RoutedEventArgs e)
+        {
+            RefreshAllThemes();
+        }
+
+        private void ManageTheme_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            Process.Start("https://media.discordapp.net/attachments/849108988753870848/951468516719087656/giphy_-_2020-08-11T154625.780.gif");
         }
     }
 }
