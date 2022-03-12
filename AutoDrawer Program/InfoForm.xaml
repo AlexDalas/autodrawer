@@ -73,7 +73,7 @@
         <Label x:Name="t2" Content="Modified by Siydge to work on Roblox Games." HorizontalAlignment="Center" Margin="0,36,0,0" VerticalAlignment="Top" Height="27" Width="280" Foreground="White" Background="{x:Null}"/>
         <Label x:Name="t3" Content="Icons provided by icon-icons.com" HorizontalAlignment="Center" Margin="0,87,0,0" VerticalAlignment="Top" Height="25" Width="280" Foreground="White" Background="{x:Null}"/>
         <Label x:Name="t4" Content="This autodraw script is under the MIT Lisence." HorizontalAlignment="Center" VerticalAlignment="Center" Height="24" Width="280" Foreground="White" Background="{x:Null}"/>
-        <Button x:Name="close" WindowChrome.IsHitTestVisibleInChrome="True" Content="Close" HorizontalAlignment="Center" Margin="0,116,0,0" VerticalAlignment="Top" Height="25" Width="280" Foreground="White" Background="{x:Null}" Click="Button_Click"/>
+        <Button x:Name="close" WindowChrome.IsHitTestVisibleInChrome="True" Content="Close" HorizontalAlignment="Center" Margin="0,116,0,0" VerticalAlignment="Top" Height="25" Width="280" Foreground="White" Background="#FF131313" Click="Button_Click"/>
 
     </Grid>
 </Window>

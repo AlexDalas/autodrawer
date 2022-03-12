@@ -18,6 +18,7 @@ using System.Collections.Specialized;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Microsoft.Win32;
 
 namespace AutoDrawer
 {
@@ -60,6 +61,20 @@ namespace AutoDrawer
             string cpath = Environment.ExpandEnvironmentVariables("%AppData%\\AutoDraw");
             var thm = File.ReadAllLines(cpath + "\\themes\\theme.txt");
             string jsonFile = cpath + "\\themes\\" + thm[0] + ".drawtheme";
+            if (!File.Exists(jsonFile))
+            {
+                string isLightMode = Registry.GetValue(@"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize", "SystemUsesLightTheme", null).ToString();
+                using (StreamWriter sw = File.CreateText(cpath + "\\themes\\theme.txt"))
+                {
+                    if (isLightMode == "1")
+                        sw.WriteLine("light");
+                    else
+                        sw.WriteLine("dark");
+                }
+                cpath = Environment.ExpandEnvironmentVariables("%AppData%\\AutoDraw");
+                thm = File.ReadAllLines(cpath + "\\themes\\theme.txt");
+                jsonFile = cpath + "\\themes\\" + thm[0] + ".drawtheme";
+            }
             using (StreamReader file = File.OpenText(jsonFile))
             using (JsonTextReader reader = new JsonTextReader(file))
             {
@@ -102,6 +117,7 @@ namespace AutoDrawer
                 SendLogs.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["settings"]["buttons"].ToString());
                 LogsText.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["settings"]["textbox"].ToString());
                 cursorBox.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["settings"]["checkbox-box"].ToString());
+                Scc.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["settings"]["checkbox-box"].ToString());
                 xNumeric.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["settings"]["textbox"].ToString());
                 yNumeric.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["settings"]["textbox"].ToString());
             }
@@ -234,18 +250,23 @@ namespace AutoDrawer
             fpath = Environment.ExpandEnvironmentVariables(fpath);
             Process.Start("explorer.exe", fpath);
         }
-
+        bool changeSelection = true;
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var cpath = @"%AppData%\AutoDraw\themes\";
-            cpath = Environment.ExpandEnvironmentVariables(cpath);
-            string selectedText = (string)Combox.SelectedItem;
-            Console.WriteLine(selectedText);
-            File.WriteAllText(cpath + "\\theme.txt", selectedText);
-            RefreshAllThemes();
+            if (changeSelection)
+            {
+                var cpath = @"%AppData%\AutoDraw\themes\";
+                cpath = Environment.ExpandEnvironmentVariables(cpath);
+                string selectedText = (string)Combox.SelectedItem;
+                LogHandler.LogFile("Theme set to " + selectedText);
+                File.WriteAllText(cpath + "\\theme.txt", selectedText);
+                RefreshAllThemes();
+            }
         }
         void additemstolistbox()
         {
+            changeSelection = false;
+            Combox.Items.Clear();
             string fpath = Environment.ExpandEnvironmentVariables("%AppData%\\AutoDraw\\themes");
             string[] allfiles = Directory.GetFiles(fpath, "*.*", SearchOption.AllDirectories);
             foreach (var file in allfiles)
@@ -254,19 +275,33 @@ namespace AutoDrawer
                 if (file.EndsWith(".drawtheme"))
                     Combox.Items.Add(file.Replace(fpath, "").Replace(".drawtheme", "").Replace("\\", ""));
             }
+            string cpath = Environment.ExpandEnvironmentVariables("%AppData%\\AutoDraw");
+            var thm = File.ReadAllLines(cpath + "\\themes\\theme.txt");
+            foreach (object item in Combox.Items)
+            {
+                if (item.ToString() == thm[0])
+                {
+                    Combox.SelectedItem = (item);
+                }
+            }
+            changeSelection = true;
         }
         void RefreshAllThemes()
         {
             refTheme();
-            (System.Windows.Application.Current.MainWindow as MainWindow).refreshTheme();
             try
             {
+                (System.Windows.Application.Current.MainWindow as MainWindow).refreshTheme();
 
             }
             catch { }
 
         }
-
+        void RefreshThemeListBox()
+        {
+            additemstolistbox();
+            RefreshAllThemes();
+        }
         private void OpenThemesEX(object sender, RoutedEventArgs e)
         {
             var fpath = @"%AppData%\AutoDraw\themes\";
@@ -277,6 +312,7 @@ namespace AutoDrawer
         private void OpenThemes_Copy_Click(object sender, RoutedEventArgs e)
         {
             RefreshAllThemes();
+            RefreshThemeListBox();
         }
 
         private void ManageTheme_Click(object sender, RoutedEventArgs e)
