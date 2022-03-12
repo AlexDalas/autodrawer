@@ -292,7 +292,6 @@ namespace AutoDrawer
             try
             {
                 (System.Windows.Application.Current.MainWindow as MainWindow).refreshTheme();
-
             }
             catch { }
 
