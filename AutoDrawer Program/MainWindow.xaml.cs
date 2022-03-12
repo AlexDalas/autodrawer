@@ -1241,7 +1241,6 @@ namespace AutoDrawer
                         rfImage.Source = new BitmapImage(new Uri("/Assets/RefreshIcon.png", UriKind.Relative));
                     }
                     //This part changes the highlight, it does not work.
-                    //App.Current.Resources["styleColor"] = new SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(json["hover-colour"].ToString()));
                     BKG.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["background"].ToString());
                     BK1.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["background-1"].ToString());
                     BK2.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["main"]["background-2"].ToString());
