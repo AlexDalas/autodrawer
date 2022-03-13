@@ -55,7 +55,7 @@ namespace AutoDrawer
                 BrushConverter bc = new BrushConverter();
                 label.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["console"]["text"].ToString());
                 ListConsole.Foreground = (System.Windows.Media.Brush)bc.ConvertFrom(json["console"]["text"].ToString());
-                close.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["console"]["close"].ToString());
+                //close.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["console"]["close"].ToString());
                 BKG.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["console"]["background"].ToString());
                 BKG2.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["console"]["console-background"].ToString());
                 save.Background = (System.Windows.Media.Brush)bc.ConvertFrom(json["console"]["button"].ToString());
