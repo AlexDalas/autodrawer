@@ -1130,11 +1130,6 @@ namespace AutoDrawer
             string[] files = (string[])e.Data.GetData(System.Windows.DataFormats.FileDrop);
             try
             {
-                UploadPath(files[0]);
-                LogHandler.LogFile("Drag/Drop (Image).");
-            }
-            catch
-            {
                 try
                 {
                     if (files[0].EndsWith(".drawcfg") || files[0].EndsWith(".autodrawconfig") || files[0].EndsWith(".autodrawconfi"))
@@ -1151,12 +1146,20 @@ namespace AutoDrawer
                     {
                         string cpath = Environment.ExpandEnvironmentVariables("%AppData%\\AutoDraw");
                         string lines = File.ReadAllText(files[0]);
-                        File.WriteAllText(cpath + "\\themes\\" + files[0].Replace(cpath+"\\themes", "").Replace("\\", "").Replace("/", "").Replace(".drawtheme", "") + ".drawtheme", lines);
-                        Console.WriteLine(files[0]);
+                        LogHandler.LogFile(cpath + "\\themes\\" + System.IO.Path.GetFileName(files[0]) + ", " + lines);
+                        File.WriteAllText(cpath + "\\themes\\" + System.IO.Path.GetFileName(files[0]), lines);
+                        File.WriteAllText(cpath + "\\themes\\theme.txt", System.IO.Path.GetFileNameWithoutExtension(files[0]));
+                        refreshTheme();
+                        //To do: Refresh theme for every window open
                     }
                     else throw new ApplicationException("Invalid file!"); LogHandler.LogFile("Dragged invalid file " + files[0]);
                 }
                 catch { }
+            }
+            catch
+            {
+                UploadPath(files[0]);
+                LogHandler.LogFile("Drag/Drop (Image).");
             }
         }
         private void RecOver(object sender, System.Windows.DragEventArgs e)

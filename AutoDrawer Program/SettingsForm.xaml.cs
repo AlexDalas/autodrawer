@@ -237,11 +237,9 @@ namespace AutoDrawer
 
         private void Button_Click_7(object sender, RoutedEventArgs e)
         {
-            try { 
-                ConsoleWindow cw = new ConsoleWindow();
-                cw.Show();
-                this.Close();
-            }catch{}
+            ConsoleWindow cw = new ConsoleWindow();
+            cw.Show();
+            this.Close();
         }
 
         private void OpenLogs_Click(object sender, RoutedEventArgs e)
@@ -292,6 +290,7 @@ namespace AutoDrawer
             try
             {
                 (System.Windows.Application.Current.MainWindow as MainWindow).refreshTheme();
+                //To do: Refresh theme for every window open
             }
             catch { }
 
