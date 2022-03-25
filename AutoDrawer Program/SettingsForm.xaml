@@ -95,7 +95,7 @@
         <Button x:Name="OpenThemes" WindowChrome.IsHitTestVisibleInChrome="True" Content="Open Themes" HorizontalAlignment="Left" Margin="134,142,0,0" VerticalAlignment="Top" Height="26" Width="119" Foreground="White" Background="{x:Null}" Grid.Column="1" Click="OpenThemesEX"/>
         <Label x:Name="Title" Content="Settings" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Width="400" Foreground="White" FontSize="36" HorizontalContentAlignment="Center" Grid.ColumnSpan="2" Height="65"/>
         <Button x:Name="OpenThemes_Copy" WindowChrome.IsHitTestVisibleInChrome="True" HorizontalAlignment="Left" Margin="252,142,0,0" VerticalAlignment="Top" Height="26" Width="26" Foreground="White" Background="{x:Null}" Grid.Column="1" RenderTransformOrigin="30861.333,5.074" Click="OpenThemes_Copy_Click">
-            <Image x:Name="img" Height="19" Width="16" Source="/Assets/RefreshIcon_Light.png"/>
+            <Image x:Name="img" Height="19" Width="16" Source="/Assets/RefreshIcon_Light.png" RenderTransformOrigin="0.5,0.579"/>
         </Button>
     </Grid>
 </Window>

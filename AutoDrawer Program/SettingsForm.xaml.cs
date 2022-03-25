@@ -270,8 +270,8 @@ namespace AutoDrawer
             foreach (var file in allfiles)
             {
                 if (file.EndsWith(".drawtheme"))
-                if (file.EndsWith(".drawtheme"))
-                    Combox.Items.Add(file.Replace(fpath, "").Replace(".drawtheme", "").Replace("\\", ""));
+                    if (file.EndsWith(".drawtheme"))
+                        Combox.Items.Add(file.Replace(fpath, "").Replace(".drawtheme", "").Replace("\\", ""));
             }
             string cpath = Environment.ExpandEnvironmentVariables("%AppData%\\AutoDraw");
             var thm = File.ReadAllLines(cpath + "\\themes\\theme.txt");
@@ -284,16 +284,10 @@ namespace AutoDrawer
             }
             changeSelection = true;
         }
-        void RefreshAllThemes()
+        public void RefreshAllThemes()
         {
             refTheme();
-            try
-            {
-                (System.Windows.Application.Current.MainWindow as MainWindow).refreshTheme();
-                //To do: Refresh theme for every window open
-            }
-            catch { }
-
+            Utils.UpdateUI();
         }
         void RefreshThemeListBox()
         {
