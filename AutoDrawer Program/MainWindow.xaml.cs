@@ -1172,25 +1172,25 @@ namespace AutoDrawer
         }
         void createTheme(string th)
         {
-            string cpath = Environment.ExpandEnvironmentVariables("%AppData%\\AutoDraw");
-            using (StreamWriter sw = File.CreateText(cpath + "\\themes\\theme.txt"))
+            string cpath = Environment.ExpandEnvironmentVariables(@"%AppData%\AutoDraw");
+            using (StreamWriter sw = File.CreateText(cpath + @"\themes\theme.txt"))
             {
                 sw.WriteLine(th);
             }
         }
         public void refreshTheme()
         {
-            string cpath = Environment.ExpandEnvironmentVariables("%AppData%\\AutoDraw");
+            string cpath = Environment.ExpandEnvironmentVariables(@"%AppData%\AutoDraw");
             //0 for dark, 1 for light
             string isLightMode = Registry.GetValue(@"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize", "SystemUsesLightTheme", null).ToString();
             try
             {
-                Directory.CreateDirectory(cpath + "\\themes");
+                Directory.CreateDirectory(cpath + @"\themes");
             }
             catch { }
             try
             {
-                var a = File.ReadLines(cpath + "\\themes\\theme.txt").First();
+                var a = File.ReadLines(cpath + @"\themes\theme.txt").First();
             }
             catch
             {
@@ -1200,30 +1200,30 @@ namespace AutoDrawer
                     createTheme("dark");
 
             }
-            var thm = File.ReadLines(cpath + "\\themes\\theme.txt").First();
-            if (!File.Exists(cpath + "\\themes\\dark.drawtheme"))
+            var thm = File.ReadLines(cpath + @"\themes\theme.txt").First();
+            if (!File.Exists(cpath + @"\themes\dark.drawtheme"))
             {
-                using (StreamWriter sw = File.CreateText(cpath + "\\themes\\dark.drawtheme"))
+                using (StreamWriter sw = File.CreateText(cpath + @"\themes\dark.drawtheme"))
                 {
-                    sw.WriteLine("{\n    \"ver\": 1.4,\n    \"light-icons\": \"true\",\n    \"main\": {\n        \"text\": \"#FFFFFFFF\",\n        \"background\": \"#FF2C302E\",\n        \"background-1\": \"#FF333735\",\n        \"background-2\": \"#FF2C302E\",\n        \"image-background\": \"#FF3A3D3B\",\n        \"pattern-listbox\": \"#FF484A49\",\n        \"config-listbox\": \"#FF353735\",\n        \"loadconfig-button\": \"#FF3A3D3B\",\n        \"saveconfig-button\": \"#FF3A3D3B\",\n        \"settings-info-buttons\": \"#FF3A3D3B\",\n        \"pattern-button\": \"#FF3A3D3B\",\n        \"directory-buttons\": \"#FF3A3D3B\",\n        \"textbox-backgrounds\": \"#FF474A48\",\n        \"upload-buttons\": \"#FF3A3D3B\",\n        \"clear-buttons\": \"#FF3A3D3B\",\n        \"process-button\": \"#FF3A3D3B\",\n        \"start-button\": \"#FF3A3D3B\",\n        \"scalebar-background\": \"#00000000\",\n        \"scale-textbox\": \"#FF474A48\",\n        \"width-textbox\": \"#FF474A48\",\n        \"height-textbox\": \"#FF474A48\"\n    },\n    \"settings\": {\n        \"text\": \"#FFFFFFFF\",\n        \"background\": \"#FF2C302E\",\n        \"buttons\": \"#FF2C302E\",\n        \"textbox\": \"#FF2C302E\",\n        \"checkbox-box\": \"#FFFFFFFF\",\n        \"close\": \"#FF2C302E\"\n    },\n    \"info\": {\n        \"text\": \"#FFFFFFFF\",\n        \"background\": \"#FF2C302E\",\n        \"close\": \"#EF2C302E\"\n    },\n    \"pattern\": {\n        \"text\": \"#FFFFFFFF\",\n        \"background\": \"#FF2C302E\",\n        \"image-background\": \"#FF3C3C3C\",\n        \"button\": \"#FF2C302E\",\n        \"textbox\": \"#FF2C302E\",\n        \"close\": \"#FF2C302E\"\n    },\n    \"console\": {\n        \"text\": \"#FFFFFFFF\",\n        \"background\": \"#FF2C302E\",\n        \"console-background\": \"#FF333735\",\n        \"button\": \"#FF2C302E\",\n        \"close\": \"#FF2C302E\"\n    },\n    \"preview\": {\n        \"text\": \"#FFFFFFFF\",\n        \"background\": \"#000000\"\n    }\n}\n\n");
+                    sw.WriteLine("{\n    \"ver\": 1.4,\n    \"light-icons\": \"true\",\n    \"main\": {\n        \"text\": \"#FFFFFFFF\",\n        \"background\": \"#FF2C302E\",\n        \"background-1\": \"#FF333735\",\n        \"background-2\": \"#FF2C302E\",\n        \"image-background\": \"#FF3A3D3B\",\n        \"pattern-listbox\": \"#FF484A49\",\n        \"config-listbox\": \"#FF353735\",\n        \"loadconfig-button\": \"#FF3A3D3B\",\n        \"saveconfig-button\": \"#FF3A3D3B\",\n        \"settings-info-buttons\": \"#FF3A3D3B\",\n        \"pattern-button\": \"#FF3A3D3B\",\n        \"directory-buttons\": \"#FF3A3D3B\",\n        \"textbox-backgrounds\": \"#FF474A48\",\n        \"upload-buttons\": \"#FF3A3D3B\",\n        \"clear-buttons\": \"#FF3A3D3B\",\n        \"process-button\": \"#FF3A3D3B\",\n        \"start-button\": \"#FF3A3D3B\",\n        \"scalebar-background\": \"#00000000\",\n        \"scale-textbox\": \"#FF474A48\",\n        \"width-textbox\": \"#FF474A48\",\n        \"height-textbox\": \"#FF474A48\"\n    },\n    \"settings\": {\n        \"text\": \"#FFFFFFFF\",\n        \"background\": \"#FF2C302E\",\n        \"buttons\": \"#FF2C302E\",\n        \"textbox\": \"#FF2C302E\",\n        \"checkbox-box\": \"#FFFFFFFF\",\n        \"close\": \"#FF2C302E\"\n    },\n    \"info\": {\n        \"text\": \"#FFFFFFFF\",\n        \"background\": \"#FF2C302E\",\n        \"close\": \"#EF2C302E\"\n    },\n    \"pattern\": {\n        \"text\": \"#FFFFFFFF\",\n        \"background\": \"#FF2C302E\",\n        \"image-background\": \"#FF3C3C3C\",\n        \"button\": \"#FF2C302E\",\n        \"textbox\": \"#FF2C302E\",\n        \"close\": \"#FF2C302E\"\n    },\n    \"console\": {\n        \"text\": \"#FFFFFFFF\",\n        \"background\": \"#FF2C302E\",\n        \"console-background\": \"#FF333735\",\n        \"button\": \"#FF2C302E\",\n        \"close\": \"#FF2C302E\"\n    },\n    \"preview\": {\n        \"text\": \"#FFFFFFFF\",\n        \"background\": \"#000000\"\n    }\n}\n\n}");
                 }
             }
-            if (!File.Exists(cpath + "\\themes\\light.drawtheme"))
+            if (!File.Exists(cpath + @"\themes\light.drawtheme"))
             {
-                using (StreamWriter sw = File.CreateText(cpath + "\\themes\\light.drawtheme"))
+                using (StreamWriter sw = File.CreateText(cpath + @"\themes\light.drawtheme"))
                 {
-                    sw.WriteLine("{\n    \"ver\": 1.4,\n    \"light-icons\": \"false\",\n    \"main\": {\n        \"text\": \"#FF000000\",\n        \"background\": \"#E3E4DB\",\n        \"background-1\": \"#D8D9D4\",\n        \"background-2\": \"#CDCDCD\",\n        \"image-background\": \"#D8D9D4\",\n        \"pattern-listbox\": \"#D8D9D4\",\n        \"config-listbox\": \"#D8D9D4\",\n        \"loadconfig-button\": \"#D8D9D4\",\n        \"saveconfig-button\": \"#D8D9D4\",\n        \"settings-info-buttons\": \"#D8D9D4\",\n        \"pattern-button\": \"#D8D9D4\",\n        \"directory-buttons\": \"#D8D9D4\",\n        \"textbox-backgrounds\": \"#D8D9D4\",\n        \"upload-buttons\": \"#D8D9D4\",\n        \"clear-buttons\": \"#D8D9D4\",\n        \"process-button\": \"#D8D9D4\",\n        \"start-button\": \"#D8D9D4\",\n        \"scalebar-background\": \"#ffffffff\",\n        \"scale-textbox\": \"#FFAEBDB3\",\n        \"width-textbox\": \"#FFAEBDB3\",\n        \"height-textbox\": \"#FFAEBDB3\"\n    },\n    \"settings\": {\n        \"text\": \"#FF000000\",\n        \"background\": \"#FFCED8D3\",\n        \"buttons\": \"#FFCED8D3\",\n        \"textbox\": \"#FFCED8D3\",\n        \"checkbox-box\": \"#ffffffff\",\n        \"close\": \"#FFCED8D3\"\n    },\n    \"info\": {\n        \"text\": \"#FF000000\",\n        \"background\": \"#EFC9D8D0\",\n        \"close\": \"#EFC9D8D0\"\n    },\n    \"pattern\": {\n        \"text\": \"#FF000000\",\n        \"background\": \"#FFCED8D3\",\n        \"image-background\": \"#EFBAC8C1\",\n        \"button\": \"#FFCED8D3\",\n        \"textbox\": \"#FFCED8D3\",\n        \"close\": \"#FFCED8D3\"\n    },\n    \"console\": {\n        \"text\": \"#FF000000\",\n        \"background\": \"#FFCED8D3\",\n        \"console-background\": \"#FFBEC5BE\",\n        \"button\": \"#FFCED8D3\",\n        \"close\": \"#FFCED8D3\"\n    },\n    \"preview\": {\n        \"text\": \"#FF000000\",\n        \"background\": \"#ffffff\"\n    }\n}\n\n\n");
+                    sw.WriteLine("{\n    \"ver\": 1.4,\n    \"light-icons\": \"false\",\n    \"main\": {\n        \"text\": \"#FF000000\",\n        \"background\": \"#E3E4DB\",\n        \"background-1\": \"#D8D9D4\",\n        \"background-2\": \"#CDCDCD\",\n        \"image-background\": \"#D8D9D4\",\n        \"pattern-listbox\": \"#D8D9D4\",\n        \"config-listbox\": \"#D8D9D4\",\n        \"loadconfig-button\": \"#D8D9D4\",\n        \"saveconfig-button\": \"#D8D9D4\",\n        \"settings-info-buttons\": \"#D8D9D4\",\n        \"pattern-button\": \"#D8D9D4\",\n        \"directory-buttons\": \"#D8D9D4\",\n        \"textbox-backgrounds\": \"#D8D9D4\",\n        \"upload-buttons\": \"#D8D9D4\",\n        \"clear-buttons\": \"#D8D9D4\",\n        \"process-button\": \"#D8D9D4\",\n        \"start-button\": \"#D8D9D4\",\n        \"scalebar-background\": \"#ffffffff\",\n        \"scale-textbox\": \"#FFAEBDB3\",\n        \"width-textbox\": \"#FFAEBDB3\",\n        \"height-textbox\": \"#FFAEBDB3\"\n    },\n    \"settings\": {\n        \"text\": \"#FF000000\",\n        \"background\": \"#FFCED8D3\",\n        \"buttons\": \"#FFCED8D3\",\n        \"textbox\": \"#FFCED8D3\",\n        \"checkbox-box\": \"#ffffffff\",\n        \"close\": \"#FFCED8D3\"\n    },\n    \"info\": {\n        \"text\": \"#FF000000\",\n        \"background\": \"#EFC9D8D0\",\n        \"close\": \"#EFC9D8D0\"\n    },\n    \"pattern\": {\n        \"text\": \"#FF000000\",\n        \"background\": \"#FFCED8D3\",\n        \"image-background\": \"#EFBAC8C1\",\n        \"button\": \"#FFCED8D3\",\n        \"textbox\": \"#FFCED8D3\",\n        \"close\": \"#FFCED8D3\"\n    },\n    \"console\": {\n        \"text\": \"#FF000000\",\n        \"background\": \"#FFCED8D3\",\n        \"console-background\": \"#FFBEC5BE\",\n        \"button\": \"#FFCED8D3\",\n        \"close\": \"#FFCED8D3\"\n    },\n    \"preview\": {\n        \"text\": \"#FF000000\",\n        \"background\": \"#ffffff\"\n    }\n}\n\n\n}");
                 }
             }
-            if (!File.Exists(cpath + "\\themes\\" + thm + ".drawtheme"))
+            if (!File.Exists(cpath + @"\themes\" + thm + ".drawtheme"))
             {
                 if (isLightMode == "1")
                     createTheme("light");
                 else
                     createTheme("dark");
-                thm = File.ReadLines(cpath + "\\themes\\theme.txt").First();
+                thm = File.ReadLines(cpath + @"\themes\theme.txt").First();
             }
-            string jsonFile = cpath + "\\themes\\" + thm + ".drawtheme";
+            string jsonFile = cpath + @"\themes\" + thm + ".drawtheme";
             using (StreamReader file = File.OpenText(jsonFile))
             using (JsonTextReader reader = new JsonTextReader(file))
             {
