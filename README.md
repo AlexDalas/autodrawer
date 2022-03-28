@@ -17,7 +17,7 @@ This software officially supports Windows 10 and above. Any versions below may n
 
 ## Linux
 
-Linux is (not yet) supported. After v1.3, it should work fine under WINE and a compatibility script (which we are making). (join [the Discord](https://discord.gg/rwvUFraDnb) for updates)
+Linux is not supported. Under WINE, it should somewhat work but drawing is not functional.
 
 ## Mac
 
