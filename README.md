@@ -1,7 +1,6 @@
 # Roblox Auto-Draw (WPF)
 This is code for version v1.4 or Roblox Autodraw, before the program rewrite.
 
-# Roblox Auto-Draw
 This Autodraw software was forked from https://github.com/rainzhao2000/autodrawer, which has been modified in order to work better for more software and games, such as Roblox.
 
 # Installation
