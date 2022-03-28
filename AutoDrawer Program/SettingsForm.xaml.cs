@@ -287,7 +287,12 @@ namespace AutoDrawer
         public void RefreshAllThemes()
         {
             refTheme();
-            Utils.UpdateUI();
+            try
+            {
+                (System.Windows.Application.Current.MainWindow as MainWindow).refreshTheme();
+            }
+            catch { }
+
         }
         void RefreshThemeListBox()
         {
