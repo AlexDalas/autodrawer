@@ -15,9 +15,9 @@ Roblox Auto-Draw
 [Installation](#Installation)  
 [FAQ](#FAQ)  
 [Support](#Support)  
-    [Windows](##Windows)    
-    [Mac](##Mac)    
-    [Linux](##Linux)  
+    [Windows](#Windows)    
+    [Mac](#Mac)    
+    [Linux](#Linux)  
 [Documentation](#Documentation)  
 
 This Autodraw Software is designed to automatically draw images. 
@@ -31,17 +31,21 @@ Version 1 and Version 0 are both forks of [rainzhao2000](https://github.com/rain
 
  Install the latest autodrawer from [here](https://github.com/Siydge/autodraw-roblox/releases).
  
+</a>
 <a name="FAQ"/>
+</a>
 <a name="Support"/>
 # Support
 
 Join [the Discord](https://discord.gg/rwvUFraDnb) for help, as we are active on there!
  
+</a>
 <a name="Windows"/>
 ## Windows
 
 This software officially supports Windows 10 and above. Any versions below may not work properly, but Windows 7 - 8(.1) *can* work.
 
+</a>
 <a name="Mac"/>
 ## Mac
 
@@ -49,12 +53,15 @@ Mac is not supported, as WPF is Windows-Only. (Version 2 may have Mac support)
 
 Mac users may use [Parallels](https://www.parallels.com/au/products/desktop/)
 
+</a>
 <a name="Linux"/>
 ## Linux
 
 Linux is not supported. Under WINE, it should somewhat work but drawing is not functional. (Version 2 may have Linux support)
 
+</a>
 <a name="Documentation"/>
 # Documentation
 
 Documentation can [be found here](https://siydge.github.io/autodraw-roblox/docs)
+</a>
