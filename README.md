@@ -3,12 +3,13 @@ Roblox Auto-Draw
 <br>
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-<a href="https://discord.gg/rwvUFraDnb">
+<a href="https://discord.gg/rwvUFraDnb" alt="Discord">
     <img src="https://img.shields.io/discord/937117805805989890?logo=discord"
        alt="chat on Discord"></a>
 <a href="https://github.com/badges/Siydge/autodraw-roblox" alt="Activity">
     <img src="https://img.shields.io/github/commit-activity/m/Siydge/autodraw-roblox" /></a>
-
+<a href="https://github.com/badges/Siydge/autodraw-roblox" alt="Last Commit">
+    <img src="https://img.shields.io/github/last-commit/m/Siydge/autodraw-roblox" /></a>
 </h1>
 
 ##### Table of Contents  
