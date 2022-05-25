@@ -29,11 +29,11 @@ Roblox Auto-Draw
 This Autodraw Software is designed to automatically draw images. 
 
 <a name="Version2"/>
-<h2> Version 2 and Lua Script</h2>
+<h3> Version 2 and Lua Script</h3>
 Version 2 is a complete rewrite of the original Autodraw program. It is rewritten in C++, and is expected to run on Windows, Mac, and Linux. Version 2 will have a C++ application, and a Lua script. The C++ application will run like a normal autodrawer, and the Lua script will be designed specifically for Roblox games, and will have colour support.
 
 <a name="Version1"/>
-<h2> Version 0 and Version 1</h2>
+<h3> Version 0 and Version 1</h3>
 Version 1 and Version 0 are both forks of [rainzhao2000](https://github.com/rainzhao2000/autodrawer)'s software, and has been modified to support automatically drawing in Roblox games. Version 0 and 1 are both coded in C#, but Version 0 uses Winforms, while Version 1 uses WPF.
 </p>
 <a name="Installation"/>
@@ -54,13 +54,13 @@ Join [the Discord](https://discord.gg/rwvUFraDnb) for help, as we are active on 
 
 </a>
 <a name="Windows"/>
-<h2> Windows </h2>
+<h3> Windows </h3>
 
 This software officially supports Windows 10 and above. Any versions below may not work properly, but Windows 7 - 8(.1) *can* work.
 
 </a>
 <a name="Mac"/>
-<h2> Mac </h2>
+<h3> Mac </h3>
 
 Mac is not supported, as WPF is Windows-Only. (Version 2 may have Mac support)
 
@@ -68,7 +68,7 @@ Mac users may use [Parallels](https://www.parallels.com/au/products/desktop/)
 
 </a>
 <a name="Linux"/>
-<h2> Linux </h2>
+<h3> Linux </h3>
 
 Linux is not supported. Under WINE, it should somewhat work but drawing is not functional. (Version 2 may have Linux support)
 
