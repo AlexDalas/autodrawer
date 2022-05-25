@@ -16,9 +16,9 @@ Roblox Auto-Draw
 [Installation](#Installation)  
 [FAQ](#FAQ)  
 [Support](#Support)  
- ·  [Windows](#Windows)    
- ·  [Mac](#Mac)    
- ·  [Linux](#Linux)  
+ •  [Windows](#Windows)    
+ •  [Mac](#Mac)    
+ •  [Linux](#Linux)  
 [Documentation](#Documentation)  
 <p>
 <a name="Introduction"/>
