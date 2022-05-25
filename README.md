@@ -12,14 +12,14 @@ Roblox Auto-Draw
 </h1>
 
 ##### Table of Contents  
-[Introduction](#Introduction)  
-[Installation](#Installation)  
-[FAQ](#FAQ)  
-[Support](#Support)  
- •  [Windows](#Windows)    
- •  [Mac](#Mac)    
- •  [Linux](#Linux)  
-[Documentation](#Documentation)  
+• [Introduction](#Introduction)  
+• [Installation](#Installation)  
+• [FAQ](#FAQ)  
+• [Support](#Support)  
+- [Windows](#Windows)    
+- [Mac](#Mac)    
+- [Linux](#Linux)  
+• [Documentation](#Documentation)  
 <p>
 <a name="Introduction"/>
 <h1> Introduction </h1>
@@ -35,13 +35,16 @@ Version 1 and Version 0 are both forks of [rainzhao2000](https://github.com/rain
  Install the latest autodrawer from [here](https://github.com/Siydge/autodraw-roblox/releases).
  
 </a>
-<a name="FAQ"/>
-</a>
 <a name="Support"/>
 <h1> Support </h1>
 
 Join [the Discord](https://discord.gg/rwvUFraDnb) for help, as we are active on there!
  
+ 
+<a name="FAQ"/>
+    <p> We don't really have any FAQ right now, so just ask us! </p>
+</a>
+
 </a>
 <a name="Windows"/>
 <h2> Windows </h2>
