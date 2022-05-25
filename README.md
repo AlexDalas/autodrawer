@@ -9,7 +9,7 @@ Roblox Auto-Draw
 <a href="https://github.com/badges/Siydge/autodraw-roblox" alt="Activity">
     <img src="https://img.shields.io/github/commit-activity/m/Siydge/autodraw-roblox" /></a>
 <a href="https://github.com/badges/Siydge/autodraw-roblox" alt="Last Commit">
-    <img src="https://img.shields.io/github/last-commit/m/Siydge/autodraw-roblox" /></a>
+    <img src="https://img.shields.io/github/last-commit/Siydge/autodraw-roblox" /></a>
 </h1>
 
 ##### Table of Contents  
