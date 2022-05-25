@@ -1,6 +1,6 @@
-<p align="center">
-# Roblox Auto-Draw
-</p>
+<h1 align="center">
+Roblox Auto-Draw
+</h1>
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 This Autodraw software was forked from https://github.com/rainzhao2000/autodrawer, which has been modified in order to work better for more software and games, such as Roblox.
 
