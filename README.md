@@ -7,7 +7,7 @@ Roblox Auto-Draw
     <img src="https://img.shields.io/discord/937117805805989890?logo=discord"
        alt="chat on Discord"></a>
 <a href="https://github.com/badges/shields/pulse" alt="Activity">
-    <img src="https://img.shields.io/github/commit-activity/m/badges/shields" /></a>
+    <img src="https://img.shields.io/github/commit-activity/m/Siydge/autodraw-roblox" /></a>
 </h1>
 ---
 This Autodraw software was forked from https://github.com/rainzhao2000/autodrawer, which has been modified in order to work better for more software and games, such as Roblox.
