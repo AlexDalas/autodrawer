@@ -16,9 +16,9 @@ Roblox Auto-Draw
 [Installation](#Installation)  
 [FAQ](#FAQ)  
 [Support](#Support)  
-    [Windows](#Windows)    
-    [Mac](#Mac)    
-    [Linux](#Linux)  
+    · [Windows](#Windows)    
+    · [Mac](#Mac)    
+    · [Linux](#Linux)  
 [Documentation](#Documentation)  
 <p>
 <a name="Introduction"/>
@@ -44,13 +44,13 @@ Join [the Discord](https://discord.gg/rwvUFraDnb) for help, as we are active on 
  
 </a>
 <a name="Windows"/>
-<h1> Windows </h1>
+<h2> Windows </h2>
 
 This software officially supports Windows 10 and above. Any versions below may not work properly, but Windows 7 - 8(.1) *can* work.
 
 </a>
 <a name="Mac"/>
-<h1> Mac </h1>
+<h2> Mac </h2>
 
 Mac is not supported, as WPF is Windows-Only. (Version 2 may have Mac support)
 
@@ -58,7 +58,7 @@ Mac users may use [Parallels](https://www.parallels.com/au/products/desktop/)
 
 </a>
 <a name="Linux"/>
-<h1> Linux </h1>
+<h2> Linux </h2>
 
 Linux is not supported. Under WINE, it should somewhat work but drawing is not functional. (Version 2 may have Linux support)
 
