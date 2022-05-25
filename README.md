@@ -1,6 +1,6 @@
 <h1 align="center">
 Roblox Auto-Draw
-
+---
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
  <a href="https://discord.gg/rwvUFraDnb">
     <img src="https://img.shields.io/discord/937117805805989890?logo=discord"
@@ -8,6 +8,7 @@ Roblox Auto-Draw
 <a href="https://github.com/badges/shields/pulse" alt="Activity">
     <img src="https://img.shields.io/github/commit-activity/m/badges/shields" /></a>
 </h1>
+---
 This Autodraw software was forked from https://github.com/rainzhao2000/autodrawer, which has been modified in order to work better for more software and games, such as Roblox.
 
 # Installation
