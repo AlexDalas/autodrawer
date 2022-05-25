@@ -12,14 +12,14 @@ Roblox Auto-Draw
 </h1>
 
 ##### Table of Contents  
-• [Introduction](#Introduction)  
-• [Installation](#Installation)  
-• [FAQ](#FAQ)  
-• [Support](#Support)  
-- [Windows](#Windows)    
-- [Mac](#Mac)    
-- [Linux](#Linux)  
-• [Documentation](#Documentation)  
+• [Introduction](#Introduction)
+• [Installation](#Installation)
+• [FAQ](#FAQ)
+• [Support](#Support)
+- [Windows](#Windows)
+- [Mac](#Mac)
+- [Linux](#Linux)
+• [Documentation](#Documentation)
 <p>
 <a name="Introduction"/>
 <h1> Introduction </h1>
