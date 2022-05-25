@@ -8,7 +8,6 @@ Roblox Auto-Draw
        alt="chat on Discord"></a>
 <a href="https://github.com/badges/shields/pulse" alt="Activity">
     <img src="https://img.shields.io/github/commit-activity/m/Siydge/autodraw-roblox" /></a>
-</h1>
 
 ---
 
@@ -39,3 +38,5 @@ Mac users may use [Parallels](https://www.parallels.com/au/products/desktop/)
 # Documentation
 
 Documentation can [be found here](https://siydge.github.io/autodraw-roblox/docs)
+
+</h1>
