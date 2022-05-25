@@ -10,7 +10,7 @@ Roblox Auto-Draw
     <img src="https://img.shields.io/github/commit-activity/m/Siydge/autodraw-roblox" /></a>
 
 ---
-
+<p>
 This Autodraw software was forked from https://github.com/rainzhao2000/autodrawer, which has been modified in order to work better for more software and games, such as Roblox.
 
 # Installation
@@ -38,5 +38,5 @@ Mac users may use [Parallels](https://www.parallels.com/au/products/desktop/)
 # Documentation
 
 Documentation can [be found here](https://siydge.github.io/autodraw-roblox/docs)
-
+    </p>
 </h1>
