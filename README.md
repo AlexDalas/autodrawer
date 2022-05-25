@@ -14,6 +14,8 @@ Roblox Auto-Draw
 
 ##### Table of Contents  
 - [Introduction](#Introduction)  
+    - [Version 2 and Lua Script](#Version2)  
+    - [Version 1 and Version 0](#Version1)  
 - [Installation](#Installation)  
 - [Support](#Support)  
     - [FAQ](#FAQ)  
@@ -26,10 +28,12 @@ Roblox Auto-Draw
 <h1> Introduction </h1>
 This Autodraw Software is designed to automatically draw images. 
 
-Version 2 is a complete rewrite of the original Autodraw program. It is rewritten in C++, and is expected to run on Windows, Mac, and Linux. Version 2 is currently not avaliable yet. 
+<a name="Version2"/>
+<h2> Version 2 and Lua Script</h2>
+Version 2 is a complete rewrite of the original Autodraw program. It is rewritten in C++, and is expected to run on Windows, Mac, and Linux. Version 2 will have a C++ application, and a Lua script. The C++ application will run like a normal autodrawer, and the Lua script will be designed specifically for Roblox games, and will have colour support.
 
-Version 2 will have a C++ application, and a Lua script. The C++ application will run like a normal autodrawer, and the Lua script will be designed specifically for Roblox games, and will have colour support.
-
+<a name="Version1"/>
+<h2> Version 0 and Version 1</h2>
 Version 1 and Version 0 are both forks of [rainzhao2000](https://github.com/rainzhao2000/autodrawer)'s software, and has been modified to support automatically drawing in Roblox games. Version 0 and 1 are both coded in C#, but Version 0 uses Winforms, while Version 1 uses WPF.
 </p>
 <a name="Installation"/>
