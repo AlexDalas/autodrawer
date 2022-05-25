@@ -14,8 +14,8 @@ Roblox Auto-Draw
 ##### Table of Contents  
 - [Introduction](#Introduction)  
 - [Installation](#Installation)  
-- [FAQ](#FAQ)  
 - [Support](#Support)  
+    - [FAQ](#FAQ)  
     - [Windows](#Windows)  
     - [Mac](#Mac)  
     - [Linux](#Linux)  
