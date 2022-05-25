@@ -2,7 +2,7 @@
 Roblox Auto-Draw
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
- 
+
  <a href="https://discord.gg/rwvUFraDnb">
     <img src="https://img.shields.io/discord/937117805805989890?logo=discord"
        alt="chat on Discord"></a>
