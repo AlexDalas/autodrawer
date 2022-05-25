@@ -16,9 +16,9 @@ Roblox Auto-Draw
 • [Installation](#Installation)  
 • [FAQ](#FAQ)  
 • [Support](#Support)  
-- [Windows](#Windows)  
-- [Mac](#Mac)  
-- [Linux](#Linux)  
+    • [Windows](#Windows)  
+    • [Mac](#Mac)  
+    • [Linux](#Linux)  
 • [Documentation](#Documentation)  
 <p>
 <a name="Introduction"/>
@@ -42,7 +42,7 @@ Join [the Discord](https://discord.gg/rwvUFraDnb) for help, as we are active on 
  
  
 <a name="FAQ"/>
-    <p> We don't really have any FAQ right now, so just ask us! </p>
+    <p> We don't really have any FAQ right now, so just ask us in the Discord! </p>
 </a>
 
 </a>
