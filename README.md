@@ -15,9 +15,9 @@ Roblox Auto-Draw
 ##### Table of Contents  
 - [Introduction](#Introduction)  
 - [Installation](#Installation)  
-    Release
+  - Release
         - [Version 1 and Version 0](#Version1)  
-    In development
+  - In development
         - [Version 2 and Lua Script](#Version2)  
 - [Support](#Support)  
     - [FAQ](#FAQ)  
