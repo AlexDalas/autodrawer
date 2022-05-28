@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>InfoWindow</class>
- <widget class="QMainWindow" name="InfoWindow">
+ <class>MessageWindow</class>
+ <widget class="QMainWindow" name="MessageWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>489</width>
-    <height>409</height>
+    <width>486</width>
+    <height>228</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,7 +23,7 @@
       <x>10</x>
       <y>10</y>
       <width>471</width>
-      <height>391</height>
+      <height>211</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -36,48 +36,26 @@ border-radius: 25px;</string>
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QLabel" name="Logo_4">
+    <widget class="QLabel" name="Text">
      <property name="geometry">
       <rect>
-       <x>0</x>
-       <y>20</y>
-       <width>471</width>
-       <height>61</height>
+       <x>20</x>
+       <y>50</y>
+       <width>431</width>
+       <height>101</height>
       </rect>
      </property>
      <property name="font">
       <font>
-       <pointsize>12</pointsize>
-       <bold>true</bold>
+       <pointsize>16</pointsize>
+       <bold>false</bold>
       </font>
      </property>
-     <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:24pt;&quot;&gt;AutoDrawer&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-     <property name="textFormat">
-      <enum>Qt::RichText</enum>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-    <widget class="QLabel" name="Logo_5">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>80</y>
-       <width>471</width>
-       <height>221</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>12</pointsize>
-       <bold>true</bold>
-      </font>
+     <property name="styleSheet">
+      <string notr="true">background:transparent</string>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Program developed by Siydge and AlexCYP&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;This program is under the MIT Lisence.&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;GitHub Page &amp;quot;autodrawer-roblox&amp;quot; is by Siydge. &lt;span style=&quot; font-size:6pt;&quot;&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;If you have gotten this program from another repository,&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;we may not be able to provide support.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>Example text</string>
      </property>
      <property name="textFormat">
       <enum>Qt::RichText</enum>
@@ -89,8 +67,8 @@ border-radius: 25px;</string>
     <widget class="QPushButton" name="pushButton_6">
      <property name="geometry">
       <rect>
-       <x>130</x>
-       <y>320</y>
+       <x>135</x>
+       <y>150</y>
        <width>201</width>
        <height>48</height>
       </rect>
@@ -114,6 +92,28 @@ background: rgb(55,55,55);
      </property>
      <property name="text">
       <string>Close</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="Header">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>6</y>
+       <width>471</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>22</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Info</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
    </widget>

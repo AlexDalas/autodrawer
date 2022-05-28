@@ -239,6 +239,9 @@ border-bottom-left-radius: 0px;</string>
        <pointsize>16</pointsize>
       </font>
      </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
      <property name="styleSheet">
       <string notr="true">        QPushButton {
             color: white;
@@ -267,6 +270,9 @@ border-bottom-left-radius: 0px;</string>
        <pointsize>16</pointsize>
       </font>
      </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
      <property name="styleSheet">
       <string notr="true">        QPushButton {
             color: white;
@@ -290,7 +296,7 @@ border-bottom-left-radius: 0px;</string>
       </rect>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;no&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;logo&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="QLabel" name="Logo_2">
@@ -326,6 +332,9 @@ border-bottom-left-radius: 0px;</string>
        <pointsize>14</pointsize>
       </font>
      </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
      <property name="styleSheet">
       <string notr="true">QPushButton{
 background: rgb(58,61,59);
@@ -343,15 +352,18 @@ background: rgb(55,55,55);
      <property name="geometry">
       <rect>
        <x>515</x>
-       <y>110</y>
+       <y>109</y>
        <width>171</width>
-       <height>41</height>
+       <height>43</height>
       </rect>
      </property>
      <property name="font">
       <font>
        <pointsize>14</pointsize>
       </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
      </property>
      <property name="styleSheet">
       <string notr="true">QPushButton{
@@ -370,15 +382,18 @@ background: rgb(55,55,55);
      <property name="geometry">
       <rect>
        <x>515</x>
-       <y>156</y>
+       <y>155</y>
        <width>171</width>
-       <height>41</height>
+       <height>42</height>
       </rect>
      </property>
      <property name="font">
       <font>
        <pointsize>14</pointsize>
       </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
      </property>
      <property name="styleSheet">
       <string notr="true">QPushButton{
@@ -399,16 +414,20 @@ background: rgb(55,55,55);
     <widget class="QPushButton" name="pushButton_5">
      <property name="geometry">
       <rect>
-       <x>641</x>
+       <x>640</x>
        <y>60</y>
-       <width>45</width>
-       <height>45</height>
+       <width>46</width>
+       <height>46</height>
       </rect>
      </property>
      <property name="font">
       <font>
+       <family>Sans Serif</family>
        <pointsize>14</pointsize>
       </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
      </property>
      <property name="styleSheet">
       <string notr="true">QPushButton{
@@ -465,6 +484,9 @@ background: rgb(55,55,55);
        <pointsize>14</pointsize>
       </font>
      </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
      <property name="styleSheet">
       <string notr="true">QPushButton{
 background: rgb(58,61,59);
@@ -494,6 +516,9 @@ background: rgb(55,55,55);
       <font>
        <pointsize>14</pointsize>
       </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
      </property>
      <property name="styleSheet">
       <string notr="true">QPushButton{
@@ -525,6 +550,9 @@ background: rgb(55,55,55);
        <pointsize>18</pointsize>
       </font>
      </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
      <property name="styleSheet">
       <string notr="true">        QPushButton {
 background: rgb(58,61,59);
@@ -555,6 +583,9 @@ background: rgb(55,55,55);
       <font>
        <pointsize>26</pointsize>
       </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
      </property>
      <property name="styleSheet">
       <string notr="true">QPushButton{
@@ -627,7 +658,7 @@ border-bottom-left-radius: 0px;</string>
       <rect>
        <x>515</x>
        <y>310</y>
-       <width>171</width>
+       <width>181</width>
        <height>21</height>
       </rect>
      </property>
@@ -650,9 +681,9 @@ border-bottom-left-radius: 0px;</string>
     <widget class="QLabel" name="Logo_5">
      <property name="geometry">
       <rect>
-       <x>705</x>
+       <x>695</x>
        <y>310</y>
-       <width>171</width>
+       <width>181</width>
        <height>21</height>
       </rect>
      </property>
@@ -702,7 +733,7 @@ border-bottom-left-radius: 0px;</string>
       <rect>
        <x>515</x>
        <y>380</y>
-       <width>171</width>
+       <width>181</width>
        <height>21</height>
       </rect>
      </property>
@@ -728,7 +759,7 @@ border-bottom-left-radius: 0px;</string>
        <x>705</x>
        <y>60</y>
        <width>171</width>
-       <height>118</height>
+       <height>113</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -746,15 +777,18 @@ border-bottom-left-radius: 0px;</string>
      <property name="geometry">
       <rect>
        <x>705</x>
-       <y>180</y>
-       <width>148</width>
-       <height>21</height>
+       <y>175</y>
+       <width>143</width>
+       <height>26</height>
       </rect>
      </property>
      <property name="font">
       <font>
        <pointsize>10</pointsize>
       </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
      </property>
      <property name="styleSheet">
       <string notr="true">background: rgb(58,61,59);
@@ -770,16 +804,19 @@ border-bottom-left-radius: 10px;</string>
     <widget class="QPushButton" name="pushButton_11">
      <property name="geometry">
       <rect>
-       <x>855</x>
-       <y>180</y>
-       <width>21</width>
-       <height>21</height>
+       <x>850</x>
+       <y>175</y>
+       <width>26</width>
+       <height>26</height>
       </rect>
      </property>
      <property name="font">
       <font>
        <pointsize>10</pointsize>
       </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
      </property>
      <property name="styleSheet">
       <string notr="true">background: rgb(58,61,59);
@@ -888,14 +925,17 @@ background-size: cover;</string>
       <rect>
        <x>515</x>
        <y>60</y>
-       <width>121</width>
-       <height>45</height>
+       <width>122</width>
+       <height>46</height>
       </rect>
      </property>
      <property name="font">
       <font>
        <pointsize>14</pointsize>
       </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
      </property>
      <property name="styleSheet">
       <string notr="true">QPushButton{

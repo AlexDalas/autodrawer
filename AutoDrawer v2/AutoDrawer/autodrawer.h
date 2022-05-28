@@ -48,6 +48,14 @@ private slots:
 
     void on_pushButton_12_released();
 
+    void on_pushButton_9_released();
+
+    void on_pushButton_8_released();
+
+    void on_widthBox_textChanged(const QString &arg1);
+
+    void on_pushButton_4_released();
+
 private:
     Ui::AutoDrawer *ui;
     InfoWindow *infoDialog;
