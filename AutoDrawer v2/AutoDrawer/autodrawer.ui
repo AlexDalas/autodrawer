@@ -87,6 +87,9 @@ border-radius: 5px;</string>
          <height>20</height>
         </rect>
        </property>
+       <property name="cursor">
+        <cursorShape>SizeHorCursor</cursorShape>
+       </property>
        <property name="styleSheet">
         <string notr="true">        QPushButton {
             color: white;
