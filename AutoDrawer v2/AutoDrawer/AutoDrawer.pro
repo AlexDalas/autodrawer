@@ -13,18 +13,21 @@ SOURCES += \
     main.cpp \
     autodrawer.cpp \
     messagewindow.cpp \
+    previewwindow.cpp \
     settingswindow.cpp
 
 HEADERS += \
     autodrawer.h \
     infowindow.h \
     messagewindow.h \
+    previewwindow.h \
     settingswindow.h
 
 FORMS += \
     autodrawer.ui \
     infowindow.ui \
     messagewindow.ui \
+    previewwindow.ui \
     settingswindow.ui
 
 TRANSLATIONS += \

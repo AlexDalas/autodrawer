@@ -627,6 +627,9 @@ border-top-right-radius: 0px;
 border-bottom-right-radius: 0px;
 border-bottom-left-radius: 10px;</string>
      </property>
+     <property name="text">
+      <string>10000</string>
+     </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
      </property>
@@ -651,6 +654,9 @@ border-top-left-radius: 0px;
 border-top-right-radius: 10px;
 border-bottom-right-radius: 10px;
 border-bottom-left-radius: 0px;</string>
+     </property>
+     <property name="text">
+      <string>1000</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -870,6 +876,9 @@ border-top-right-radius: 10px;
 border-bottom-right-radius: 10px;
 border-bottom-left-radius: 0px;</string>
      </property>
+     <property name="text">
+      <string>127</string>
+     </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
      </property>
@@ -895,23 +904,25 @@ border-top-right-radius: 0px;
 border-bottom-right-radius: 0px;
 border-bottom-left-radius: 10px;</string>
      </property>
+     <property name="text">
+      <string>127</string>
+     </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QLabel" name="ImageFrame">
+    <widget class="QLabel" name="ImageDrawn">
      <property name="geometry">
       <rect>
        <x>10</x>
        <y>10</y>
-       <width>491</width>
-       <height>491</height>
+       <width>0</width>
+       <height>0</height>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(58, 61, 59);
-border-radius: 5px;
-background-size: cover;</string>
+      <string notr="true">border-radius: 5px;
+background:transparent</string>
      </property>
      <property name="text">
       <string/>
@@ -957,6 +968,108 @@ background: rgb(55,55,55);
       <string>Settings</string>
      </property>
     </widget>
+    <widget class="QLabel" name="ImageSource">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>0</width>
+       <height>0</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(58, 61, 59);
+border-radius: 5px;
+background-size: cover;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="scaledContents">
+      <bool>false</bool>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="ImageBackground">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>491</width>
+       <height>491</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(58, 61, 59);
+border-radius: 5px;
+background-size: cover;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="scaledContents">
+      <bool>false</bool>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="ShownImage">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>491</width>
+       <height>491</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-radius: 5px;
+background:transparent</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="scaledContents">
+      <bool>false</bool>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <zorder>ImageOpt</zorder>
+    <zorder>exitButton</zorder>
+    <zorder>Minimize</zorder>
+    <zorder>Logo</zorder>
+    <zorder>Logo_2</zorder>
+    <zorder>pushButton_2</zorder>
+    <zorder>pushButton_3</zorder>
+    <zorder>pushButton_4</zorder>
+    <zorder>pushButton_5</zorder>
+    <zorder>Logo_3</zorder>
+    <zorder>pushButton_6</zorder>
+    <zorder>pushButton_7</zorder>
+    <zorder>pushButton_8</zorder>
+    <zorder>pushButton_9</zorder>
+    <zorder>intervalTextBox</zorder>
+    <zorder>clickDelayTextBox</zorder>
+    <zorder>Logo_4</zorder>
+    <zorder>Logo_5</zorder>
+    <zorder>Logo_6</zorder>
+    <zorder>Logo_7</zorder>
+    <zorder>listView</zorder>
+    <zorder>pushButton_10</zorder>
+    <zorder>pushButton_11</zorder>
+    <zorder>drawingList</zorder>
+    <zorder>transThresh</zorder>
+    <zorder>blackThresh</zorder>
+    <zorder>pushButton_12</zorder>
+    <zorder>ImageSource</zorder>
+    <zorder>ImageBackground</zorder>
+    <zorder>ImageDrawn</zorder>
+    <zorder>ShownImage</zorder>
    </widget>
   </widget>
  </widget>

@@ -52,9 +52,13 @@ private slots:
 
     void on_pushButton_8_released();
 
-    void on_widthBox_textChanged(const QString &arg1);
-
     void on_pushButton_4_released();
+
+    void on_widthBox_textEdited(const QString &arg1);
+
+    void on_heightBox_textEdited(const QString &arg1);
+
+    void changeImage(QPixmap img);
 
 private:
     Ui::AutoDrawer *ui;
