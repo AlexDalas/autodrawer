@@ -1,0 +1,3 @@
+[submodule "AutoDrawer v2/AutoDrawer/QHotkeys"]
+	path = AutoDrawer v2/AutoDrawer/QHotkeys
+	url = https://github.com/mrousavy/QHotkeys

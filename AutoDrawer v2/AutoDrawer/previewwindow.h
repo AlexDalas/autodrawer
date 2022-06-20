@@ -15,6 +15,19 @@ public:
     explicit PreviewWindow(QImage image, int interval, int clickdelay, QWidget *parent = nullptr);
     ~PreviewWindow();
 
+private slots:
+    void on_pushButton_2_released();
+
+    void closeDraw(int a);
+
+    void Draw();
+
+    void setCursor(int x, int y);
+
+    void clickCursor();
+
+    void on_Draw_released();
+
 private:
     Ui::PreviewWindow *ui;
     QImage image;

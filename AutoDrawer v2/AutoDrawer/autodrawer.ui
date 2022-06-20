@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>909</width>
-    <height>648</height>
+    <width>891</width>
+    <height>631</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -24,8 +24,8 @@
    <widget class="QFrame" name="Background">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>10</y>
+      <x>0</x>
+      <y>0</y>
       <width>891</width>
       <height>631</height>
      </rect>
@@ -149,7 +149,7 @@ border-radius: 5px;</string>
      <widget class="QLabel" name="HeightText">
       <property name="geometry">
        <rect>
-        <x>10</x>
+        <x>246</x>
         <y>45</y>
         <width>235</width>
         <height>31</height>
@@ -169,7 +169,7 @@ background:transparent;</string>
      <widget class="QLabel" name="WidthText">
       <property name="geometry">
        <rect>
-        <x>246</x>
+        <x>10</x>
         <y>45</y>
         <width>231</width>
         <height>31</height>
@@ -186,7 +186,7 @@ background:transparent;</string>
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QLineEdit" name="heightBox">
+     <widget class="QLineEdit" name="widthBox">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -206,7 +206,7 @@ border-bottom-left-radius: 10px;</string>
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QLineEdit" name="widthBox">
+     <widget class="QLineEdit" name="heightBox">
       <property name="geometry">
        <rect>
         <x>247</x>
@@ -601,6 +601,9 @@ border-bottom-left-radius: 10px;
         QPushButton:hover {
 background: rgb(55,55,55);
         }</string>
+     </property>
+     <property name="locale">
+      <locale language="English" country="UnitedStates"/>
      </property>
      <property name="text">
       <string>Start</string>

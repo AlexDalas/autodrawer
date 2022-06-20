@@ -11,6 +11,7 @@
 #include <vector>
 #include <QDragEnterEvent>
 #include <QMimeData>
+
 using namespace std;
 
 AutoDrawer::AutoDrawer(QWidget *parent)
@@ -24,6 +25,7 @@ AutoDrawer::AutoDrawer(QWidget *parent)
     setAttribute(Qt::WA_TranslucentBackground, true);
     setAcceptDrops(true);
     ui->setupUi(this);
+    qApp->installEventFilter(this);
 }
 
 static void sendMessage(QString a, int b, QWidget *t){
@@ -64,7 +66,6 @@ void AutoDrawer::dropEvent(QDropEvent* event)
         try{
             QString url2 = urls[0].toString();
             QPixmap img(url2);
-            QLabel *label = new QLabel(this);
             ui->heightBox->setText(QString::number(img.height()));
             ui->widthBox->setText(QString::number(img.width()));
             changeImage(img);
@@ -94,8 +95,13 @@ void AutoDrawer::on_ScaleSlider_sliderMoved(int position)
 
 void AutoDrawer::on_ScaleSlider_sliderReleased()
 {
-    auto value = ui->ScaleSlider->value();
-    changeImage(ui->ImageSource->pixmap()->scaled(ui->widthBox->text().toInt() * value, ui->heightBox->text().toInt() * value));
+    QPixmap pm = ui->ImageSource->pixmap(Qt::ReturnByValue);
+    if (pm.isQBitmap()){
+        float value = ui->ScaleSlider->value() / 100;
+        changeImage(ui->ImageSource->pixmap()->scaled(ui->widthBox->text().toInt() * value, ui->heightBox->text().toInt() * value));
+        ui->widthBox->setText(QString::number(ui->widthBox->text().toInt() * value));
+        ui->heightBox->setText(QString::number(ui->heightBox->text().toInt() * value));
+    }
 }
 
 
@@ -108,12 +114,6 @@ void AutoDrawer::on_scaleNumber_textEdited(const QString &arg1)
 void AutoDrawer::on_exitButton_released()
 {
     QApplication::quit();
-}
-
-// do not know how to delete. pls delete without error
-void AutoDrawer::on_exitButton_2_released()
-{
-    QWidget::showMinimized();
 }
 
 void AutoDrawer::on_ScaleSlider_valueChanged(int value)
@@ -212,7 +212,7 @@ void AutoDrawer::on_pushButton_9_released()
     } else if (ui->clickDelayTextBox->text().toInt() == 0 && ui->clickDelayTextBox->text() == ""){
         return sendMessage("Click Delay text is empty!", 2, this);
     }
-    this->hide();
+    this->close();
     PreviewWindow *w = new PreviewWindow(
                 ui->ImageDrawn->pixmap()->toImage(),
                 ui->intervalTextBox->text().toInt(),
@@ -282,5 +282,10 @@ void AutoDrawer::on_heightBox_textEdited(const QString &arg1)
 {
     if (ui->ImageSource->pixmap())
         changeImage(ui->ImageSource->pixmap()->scaled(ui->widthBox->text().toInt(), ui->heightBox->text().toInt()));
+}
+
+void AutoDrawer::on_pushButton_2_released()
+{
+    QCursor::setPos(192,168);
 }
 

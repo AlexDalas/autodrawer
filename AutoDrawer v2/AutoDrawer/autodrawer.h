@@ -26,8 +26,6 @@ private slots:
 
     void on_exitButton_released();
 
-    void on_exitButton_2_released();
-
     void on_ScaleSlider_valueChanged(int value);
 
     void on_Minimize_released();
@@ -59,6 +57,8 @@ private slots:
     void on_heightBox_textEdited(const QString &arg1);
 
     void changeImage(QPixmap img);
+
+    void on_pushButton_2_released();
 
 private:
     Ui::AutoDrawer *ui;
