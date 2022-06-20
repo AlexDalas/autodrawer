@@ -27,7 +27,7 @@ void SettingsWindow::on_pushButton_7_released()
 
 void SettingsWindow::on_pushButton_8_released()
 {
-    QDesktopServices::openUrl(QUrl("https://github.com/Siydge/autodraw-roblox"));
+    QDesktopServices::openUrl(QUrl("https://github.com/AlexCYP/autodraw-roblox"));
 }
 
 

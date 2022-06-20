@@ -52,7 +52,6 @@ PreviewWindow::PreviewWindow(QImage dimage, int interval, int delay, QWidget *pa
 
 void PreviewWindow::setCursor(int x, int y){
     QCursor::setPos(QPoint(x,y));
-
     //QFuture<void> future = QtConcurrent::run([=]() {
     //    std::system(("xdotool mousemove " + std::to_string(x) + " " + std::to_string(y)+" --delay 0").c_str());
     //});
