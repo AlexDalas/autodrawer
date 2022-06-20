@@ -22,7 +22,7 @@ private slots:
 
     void on_ScaleSlider_sliderMoved(int position);
 
-    void on_scaleNumber_textEdited(const QString &arg1);
+    void on_scaleNumber_textEdited();
 
     void on_exitButton_released();
 
@@ -52,9 +52,9 @@ private slots:
 
     void on_pushButton_4_released();
 
-    void on_widthBox_textEdited(const QString &arg1);
+    void on_widthBox_textEdited();
 
-    void on_heightBox_textEdited(const QString &arg1);
+    void on_heightBox_textEdited();
 
     void changeImage(QPixmap img);
 

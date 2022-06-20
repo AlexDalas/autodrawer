@@ -98,14 +98,15 @@ void AutoDrawer::on_ScaleSlider_sliderReleased()
     QPixmap pm = ui->ImageSource->pixmap(Qt::ReturnByValue);
     if (pm.isQBitmap()){
         float value = ui->ScaleSlider->value() / 100;
-        changeImage(ui->ImageSource->pixmap()->scaled(ui->widthBox->text().toInt() * value, ui->heightBox->text().toInt() * value));
-        ui->widthBox->setText(QString::number(ui->widthBox->text().toInt() * value));
-        ui->heightBox->setText(QString::number(ui->heightBox->text().toInt() * value));
+        ui->heightBox->setText(QString::number(ui->heightBox->text().toInt()*value));
+        ui->widthBox->setText(QString::number(ui->widthBox->text().toInt()*value));
+        on_heightBox_textEdited();
+        on_widthBox_textEdited();
     }
 }
 
 
-void AutoDrawer::on_scaleNumber_textEdited(const QString &arg1)
+void AutoDrawer::on_scaleNumber_textEdited()
 {
     ui->ScaleSlider->setSliderPosition(ui->scaleNumber->text().toInt());
 }
@@ -163,7 +164,6 @@ void AutoDrawer::on_pushButton_6_released()
     if (filename.isNull()) return;
     QString url = filename;
     QPixmap img(url);
-    QLabel *label = new QLabel(this);
     ui->heightBox->setText(QString::number(img.height()));
     ui->widthBox->setText(QString::number(img.width()));
     changeImage(img);
@@ -205,7 +205,8 @@ void AutoDrawer::on_pushButton_12_released()
 
 void AutoDrawer::on_pushButton_9_released()
 {
-    if (!ui->ImageDrawn->pixmap()){
+    QPixmap pm = ui->ImageDrawn->pixmap(Qt::ReturnByValue);
+    if (pm.isNull()){
         return sendMessage("You have not uploaded an image to draw!", 2, this);
     } else if (ui->intervalTextBox->text().toInt() == 0 && ui->intervalTextBox->text() == ""){
         return sendMessage("Interval text is empty!", 2, this);
@@ -214,17 +215,17 @@ void AutoDrawer::on_pushButton_9_released()
     }
     this->close();
     PreviewWindow *w = new PreviewWindow(
-                ui->ImageDrawn->pixmap()->toImage(),
+                pm.toImage(),
                 ui->intervalTextBox->text().toInt(),
                 ui->clickDelayTextBox->text().toInt(),
                 this);
     w->show();
 }
 
-
 void AutoDrawer::on_pushButton_8_released()
 {
-    if (!ui->ImageSource->pixmap()){
+    QPixmap pm = ui->ImageSource->pixmap(Qt::ReturnByValue);
+    if (pm.isNull()){
         return sendMessage("You have not uploaded an image to draw!", 2, this);
     } else if (ui->blackThresh->text().toInt() == 0 && ui->intervalTextBox->text() == ""){
         return sendMessage("Black Threshold text is empty!", 2, this);
@@ -236,13 +237,13 @@ void AutoDrawer::on_pushButton_8_released()
         return sendMessage("Transparency Threshold text is too high!", 2, this);
     }
     ui->pushButton_8->setText("Processing...");
-    QImage im = ui->ImageSource->pixmap()->scaled(ui->widthBox->text().toInt(), ui->heightBox->text().toInt()).toImage().convertToFormat(QImage::Format_ARGB32);
+    QImage im = pm.scaled(ui->widthBox->text().toInt(), ui->heightBox->text().toInt()).toImage().convertToFormat(QImage::Format_ARGB32);
     for (int y = 0; y < im.height(); ++y) {
         QRgb *scanLine = (QRgb*)im.scanLine(y);
         for (int x = 0; x < im.width(); ++x) {
             QRgb pixel = *scanLine;
             uint ci = uint(qGray(pixel));
-            if (ci >= ui->blackThresh->text().toInt() && qAlpha(pixel) >= ui->transThresh->text().toInt()){
+            if (ci >= (unsigned int) ui->blackThresh->text().toInt() && qAlpha(pixel) >= ui->transThresh->text().toInt()){
                 *scanLine = qRgba(255, 255, 255, qAlpha(pixel)/3);
             }
             else{
@@ -271,21 +272,23 @@ void AutoDrawer::on_pushButton_4_released()
 }
 
 
-void AutoDrawer::on_widthBox_textEdited(const QString &arg1)
+void AutoDrawer::on_widthBox_textEdited()
 {
-    if (ui->ImageSource->pixmap())
-        changeImage(ui->ImageSource->pixmap()->scaled(ui->widthBox->text().toInt(), ui->heightBox->text().toInt()));
+    QPixmap id = ui->ImageSource->pixmap(Qt::ReturnByValue);
+    if (!id.isNull())
+        changeImage(id.scaled(ui->widthBox->text().toInt(), ui->heightBox->text().toInt()));
 }
 
 
-void AutoDrawer::on_heightBox_textEdited(const QString &arg1)
+void AutoDrawer::on_heightBox_textEdited()
 {
-    if (ui->ImageSource->pixmap())
-        changeImage(ui->ImageSource->pixmap()->scaled(ui->widthBox->text().toInt(), ui->heightBox->text().toInt()));
+    QPixmap id = ui->ImageSource->pixmap(Qt::ReturnByValue);
+    if (!id.isNull())
+        changeImage(id.scaled(ui->widthBox->text().toInt(), ui->heightBox->text().toInt()));
 }
 
 void AutoDrawer::on_pushButton_2_released()
 {
-    QCursor::setPos(192,168);
+
 }
 
