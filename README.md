@@ -84,5 +84,5 @@ Linux is not supported. Under WINE, it should somewhat work but drawing is not f
 <a name="Documentation"/>
 <h1> Documentation </h1>
 
-Documentation can [be found here](https://siydge.github.io/autodraw-roblox/docs)
+Documentation can [be found here](https://alexcyp.github.io/autodraw-roblox/docs)
 </a>
