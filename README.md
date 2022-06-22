@@ -6,10 +6,10 @@ Roblox Auto-Draw
 <a href="https://discord.gg/rwvUFraDnb" alt="Discord">
     <img src="https://img.shields.io/discord/937117805805989890?logo=discord"
        alt="chat on Discord"></a>
-<a href="https://github.com/badges/Siydge/autodraw-roblox" alt="Activity">
-    <img src="https://img.shields.io/github/commit-activity/m/Siydge/autodraw-roblox" /></a>
-<a href="https://github.com/badges/Siydge/autodraw-roblox" alt="Last Commit">
-    <img src="https://img.shields.io/github/last-commit/Siydge/autodraw-roblox" /></a>
+<a href="https://github.com/badges/AlexCYP/autodraw-roblox" alt="Activity">
+    <img src="https://img.shields.io/github/commit-activity/m/AlexCYP/autodraw-roblox" /></a>
+<a href="https://github.com/badges/AlexCYP/autodraw-roblox" alt="Last Commit">
+    <img src="https://img.shields.io/github/last-commit/AlexCYP/autodraw-roblox" /></a>
 </h1>
 
 ##### Table of Contents  
