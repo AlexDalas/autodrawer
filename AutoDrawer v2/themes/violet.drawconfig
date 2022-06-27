@@ -1,0 +1,68 @@
+{
+    "ver": 2.0,
+    "light-icons": "true",
+    "main": {
+        "text": "#10002b",
+        "background": "#9A8EEE",
+        "background-1": "#A79DF1",
+        "background-2": "#A79DF1",
+        "image-background": "#A79DF1",
+        "pattern-listbox": "#A79DF1",
+        "config-listbox": "#A79DF1",
+        "loadconfig-button": "#A79DF1",
+        "loadconfig-button-hover": "#AEA4F2",
+        "saveconfig-button": "#A79DF1",
+        "saveconfig-button-hover": "#AEA4F2",
+        "settings-info-buttons": "#A79DF1",
+        "settings-info-buttons-hover": "#AEA4F2",
+        "pattern-button": "#A79DF1",
+        "pattern-button-hover": "#AEA4F2",
+        "directory-buttons": "#A79DF1",
+        "directory-buttons-hover": "#AEA4F2",
+        "textbox-backgrounds": "#A79DF1",
+        "upload-buttons": "#A79DF1",
+        "upload-buttons-hover": "#AEA4F2",
+        "clear-buttons": "#A79DF1",
+        "clear-buttons-hover": "#AEA4F2",
+        "process-button": "#A79DF1",
+        "process-button-hover": "#AEA4F2",
+        "start-button": "#A79DF1",
+        "start-button-hover": "#AEA4F2",
+        "scalebar-background": "#A79DF1",
+        "scale-textbox": "#A79DF1",
+        "width-textbox": "#9A8EEE",
+        "height-textbox": "#9A8EEE"
+    },
+    "settings": {
+        "text": "#10002b",
+        "background": "#9A8EEE",
+        "buttons": "#B4ABF3",
+        "textbox": "#B4ABF3",
+        "checkbox-box": "#B4ABF3",
+        "close": "#B4ABF3"
+    },
+    "info": {
+        "text": "#10002b",
+        "background": "#9A8EEE",
+        "close": "#A79DF1"
+    },
+    "pattern": {
+        "text": "#10002b",
+        "background": "#9A8EEE",
+        "image-background": "#B4ABF3",
+        "button": "#7693AE",
+        "textbox": "#7693AE",
+        "close": "#84A1C3"
+    },
+    "console": {
+        "text": "#10002b",
+        "background": "#9A8EEE",
+        "console-background": "#F1D9A7",
+        "button": "#A79DF1",
+        "close": "#A79DF1"
+    },
+    "preview": {
+        "text": "#10002b",
+        "background": "#9A8EEE"
+    }
+}
