@@ -1,6 +1,6 @@
 {
     "ver": 2.0,
-    "light-icons": "true",
+    "light-icons": "false",
     "main": {
         "text": "#090E06",
         "background": "#92AFD7",
