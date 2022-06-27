@@ -1,0 +1,68 @@
+{
+    "ver": 1.4,
+    "light-icons": "true",
+    "main": {
+        "text": "#FFFFFFFF",
+        "background": "#FF000000",
+        "background-1": "#FF000000",
+        "background-2": "#FF000000",
+        "image-background": "#FF1E1E1E",
+        "pattern-listbox": "#FF1E1E1E",
+        "config-listbox": "#FF1E1E1E",
+        "loadconfig-button": "#FF1E1E1E",
+        "loadconfig-button-hover": "#FF222222",
+        "saveconfig-button": "#FF1E1E1E",
+        "saveconfig-button-hover": "#FF222222",
+        "settings-info-buttons": "#FF1E1E1E",
+        "settings-info-buttons-hover": "#FF222222",
+        "pattern-button": "#FF1E1E1E",
+        "pattern-button-hover": "#FF222222",
+        "directory-buttons": "#FF1E1E1E",
+        "directory-buttons-hover": "#FF222222",
+        "textbox-backgrounds": "#FF1E1E1E",
+        "upload-buttons": "#FF1E1E1E",
+        "upload-buttons-hover": "#FF222222",
+        "clear-buttons": "#FF1E1E1E",
+        "clear-buttons-hover": "#FF222222",
+        "process-button": "#FF1E1E1E",
+        "process-button-hover": "#FF222222",
+        "start-button": "#FF1E1E1E",
+        "start-button-hover": "#FF222222",
+        "scalebar-background": "#00000000",
+        "scale-textbox": "#FF1E1E1E",
+        "width-textbox": "#FF1E1E1E",
+        "height-textbox": "#FF1E1E1E"
+    },
+    "settings": {
+        "text": "#FFFFFFFF",
+        "background": "#FF000000",
+        "buttons": "#FF1E1E1E",
+        "textbox": "#FF1E1E1E",
+        "checkbox-box": "#FF1E1E1E",
+        "close": "#FF1E1E1E"
+    },
+    "info": {
+        "text": "#FFFFFFFF",
+        "background": "#FF000000",
+        "close": "#FF1E1E1E"
+    },
+    "pattern": {
+        "text": "#FFFFFFFF",
+        "background": "#FF000000",
+        "image-background": "#FF1E1E1E",
+        "button": "#FF1E1E1E",
+        "textbox": "#FF1E1E1E",
+        "close": "#FF1E1E1E"
+    },
+    "console": {
+        "text": "#FFFFFFFF",
+        "background": "#FF000000",
+        "console-background": "#FF1E1E1E",
+        "button": "#FF1E1E1E",
+        "close": "#FF1E1E1EE"
+    },
+    "preview": {
+        "text": "#FFFFFFFF",
+        "background": "#FF000000"
+    }
+}
