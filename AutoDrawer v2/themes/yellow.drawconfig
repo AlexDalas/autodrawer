@@ -1,0 +1,68 @@
+{
+    "ver": 2.0,
+    "light-icons": "true",
+    "main": {
+        "text": "#0D1321",
+        "background": "#F3E37C",
+        "background-1": "#F1D9A7",
+        "background-2": "#F3E37C",
+        "image-background": "#F2C477",
+        "pattern-listbox": "#F2C77E",
+        "config-listbox": "#F2C77E",
+        "loadconfig-button": "#F2C77E",
+        "loadconfig-button-hover": "#F2D093",
+        "saveconfig-button": "#F2C77E",
+        "saveconfig-button-hover": "#F2D093",
+        "settings-info-buttons": "#F2C77E",
+        "settings-info-buttons-hover": "#F2D093",
+        "pattern-button": "#F2C77E",
+        "pattern-button-hover": "#F2D093",
+        "directory-buttons": "#F2C77E",
+        "directory-buttons-hover": "#F2D093",
+        "textbox-backgrounds": "#F2C77E",
+        "upload-buttons": "#F2C77E",
+        "upload-buttons-hover": "#F2D093",
+        "clear-buttons": "#F2C77E",
+        "clear-buttons-hover": "#F2D093",
+        "process-button": "#F2C77E",
+        "process-button-hover": "#F2D093",
+        "start-button": "#F2C77E",
+        "start-button-hover": "#F2D093",
+        "scalebar-background": "#F2C77E",
+        "scale-textbox": "#F2C77E",
+        "width-textbox": "#F2C77E",
+        "height-textbox": "#F2C77E"
+    },
+    "settings": {
+        "text": "#0D1321",
+        "background": "#F3DF70",
+        "buttons": "#F2C77E",
+        "textbox": "#F2C77E",
+        "checkbox-box": "#F2C77E",
+        "close": "#F2C77E"
+    },
+    "info": {
+        "text": "#0D1321",
+        "background": "#F3DF70",
+        "close": "#F2C77E"
+    },
+    "pattern": {
+        "text": "#0D1321",
+        "background": "#F3DF70",
+        "image-background": "#F3DB63",
+        "button": "#F2C77E",
+        "textbox": "#F2C77E",
+        "close": "#FF2C302E"
+    },
+    "console": {
+        "text": "#0D1321",
+        "background": "#F3DF70",
+        "console-background": "#F1D9A7",
+        "button": "#F2C77E",
+        "close": "#F2C77E"
+    },
+    "preview": {
+        "text": "#0D1321",
+        "background": "#F3DF70"
+    }
+}
