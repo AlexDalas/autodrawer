@@ -1,0 +1,68 @@
+{
+    "ver": 1.4,
+    "light-icons": "true",
+    "main": {
+        "text": "#FFFFFFFF",
+        "background": "#377E5E",
+        "background-1": "#2d6a4f",
+        "background-2": "#2d6a4f",
+        "image-background": "#2d6a4f",
+        "pattern-listbox": "#2d6a4f",
+        "config-listbox": "#2d6a4f",
+        "loadconfig-button": "#2d6a4f",
+        "loadconfig-button-hover": "#245741",
+        "saveconfig-button": "#2d6a4f",
+        "saveconfig-button-hover": "#245741",
+        "settings-info-buttons": "#2d6a4f",
+        "settings-info-buttons-hover": "#245741",
+        "pattern-button": "#2d6a4f",
+        "pattern-button-hover": "#245741",
+        "directory-buttons": "#2d6a4f",
+        "directory-buttons-hover": "#245741",
+        "textbox-backgrounds": "#2d6a4f",
+        "upload-buttons": "#2d6a4f",
+        "upload-buttons-hover": "#245741",
+        "clear-buttons": "#2d6a4f",
+        "clear-buttons-hover": "#245741",
+        "process-button": "#2d6a4f",
+        "process-button-hover": "#245741",
+        "start-button": "#2d6a4f",
+        "start-button-hover": "#245741",
+        "scalebar-background": "#1B4332",
+        "scale-textbox": "#1B4332",
+        "width-textbox": "#22523E",
+        "height-textbox": "#22523E"
+    },
+    "settings": {
+        "text": "#FFFFFFFF",
+        "background": "#327457",
+        "buttons": "#2d6a4f",
+        "textbox": "#2d6a4f",
+        "checkbox-box": "#2d6a4f",
+        "close": "#2d6a4f"
+    },
+    "info": {
+        "text": "#FFFFFFFF",
+        "background": "#327457",
+        "close": "#2d6a4f"
+    },
+    "pattern": {
+        "text": "#FFFFFFFF",
+        "background": "#327457",
+        "image-background": "#327457",
+        "button": "#2d6a4f",
+        "textbox": "#2d6a4f",
+        "close": "#2d6a4f"
+    },
+    "console": {
+        "text": "#FFFFFFFF",
+        "background": "#327457",
+        "console-background": "#327457",
+        "button": "#2d6a4f",
+        "close": "#2d6a4f"
+    },
+    "preview": {
+        "text": "#FFFFFFFF",
+        "background": "#327457"
+    }
+}
