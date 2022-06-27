@@ -46,7 +46,7 @@ Get v0 source code [here](https://github.com/Siydge/autodraw-roblox/tree/main/Au
  
 <a name="Version2"/>
 <h3> Version 2 and Lua Script</h3>
-Version 2 is a complete rewrite of the original Autodraw program. It is rewritten in C++, and is expected to run on Windows, Mac, and Linux. Version 2 will have a C++ application, and a Lua script. The C++ application will run like a normal autodrawer, and the Lua script will be designed specifically for Roblox games, and will have colour support.
+Version 2 is a complete rewrite of the original Autodraw program. It is rewritten in C++, and is expected to run on Windows, Mac, and Linux. Version 2 will have a C++ application, and a Lua script. The C++ application will run like a normal autodrawer, and the Lua script will be designed specifically for Roblox games.
 Version 2 is currently not ready.
 
 </a>
