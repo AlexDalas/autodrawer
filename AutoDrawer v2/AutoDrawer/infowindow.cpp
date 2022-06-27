@@ -15,34 +15,52 @@ InfoWindow::InfoWindow(QWidget *parent) :
     setParent(0);
     setAttribute(Qt::WA_NoSystemBackground, true);
     setAttribute(Qt::WA_TranslucentBackground, true);
+    reloadThemes();
+}
+InfoWindow::~InfoWindow()
+{
+    delete ui;
+}
 
+void InfoWindow::reloadThemes(){
     QFile inFile(PathATD+"/user.cfg");
     inFile.open(QIODevice::ReadOnly|QIODevice::Text);
     QByteArray data = inFile.readAll();
 
     QJsonParseError errorPtr;
     QJsonDocument doc = QJsonDocument::fromJson(data, &errorPtr);
-    QJsonObject rootObj = doc.object();
-    auto theme = rootObj.value("theme").toString();
+    QJsonObject rootObj2 = doc.object();
+    auto theme = rootObj2.value("theme").toString();
+    inFile.close();
 
-    if (theme == "dark") {} else if (QFile::exists(PathATD+"/themes/"+theme+".drawtheme") ){
+    QJsonObject info;
+    QJsonObject rootObj;
+    if (theme == "dark") {
+        extern QString darkJson;
+        QByteArray br = darkJson.toUtf8();
+        QJsonDocument doc = QJsonDocument::fromJson(br);
+        rootObj = doc.object();
+        info = rootObj["settings"].toObject();
+    } else if (theme == "light") {
+        extern QString lightJson;
+        QByteArray br = lightJson.toUtf8();
+        QJsonDocument doc = QJsonDocument::fromJson(br);
+        rootObj = doc.object();
+        info = rootObj["settings"].toObject();
+    } else if (QFile::exists(PathATD+"/themes/"+theme+".drawtheme") ){
         QFile inFile2(PathATD+"/themes/"+theme+".drawtheme");
         inFile2.open(QIODevice::ReadOnly|QIODevice::Text);
         QByteArray themeData = inFile2.readAll();
         QJsonParseError errorPtr;
         QJsonDocument docT = QJsonDocument::fromJson(themeData, &errorPtr);
-        QJsonObject rootObj = docT.object();
-        QJsonObject info = rootObj["info"].toObject();
-        ui->Text->setStyleSheet("color: "+info["text"].toString());
-        ui->Header->setStyleSheet("color: "+info["text"].toString());
-        ui->Button->setStyleSheet("background: "+info["close"].toString()+"; border-radius: 10px; color: "+info["text"].toString());
-        ui->Background->setStyleSheet("border-radius: 25px; background: "+info["background"].toString());
+        rootObj = docT.object();
+        info = rootObj["info"].toObject();
+        inFile2.close();
     }
-}
-
-InfoWindow::~InfoWindow()
-{
-    delete ui;
+    ui->Text->setStyleSheet("color: "+info["text"].toString());
+    ui->Header->setStyleSheet("color: "+info["text"].toString());
+    ui->Button->setStyleSheet("background: "+info["close"].toString()+"; border-radius: 10px; color: "+info["text"].toString());
+    ui->Background->setStyleSheet("border-radius: 25px; background: "+info["background"].toString());
 }
 
 void InfoWindow::on_Button_released()

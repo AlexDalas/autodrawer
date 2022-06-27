@@ -25,6 +25,7 @@ private slots:
 
     void on_pushButton_9_released();
 
+    void reloadThemes();
 private:
     Ui::MessageWindow *ui;
     QString sharedText;

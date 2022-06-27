@@ -25,6 +25,18 @@ private slots:
 
     void on_CloseBox_released();
 
+    void on_OpenThemes_released();
+
+    void reloadThemes(QString theme);
+
+    void on_Reload_released();
+
+    void on_ThemeCombo_currentIndexChanged();
+
+    void on_OffsetBox_released();
+
+    void on_LogBox_released();
+
 private:
     Ui::SettingsWindow *ui;
 };

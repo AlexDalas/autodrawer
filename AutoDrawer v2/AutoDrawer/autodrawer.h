@@ -5,6 +5,9 @@
 #include "infowindow.h"
 #include "settingswindow.h"
 
+extern QString darkJson;
+extern QString lightJson;
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class AutoDrawer; }
 QT_END_NAMESPACE
@@ -16,7 +19,6 @@ class AutoDrawer : public QMainWindow
 public:
     AutoDrawer(QWidget *parent = nullptr);
     ~AutoDrawer();
-
 private slots:
     void on_ScaleSlider_sliderReleased();
 
@@ -59,6 +61,8 @@ private slots:
     void on_clearImage_released();
 
     void on_processImage_released();
+
+    void reloadThemes();
 
 private:
     Ui::AutoDrawer *ui;

@@ -68,7 +68,7 @@ border-radius: 25px;</string>
      <property name="geometry">
       <rect>
        <x>410</x>
-       <y>90</y>
+       <y>85</y>
        <width>181</width>
        <height>21</height>
       </rect>
@@ -312,9 +312,9 @@ background: rgb(55,55,55);
     <widget class="QPushButton" name="OpenThemes">
      <property name="geometry">
       <rect>
-       <x>400</x>
+       <x>406</x>
        <y>160</y>
-       <width>147</width>
+       <width>141</width>
        <height>31</height>
       </rect>
      </property>
@@ -373,28 +373,6 @@ background: rgb(55,55,55);
      </property>
      <property name="text">
       <string>R</string>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="ThemeCombo">
-     <property name="geometry">
-      <rect>
-       <x>400</x>
-       <y>120</y>
-       <width>181</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QPushButton{
-background: rgb(58,61,59);
-border-top-left-radius: 0px;
-border-top-right-radius: 10px;
-border-bottom-right-radius: 10px;
-border-bottom-left-radius: 0px;
-}
-        QPushButton:hover {
-background: rgb(55,55,55);
-        }</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="intervalTextBox">
@@ -459,7 +437,7 @@ border-bottom-left-radius: 0px;</string>
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QLabel" name="Logo_8">
+    <widget class="QLabel" name="X">
      <property name="geometry">
       <rect>
        <x>40</x>
@@ -484,7 +462,7 @@ border-bottom-left-radius: 0px;</string>
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QLabel" name="Logo_9">
+    <widget class="QLabel" name="Y">
      <property name="geometry">
       <rect>
        <x>130</x>
@@ -513,7 +491,7 @@ border-bottom-left-radius: 0px;</string>
      <property name="geometry">
       <rect>
        <x>40</x>
-       <y>90</y>
+       <y>85</y>
        <width>181</width>
        <height>21</height>
       </rect>
@@ -538,7 +516,7 @@ border-bottom-left-radius: 0px;</string>
      <property name="geometry">
       <rect>
        <x>220</x>
-       <y>90</y>
+       <y>85</y>
        <width>181</width>
        <height>21</height>
       </rect>
@@ -680,6 +658,16 @@ border-radius: 25px;</string>
        <string>Printer mode</string>
       </property>
      </widget>
+    </widget>
+    <widget class="QComboBox" name="ThemeCombo">
+     <property name="geometry">
+      <rect>
+       <x>410</x>
+       <y>120</y>
+       <width>171</width>
+       <height>25</height>
+      </rect>
+     </property>
     </widget>
    </widget>
   </widget>

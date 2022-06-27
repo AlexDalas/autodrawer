@@ -32,6 +32,8 @@ private slots:
 
     bool pyCode(std::string str);
 
+    void reloadThemes();
+
 private:
     Ui::PreviewWindow *ui;
     QImage image;

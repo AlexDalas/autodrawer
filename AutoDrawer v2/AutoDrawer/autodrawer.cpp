@@ -19,6 +19,146 @@
 using namespace std;
 auto pathAD = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/AutoDrawer";
 
+//Theme colours
+
+QString darkJson = "{" \
+              "\"ver\": 2.0, " \
+              "\"light-icons\": \"true\",  " \
+              "\"main\": { " \
+              "    \"text\": \"#FFFFFFFF\", " \
+              "    \"background\": \"#FF2C302E\", " \
+              "    \"background-1\": \"#FF333735\", " \
+              "    \"background-2\": \"#FF2C302E\", " \
+              "    \"image-background\": \"#FF3A3D3B\", " \
+              "    \"pattern-listbox\": \"#FF3A3D3B\", " \
+              "    \"config-listbox\": \"#FF3A3D3B\", " \
+              "    \"loadconfig-button\": \"#FF3A3D3B\", " \
+              "    \"loadconfig-button-hover\": \"#FF373737\", " \
+              "    \"saveconfig-button\": \"#FF3A3D3B\", " \
+              "    \"saveconfig-button-hover\": \"#FF373737\", " \
+              "    \"settings-info-buttons\": \"#FF3A3D3B\", " \
+              "    \"settings-info-buttons-hover\": \"#FF373737\", " \
+              "    \"pattern-button\": \"#FF3A3D3B\", " \
+              "    \"pattern-button-hover\": \"#FF373737\", " \
+              "    \"directory-buttons\": \"#FF3A3D3B\", " \
+              "    \"directory-buttons-hover\": \"#FF373737\", " \
+              "    \"textbox-backgrounds\": \"#383838\", " \
+              "    \"upload-buttons\": \"#FF3A3D3B\", " \
+              "    \"upload-buttons-hover\": \"#FF373737\", " \
+              "    \"clear-buttons\": \"#FF3A3D3B\", " \
+              "    \"clear-buttons-hover\": \"#FF373737\", " \
+              "    \"process-button\": \"#FF3A3D3B\", " \
+              "    \"process-button-hover\": \"#FF373737\", " \
+              "    \"start-button\": \"#FF3A3D3B\", " \
+              "    \"start-button-hover\": \"#FF373737\", " \
+              "    \"scalebar-background\": \"#00000000\", " \
+              "    \"scale-textbox\": \"#FF474A48\", " \
+              "    \"width-textbox\": \"#FF2C302E\", " \
+              "    \"height-textbox\": \"#FF2C302E\" " \
+              "}, " \
+              "\"settings\": { " \
+              "    \"text\": \"#FFFFFFFF\", " \
+              "    \"background\": \"#232625\", " \
+              "    \"buttons\": \"#FF2C302E\", " \
+              "    \"textbox\": \"#FF2C302E\", " \
+              "    \"checkbox-box\": \"#FFFFFFFF\", " \
+              "    \"close\": \"#FF2C302E\" " \
+              "}, " \
+              "\"info\": { " \
+              "    \"text\": \"#FFFFFFFF\", " \
+              "    \"background\": \"#232625\", " \
+              "    \"close\": \"#FF2C302E\" " \
+              "}, " \
+              "\"pattern\": { " \
+              "    \"text\": \"#FFFFFFFF\", " \
+              "    \"background\": \"#232625\", " \
+              "    \"image-background\": \"#FF3C3C3C\", " \
+              "    \"button\": \"#FF2C302E\", " \
+              "    \"textbox\": \"#FF2C302E\", " \
+              "    \"close\": \"#FF2C302E\" " \
+              "}, " \
+              "\"console\": { " \
+              "    \"text\": \"#FFFFFFFF\", " \
+              "    \"background\": \"#232625\", " \
+              "    \"console-background\": \"#FF333735\", " \
+              "    \"button\": \"#FF2C302E\", " \
+              "    \"close\": \"#FF2C302E\" " \
+              "}, " \
+              "\"preview\": { " \
+              "    \"text\": \"#FFFFFFFF\", " \
+              "    \"background\": \"#232625\" " \
+              "}"\
+          "}";
+
+QString lightJson = "{" \
+              "\"ver\": 2.0, " \
+              "\"light-icons\": \"true\",  " \
+              "\"main\": { " \
+              "    \"text\": \"#FFFFFFFF\", " \
+              "    \"background\": \"#FF2C302E\", " \
+              "    \"background-1\": \"#FF333735\", " \
+              "    \"background-2\": \"#FF2C302E\", " \
+              "    \"image-background\": \"#FF3A3D3B\", " \
+              "    \"pattern-listbox\": \"#FF3A3D3B\", " \
+              "    \"config-listbox\": \"#FF3A3D3B\", " \
+              "    \"loadconfig-button\": \"#FF3A3D3B\", " \
+              "    \"loadconfig-button-hover\": \"#FF373737\", " \
+              "    \"saveconfig-button\": \"#FF3A3D3B\", " \
+              "    \"saveconfig-button-hover\": \"#FF373737\", " \
+              "    \"settings-info-buttons\": \"#FF3A3D3B\", " \
+              "    \"settings-info-buttons-hover\": \"#FF373737\", " \
+              "    \"pattern-button\": \"#FF3A3D3B\", " \
+              "    \"pattern-button-hover\": \"#FF373737\", " \
+              "    \"directory-buttons\": \"#FF3A3D3B\", " \
+              "    \"directory-buttons-hover\": \"#FF373737\", " \
+              "    \"textbox-backgrounds\": \"#383838\", " \
+              "    \"upload-buttons\": \"#FF3A3D3B\", " \
+              "    \"upload-buttons-hover\": \"#FF373737\", " \
+              "    \"clear-buttons\": \"#FF3A3D3B\", " \
+              "    \"clear-buttons-hover\": \"#FF373737\", " \
+              "    \"process-button\": \"#FF3A3D3B\", " \
+              "    \"process-button-hover\": \"#FF373737\", " \
+              "    \"start-button\": \"#FF3A3D3B\", " \
+              "    \"start-button-hover\": \"#FF373737\", " \
+              "    \"scalebar-background\": \"#00000000\", " \
+              "    \"scale-textbox\": \"#FF474A48\", " \
+              "    \"width-textbox\": \"#FF2C302E\", " \
+              "    \"height-textbox\": \"#FF2C302E\" " \
+              "}, " \
+              "\"settings\": { " \
+              "    \"text\": \"#FFFFFFFF\", " \
+              "    \"background\": \"#232625\", " \
+              "    \"buttons\": \"#FF2C302E\", " \
+              "    \"textbox\": \"#FF2C302E\", " \
+              "    \"checkbox-box\": \"#FFFFFFFF\", " \
+              "    \"close\": \"#FF2C302E\" " \
+              "}, " \
+              "\"info\": { " \
+              "    \"text\": \"#FFFFFFFF\", " \
+              "    \"background\": \"#232625\", " \
+              "    \"close\": \"#FF2C302E\" " \
+              "}, " \
+              "\"pattern\": { " \
+              "    \"text\": \"#FFFFFFFF\", " \
+              "    \"background\": \"#232625\", " \
+              "    \"image-background\": \"#FF3C3C3C\", " \
+              "    \"button\": \"#FF2C302E\", " \
+              "    \"textbox\": \"#FF2C302E\", " \
+              "    \"close\": \"#FF2C302E\" " \
+              "}, " \
+              "\"console\": { " \
+              "    \"text\": \"#FFFFFFFF\", " \
+              "    \"background\": \"#232625\", " \
+              "    \"console-background\": \"#FF333735\", " \
+              "    \"button\": \"#FF2C302E\", " \
+              "    \"close\": \"#FF2C302E\" " \
+              "}, " \
+              "\"preview\": { " \
+              "    \"text\": \"#FFFFFFFF\", " \
+              "    \"background\": \"#232625\" " \
+              "}"\
+          "}";
+
 static void sendMessage(QString a, int b, QWidget *t){
     //1 for info, 2 for error, 3 for alert
     MessageWindow *w = new MessageWindow(a, b, t);
@@ -42,7 +182,7 @@ AutoDrawer::AutoDrawer(QWidget *parent)
     if (!QDir(pathAD+"/themes/").exists()) QDir().mkdir(pathAD+"/themes/");
     if (!QDir(pathAD+"/logs/").exists()) QDir().mkdir(pathAD+"/logs/");
 
-    if (false && !QDir(pathAD+"/user.cfg").exists()){
+    if (!QFile(pathAD+"/user.cfg").exists()){
         QJsonObject UserCFG;
 
         //recordObject.insert("as", QJsonValue::fromVariant(43));
@@ -56,6 +196,15 @@ AutoDrawer::AutoDrawer(QWidget *parent)
         else{
             UserCFG.insert("theme", QJsonValue::fromVariant("dark"));
         }
+        QFile Old_dir(pathAD+"/dir");
+        if (Old_dir.exists()) {
+            Old_dir.open(QIODevice::ReadOnly | QIODevice::Text);
+            QTextStream Old_dirStream(&Old_dir);
+            UserCFG.insert("dir", QJsonValue::fromVariant(Old_dirStream.readLine()));
+        }
+        else{
+            UserCFG.insert("dir", QJsonValue::fromVariant(""));
+        }
         QJsonObject offsetObj;
         offsetObj.insert("enabled", true);
         offsetObj.insert("x", 0);
@@ -63,32 +212,47 @@ AutoDrawer::AutoDrawer(QWidget *parent)
         UserCFG.insert("offset", offsetObj);
         UserCFG.insert("logs", QJsonValue::fromVariant(false));
         UserCFG.insert("printer", QJsonValue::fromVariant(false));
-        UserCFG.insert("dir", QJsonValue::fromVariant(""));
         ofstream MyFile((pathAD+"/user.cfg").toStdString());
         QJsonDocument doc(UserCFG);
         MyFile << (doc.toJson(QJsonDocument::Indented)).toStdString();
         MyFile.close();
     }
+    reloadThemes();
+}
+
+void AutoDrawer::reloadThemes(){
     QFile inFile(pathAD+"/user.cfg");
     inFile.open(QIODevice::ReadOnly|QIODevice::Text);
     QByteArray data = inFile.readAll();
 
     QJsonParseError errorPtr;
     QJsonDocument doc = QJsonDocument::fromJson(data, &errorPtr);
-    QJsonObject rootObj = doc.object();
-    bool logs = rootObj.value("logs").toBool();
-    bool printer = rootObj.value("printer").toBool();
-    auto theme = rootObj.value("theme").toString();
+    QJsonObject rootObj2 = doc.object();
+    auto theme = rootObj2.value("theme").toString();
+    inFile.close();
 
-    if (theme == "dark") {} else if (QFile::exists(pathAD+"/themes/"+theme+".drawtheme") ){
+    QJsonObject main;
+    QJsonObject rootObj;
+    if (theme == "dark") {
+        QByteArray br = darkJson.toUtf8();
+        QJsonDocument doc = QJsonDocument::fromJson(br);
+        rootObj = doc.object();
+        main = rootObj["main"].toObject();
+    } else if (theme == "light"){
+        QByteArray br = lightJson.toUtf8();
+        QJsonDocument doc = QJsonDocument::fromJson(br);
+        rootObj = doc.object();
+        main = rootObj["main"].toObject();
+    } else if (QFile::exists(pathAD+"/themes/"+theme+".drawtheme") ){
         QFile inFile2(pathAD+"/themes/"+theme+".drawtheme");
         inFile2.open(QIODevice::ReadOnly|QIODevice::Text);
         QByteArray themeData = inFile2.readAll();
         QJsonParseError errorPtr;
         QJsonDocument docT = QJsonDocument::fromJson(themeData, &errorPtr);
-        QJsonObject rootObj = docT.object();
-        QJsonObject main = rootObj["main"].toObject();
-
+        rootObj = docT.object();
+        main = rootObj["main"].toObject();
+        inFile2.close();
+    }
         ui->ADText->setStyleSheet("color: "+main["text"].toString());
         ui->Background->setStyleSheet("border-radius: 10px; background: "+main["background"].toString());
         ui->ImageOpt->setStyleSheet("border-radius: 10px; background-color: "+main["background-1"].toString());
@@ -98,7 +262,7 @@ AutoDrawer::AutoDrawer(QWidget *parent)
         ui->scaleNumber->setStyleSheet("background: "+main["background-2"].toString()+"; border-radius: 5px; font: 11pt \"Sans Serif\"; color: "+main["text"].toString());
         ui->WidthText->setStyleSheet("font: 11pt \"Sans Serif\"; color: "+main["text"].toString());
         ui->HeightText->setStyleSheet("font: 11pt \"Sans Serif\"; color: "+main["text"].toString());
-        ui->ScaleText->setStyleSheet("background:"+main["background-2"].toString()+"; border-radius: 5px; color: "+main["text"].toString());
+        ui->ScaleText->setStyleSheet("background:transparent; border-radius: 5px; color: "+main["text"].toString());
         ui->widthBox->setStyleSheet("border-top-left-radius: 10px;border-top-right-radius: 0px;border-bottom-right-radius: 0px;border-bottom-left-radius: 10px; color: "+main["text"].toString()+"; background: "+main["width-textbox"].toString());
         ui->heightBox->setStyleSheet("border-top-left-radius: 0px;border-top-right-radius: 10px;border-bottom-right-radius: 10px;border-bottom-left-radius: 0px; color: "+main["text"].toString()+"; background: "+main["height-textbox"].toString());
         ui->exitButton->setStyleSheet("color: "+main["text"].toString());
@@ -125,12 +289,7 @@ AutoDrawer::AutoDrawer(QWidget *parent)
         ui->clearImage->setStyleSheet("QPushButton{color: "+main["text"].toString()+";background: "+main["clear-buttons"].toString()+";border-top-left-radius: 0px;border-top-right-radius: 10px;border-bottom-right-radius: 0px;border-bottom-left-radius: 0px;}QPushButton:hover {background: "+main["clear-buttons-hover"].toString()+";}");
         ui->processImage->setStyleSheet("QPushButton{color: "+main["text"].toString()+";background: "+main["process-button"].toString()+";border-radius: 0px;}QPushButton:hover {background: "+main["process-button-hover"].toString()+";}");
         ui->startButton->setStyleSheet("QPushButton{color: "+main["text"].toString()+";background: "+main["start-button"].toString()+";border-top-left-radius: 0px;border-top-right-radius: 0px;border-bottom-right-radius: 10px;border-bottom-left-radius: 10px;}QPushButton:hover {background: "+main["start-button-hover"].toString()+";}");
-        } else{
-        //Theme does not exist, reset to dark
-    }
-    inFile.close();
 }
-
 
 void AutoDrawer::dragEnterEvent(QDragEnterEvent* event)
 {

@@ -20,31 +20,7 @@ MessageWindow::MessageWindow(QString text, int type, QWidget *parent) :
     setAttribute(Qt::WA_NoSystemBackground, true);
     setAttribute(Qt::WA_TranslucentBackground, true);
 
-    QFile inFile(PathAT+"/user.cfg");
-    inFile.open(QIODevice::ReadOnly|QIODevice::Text);
-    QByteArray data = inFile.readAll();
-
-    QJsonParseError errorPtr;
-    QJsonDocument doc = QJsonDocument::fromJson(data, &errorPtr);
-    QJsonObject rootObj = doc.object();
-    auto theme = rootObj.value("theme").toString();
-
-    if (theme == "dark") {} else if (QFile::exists(PathAT+"/themes/"+theme+".drawtheme") ){
-        QFile inFile2(PathAT+"/themes/"+theme+".drawtheme");
-        inFile2.open(QIODevice::ReadOnly|QIODevice::Text);
-        QByteArray themeData = inFile2.readAll();
-        QJsonParseError errorPtr;
-        QJsonDocument docT = QJsonDocument::fromJson(themeData, &errorPtr);
-        QJsonObject rootObj = docT.object();
-        QJsonObject info = rootObj["info"].toObject();
-        ui->Text->setStyleSheet("color: "+info["text"].toString());
-        ui->Header->setStyleSheet("color: "+info["text"].toString());
-        ui->Background->setStyleSheet("border-radius: 25px; background: "+info["background"].toString());
-        ui->pushButton_6->setStyleSheet("background: "+info["close"].toString()+"; border-radius: 10px; color: "+info["text"].toString());
-        ui->pushButton_7->setStyleSheet("background: "+info["close"].toString()+"; border-radius: 10px; color: "+info["text"].toString());
-        ui->pushButton_8->setStyleSheet("background: "+info["close"].toString()+"; border-radius: 10px; color: "+info["text"].toString());
-        ui->pushButton_9->setStyleSheet("background: "+info["close"].toString()+"; border-radius: 10px; color: "+info["text"].toString());
-    }
+    reloadThemes();
 
     if (type == 1){
         ui->Header->setText("Info");
@@ -65,6 +41,50 @@ MessageWindow::MessageWindow(QString text, int type, QWidget *parent) :
         buttonType(1);
     }
     ui->Text->setText(text);
+}
+
+void MessageWindow::reloadThemes(){
+    QFile inFile(PathAT+"/user.cfg");
+    inFile.open(QIODevice::ReadOnly|QIODevice::Text);
+    QByteArray data = inFile.readAll();
+
+    QJsonParseError errorPtr2;
+    QJsonDocument doc = QJsonDocument::fromJson(data, &errorPtr2);
+    QJsonObject rootObj2 = doc.object();
+    auto theme = rootObj2.value("theme").toString();
+    inFile.close();
+
+    QJsonObject preview;
+    QJsonObject rootObj;
+    if (theme == "dark") {
+        extern QString darkJson;
+        QByteArray br = darkJson.toUtf8();
+        QJsonDocument doc = QJsonDocument::fromJson(br);
+        rootObj = doc.object();
+        preview = rootObj["settings"].toObject();
+    } else if (theme == "light"){
+        extern QString lightJson;
+        QByteArray br = lightJson.toUtf8();
+        QJsonDocument doc = QJsonDocument::fromJson(br);
+        rootObj = doc.object();
+        preview = rootObj["settings"].toObject();
+    } else if (QFile::exists(PathAT+"/themes/"+theme+".drawtheme") ){
+        QFile inFile2(PathAT+"/themes/"+theme+".drawtheme");
+        inFile2.open(QIODevice::ReadOnly|QIODevice::Text);
+        QByteArray themeData = inFile2.readAll();
+        QJsonParseError errorPtr;
+        QJsonDocument docT = QJsonDocument::fromJson(themeData, &errorPtr);
+        rootObj = docT.object();
+        inFile2.close();
+    }
+    QJsonObject info = rootObj["info"].toObject();
+    ui->Text->setStyleSheet("color: "+info["text"].toString());
+    ui->Header->setStyleSheet("color: "+info["text"].toString());
+    ui->Background->setStyleSheet("border-radius: 25px; background: "+info["background"].toString());
+    ui->pushButton_6->setStyleSheet("background: "+info["close"].toString()+"; border-radius: 10px; color: "+info["text"].toString());
+    ui->pushButton_7->setStyleSheet("background: "+info["close"].toString()+"; border-radius: 10px; color: "+info["text"].toString());
+    ui->pushButton_8->setStyleSheet("background: "+info["close"].toString()+"; border-radius: 10px; color: "+info["text"].toString());
+    ui->pushButton_9->setStyleSheet("background: "+info["close"].toString()+"; border-radius: 10px; color: "+info["text"].toString());
 }
 
 void MessageWindow::buttonType(int a){

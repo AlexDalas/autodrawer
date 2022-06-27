@@ -50,34 +50,13 @@ PreviewWindow::PreviewWindow(QImage dimage, int interval, int delay, QWidget *pa
     clickDelay = delay;
     image = dimage;
     MainWin = parent;
+    reloadThemes();
     //parent->show();
     QFuture<void> future = QtConcurrent::run([=]() {
         while (loopRunning){
             move(QCursor::pos().x() - ui->ShownImage->width()/2, QCursor::pos().y() - ui->ShownImage->height()/2);
         }
     });
-
-    QFile inFile(path+"/user.cfg");
-    inFile.open(QIODevice::ReadOnly|QIODevice::Text);
-    QByteArray data = inFile.readAll();
-
-    QJsonParseError errorPtr;
-    QJsonDocument doc = QJsonDocument::fromJson(data, &errorPtr);
-    QJsonObject rootObj = doc.object();
-    auto theme = rootObj.value("theme").toString();
-
-    if (theme == "dark") {} else if (QFile::exists(path+"/themes/"+theme+".drawtheme") ){
-        QFile inFile2(path+"/themes/"+theme+".drawtheme");
-        inFile2.open(QIODevice::ReadOnly|QIODevice::Text);
-        QByteArray themeData = inFile2.readAll();
-        QJsonParseError errorPtr;
-        QJsonDocument docT = QJsonDocument::fromJson(themeData, &errorPtr);
-        QJsonObject rootObj = docT.object();
-        QJsonObject preview = rootObj["preview"].toObject();
-        ui->Header->setStyleSheet("color: "+preview["text"].toString());
-        ui->Background->setStyleSheet("border-radius: 25px; background: "+preview["background"].toString());
-    }
-
     if (!QFile::exists(path+"/hotkey.py")){
         std::ofstream MyFile((path+"/hotkey.py").toStdString());
         // I really do not want a super long string
@@ -90,7 +69,7 @@ PreviewWindow::PreviewWindow(QImage dimage, int interval, int delay, QWidget *pa
         MyFile.close();
     }
     QFuture<void> start = QtConcurrent::run([=]() {
-        if(pyCode("start") && stopAutodraw) Draw();
+        if(pyCode("start") && !stopAutodraw) Draw();
     });
     QFuture<void> stop = QtConcurrent::run([=]() {
         if(pyCode("stop")) on_pushButton_2_released();
@@ -104,6 +83,46 @@ static void sendMessage(QString a, int b, QWidget *t){
     //1 for info, 2 for error, 3 for alert
     MessageWindow *w = new MessageWindow(a, b, t);
     w->show();
+}
+
+void PreviewWindow::reloadThemes(){
+
+    QFile inFile(path+"/user.cfg");
+    inFile.open(QIODevice::ReadOnly|QIODevice::Text);
+    QByteArray data = inFile.readAll();
+
+    QJsonParseError errorPtr;
+    QJsonDocument doc = QJsonDocument::fromJson(data, &errorPtr);
+    QJsonObject rootObj2 = doc.object();
+    auto theme = rootObj2.value("theme").toString();
+    inFile.close();
+
+    QJsonObject preview;
+    QJsonObject rootObj;
+    if (theme == "dark") {
+        extern QString darkJson;
+        QByteArray br = darkJson.toUtf8();
+        QJsonDocument doc = QJsonDocument::fromJson(br);
+        rootObj = doc.object();
+        preview = rootObj["settings"].toObject();
+    } else if (theme == "light"){
+        extern QString lightJson;
+        QByteArray br = lightJson.toUtf8();
+        QJsonDocument doc = QJsonDocument::fromJson(br);
+        rootObj = doc.object();
+        preview = rootObj["settings"].toObject();
+    } else if (QFile::exists(path+"/themes/"+theme+".drawtheme") ){
+        QFile inFile2(path+"/themes/"+theme+".drawtheme");
+        inFile2.open(QIODevice::ReadOnly|QIODevice::Text);
+        QByteArray themeData = inFile2.readAll();
+        QJsonParseError errorPtr;
+        QJsonDocument docT = QJsonDocument::fromJson(themeData, &errorPtr);
+        rootObj = docT.object();
+        preview = rootObj["settings"].toObject();
+        inFile2.close();
+    }
+    ui->Header->setStyleSheet("color: "+preview["text"].toString());
+    ui->Background->setStyleSheet("border-radius: 25px; background: "+preview["background"].toString());
 }
 
 bool PreviewWindow::pyCode(std::string str){

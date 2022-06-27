@@ -18,6 +18,8 @@ public:
 private slots:
     void on_Button_released();
 
+    void reloadThemes();
+
 private:
     Ui::InfoWindow *ui;
 };
