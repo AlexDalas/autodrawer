@@ -30,27 +30,15 @@ private slots:
 
     void on_Minimize_released();
 
-    void on_pushButton_3_released();
-
     void dropEvent(QDropEvent *e) override;
 
     void dragEnterEvent(QDragEnterEvent *event) override;
 
-    void on_pushButton_6_released();
-
-    void on_pushButton_7_released();
-
-    void on_pushButton_5_released();
-
-    void on_pushButton_released();
-
     void on_pushButton_12_released();
 
-    void on_pushButton_9_released();
+    void on_startButton_released();
 
-    void on_pushButton_8_released();
-
-    void on_pushButton_4_released();
+    void on_uploadImage_released();
 
     void on_widthBox_textEdited();
 
@@ -59,6 +47,18 @@ private slots:
     void changeImage(QPixmap img);
 
     void on_pushButton_2_released();
+
+    void on_infoButton_released();
+
+    void on_settingButton_released();
+
+    void on_loadConfig_released();
+
+    void on_saveConfig_released();
+
+    void on_clearImage_released();
+
+    void on_processImage_released();
 
 private:
     Ui::AutoDrawer *ui;

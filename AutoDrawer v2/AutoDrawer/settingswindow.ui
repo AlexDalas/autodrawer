@@ -39,7 +39,7 @@ border-radius: 25px;</string>
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QLabel" name="Logo_6">
+    <widget class="QLabel" name="Header">
      <property name="geometry">
       <rect>
        <x>0</x>
@@ -64,7 +64,7 @@ border-radius: 25px;</string>
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QLabel" name="Logo_7">
+    <widget class="QLabel" name="themes">
      <property name="geometry">
       <rect>
        <x>410</x>
@@ -89,7 +89,7 @@ border-radius: 25px;</string>
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_7">
+    <widget class="QPushButton" name="CloseBox">
      <property name="geometry">
       <rect>
        <x>210</x>
@@ -119,7 +119,7 @@ background: rgb(55,55,55);
       <string>Close</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_8">
+    <widget class="QPushButton" name="GH">
      <property name="geometry">
       <rect>
        <x>406</x>
@@ -152,7 +152,7 @@ background: rgb(55,55,55);
       <string>GitHub</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_9">
+    <widget class="QPushButton" name="LR">
      <property name="geometry">
       <rect>
        <x>220</x>
@@ -181,7 +181,7 @@ background: rgb(55,55,55);
       <string>Latest Release</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_10">
+    <widget class="QPushButton" name="Discord">
      <property name="geometry">
       <rect>
        <x>34</x>
@@ -214,7 +214,7 @@ background: rgb(55,55,55);
       <string>Discord</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_11">
+    <widget class="QPushButton" name="OpenLogs">
      <property name="geometry">
       <rect>
        <x>406</x>
@@ -247,7 +247,7 @@ background: rgb(55,55,55);
       <string>Open Logs</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_12">
+    <widget class="QPushButton" name="Console">
      <property name="geometry">
       <rect>
        <x>34</x>
@@ -280,7 +280,7 @@ background: rgb(55,55,55);
       <string>Open Console</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_13">
+    <widget class="QPushButton" name="ThemeEditor">
      <property name="geometry">
       <rect>
        <x>220</x>
@@ -309,10 +309,10 @@ background: rgb(55,55,55);
       <string>Theme Editor</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_14">
+    <widget class="QPushButton" name="OpenThemes">
      <property name="geometry">
       <rect>
-       <x>410</x>
+       <x>400</x>
        <y>160</y>
        <width>147</width>
        <height>31</height>
@@ -342,10 +342,10 @@ background: rgb(55,55,55);
       <string>Open Themes</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_15">
+    <widget class="QPushButton" name="Reload">
      <property name="geometry">
       <rect>
-       <x>560</x>
+       <x>550</x>
        <y>160</y>
        <width>31</width>
        <height>31</height>
@@ -375,10 +375,10 @@ background: rgb(55,55,55);
       <string>R</string>
      </property>
     </widget>
-    <widget class="QComboBox" name="comboBox">
+    <widget class="QComboBox" name="ThemeCombo">
      <property name="geometry">
       <rect>
-       <x>410</x>
+       <x>400</x>
        <y>120</y>
        <width>181</width>
        <height>25</height>
@@ -403,7 +403,7 @@ background: rgb(55,55,55);
      </property>
      <property name="geometry">
       <rect>
-       <x>30</x>
+       <x>38</x>
        <y>150</y>
        <width>89</width>
        <height>41</height>
@@ -434,7 +434,7 @@ border-bottom-left-radius: 10px;</string>
      </property>
      <property name="geometry">
       <rect>
-       <x>122</x>
+       <x>130</x>
        <y>150</y>
        <width>89</width>
        <height>41</height>
@@ -462,7 +462,7 @@ border-bottom-left-radius: 0px;</string>
     <widget class="QLabel" name="Logo_8">
      <property name="geometry">
       <rect>
-       <x>30</x>
+       <x>40</x>
        <y>120</y>
        <width>91</width>
        <height>31</height>
@@ -487,7 +487,7 @@ border-bottom-left-radius: 0px;</string>
     <widget class="QLabel" name="Logo_9">
      <property name="geometry">
       <rect>
-       <x>120</x>
+       <x>130</x>
        <y>120</y>
        <width>91</width>
        <height>31</height>
@@ -509,10 +509,10 @@ border-bottom-left-radius: 0px;</string>
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QLabel" name="Logo_10">
+    <widget class="QLabel" name="offsetPos">
      <property name="geometry">
       <rect>
-       <x>30</x>
+       <x>40</x>
        <y>90</y>
        <width>181</width>
        <height>21</height>
@@ -534,7 +534,7 @@ border-bottom-left-radius: 0px;</string>
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QLabel" name="Logo_11">
+    <widget class="QLabel" name="opt">
      <property name="geometry">
       <rect>
        <x>220</x>
@@ -562,9 +562,9 @@ border-bottom-left-radius: 0px;</string>
     <widget class="QFrame" name="frame">
      <property name="geometry">
       <rect>
-       <x>229</x>
+       <x>239</x>
        <y>114</y>
-       <width>161</width>
+       <width>151</width>
        <height>75</height>
       </rect>
      </property>
@@ -578,10 +578,10 @@ border-radius: 25px;</string>
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
-     <widget class="QCheckBox" name="checkBox_2">
+     <widget class="QCheckBox" name="LogBox">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>15</x>
         <y>27</y>
         <width>181</width>
         <height>23</height>
@@ -614,10 +614,10 @@ border-radius: 25px;</string>
        <string>Turn on logs</string>
       </property>
      </widget>
-     <widget class="QCheckBox" name="checkBox">
+     <widget class="QCheckBox" name="OffsetBox">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>15</x>
         <y>5</y>
         <width>181</width>
         <height>23</height>
@@ -644,10 +644,10 @@ border-radius: 25px;</string>
        <string>Enable Offset</string>
       </property>
      </widget>
-     <widget class="QCheckBox" name="checkBox_3">
+     <widget class="QCheckBox" name="PrinterBox">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>15</x>
         <y>49</y>
         <width>181</width>
         <height>23</height>

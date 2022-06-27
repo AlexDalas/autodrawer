@@ -3,12 +3,18 @@
 #include "ui_previewwindow.h"
 #include "messagewindow.h"
 #include <iostream>
+#include <fstream>
 #include <QShortcut>
 #include <QtConcurrent>
 #include <thread>
 #include <chrono>
 #include <future>
 #include <QMouseEvent>
+#include <QStandardPaths>
+#include <QFile>
+#include <QJsonParseError>
+#include <QJsonObject>
+#include <QStandardPaths>
 
 bool loopRunning = true;
 bool stopAutodraw;
@@ -16,6 +22,9 @@ int moveInterval;
 int clickDelay;
 QImage image;
 using namespace Qt;
+QWidget* MainWin;
+
+auto path = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/AutoDrawer";
 
 PreviewWindow::PreviewWindow(QImage dimage, int interval, int delay, QWidget *parent) :
     QMainWindow(parent),
@@ -40,24 +49,77 @@ PreviewWindow::PreviewWindow(QImage dimage, int interval, int delay, QWidget *pa
     moveInterval = interval;
     clickDelay = delay;
     image = dimage;
-
-
+    MainWin = parent;
     //parent->show();
     QFuture<void> future = QtConcurrent::run([=]() {
         while (loopRunning){
             move(QCursor::pos().x() - ui->ShownImage->width()/2, QCursor::pos().y() - ui->ShownImage->height()/2);
         }
     });
+
+    QFile inFile(path+"/user.cfg");
+    inFile.open(QIODevice::ReadOnly|QIODevice::Text);
+    QByteArray data = inFile.readAll();
+
+    QJsonParseError errorPtr;
+    QJsonDocument doc = QJsonDocument::fromJson(data, &errorPtr);
+    QJsonObject rootObj = doc.object();
+    auto theme = rootObj.value("theme").toString();
+
+    if (theme == "dark") {} else if (QFile::exists(path+"/themes/"+theme+".drawtheme") ){
+        QFile inFile2(path+"/themes/"+theme+".drawtheme");
+        inFile2.open(QIODevice::ReadOnly|QIODevice::Text);
+        QByteArray themeData = inFile2.readAll();
+        QJsonParseError errorPtr;
+        QJsonDocument docT = QJsonDocument::fromJson(themeData, &errorPtr);
+        QJsonObject rootObj = docT.object();
+        QJsonObject preview = rootObj["preview"].toObject();
+        ui->Header->setStyleSheet("color: "+preview["text"].toString());
+        ui->Background->setStyleSheet("border-radius: 25px; background: "+preview["background"].toString());
+    }
+
+    if (!QFile::exists(path+"/hotkey.py")){
+        std::ofstream MyFile((path+"/hotkey.py").toStdString());
+        // I really do not want a super long string
+        MyFile << "from pynput import keyboard\nfrom pynput.keyboard import Key\nimport sys\n";
+        MyFile << "def stop():\n    listener.stop()\n    sys.exit(0)\n";
+        MyFile << "def on_press(key):\n    if(key==Key.shift and sys.argv[1] == \"start\"):\n";
+        MyFile << "        stop()\n    elif(key==Key.ctrl and sys.argv[1] == \"lock\"):\n        stop()";
+        MyFile << "\n    elif(key==Key.alt and sys.argv[1] == \"stop\"):\n        stop()";
+        MyFile << "\nwith keyboard.Listener(on_press=on_press) as listener:\n    listener.join()";
+        MyFile.close();
+    }
+    QFuture<void> start = QtConcurrent::run([=]() {
+        if(pyCode("start") && stopAutodraw) Draw();
+    });
+    QFuture<void> stop = QtConcurrent::run([=]() {
+        if(pyCode("stop")) on_pushButton_2_released();
+    });
+    QFuture<void> lockpos = QtConcurrent::run([=]() {
+        if(pyCode("lock")) lockPos();
+    });
+}
+
+static void sendMessage(QString a, int b, QWidget *t){
+    //1 for info, 2 for error, 3 for alert
+    MessageWindow *w = new MessageWindow(a, b, t);
+    w->show();
+}
+
+bool PreviewWindow::pyCode(std::string str){
+    QStringList arguments;
+    arguments << path+"/hotkey.py" << str.c_str();
+    QProcess *myProcess = new QProcess(this);
+    myProcess->start("python3", arguments);
+    myProcess->waitForFinished(-1);
+    if(myProcess->exitCode() == 0) return true; else return false;
 }
 
 void PreviewWindow::setCursor(int x, int y){
     QCursor::setPos(QPoint(x,y));
-    //QFuture<void> future = QtConcurrent::run([=]() {
-    //    std::system(("xdotool mousemove " + std::to_string(x) + " " + std::to_string(y)+" --delay 0").c_str());
-    //});
 }
 
-void PreviewWindow::clickCursor(){
+void PreviewWindow::clickCursor(int x, int y){
 
 }
 
@@ -68,19 +130,24 @@ PreviewWindow::~PreviewWindow()
 void PreviewWindow::closeDraw(int a){
     //0 is stopped, 1 is success
     if (a == 1){
+        sendMessage("Drawing finished", 4, MainWin);
         this->close();
-        MessageWindow *w = new MessageWindow("Drawing finished", 4, this);
-        w->show();
     } else{
+        sendMessage("Drawing stopped", 5, MainWin);
         this->close();
-        MessageWindow *w = new MessageWindow("Drawing stopped", 5, this);
-        w->show();
     }
+}
+
+void PreviewWindow::lockPos(){
+    //To be done when the save config code is done
 }
 
 void PreviewWindow::on_pushButton_2_released()
 {
-    stopAutodraw = true;
+    if (!loopRunning) stopAutodraw = true; else {
+        MainWin->show();
+        this->close();
+    }
 }
 
 void PreviewWindow::Draw()
@@ -100,7 +167,7 @@ void PreviewWindow::Draw()
                 uint ci = uint(qGray(pixel));
                 if (ci <= 254){
                     setCursor(x+xImg, y+(yImg));
-                    clickCursor();
+                    clickCursor(x+xImg, y+(yImg));
                     std::this_thread::sleep_for(std::chrono::microseconds(moveInterval));
                 }
                 else{}

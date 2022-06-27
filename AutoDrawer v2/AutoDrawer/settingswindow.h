@@ -16,13 +16,14 @@ public:
     ~SettingsWindow();
 
 private slots:
-    void on_pushButton_7_released();
 
-    void on_pushButton_8_released();
+    void on_GH_released();
 
-    void on_pushButton_9_released();
+    void on_LR_released();
 
-    void on_pushButton_10_released();
+    void on_Discord_released();
+
+    void on_CloseBox_released();
 
 private:
     Ui::SettingsWindow *ui;

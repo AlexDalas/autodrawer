@@ -16,7 +16,7 @@ public:
     ~InfoWindow();
 
 private slots:
-    void on_pushButton_6_released();
+    void on_Button_released();
 
 private:
     Ui::InfoWindow *ui;

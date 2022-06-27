@@ -31,7 +31,7 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background: rgb(44, 48, 46);
+     <string notr="true">background: #FF2C302E;
 border-radius: 10px;</string>
     </property>
     <property name="frameShape">
@@ -69,7 +69,7 @@ border-radius: 5px;</string>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(51, 55, 53);
+       <string notr="true">background-color: transparent;
 border-radius: 5px;</string>
       </property>
       <property name="frameShape">
@@ -109,22 +109,6 @@ border-radius: 5px;</string>
         <enum>Qt::Horizontal</enum>
        </property>
       </widget>
-      <widget class="QLabel" name="ScaleText">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>-1</y>
-         <width>40</width>
-         <height>40</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">font: 11pt &quot;Sans Serif&quot;;</string>
-       </property>
-       <property name="text">
-        <string>Scale</string>
-       </property>
-      </widget>
       <widget class="QLineEdit" name="scaleNumber">
        <property name="geometry">
         <rect>
@@ -145,6 +129,33 @@ border-radius: 5px;</string>
         <set>Qt::AlignCenter</set>
        </property>
       </widget>
+      <widget class="QLabel" name="ScaleText">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>10</y>
+         <width>51</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 11pt &quot;Sans Serif&quot;;
+background: transparent;
+border-radius: 5px;</string>
+       </property>
+       <property name="text">
+        <string>Scale</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
      </widget>
      <widget class="QLabel" name="HeightText">
       <property name="geometry">
@@ -156,8 +167,7 @@ border-radius: 5px;</string>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">font: 11pt &quot;Sans Serif&quot;;
-background:transparent;</string>
+       <string notr="true">font: 11pt &quot;Sans Serif&quot;;</string>
       </property>
       <property name="text">
        <string>Height</string>
@@ -176,8 +186,7 @@ background:transparent;</string>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">font: 11pt &quot;Sans Serif&quot;;
-background:transparent;</string>
+       <string notr="true">font: 11pt &quot;Sans Serif&quot;;</string>
       </property>
       <property name="text">
        <string>Width</string>
@@ -230,7 +239,7 @@ border-bottom-left-radius: 0px;</string>
     <widget class="QPushButton" name="exitButton">
      <property name="geometry">
       <rect>
-       <x>850</x>
+       <x>840</x>
        <y>20</y>
        <width>31</width>
        <height>31</height>
@@ -261,7 +270,7 @@ border-bottom-left-radius: 0px;</string>
     <widget class="QPushButton" name="Minimize">
      <property name="geometry">
       <rect>
-       <x>810</x>
+       <x>800</x>
        <y>20</y>
        <width>31</width>
        <height>31</height>
@@ -302,7 +311,7 @@ border-bottom-left-radius: 0px;</string>
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;logo&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
-    <widget class="QLabel" name="Logo_2">
+    <widget class="QLabel" name="ADText">
      <property name="geometry">
       <rect>
        <x>550</x>
@@ -321,7 +330,7 @@ border-bottom-left-radius: 0px;</string>
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Autodrawer v2.0-alpha&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_2">
+    <widget class="QPushButton" name="DP">
      <property name="geometry">
       <rect>
        <x>515</x>
@@ -351,7 +360,7 @@ background: rgb(55,55,55);
       <string>Custom Pattern</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_3">
+    <widget class="QPushButton" name="loadConfig">
      <property name="geometry">
       <rect>
        <x>515</x>
@@ -381,7 +390,7 @@ background: rgb(55,55,55);
       <string>Load Config</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_4">
+    <widget class="QPushButton" name="saveConfig">
      <property name="geometry">
       <rect>
        <x>515</x>
@@ -414,7 +423,7 @@ background: rgb(55,55,55);
       <string>Save Config</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_5">
+    <widget class="QPushButton" name="infoButton">
      <property name="geometry">
       <rect>
        <x>640</x>
@@ -448,7 +457,7 @@ background: rgb(55,55,55);
       <string>I</string>
      </property>
     </widget>
-    <widget class="QLabel" name="Logo_3">
+    <widget class="QLabel" name="DPText">
      <property name="geometry">
       <rect>
        <x>515</x>
@@ -473,7 +482,7 @@ background: rgb(55,55,55);
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_6">
+    <widget class="QPushButton" name="uploadImage">
      <property name="geometry">
       <rect>
        <x>515</x>
@@ -506,7 +515,7 @@ background: rgb(55,55,55);
       <string>Upload Image</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_7">
+    <widget class="QPushButton" name="clearImage">
      <property name="geometry">
       <rect>
        <x>697</x>
@@ -539,7 +548,7 @@ background: rgb(55,55,55);
       <string>Clear Image</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_8">
+    <widget class="QPushButton" name="processImage">
      <property name="geometry">
       <rect>
        <x>515</x>
@@ -573,7 +582,7 @@ background: rgb(55,55,55);
       <string>Process Image</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_9">
+    <widget class="QPushButton" name="startButton">
      <property name="geometry">
       <rect>
        <x>515</x>
@@ -665,7 +674,7 @@ border-bottom-left-radius: 0px;</string>
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QLabel" name="Logo_4">
+    <widget class="QLabel" name="intText">
      <property name="geometry">
       <rect>
        <x>515</x>
@@ -690,7 +699,7 @@ border-bottom-left-radius: 0px;</string>
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QLabel" name="Logo_5">
+    <widget class="QLabel" name="cdText">
      <property name="geometry">
       <rect>
        <x>695</x>
@@ -715,7 +724,7 @@ border-bottom-left-radius: 0px;</string>
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QLabel" name="Logo_6">
+    <widget class="QLabel" name="ttText">
      <property name="geometry">
       <rect>
        <x>695</x>
@@ -740,7 +749,7 @@ border-bottom-left-radius: 0px;</string>
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QLabel" name="Logo_7">
+    <widget class="QLabel" name="btText">
      <property name="geometry">
       <rect>
        <x>515</x>
@@ -785,7 +794,7 @@ border-bottom-left-radius: 0px;</string>
       <enum>QListView::Snap</enum>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_10">
+    <widget class="QPushButton" name="dirButton">
      <property name="geometry">
       <rect>
        <x>705</x>
@@ -813,7 +822,7 @@ border-bottom-left-radius: 10px;</string>
       <string>Set Directory</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_11">
+    <widget class="QPushButton" name="reloadButton">
      <property name="geometry">
       <rect>
        <x>850</x>
@@ -937,7 +946,7 @@ background:transparent</string>
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_12">
+    <widget class="QPushButton" name="settingButton">
      <property name="geometry">
       <rect>
        <x>515</x>
@@ -1046,29 +1055,29 @@ background:transparent</string>
     <zorder>exitButton</zorder>
     <zorder>Minimize</zorder>
     <zorder>Logo</zorder>
-    <zorder>Logo_2</zorder>
-    <zorder>pushButton_2</zorder>
-    <zorder>pushButton_3</zorder>
-    <zorder>pushButton_4</zorder>
-    <zorder>pushButton_5</zorder>
-    <zorder>Logo_3</zorder>
-    <zorder>pushButton_6</zorder>
-    <zorder>pushButton_7</zorder>
-    <zorder>pushButton_8</zorder>
-    <zorder>pushButton_9</zorder>
+    <zorder>ADText</zorder>
+    <zorder>DP</zorder>
+    <zorder>loadConfig</zorder>
+    <zorder>saveConfig</zorder>
+    <zorder>infoButton</zorder>
+    <zorder>DPText</zorder>
+    <zorder>uploadImage</zorder>
+    <zorder>clearImage</zorder>
+    <zorder>processImage</zorder>
+    <zorder>startButton</zorder>
     <zorder>intervalTextBox</zorder>
     <zorder>clickDelayTextBox</zorder>
-    <zorder>Logo_4</zorder>
-    <zorder>Logo_5</zorder>
-    <zorder>Logo_6</zorder>
-    <zorder>Logo_7</zorder>
+    <zorder>intText</zorder>
+    <zorder>cdText</zorder>
+    <zorder>ttText</zorder>
+    <zorder>btText</zorder>
     <zorder>listView</zorder>
-    <zorder>pushButton_10</zorder>
-    <zorder>pushButton_11</zorder>
+    <zorder>dirButton</zorder>
+    <zorder>reloadButton</zorder>
     <zorder>drawingList</zorder>
     <zorder>transThresh</zorder>
     <zorder>blackThresh</zorder>
-    <zorder>pushButton_12</zorder>
+    <zorder>settingButton</zorder>
     <zorder>ImageSource</zorder>
     <zorder>ImageBackground</zorder>
     <zorder>ImageDrawn</zorder>

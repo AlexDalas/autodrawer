@@ -24,9 +24,13 @@ private slots:
 
     void setCursor(int x, int y);
 
-    void clickCursor();
+    void clickCursor(int x, int y);
 
     void on_Draw_released();
+
+    void lockPos();
+
+    bool pyCode(std::string str);
 
 private:
     Ui::PreviewWindow *ui;
