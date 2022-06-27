@@ -298,23 +298,10 @@ border-bottom-left-radius: 0px;</string>
       <string>-</string>
      </property>
     </widget>
-    <widget class="QLabel" name="Logo">
-     <property name="geometry">
-      <rect>
-       <x>520</x>
-       <y>20</y>
-       <width>31</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;logo&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-    </widget>
     <widget class="QLabel" name="ADText">
      <property name="geometry">
       <rect>
-       <x>550</x>
+       <x>555</x>
        <y>20</y>
        <width>251</width>
        <height>31</height>
@@ -454,7 +441,13 @@ background: rgb(55,55,55);
         }</string>
      </property>
      <property name="text">
-      <string>I</string>
+      <string/>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>35</width>
+       <height>35</height>
+      </size>
      </property>
     </widget>
     <widget class="QLabel" name="DPText">
@@ -847,7 +840,13 @@ border-bottom-right-radius: 10px;
 border-bottom-left-radius: 0px;</string>
      </property>
      <property name="text">
-      <string>R</string>
+      <string/>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>18</width>
+       <height>18</height>
+      </size>
      </property>
     </widget>
     <widget class="QListView" name="drawingList">
@@ -1051,10 +1050,40 @@ background:transparent</string>
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
+    <widget class="QPushButton" name="Logo">
+     <property name="geometry">
+      <rect>
+       <x>520</x>
+       <y>20</y>
+       <width>31</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Sans Serif</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>30</width>
+       <height>30</height>
+      </size>
+     </property>
+    </widget>
     <zorder>ImageOpt</zorder>
     <zorder>exitButton</zorder>
     <zorder>Minimize</zorder>
-    <zorder>Logo</zorder>
     <zorder>ADText</zorder>
     <zorder>DP</zorder>
     <zorder>loadConfig</zorder>
@@ -1082,6 +1111,7 @@ background:transparent</string>
     <zorder>ImageBackground</zorder>
     <zorder>ImageDrawn</zorder>
     <zorder>ShownImage</zorder>
+    <zorder>Logo</zorder>
    </widget>
   </widget>
  </widget>

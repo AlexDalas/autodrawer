@@ -37,6 +37,9 @@ private slots:
 
     void on_LogBox_released();
 
+    void reloadList();
+    void on_OpenLogs_released();
+
 private:
     Ui::SettingsWindow *ui;
 };

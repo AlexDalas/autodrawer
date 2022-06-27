@@ -3,6 +3,7 @@
 #include "ui_settingswindow.h"
 #include "messagewindow.h"
 #include "autodrawer.h"
+#include "downloadthemes.h"
 #include <QDesktopServices>
 #include <QUrl>
 #include <QFile>
@@ -24,15 +25,6 @@ SettingsWindow::SettingsWindow(QWidget *parent) :
     setParent(0);
     setAttribute(Qt::WA_NoSystemBackground, true);
     setAttribute(Qt::WA_TranslucentBackground, true);
-    QList list(QStringList()<<"dark"<<"light");
-    QDirIterator it(PathAD+"/themes/", QStringList() << "*.drawtheme", QDir::Files, QDirIterator::Subdirectories);
-    while (it.hasNext()){
-        it.next();
-        QString fileName = it.fileName().replace(".drawtheme", "");
-        if (fileName != "light" && fileName != "dark"){
-            list << fileName;
-        }
-    }
     QFile inFile(PathAD+"/user.cfg");
     inFile.open(QIODevice::ReadOnly|QIODevice::Text);
     QByteArray data = inFile.readAll();
@@ -41,7 +33,7 @@ SettingsWindow::SettingsWindow(QWidget *parent) :
     QJsonObject rootObj = doc.object();
     QString theme = rootObj.value("theme").toString();
     reloadThemes(theme);
-    ui->ThemeCombo->addItems(list);
+    reloadList();
     ui->ThemeCombo->setCurrentIndex(ui->ThemeCombo->findText(theme));
     inFile.close();
     indexReady = true;
@@ -93,15 +85,30 @@ void SettingsWindow::reloadThemes(QString theme){
     ui->PrinterBox->setStyleSheet("background:transparent;color: "+preview["text"].toString());
     ui->OpenThemes->setStyleSheet("color: "+preview["text"].toString()+";border-top-left-radius: 10px;border-top-right-radius: 0px;border-bottom-right-radius: 0px;border-bottom-left-radius: 10px;background: "+preview["buttons"].toString());
     ui->Reload->setStyleSheet("color: "+preview["text"].toString()+";border-top-left-radius: 0px;border-top-right-radius: 10px;border-bottom-right-radius: 10px;border-bottom-left-radius: 0px;background: "+preview["buttons"].toString());
-    ui->intervalTextBox->setStyleSheet("border-top-left-radius: 10px;border-top-right-radius: 0px;border-bottom-right-radius: 0px;border-bottom-left-radius: 10px;background: "+preview["buttons"].toString());
-    ui->intervalTextBox_2->setStyleSheet("border-top-left-radius: 0px;border-top-right-radius: 10px;border-bottom-right-radius: 10px;border-bottom-left-radius: 0px;background: "+preview["buttons"].toString());
+    ui->intervalTextBox->setStyleSheet("color: "+preview["text"].toString()+";border-top-left-radius: 10px;border-top-right-radius: 0px;border-bottom-right-radius: 0px;border-bottom-left-radius: 10px;background: "+preview["buttons"].toString());
+    ui->intervalTextBox_2->setStyleSheet("color: "+preview["text"].toString()+";border-top-left-radius: 0px;border-top-right-radius: 10px;border-bottom-right-radius: 10px;border-bottom-left-radius: 0px;background: "+preview["buttons"].toString());
     ui->Background_2->setStyleSheet("border-radius: 25px; background: "+preview["background"].toString());
     ui->offsetPos->setStyleSheet("color: "+preview["text"].toString());
     ui->X->setStyleSheet("color: "+preview["text"].toString());
     ui->Y->setStyleSheet("color: "+preview["text"].toString());
     ui->opt->setStyleSheet("color: "+preview["text"].toString());
-    ui->themes->setStyleSheet("color: "+preview["background"].toString());
-    ui->ThemeCombo->setStyleSheet("color: "+preview["text"].toString());
+    ui->themes->setStyleSheet("color: "+preview["text"].toString());
+    ui->ThemeCombo->setStyleSheet("background: "+preview["buttons"].toString()+"; color: "+preview["text"].toString());
+}
+
+void SettingsWindow::reloadList(){
+    ui->ThemeCombo->clear();
+    QList list(QStringList()<<"dark"<<"light");
+    QDirIterator it(PathAD+"/themes/", QStringList() << "*.drawtheme", QDir::Files, QDirIterator::Subdirectories);
+    while (it.hasNext()){
+        it.next();
+        QString fileName = it.fileName().replace(".drawtheme", "");
+        if (fileName != "light" && fileName != "dark"){
+            list << fileName;
+        }
+    }
+    list << "Get more!";
+    ui->ThemeCombo->addItems(list);
 }
 
 void SettingsWindow::on_GH_released()
@@ -135,6 +142,9 @@ void SettingsWindow::on_OpenThemes_released()
 
 void SettingsWindow::on_Reload_released()
 {
+    indexReady = false;
+    reloadList();
+    indexReady = true;
     QFile inFile(PathAD+"/user.cfg");
     inFile.open(QIODevice::ReadOnly|QIODevice::Text);
     QByteArray data = inFile.readAll();
@@ -155,16 +165,20 @@ void SettingsWindow::on_ThemeCombo_currentIndexChanged()
     QJsonParseError errorPtr;
     QJsonDocument doc = QJsonDocument::fromJson(data, &errorPtr);
     QJsonObject doc_obj = doc.object();
-    doc_obj.insert("theme", Item);
-    QJsonDocument new_doc(doc_obj);
-    inFile.resize(0);
-    inFile.write(new_doc.toJson());
-    inFile.close();
-    on_Reload_released();
-    MessageWindow *w = new MessageWindow("Theme sucessfully set to "+Item+"!", 1, this);
-    w->show();
+    if (Item == "Get more!"){
+        ui->ThemeCombo->setCurrentIndex(ui->ThemeCombo->findText(doc_obj["theme"].toString()));
+        downloadthemes *w = new downloadthemes();
+        w->show();
+    }
+    else{
+        doc_obj.insert("theme", Item);
+        QJsonDocument new_doc(doc_obj);
+        inFile.resize(0);
+        inFile.write(new_doc.toJson());
+        inFile.close();
+        on_Reload_released();
+    }
 }
-
 
 void SettingsWindow::on_OffsetBox_released()
 {
@@ -183,7 +197,6 @@ void SettingsWindow::on_OffsetBox_released()
     inFile.close();
 }
 
-
 void SettingsWindow::on_LogBox_released()
 {
     if (!indexReady) return;
@@ -199,5 +212,11 @@ void SettingsWindow::on_LogBox_released()
     inFile.resize(0);
     inFile.write(new_doc.toJson());
     inFile.close();
+}
+
+
+void SettingsWindow::on_OpenLogs_released()
+{
+    QDesktopServices::openUrl(PathAD+"/logs/");
 }
 
