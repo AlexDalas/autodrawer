@@ -1,0 +1,68 @@
+{
+    "ver": 2.0,
+    "light-icons": "true",
+    "main": {
+        "text": "#090E06",
+        "background": "#92AFD7",
+        "background-1": "#8BA8CD",
+        "background-2": "#7D9AB9",
+        "image-background": "#7693AE",
+        "pattern-listbox": "#7D9AB9",
+        "config-listbox": "#7D9AB9",
+        "loadconfig-button": "#84A1C3",
+        "loadconfig-button-hover": "#7D9AB9",
+        "saveconfig-button": "#84A1C3",
+        "saveconfig-button-hover": "#7D9AB9",
+        "settings-info-buttons": "#84A1C3",
+        "settings-info-buttons-hover": "#7D9AB9",
+        "pattern-button": "#84A1C3",
+        "pattern-button-hover": "#7D9AB9",
+        "directory-buttons": "#84A1C3",
+        "directory-buttons-hover": "#7D9AB9",
+        "textbox-backgrounds": "#7D9AB9",
+        "upload-buttons": "#84A1C3",
+        "upload-buttons-hover": "#7D9AB9",
+        "clear-buttons": "#84A1C3",
+        "clear-buttons-hover": "#7D9AB9",
+        "process-button": "#84A1C3",
+        "process-button-hover": "#7D9AB9",
+        "start-button": "#84A1C3",
+        "start-button-hover": "#7D9AB9",
+        "scalebar-background": "#7D9AB9",
+        "scale-textbox": "#7693AE",
+        "width-textbox": "#7D9AB9",
+        "height-textbox": "#7D9AB9"
+    },
+    "settings": {
+        "text": "#FF000000",
+        "background": "#819EBE",
+        "buttons": "#7693AE",
+        "textbox": "#7693AE",
+        "checkbox-box": "#F2C77E",
+        "close": "#7693AE"
+    },
+    "info": {
+        "text": "#090E06",
+        "background": "#7D9AB9",
+        "close": "#84A1C3"
+    },
+    "pattern": {
+        "text": "#090E06",
+        "background": "#7D9AB9",
+        "image-background": "#92AFD7",
+        "button": "#7693AE",
+        "textbox": "#7693AE",
+        "close": "#84A1C3"
+    },
+    "console": {
+        "text": "#090E06",
+        "background": "#7D9AB9",
+        "console-background": "#F1D9A7",
+        "button": "#7693AE",
+        "close": "#84A1C3"
+    },
+    "preview": {
+        "text": "#090E06",
+        "background": "#7D9AB9"
+    }
+}
