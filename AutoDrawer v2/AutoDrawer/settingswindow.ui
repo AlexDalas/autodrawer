@@ -372,7 +372,13 @@ background: rgb(55,55,55);
         }</string>
      </property>
      <property name="text">
-      <string>R</string>
+      <string/>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
      </property>
     </widget>
     <widget class="QLineEdit" name="intervalTextBox">
