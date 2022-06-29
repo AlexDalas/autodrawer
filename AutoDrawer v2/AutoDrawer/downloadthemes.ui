@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>731</width>
-    <height>471</height>
+    <height>511</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,7 +20,7 @@
       <x>0</x>
       <y>0</y>
       <width>731</width>
-      <height>471</height>
+      <height>511</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -37,7 +37,7 @@ border-radius: 25px;</string>
      <property name="geometry">
       <rect>
        <x>30</x>
-       <y>180</y>
+       <y>190</y>
        <width>211</width>
        <height>41</height>
       </rect>
@@ -60,14 +60,14 @@ background: rgb(55,55,55);
         }</string>
      </property>
      <property name="text">
-      <string>Black</string>
+      <string>Download Black</string>
      </property>
     </widget>
     <widget class="QPushButton" name="Violet">
      <property name="geometry">
       <rect>
        <x>260</x>
-       <y>180</y>
+       <y>190</y>
        <width>211</width>
        <height>41</height>
       </rect>
@@ -90,14 +90,14 @@ background: rgb(55,55,55);
         }</string>
      </property>
      <property name="text">
-      <string>Violet</string>
+      <string>Download Violet</string>
      </property>
     </widget>
     <widget class="QPushButton" name="OrangeYellow">
      <property name="geometry">
       <rect>
        <x>490</x>
-       <y>180</y>
+       <y>190</y>
        <width>211</width>
        <height>41</height>
       </rect>
@@ -120,14 +120,14 @@ background: rgb(55,55,55);
         }</string>
      </property>
      <property name="text">
-      <string>Orange-Yellow</string>
+      <string>Download Banana</string>
      </property>
     </widget>
     <widget class="QPushButton" name="Green">
      <property name="geometry">
       <rect>
        <x>490</x>
-       <y>340</y>
+       <y>410</y>
        <width>211</width>
        <height>41</height>
       </rect>
@@ -150,14 +150,14 @@ background: rgb(55,55,55);
         }</string>
      </property>
      <property name="text">
-      <string>Green</string>
+      <string>Download Green</string>
      </property>
     </widget>
     <widget class="QPushButton" name="Red">
      <property name="geometry">
       <rect>
        <x>30</x>
-       <y>340</y>
+       <y>410</y>
        <width>211</width>
        <height>41</height>
       </rect>
@@ -180,14 +180,14 @@ background: rgb(55,55,55);
         }</string>
      </property>
      <property name="text">
-      <string>Red</string>
+      <string>Download Red</string>
      </property>
     </widget>
     <widget class="QPushButton" name="Blue">
      <property name="geometry">
       <rect>
        <x>260</x>
-       <y>340</y>
+       <y>410</y>
        <width>211</width>
        <height>41</height>
       </rect>
@@ -210,14 +210,14 @@ background: rgb(55,55,55);
         }</string>
      </property>
      <property name="text">
-      <string>Blue</string>
+      <string>Download Blue</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="Blue_2">
+    <widget class="QPushButton" name="Exit">
      <property name="geometry">
       <rect>
        <x>300</x>
-       <y>400</y>
+       <y>460</y>
        <width>131</width>
        <height>41</height>
       </rect>
@@ -243,9 +243,147 @@ background: rgb(55,55,55);
       <string>Exit</string>
      </property>
     </widget>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>25</x>
+       <y>240</y>
+       <width>222</width>
+       <height>157</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="resources.qrc">:/images/images/red.png</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>255</x>
+       <y>240</y>
+       <width>222</width>
+       <height>157</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="resources.qrc">:/images/images/blue.png</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>485</x>
+       <y>240</y>
+       <width>222</width>
+       <height>157</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="resources.qrc">:/images/images/green.png</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_4">
+     <property name="geometry">
+      <rect>
+       <x>255</x>
+       <y>20</y>
+       <width>222</width>
+       <height>157</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="resources.qrc">:/images/violet</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_5">
+     <property name="geometry">
+      <rect>
+       <x>485</x>
+       <y>20</y>
+       <width>222</width>
+       <height>157</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="resources.qrc">:/images/images/yellow.png</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_6">
+     <property name="geometry">
+      <rect>
+       <x>25</x>
+       <y>20</y>
+       <width>222</width>
+       <height>157</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="resources.qrc">:/images/images/black.png</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QLabel" name="Text">
+     <property name="geometry">
+      <rect>
+       <x>450</x>
+       <y>465</y>
+       <width>281</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background: transparent;</string>
+     </property>
+     <property name="text">
+      <string>Select your theme in settings!</string>
+     </property>
+    </widget>
    </widget>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

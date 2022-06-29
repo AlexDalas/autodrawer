@@ -40,6 +40,12 @@ private slots:
     void reloadList();
     void on_OpenLogs_released();
 
+    void on_PrinterBox_released();
+
+    void on_Console_released();
+
+    void on_ThemeEditor_released();
+
 private:
     Ui::SettingsWindow *ui;
 };

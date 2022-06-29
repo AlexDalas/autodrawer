@@ -1,5 +1,7 @@
 #include "settingswindow.h"
+#include "consolewindow.h"
 #include "qjsondocument.h"
+#include "themeeditor.h"
 #include "ui_settingswindow.h"
 #include "messagewindow.h"
 #include "autodrawer.h"
@@ -11,7 +13,8 @@
 #include <QJsonObject>
 #include <QStandardPaths>
 #include <QDirIterator>
-
+#include <QApplication>
+#include <QProcess>
 auto PathAD = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/AutoDrawer";
 bool indexReady = false;
 
@@ -35,6 +38,8 @@ SettingsWindow::SettingsWindow(QWidget *parent) :
     reloadThemes(theme);
     reloadList();
     ui->ThemeCombo->setCurrentIndex(ui->ThemeCombo->findText(theme));
+    ui->PrinterBox->setChecked(rootObj["printer"].toBool());
+    ui->LogBox->setChecked(rootObj["logs"].toBool());
     inFile.close();
     indexReady = true;
 }
@@ -170,6 +175,7 @@ void SettingsWindow::on_Reload_released()
     QJsonObject rootObj = doc.object();
     QString theme = rootObj.value("theme").toString();
     reloadThemes(theme);
+    inFile.close();
 }
 
 void SettingsWindow::on_ThemeCombo_currentIndexChanged()
@@ -183,10 +189,12 @@ void SettingsWindow::on_ThemeCombo_currentIndexChanged()
     QJsonDocument doc = QJsonDocument::fromJson(data, &errorPtr);
     QJsonObject doc_obj = doc.object();
     if (Item == "Get more!"){
+        indexReady = false;
         ui->ThemeCombo->setCurrentIndex(ui->ThemeCombo->findText(doc_obj["theme"].toString()));
         downloadthemes *w = new downloadthemes();
         w->show();
         inFile.close();
+        indexReady = true;
     }
     else{
         doc_obj.insert("theme", Item);
@@ -195,6 +203,8 @@ void SettingsWindow::on_ThemeCombo_currentIndexChanged()
         inFile.write(new_doc.toJson());
         inFile.close();
         on_Reload_released();
+        QApplication::closeAllWindows();
+        QProcess::startDetached(qApp->arguments()[0], qApp->arguments());
     }
 }
 
@@ -218,7 +228,6 @@ void SettingsWindow::on_OffsetBox_released()
 void SettingsWindow::on_LogBox_released()
 {
     if (!indexReady) return;
-    QString Item = ui->ThemeCombo->currentText();
     QFile inFile(PathAD+"/user.cfg");
     inFile.open(QIODevice::ReadWrite|QIODevice::Text);
     QByteArray data = inFile.readAll();
@@ -236,5 +245,36 @@ void SettingsWindow::on_LogBox_released()
 void SettingsWindow::on_OpenLogs_released()
 {
     QDesktopServices::openUrl(PathAD+"/logs/");
+}
+
+
+void SettingsWindow::on_PrinterBox_released()
+{
+    if (!indexReady) return;
+    QFile inFile(PathAD+"/user.cfg");
+    inFile.open(QIODevice::ReadWrite|QIODevice::Text);
+    QByteArray data = inFile.readAll();
+    QJsonParseError errorPtr;
+    QJsonDocument doc = QJsonDocument::fromJson(data, &errorPtr);
+    QJsonObject doc_obj = doc.object();
+    if (ui->PrinterBox->checkState() == 0) doc_obj.insert("printer", false); else doc_obj.insert("printer", true);
+    QJsonDocument new_doc(doc_obj);
+    inFile.resize(0);
+    inFile.write(new_doc.toJson());
+    inFile.close();
+}
+
+
+void SettingsWindow::on_Console_released()
+{
+    ConsoleWindow *cw = new ConsoleWindow();
+    cw->show();
+}
+
+
+void SettingsWindow::on_ThemeEditor_released()
+{
+    ThemeEditor *te = new ThemeEditor();
+    te->show();
 }
 

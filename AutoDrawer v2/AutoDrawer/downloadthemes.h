@@ -15,12 +15,11 @@ public:
     explicit downloadthemes(QWidget *parent = nullptr);
     ~downloadthemes();
 
+
 private slots:
     void on_Violet_released();
 
     void downloadSet(QString url, QString saveAS);
-
-    void on_Blue_2_released();
 
     void on_Blue_released();
 
@@ -31,6 +30,10 @@ private slots:
     void on_Red_released();
 
     void on_Green_released();
+
+    void reloadThemes();
+
+    void on_Exit_released();
 
 private:
     Ui::downloadthemes *ui;

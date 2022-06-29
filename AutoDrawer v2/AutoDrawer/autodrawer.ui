@@ -314,7 +314,7 @@ border-bottom-left-radius: 0px;</string>
       </font>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Autodrawer v2.0-alpha&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>AutoDrawer v2.0-alpha</string>
      </property>
     </widget>
     <widget class="QPushButton" name="DP">
@@ -767,31 +767,11 @@ border-bottom-left-radius: 0px;</string>
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QListView" name="listView">
-     <property name="geometry">
-      <rect>
-       <x>705</x>
-       <y>60</y>
-       <width>171</width>
-       <height>113</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background: rgb(58,61,59);
-border-top-left-radius: 10px;
-border-top-right-radius: 10px;
-border-bottom-right-radius: 0px;
-border-bottom-left-radius: 0px;</string>
-     </property>
-     <property name="movement">
-      <enum>QListView::Snap</enum>
-     </property>
-    </widget>
     <widget class="QPushButton" name="dirButton">
      <property name="geometry">
       <rect>
        <x>705</x>
-       <y>175</y>
+       <y>171</y>
        <width>143</width>
        <height>26</height>
       </rect>
@@ -819,7 +799,7 @@ border-bottom-left-radius: 10px;</string>
      <property name="geometry">
       <rect>
        <x>850</x>
-       <y>175</y>
+       <y>171</y>
        <width>26</width>
        <height>26</height>
       </rect>
@@ -847,23 +827,6 @@ border-bottom-left-radius: 0px;</string>
        <width>18</width>
        <height>18</height>
       </size>
-     </property>
-    </widget>
-    <widget class="QListView" name="drawingList">
-     <property name="geometry">
-      <rect>
-       <x>705</x>
-       <y>220</y>
-       <width>171</width>
-       <height>71</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background: rgb(58,61,59);
-border-radius: 10px;</string>
-     </property>
-     <property name="movement">
-      <enum>QListView::Snap</enum>
      </property>
     </widget>
     <widget class="QLineEdit" name="transThresh">
@@ -1050,7 +1013,7 @@ background:transparent</string>
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QPushButton" name="Logo">
+    <widget class="QLabel" name="LightLogo">
      <property name="geometry">
       <rect>
        <x>520</x>
@@ -1059,28 +1022,93 @@ background:transparent</string>
        <height>31</height>
       </rect>
      </property>
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>14</pointsize>
-      </font>
-     </property>
-     <property name="cursor">
-      <cursorShape>PointingHandCursor</cursorShape>
-     </property>
      <property name="styleSheet">
-      <string notr="true"/>
+      <string notr="true">background: transparent;</string>
      </property>
      <property name="text">
       <string/>
      </property>
-     <property name="iconSize">
-      <size>
-       <width>30</width>
-       <height>30</height>
-      </size>
+     <property name="pixmap">
+      <pixmap resource="resources.qrc">:/images/images/Icon_Light.ico</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
      </property>
     </widget>
+    <widget class="QLabel" name="DarkLogo">
+     <property name="geometry">
+      <rect>
+       <x>520</x>
+       <y>20</y>
+       <width>31</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background: transparent;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="resources.qrc">:/images/images/Icon.ico</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QListWidget" name="listView">
+     <property name="geometry">
+      <rect>
+       <x>705</x>
+       <y>60</y>
+       <width>171</width>
+       <height>109</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background: rgb(58,61,59);
+border-top-left-radius: 10px;
+border-top-right-radius: 10px;
+border-bottom-right-radius: 0px;
+border-bottom-left-radius: 0px;</string>
+     </property>
+    </widget>
+    <widget class="QListWidget" name="drawingList">
+     <property name="geometry">
+      <rect>
+       <x>700</x>
+       <y>220</y>
+       <width>171</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background: rgb(58,61,59);
+border-radius: 10px;</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>Horizontal - 12345678</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Vertical - 14627358</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Diagonal - 26573481</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Spiral - 12358764</string>
+      </property>
+     </item>
+    </widget>
+    <zorder>DarkLogo</zorder>
     <zorder>ImageOpt</zorder>
     <zorder>exitButton</zorder>
     <zorder>Minimize</zorder>
@@ -1100,10 +1128,8 @@ background:transparent</string>
     <zorder>cdText</zorder>
     <zorder>ttText</zorder>
     <zorder>btText</zorder>
-    <zorder>listView</zorder>
     <zorder>dirButton</zorder>
     <zorder>reloadButton</zorder>
-    <zorder>drawingList</zorder>
     <zorder>transThresh</zorder>
     <zorder>blackThresh</zorder>
     <zorder>settingButton</zorder>
@@ -1111,10 +1137,14 @@ background:transparent</string>
     <zorder>ImageBackground</zorder>
     <zorder>ImageDrawn</zorder>
     <zorder>ShownImage</zorder>
-    <zorder>Logo</zorder>
+    <zorder>LightLogo</zorder>
+    <zorder>listView</zorder>
+    <zorder>drawingList</zorder>
    </widget>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -15,6 +15,7 @@
 #include <QJsonParseError>
 #include <QJsonObject>
 #include <QStandardPaths>
+#include <QTest>
 
 bool loopRunning = true;
 bool stopAutodraw;
@@ -57,17 +58,6 @@ PreviewWindow::PreviewWindow(QImage dimage, int interval, int delay, QWidget *pa
             move(QCursor::pos().x() - ui->ShownImage->width()/2, QCursor::pos().y() - ui->ShownImage->height()/2);
         }
     });
-    if (!QFile::exists(path+"/hotkey.py")){
-        std::ofstream MyFile((path+"/hotkey.py").toStdString());
-        // I really do not want a super long string
-        MyFile << "from pynput import keyboard\nfrom pynput.keyboard import Key\nimport sys\n";
-        MyFile << "def stop():\n    listener.stop()\n    sys.exit(0)\n";
-        MyFile << "def on_press(key):\n    if(key==Key.shift and sys.argv[1] == \"start\"):\n";
-        MyFile << "        stop()\n    elif(key==Key.ctrl and sys.argv[1] == \"lock\"):\n        stop()";
-        MyFile << "\n    elif(key==Key.alt and sys.argv[1] == \"stop\"):\n        stop()";
-        MyFile << "\nwith keyboard.Listener(on_press=on_press) as listener:\n    listener.join()";
-        MyFile.close();
-    }
     QFuture<void> start = QtConcurrent::run([=]() {
         if(pyCode("start") && !stopAutodraw) Draw();
     });
@@ -171,11 +161,21 @@ void PreviewWindow::on_pushButton_2_released()
 
 void PreviewWindow::Draw()
 {
+    QFile inFile(path+"/user.cfg");
+    inFile.open(QIODevice::ReadOnly|QIODevice::Text);
+    QByteArray data = inFile.readAll();
+
+    QJsonParseError errorPtr;
+    QJsonDocument doc = QJsonDocument::fromJson(data, &errorPtr);
+    QJsonObject rootObj2 = doc.object();
+    auto printer = rootObj2.value("printer").toBool();
+    inFile.close();
+
     loopRunning = false;
     this->hide();
     int x = QCursor::pos().x() - (image.width()/2);
     int y = QCursor::pos().y() - (image.height()/2);
-    if (true){
+    if (printer){
         //printer mode
         for (int yImg = 0; yImg < image.height(); ++yImg) {
             if (stopAutodraw) break;

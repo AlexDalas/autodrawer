@@ -4,6 +4,23 @@
 #include <QMainWindow>
 #include "infowindow.h"
 #include "settingswindow.h"
+#include "autodrawer.h"
+#include "./ui_autodrawer.h"
+#include "infowindow.h"
+#include "messagewindow.h"
+#include "previewwindow.h"
+#include "qjsonarray.h"
+#include "qjsondocument.h"
+#include "qjsonobject.h"
+#include <qapplication.h>
+#include <QFileDialog>
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <QDragEnterEvent>
+#include <QMimeData>
+#include <QStandardPaths>
 
 extern QString darkJson;
 extern QString lightJson;
@@ -19,6 +36,10 @@ class AutoDrawer : public QMainWindow
 public:
     AutoDrawer(QWidget *parent = nullptr);
     ~AutoDrawer();
+
+    void reloadThemes();
+
+
 private slots:
     void on_ScaleSlider_sliderReleased();
 
@@ -62,7 +83,17 @@ private slots:
 
     void on_processImage_released();
 
-    void reloadThemes();
+    void on_dirButton_released();
+
+    void on_reloadButton_released();
+
+    void on_listView_itemClicked(QListWidgetItem *item);
+
+    void loadConfig(QString a);
+
+    void on_drawingList_itemClicked(QListWidgetItem *item);
+
+    void on_DP_released();
 
 private:
     Ui::AutoDrawer *ui;
