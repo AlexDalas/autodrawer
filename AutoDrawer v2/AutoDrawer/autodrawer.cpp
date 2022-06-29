@@ -7,6 +7,7 @@
 #include "qdiriterator.h"
 #include "qjsonarray.h"
 #include "qjsondocument.h"
+#include "consolewindow.h"
 #include "qjsonobject.h"
 #include <qapplication.h>
 #include <QFileDialog>
@@ -206,12 +207,10 @@ AutoDrawer::AutoDrawer(QWidget *parent)
         else{
             UserCFG.insert("dir", QJsonValue::fromVariant(""));
         }
-        QJsonObject offsetObj;
-        offsetObj.insert("enabled", true);
-        offsetObj.insert("x", 0);
-        offsetObj.insert("y", 0);
-        UserCFG.insert("pattern", offsetObj);
-        UserCFG.insert("offset", offsetObj);
+        UserCFG.insert("offset_enabled", true);
+        UserCFG.insert("offset_x", 0);
+        UserCFG.insert("offset_y", 0);
+        UserCFG.insert("pattern", 12345678);
         UserCFG.insert("logs", QJsonValue::fromVariant(false));
         UserCFG.insert("printer", QJsonValue::fromVariant(false));
         ofstream MyFile((pathAD+"/user.cfg").toStdString());

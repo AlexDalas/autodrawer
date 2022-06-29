@@ -46,6 +46,10 @@ private slots:
 
     void on_ThemeEditor_released();
 
+    void on_intervalTextBox_textChanged(const QString &arg1);
+
+    void on_intervalTextBox_2_textChanged(const QString &arg1);
+
 private:
     Ui::SettingsWindow *ui;
 };

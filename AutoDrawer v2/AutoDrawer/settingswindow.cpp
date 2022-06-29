@@ -40,6 +40,11 @@ SettingsWindow::SettingsWindow(QWidget *parent) :
     ui->ThemeCombo->setCurrentIndex(ui->ThemeCombo->findText(theme));
     ui->PrinterBox->setChecked(rootObj["printer"].toBool());
     ui->LogBox->setChecked(rootObj["logs"].toBool());
+    ui->OffsetBox->setChecked(rootObj["offset_enabled"].toBool());
+    ui->intervalTextBox->setEnabled(rootObj["offset_enabled"].toBool());
+    ui->intervalTextBox->setText(QString::number(rootObj["offset_x"].toInt()));
+    ui->intervalTextBox_2->setEnabled(rootObj["offset_enabled"].toBool());
+    ui->intervalTextBox_2->setText(QString::number(rootObj["offset_y"].toInt()));
     inFile.close();
     indexReady = true;
 }
@@ -211,18 +216,19 @@ void SettingsWindow::on_ThemeCombo_currentIndexChanged()
 void SettingsWindow::on_OffsetBox_released()
 {
     if (!indexReady) return;
-    QString Item = ui->ThemeCombo->currentText();
     QFile inFile(PathAD+"/user.cfg");
     inFile.open(QIODevice::ReadWrite|QIODevice::Text);
     QByteArray data = inFile.readAll();
     QJsonParseError errorPtr;
     QJsonDocument doc = QJsonDocument::fromJson(data, &errorPtr);
     QJsonObject doc_obj = doc.object();
-    doc_obj.insert("theme", Item);
+    if (ui->OffsetBox->checkState()) doc_obj.insert("offset_enabled", true); else doc_obj.insert("offset_enabled", false );
     QJsonDocument new_doc(doc_obj);
     inFile.resize(0);
     inFile.write(new_doc.toJson());
     inFile.close();
+    ui->intervalTextBox->setEnabled(ui->OffsetBox->checkState());
+    ui->intervalTextBox_2->setEnabled(ui->OffsetBox->checkState());
 }
 
 void SettingsWindow::on_LogBox_released()
@@ -234,7 +240,7 @@ void SettingsWindow::on_LogBox_released()
     QJsonParseError errorPtr;
     QJsonDocument doc = QJsonDocument::fromJson(data, &errorPtr);
     QJsonObject doc_obj = doc.object();
-    if (ui->LogBox->checkState() == 0) doc_obj.insert("logs", false); else doc_obj.insert("logs", true);
+    if (ui->LogBox->checkState()) doc_obj.insert("logs", false); else doc_obj.insert("logs", true);
     QJsonDocument new_doc(doc_obj);
     inFile.resize(0);
     inFile.write(new_doc.toJson());
@@ -257,7 +263,7 @@ void SettingsWindow::on_PrinterBox_released()
     QJsonParseError errorPtr;
     QJsonDocument doc = QJsonDocument::fromJson(data, &errorPtr);
     QJsonObject doc_obj = doc.object();
-    if (ui->PrinterBox->checkState() == 0) doc_obj.insert("printer", false); else doc_obj.insert("printer", true);
+    if (ui->PrinterBox->checkState()) doc_obj.insert("printer", false); else doc_obj.insert("printer", true);
     QJsonDocument new_doc(doc_obj);
     inFile.resize(0);
     inFile.write(new_doc.toJson());
@@ -267,7 +273,7 @@ void SettingsWindow::on_PrinterBox_released()
 
 void SettingsWindow::on_Console_released()
 {
-    ConsoleWindow *cw = new ConsoleWindow();
+    ConsoleWindow *cw = new ConsoleWindow("openWindow");
     cw->show();
 }
 
@@ -276,5 +282,43 @@ void SettingsWindow::on_ThemeEditor_released()
 {
     ThemeEditor *te = new ThemeEditor();
     te->show();
+}
+
+
+void SettingsWindow::on_intervalTextBox_textChanged(const QString &arg1)
+{
+    if (!indexReady) return;
+    QFile inFile(PathAD+"/user.cfg");
+    inFile.open(QIODevice::ReadWrite|QIODevice::Text);
+    QByteArray data = inFile.readAll();
+    QJsonParseError errorPtr;
+    QJsonDocument doc = QJsonDocument::fromJson(data, &errorPtr);
+    QJsonObject doc_obj = doc.object();
+    doc_obj.insert("offset_x", ui->intervalTextBox->text().toInt());
+    QJsonDocument new_doc(doc_obj);
+    inFile.resize(0);
+    inFile.write(new_doc.toJson());
+    inFile.close();
+    ui->intervalTextBox->setEnabled(ui->OffsetBox->checkState());
+    ui->intervalTextBox_2->setEnabled(ui->OffsetBox->checkState());
+}
+
+
+void SettingsWindow::on_intervalTextBox_2_textChanged(const QString &arg1)
+{
+    if (!indexReady) return;
+    QFile inFile(PathAD+"/user.cfg");
+    inFile.open(QIODevice::ReadWrite|QIODevice::Text);
+    QByteArray data = inFile.readAll();
+    QJsonParseError errorPtr;
+    QJsonDocument doc = QJsonDocument::fromJson(data, &errorPtr);
+    QJsonObject doc_obj = doc.object();
+    doc_obj.insert("offset_y", ui->intervalTextBox_2->text().toInt());
+    QJsonDocument new_doc(doc_obj);
+    inFile.resize(0);
+    inFile.write(new_doc.toJson());
+    inFile.close();
+    ui->intervalTextBox->setEnabled(ui->OffsetBox->checkState());
+    ui->intervalTextBox_2->setEnabled(ui->OffsetBox->checkState());
 }
 

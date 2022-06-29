@@ -80,6 +80,7 @@ void custompattern::reloadThemes(){
 void custompattern::on_Submit_released()
 {
     if (ui->TextInt->text().toStdString().length() != 8) {
+        this->close();
         MessageWindow *w = new MessageWindow("Not a valid number!", 1, this);
         w->show();
     };
@@ -102,11 +103,13 @@ void custompattern::on_Submit_released()
         inFile.resize(0);
         inFile.write(new_doc.toJson());
         inFile.close();
+        this->close();
         MessageWindow *w = new MessageWindow("Success!", 1, this);
         w->show();
         return;
     }
     else{
+        this->close();
         MessageWindow *w = new MessageWindow("Not a valid number!", 1, this);
         w->show();
         return;

@@ -576,6 +576,9 @@ background: rgb(55,55,55);
      </property>
     </widget>
     <widget class="QPushButton" name="startButton">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>515</x>
@@ -1077,7 +1080,7 @@ border-bottom-left-radius: 0px;</string>
     <widget class="QListWidget" name="drawingList">
      <property name="geometry">
       <rect>
-       <x>700</x>
+       <x>705</x>
        <y>220</y>
        <width>171</width>
        <height>71</height>
