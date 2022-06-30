@@ -16,7 +16,92 @@
 #include <QJsonObject>
 #include <QStandardPaths>
 #include <QTest>
+#ifdef _WIN32
+    #include <Windows.h>
+#elif  __linux__
+    #include <X11/Xlib.h>
+    #include <X11/Xutil.h>
+    Display *display = XOpenDisplay (NULL);
+    void click (Display *display, int button)
+    {
+      // Create and setting up the event
+      XEvent event;
+      memset (&event, 0, sizeof (event));
+      event.xbutton.button = button;
+      event.xbutton.same_screen = True;
+      event.xbutton.subwindow = DefaultRootWindow (display);
+      while (event.xbutton.subwindow)
+        {
+          event.xbutton.window = event.xbutton.subwindow;
+          XQueryPointer (display, event.xbutton.window,
+                 &event.xbutton.root, &event.xbutton.subwindow,
+                 &event.xbutton.x_root, &event.xbutton.y_root,
+                 &event.xbutton.x, &event.xbutton.y,
+                 &event.xbutton.state);
+        }
+      // Press
+      event.type = ButtonPress;
+      if (XSendEvent (display, PointerWindow, True, ButtonPressMask, &event) == 0)
+        fprintf (stderr, "Error to send the event!\n");
+      XFlush (display);
+      std::this_thread::sleep_for(std::chrono::microseconds(1));
+      // Release
+      event.type = ButtonRelease;
+      if (XSendEvent (display, PointerWindow, True, ButtonReleaseMask, &event) == 0)
+        fprintf (stderr, "Error to send the event!\n");
+      XFlush (display);
+      std::this_thread::sleep_for(std::chrono::microseconds(1));
+    }
+    void hold (Display *display, int button){
+        XEvent event;
+        memset (&event, 0, sizeof (event));
+        event.xbutton.button = button;
+        event.xbutton.same_screen = True;
+        event.xbutton.subwindow = DefaultRootWindow (display);
+        while (event.xbutton.subwindow)
+          {
+            event.xbutton.window = event.xbutton.subwindow;
+            XQueryPointer (display, event.xbutton.window,
+                   &event.xbutton.root, &event.xbutton.subwindow,
+                   &event.xbutton.x_root, &event.xbutton.y_root,
+                   &event.xbutton.x, &event.xbutton.y,
+                   &event.xbutton.state);
+          }
+        // Press
+        event.type = ButtonPress;
+        if (XSendEvent (display, PointerWindow, True, ButtonPressMask, &event) == 0)
+          fprintf (stderr, "Error to send the event!\n");
+        XFlush (display);
+        std::this_thread::sleep_for(std::chrono::microseconds(1));
+    }
+    void release (Display *display, int button){
+        XEvent event;
+        memset (&event, 0, sizeof (event));
+        event.xbutton.button = button;
+        event.xbutton.same_screen = True;
+        event.xbutton.subwindow = DefaultRootWindow (display);
+        while (event.xbutton.subwindow)
+          {
+            event.xbutton.window = event.xbutton.subwindow;
+            XQueryPointer (display, event.xbutton.window,
+                   &event.xbutton.root, &event.xbutton.subwindow,
+                   &event.xbutton.x_root, &event.xbutton.y_root,
+                   &event.xbutton.x, &event.xbutton.y,
+                   &event.xbutton.state);
+          }
+        // Release
+        event.type = ButtonRelease;
+        if (XSendEvent (display, PointerWindow, True, ButtonReleaseMask, &event) == 0)
+          fprintf (stderr, "Error to send the event!\n");
+        XFlush (display);
+        std::this_thread::sleep_for(std::chrono::microseconds(1));
+    }
 
+#elif __APPLE__
+
+#endif
+
+bool cursorHeld = false;
 bool loopRunning = true;
 bool stopAutodraw;
 int moveInterval;
@@ -52,6 +137,7 @@ PreviewWindow::PreviewWindow(QImage dimage, int interval, int delay, QWidget *pa
     image = dimage;
     MainWin = parent;
     reloadThemes();
+    cursorHeld = false;
     //parent->show();
     QFuture<void> future = QtConcurrent::run([=]() {
         while (loopRunning){
@@ -125,11 +211,41 @@ bool PreviewWindow::pyCode(std::string str){
 }
 
 void PreviewWindow::setCursor(int x, int y){
+    //This code is cross-platform
     QCursor::setPos(QPoint(x,y));
 }
 
-void PreviewWindow::clickCursor(int x, int y){
+void PreviewWindow::clickCursor(){
+    //This code is not cross platform, so you have to run different code on different OS'.
+    #ifdef _WIN32
 
+    #elif  __linux__
+        click (display, Button1);
+    #elif __APPLE__
+
+    #endif
+}
+
+void PreviewWindow::holdCursor(){
+    //This code is not cross platform, so you have to run different code on different OS'.
+    #ifdef _WIN32
+11!11!
+    #elif  __linux__
+        hold (display, Button1);
+    #elif __APPLE__
+
+    #endif
+}
+
+void PreviewWindow::releaseCursor(){
+    //This code is not cross platform, so you have to run different code on different OS'.
+    #ifdef _WIN32
+
+    #elif  __linux__
+        release (display, Button1);
+    #elif __APPLE__
+
+    #endif
 }
 
 PreviewWindow::~PreviewWindow()
@@ -180,17 +296,38 @@ void PreviewWindow::Draw()
         for (int yImg = 0; yImg < image.height(); ++yImg) {
             if (stopAutodraw) break;
             QRgb *scanLine = (QRgb*)image.scanLine(yImg);
-            for (int xImg = 0; xImg < image.width(); ++xImg) {
-                if (stopAutodraw) break;
-                QRgb pixel = *scanLine;
-                uint ci = uint(qGray(pixel));
-                if (ci <= 254){
-                    setCursor(x+xImg, y+(yImg));
-                    clickCursor(x+xImg, y+(yImg));
-                    std::this_thread::sleep_for(std::chrono::microseconds(moveInterval));
+            if (yImg % 2 == 0){
+                for (int xImg = 0; xImg < image.width(); ++xImg) {
+                    if (stopAutodraw) break;
+                    QRgb pixel = *scanLine;
+                    uint ci = uint(qGray(pixel));
+                    if (ci <= 254){
+                        setCursor(x+xImg, y+(yImg));
+                        if (!cursorHeld) {holdCursor(); cursorHeld = true;}
+                        std::this_thread::sleep_for(std::chrono::microseconds(moveInterval));
+                    }
+                    else{
+                        if (cursorHeld) {releaseCursor(); cursorHeld = false;}
+                    }
+                    ++scanLine;
                 }
-                else{}
-                ++scanLine;
+            }
+            else{
+                --scanLine;
+                for (int xImg = image.width(); xImg --> 0;) {
+                    if (stopAutodraw) break;
+                    QRgb pixel = *scanLine;
+                    uint ci = uint(qGray(pixel));
+                    if (ci <= 254){
+                        setCursor(x+xImg, y+(yImg));
+                        if (!cursorHeld) {holdCursor(); cursorHeld = true;}
+                        std::this_thread::sleep_for(std::chrono::microseconds(moveInterval));
+                    }
+                    else{
+                        if (cursorHeld) {releaseCursor(); cursorHeld = false;}
+                    }
+                    --scanLine;
+                }
             }
         }
     }

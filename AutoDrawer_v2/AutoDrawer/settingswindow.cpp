@@ -222,7 +222,7 @@ void SettingsWindow::on_OffsetBox_released()
     QJsonParseError errorPtr;
     QJsonDocument doc = QJsonDocument::fromJson(data, &errorPtr);
     QJsonObject doc_obj = doc.object();
-    if (ui->OffsetBox->checkState()) doc_obj.insert("offset_enabled", true); else doc_obj.insert("offset_enabled", false );
+    if (!ui->OffsetBox->checkState()) doc_obj.insert("offset_enabled", true); else doc_obj.insert("offset_enabled", false );
     QJsonDocument new_doc(doc_obj);
     inFile.resize(0);
     inFile.write(new_doc.toJson());
@@ -240,7 +240,7 @@ void SettingsWindow::on_LogBox_released()
     QJsonParseError errorPtr;
     QJsonDocument doc = QJsonDocument::fromJson(data, &errorPtr);
     QJsonObject doc_obj = doc.object();
-    if (ui->LogBox->checkState()) doc_obj.insert("logs", false); else doc_obj.insert("logs", true);
+    if (!ui->LogBox->checkState()) doc_obj.insert("logs", false); else doc_obj.insert("logs", true);
     QJsonDocument new_doc(doc_obj);
     inFile.resize(0);
     inFile.write(new_doc.toJson());
@@ -263,7 +263,7 @@ void SettingsWindow::on_PrinterBox_released()
     QJsonParseError errorPtr;
     QJsonDocument doc = QJsonDocument::fromJson(data, &errorPtr);
     QJsonObject doc_obj = doc.object();
-    if (ui->PrinterBox->checkState()) doc_obj.insert("printer", false); else doc_obj.insert("printer", true);
+    if (!ui->PrinterBox->checkState()) doc_obj.insert("printer", false); else doc_obj.insert("printer", true);
     QJsonDocument new_doc(doc_obj);
     inFile.resize(0);
     inFile.write(new_doc.toJson());
