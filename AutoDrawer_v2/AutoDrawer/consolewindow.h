@@ -24,6 +24,8 @@ private slots:
 
     void on_Exit_4_released();
 
+    void reloadConsole(std::string ln);
+
 private:
     Ui::ConsoleWindow *ui;
 };

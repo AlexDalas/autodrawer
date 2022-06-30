@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="resources.qrc">
+    <normaloff>:/images/images/Icon.ico</normaloff>:/images/images/Icon.ico</iconset>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QFrame" name="Background">
     <property name="geometry">
@@ -152,6 +156,8 @@ border-radius: 25px;</string>
    </widget>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

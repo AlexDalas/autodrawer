@@ -1,4 +1,7 @@
 #include "consolewindow.h"
+#include "messagewindow.h"
+#include "qdiriterator.h"
+#include "qfilesystemwatcher.h"
 #include "ui_consolewindow.h"
 #include <QDesktopServices>
 #include <QStandardPaths>
@@ -7,6 +10,8 @@
 #include <QFileDialog>
 #include <fstream>
 #include <QDate>
+#include <QTextStream>
+
 QString pathAPD = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/AutoDrawer";
 ConsoleWindow::ConsoleWindow(QString text, QWidget *parent) :
     QMainWindow(parent),
@@ -38,12 +43,42 @@ ConsoleWindow::ConsoleWindow(QString text, QWidget *parent) :
         setParent(0);
         setAttribute(Qt::WA_NoSystemBackground, true);
         setAttribute(Qt::WA_TranslucentBackground, true);
+        ui->listWidget->clear();
+        QFileSystemWatcher *watcher = new QFileSystemWatcher();
+        std::string year = std::to_string(QDate::currentDate().year());
+        std::string month = std::to_string(QDate::currentDate().month());
+        if (std::stoi(month)<=9) month="0"+month;
+        std::string day = std::to_string(QDate::currentDate().day());
+        std::string logName = "autodraw_"+year+month+day;
+        if (QFile::exists(pathAPD+"/logs/"+QString::fromStdString(logName)+".log")) {
+            watcher->addPath(pathAPD+"/logs/"+QString::fromStdString(logName)+".log");
+        }else{
+            this->close();
+        }
+
+        QEventLoop loop;
+        reloadConsole(logName);
+        QObject::connect(watcher, SIGNAL(reloadConsole(logName)), this, SLOT(reloadConsole(logName)));
+
+
     }
 }
 
 ConsoleWindow::~ConsoleWindow()
 {
     delete ui;
+}
+
+void ConsoleWindow::reloadConsole(std::string logName){
+    ui->listWidget->clear();
+    QFile MyFile(pathAPD+"/logs/"+QString::fromStdString(logName)+".log");
+    MyFile.open(QIODevice::ReadOnly | QIODevice::Text);
+    QTextStream QTS(&MyFile);
+    QStringList Q = QTS.readAll().split("\n");
+    for(int i = Q.size(); i --> 0;)
+    {
+        ui->listWidget->addItem(Q[i]);
+    }
 }
 
 void ConsoleWindow::on_Exit_3_released()

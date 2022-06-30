@@ -14,8 +14,8 @@
    <string>AutoDrawer</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>../../AutoDrawer v1/Assets/Icon.ico</normaloff>../../AutoDrawer v1/Assets/Icon.ico</iconset>
+   <iconset resource="resources.qrc">
+    <normaloff>:/images/images/Icon.ico</normaloff>:/images/images/Icon.ico</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">background:transparent</string>

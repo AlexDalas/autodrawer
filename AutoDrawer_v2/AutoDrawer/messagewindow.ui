@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="resources.qrc">
+    <normaloff>:/images/images/Icon.ico</normaloff>:/images/images/Icon.ico</iconset>
+  </property>
   <property name="styleSheet">
    <string notr="true">background:transparent</string>
   </property>
@@ -218,6 +222,8 @@ background: rgb(55,55,55);
    </widget>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>
