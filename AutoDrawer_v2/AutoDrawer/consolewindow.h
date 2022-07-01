@@ -26,6 +26,8 @@ private slots:
 
     void reloadConsole(std::string ln);
 
+    void on_Exit_5_released();
+
 private:
     Ui::ConsoleWindow *ui;
 };

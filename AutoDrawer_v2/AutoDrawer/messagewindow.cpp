@@ -1,4 +1,5 @@
 #include "messagewindow.h"
+#include "consolewindow.h"
 #include "ui_messagewindow.h"
 #include "autodrawer.h"
 #include <QFile>
@@ -21,7 +22,7 @@ MessageWindow::MessageWindow(QString text, int type, QWidget *parent) :
     setAttribute(Qt::WA_TranslucentBackground, true);
 
     reloadThemes();
-
+    new ConsoleWindow("Sent message \""+text+"\" (with code "+type+")");
     if (type == 1){
         ui->Header->setText("Info");
         buttonType(0);
@@ -108,17 +109,21 @@ MessageWindow::~MessageWindow()
 
 void MessageWindow::on_pushButton_6_released()
 {
+    new ConsoleWindow("Closed message.");
     this->close();
 }
 
 void MessageWindow::on_pushButton_8_released()
 {
+    new ConsoleWindow("Closed message (and minimized Autodrawer).");
+    new ConsoleWindow("Closed Autodrawer (at notification).");
     this->close();
     MainWinMW->showMinimized();
 }
 
 void MessageWindow::on_pushButton_7_released()
 {
+    new ConsoleWindow("Closed message (and showed Autodrawer).");
     this->close();
     MainWinMW->show();
     MainWinMW->raise();
@@ -127,6 +132,7 @@ void MessageWindow::on_pushButton_7_released()
 
 void MessageWindow::on_pushButton_9_released()
 {
+    new ConsoleWindow("Closed Autodrawer at notification.");
     QApplication::quit();
 }
 

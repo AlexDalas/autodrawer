@@ -1,5 +1,6 @@
 #include "previewwindow.h"
 #include "autodrawer.h"
+#include "consolewindow.h"
 #include "ui_previewwindow.h"
 #include "messagewindow.h"
 #include <iostream>
@@ -145,13 +146,16 @@ PreviewWindow::PreviewWindow(QImage dimage, int interval, int delay, QWidget *pa
         }
     });
     QFuture<void> start = QtConcurrent::run([=]() {
-        if(pyCode("start") && !stopAutodraw) Draw();
+        if(pyCode("start") && !stopAutodraw) {
+            Draw();
+            new ConsoleWindow("Started drawing {\n   Interval: "+QString::number(interval)+"\n   Click Delay: "+QString::number(delay)+"\n}");
+        };
     });
     QFuture<void> stop = QtConcurrent::run([=]() {
-        if(pyCode("stop")) on_pushButton_2_released();
+        if(pyCode("stop")) {on_pushButton_2_released(); new ConsoleWindow("Stopped drawing.");}
     });
     QFuture<void> lockpos = QtConcurrent::run([=]() {
-        if(pyCode("lock")) lockPos();
+        if(pyCode("lock")) {lockPos(); new ConsoleWindow("Locked window position.");}
     });
 }
 
@@ -255,6 +259,7 @@ PreviewWindow::~PreviewWindow()
 void PreviewWindow::closeDraw(int a){
     //0 is stopped, 1 is success
     if (a == 1){
+        new ConsoleWindow("Drawing finished.");
         sendMessage("Drawing finished", 4, MainWin);
         this->close();
     } else{

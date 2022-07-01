@@ -1,4 +1,5 @@
 #include "custompattern.h"
+#include "consolewindow.h"
 #include "qjsondocument.h"
 #include "qjsonobject.h"
 #include "ui_custompattern.h"
@@ -28,6 +29,7 @@ custompattern::~custompattern()
 
 void custompattern::on_Close_released()
 {
+    new ConsoleWindow("Closed Custom Pattern window.");
     this->close();
 }
 
@@ -36,6 +38,7 @@ void custompattern::reloadThemes(){
     inFile.open(QIODevice::ReadOnly|QIODevice::Text);
     QByteArray data = inFile.readAll();
 
+    new ConsoleWindow("Opened Custom Pattern window.");
     QJsonParseError errorPtr;
     QJsonDocument doc = QJsonDocument::fromJson(data, &errorPtr);
     QJsonObject rootObj2 = doc.object();
@@ -81,6 +84,7 @@ void custompattern::on_Submit_released()
 {
     if (ui->TextInt->text().toStdString().length() != 8) {
         this->close();
+        new ConsoleWindow("Custom pattern "+ui->TextInt->text()+" entered, but was invalid (length)");
         MessageWindow *w = new MessageWindow("Not a valid number!", 1, this);
         w->show();
     };
@@ -104,12 +108,14 @@ void custompattern::on_Submit_released()
         inFile.write(new_doc.toJson());
         inFile.close();
         this->close();
+        new ConsoleWindow("Custom pattern "+ui->TextInt->text()+" set successfully.");
         MessageWindow *w = new MessageWindow("Success!", 1, this);
         w->show();
         return;
     }
     else{
         this->close();
+        new ConsoleWindow("Custom pattern "+ui->TextInt->text()+" entered, but was invalid. (did not include all of 1 to 8)");
         MessageWindow *w = new MessageWindow("Not a valid number!", 1, this);
         w->show();
         return;

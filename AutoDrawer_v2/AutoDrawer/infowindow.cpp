@@ -1,4 +1,5 @@
 #include "infowindow.h"
+#include "consolewindow.h"
 #include "ui_infowindow.h"
 #include <QFile>
 #include <QJsonParseError>
@@ -15,6 +16,7 @@ InfoWindow::InfoWindow(QWidget *parent) :
     setParent(0);
     setAttribute(Qt::WA_NoSystemBackground, true);
     setAttribute(Qt::WA_TranslucentBackground, true);
+    new ConsoleWindow("Opened Info window.");
     reloadThemes();
 }
 InfoWindow::~InfoWindow()
@@ -65,6 +67,7 @@ void InfoWindow::reloadThemes(){
 
 void InfoWindow::on_Button_released()
 {
+    new ConsoleWindow("Closed Info window.");
     this->close();
 }
 

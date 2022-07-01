@@ -1,5 +1,6 @@
 #include "themeeditor.h"
 #include "ui_themeeditor.h"
+#include "consolewindow.h"
 
 ThemeEditor::ThemeEditor(QWidget *parent) :
     QMainWindow(parent),
@@ -10,6 +11,7 @@ ThemeEditor::ThemeEditor(QWidget *parent) :
     setParent(0);
     setAttribute(Qt::WA_NoSystemBackground, true);
     setAttribute(Qt::WA_TranslucentBackground, true);
+    new ConsoleWindow("Opened theme editor.");
 }
 
 ThemeEditor::~ThemeEditor()

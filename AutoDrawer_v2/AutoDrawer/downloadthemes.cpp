@@ -1,4 +1,5 @@
 #include "downloadthemes.h"
+#include "consolewindow.h"
 #include "ui_downloadthemes.h"
 #include <QUrl>
 #include <QtNetwork/QNetworkAccessManager>
@@ -22,6 +23,7 @@ downloadthemes::downloadthemes(QWidget *parent) :
     setParent(0);
     setAttribute(Qt::WA_NoSystemBackground, true);
     setAttribute(Qt::WA_TranslucentBackground, true);
+    new ConsoleWindow("Opened Theme Downloader window.");
     if (QFile(pathAUD+"/themes/banana.drawtheme").exists()) ui->OrangeYellow->setText("Installed Banana");
     if (QFile(pathAUD+"/themes/black.drawtheme").exists()) ui->Black->setText("Installed Black");
     if (QFile(pathAUD+"/themes/blue.drawtheme").exists()) ui->Blue->setText("Installed Blue");
@@ -83,6 +85,7 @@ void downloadthemes::reloadThemes(){
 }
 
 void downloadthemes::downloadSet(QString url, QString saveAS){
+    new ConsoleWindow("Requested to download \""+saveAS+"\" at \""+url+"\"");
     QNetworkAccessManager manager;
     QNetworkReply *response = manager.get(QNetworkRequest(QUrl(url)));
     QEventLoop event;
@@ -97,6 +100,7 @@ void downloadthemes::downloadSet(QString url, QString saveAS){
 
 void downloadthemes::on_Exit_released()
 {
+    new ConsoleWindow("Closed Theme Downloader window.");
     this->close();
 }
 

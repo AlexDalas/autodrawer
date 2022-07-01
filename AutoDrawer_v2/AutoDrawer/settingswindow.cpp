@@ -140,35 +140,41 @@ void SettingsWindow::reloadList(){
 
 void SettingsWindow::on_GH_released()
 {
+    new ConsoleWindow("Opening Github page");
     QDesktopServices::openUrl(QUrl("https://github.com/AlexCYP/autodraw-roblox"));
 }
 
 
 void SettingsWindow::on_LR_released()
 {
+    new ConsoleWindow("Opening Latest Release");
     QDesktopServices::openUrl(QUrl("https://github.com/AlexCYP/autodraw-roblox/releases/latest"));
 }
 
 
 void SettingsWindow::on_Discord_released()
 {
+    new ConsoleWindow("Opening Discord invite");
     QDesktopServices::openUrl(QUrl("https://discord.gg/rwvUFraDnb"));
 }
 
 
 void SettingsWindow::on_CloseBox_released()
 {
+    new ConsoleWindow("Closing Settings");
     this->close();
 }
 
 void SettingsWindow::on_OpenThemes_released()
 {
+    new ConsoleWindow("Opening theme path");
     QDesktopServices::openUrl(PathAD+"/themes/");
 }
 
 
 void SettingsWindow::on_Reload_released()
 {
+    new ConsoleWindow("Reloading theme listing");
     indexReady = false;
     reloadList();
     indexReady = true;
@@ -202,6 +208,7 @@ void SettingsWindow::on_ThemeCombo_currentIndexChanged()
         indexReady = true;
     }
     else{
+        new ConsoleWindow("Changing theme to "+Item);
         doc_obj.insert("theme", Item);
         QJsonDocument new_doc(doc_obj);
         inFile.resize(0);
@@ -222,7 +229,11 @@ void SettingsWindow::on_OffsetBox_released()
     QJsonParseError errorPtr;
     QJsonDocument doc = QJsonDocument::fromJson(data, &errorPtr);
     QJsonObject doc_obj = doc.object();
-    if (!ui->OffsetBox->checkState()) doc_obj.insert("offset_enabled", true); else doc_obj.insert("offset_enabled", false );
+    if (!ui->OffsetBox->checkState()) {
+        doc_obj.insert("offset_enabled", true);
+        new ConsoleWindow("Offset enabled");}
+    else {doc_obj.insert("offset_enabled", false );
+        new ConsoleWindow("Offset disabled");}
     QJsonDocument new_doc(doc_obj);
     inFile.resize(0);
     inFile.write(new_doc.toJson());
@@ -240,7 +251,7 @@ void SettingsWindow::on_LogBox_released()
     QJsonParseError errorPtr;
     QJsonDocument doc = QJsonDocument::fromJson(data, &errorPtr);
     QJsonObject doc_obj = doc.object();
-    if (!ui->LogBox->checkState()) doc_obj.insert("logs", false); else doc_obj.insert("logs", true);
+    if (!ui->LogBox->checkState()) {doc_obj.insert("logs", false); new ConsoleWindow("Logs Enabled");} else {new ConsoleWindow("Logs Disabled");doc_obj.insert("logs", true);}
     QJsonDocument new_doc(doc_obj);
     inFile.resize(0);
     inFile.write(new_doc.toJson());
@@ -250,6 +261,7 @@ void SettingsWindow::on_LogBox_released()
 
 void SettingsWindow::on_OpenLogs_released()
 {
+    new ConsoleWindow("Opening log path");
     QDesktopServices::openUrl(PathAD+"/logs/");
 }
 
@@ -263,7 +275,12 @@ void SettingsWindow::on_PrinterBox_released()
     QJsonParseError errorPtr;
     QJsonDocument doc = QJsonDocument::fromJson(data, &errorPtr);
     QJsonObject doc_obj = doc.object();
-    if (!ui->PrinterBox->checkState()) doc_obj.insert("printer", false); else doc_obj.insert("printer", true);
+    if (!ui->PrinterBox->checkState()) {
+        doc_obj.insert("printer", false);
+        new ConsoleWindow("Setting printer mode to True");}
+    else {
+        doc_obj.insert("printer", true);
+        new ConsoleWindow("Setting printer mode to False");}
     QJsonDocument new_doc(doc_obj);
     inFile.resize(0);
     inFile.write(new_doc.toJson());
@@ -288,6 +305,7 @@ void SettingsWindow::on_ThemeEditor_released()
 void SettingsWindow::on_intervalTextBox_textChanged(const QString &arg1)
 {
     if (!indexReady) return;
+    new ConsoleWindow("Changed offset to "+ui->intervalTextBox->text());
     QFile inFile(PathAD+"/user.cfg");
     inFile.open(QIODevice::ReadWrite|QIODevice::Text);
     QByteArray data = inFile.readAll();
@@ -307,6 +325,7 @@ void SettingsWindow::on_intervalTextBox_textChanged(const QString &arg1)
 void SettingsWindow::on_intervalTextBox_2_textChanged(const QString &arg1)
 {
     if (!indexReady) return;
+    new ConsoleWindow("Changed offset to "+ui->intervalTextBox_2->text());
     QFile inFile(PathAD+"/user.cfg");
     inFile.open(QIODevice::ReadWrite|QIODevice::Text);
     QByteArray data = inFile.readAll();
