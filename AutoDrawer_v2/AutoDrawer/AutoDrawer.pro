@@ -4,7 +4,7 @@ QT += network
 QT += testlib
 
 win32 {
-
+    LIBS += -lUser32
 }
 linux-g++ {
     LIBS += -lX11

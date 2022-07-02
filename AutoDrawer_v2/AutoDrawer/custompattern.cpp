@@ -9,7 +9,7 @@
 #include <QFile>
 #include <QPainter>
 
-QString pathATD = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/AutoDrawer";
+QString pathATD = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/AutoDraw";
 custompattern::custompattern(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::custompattern)

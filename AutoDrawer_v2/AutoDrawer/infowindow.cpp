@@ -5,7 +5,7 @@
 #include <QJsonParseError>
 #include <QJsonObject>
 #include <QStandardPaths>
-auto PathATD = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/AutoDrawer";
+auto PathATD = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/AutoDraw";
 
 InfoWindow::InfoWindow(QWidget *parent) :
     QMainWindow(parent),

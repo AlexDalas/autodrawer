@@ -6,7 +6,7 @@
 #include <QJsonParseError>
 #include <QJsonObject>
 #include <QStandardPaths>
-auto PathAT = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/AutoDrawer";
+auto PathAT = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/AutoDraw";
 int result;
 QWidget* MainWinMW;
 MessageWindow::MessageWindow(QString text, int type, QWidget *parent) :
@@ -22,7 +22,7 @@ MessageWindow::MessageWindow(QString text, int type, QWidget *parent) :
     setAttribute(Qt::WA_TranslucentBackground, true);
 
     reloadThemes();
-    new ConsoleWindow("Sent message \""+text+"\" (with code "+type+")");
+    new ConsoleWindow("Sent message \""+text+"\" (with code "+QString::number(type)+")");
     if (type == 1){
         ui->Header->setText("Info");
         buttonType(0);

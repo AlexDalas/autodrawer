@@ -14,7 +14,7 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 
-QString pathAPD = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/AutoDrawer";
+QString pathAPD = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/AutoDraw";
 ConsoleWindow::ConsoleWindow(QString text, QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::ConsoleWindow)
