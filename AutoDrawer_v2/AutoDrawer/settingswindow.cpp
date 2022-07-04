@@ -15,7 +15,7 @@
 #include <QDirIterator>
 #include <QApplication>
 #include <QProcess>
-auto PathAD = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/AutoDrawer";
+auto PathAD = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/AutoDraw";
 bool indexReady = false;
 
 SettingsWindow::SettingsWindow(QWidget *parent) :

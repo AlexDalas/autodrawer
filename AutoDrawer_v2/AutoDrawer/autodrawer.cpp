@@ -22,7 +22,7 @@
 using namespace std;
 
 //Theme colours
-QString pathAD = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/AutoDrawer";
+QString pathAD = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/AutoDraw";
 QString darkJson = "{" \
               "\"ver\": 2.0, " \
               "\"light-icons\": \"true\",  " \
@@ -189,7 +189,7 @@ AutoDrawer::AutoDrawer(QWidget *parent)
 
         //recordObject.insert("as", QJsonValue::fromVariant(43));
 
-        QFile Old_theme(pathAD+"/themes/theme");
+        QFile Old_theme(pathAD+"/themes/theme.txt");
         if (Old_theme.exists()) {
             Old_theme.open(QIODevice::ReadOnly | QIODevice::Text);
             QTextStream Old_themeStream(&Old_theme);
@@ -198,7 +198,7 @@ AutoDrawer::AutoDrawer(QWidget *parent)
         else{
             UserCFG.insert("theme", QJsonValue::fromVariant("dark"));
         }
-        QFile Old_dir(pathAD+"/dir");
+        QFile Old_dir(pathAD+"/dir.txt");
         if (Old_dir.exists()) {
             Old_dir.open(QIODevice::ReadOnly | QIODevice::Text);
             QTextStream Old_dirStream(&Old_dir);

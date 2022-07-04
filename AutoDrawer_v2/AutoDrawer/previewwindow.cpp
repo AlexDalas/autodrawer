@@ -111,7 +111,7 @@ QImage image;
 using namespace Qt;
 QWidget* MainWin;
 
-auto path = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/AutoDrawer";
+auto path = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/AutoDraw";
 
 PreviewWindow::PreviewWindow(QImage dimage, int interval, int delay, QWidget *parent) :
     QMainWindow(parent),
@@ -147,9 +147,11 @@ PreviewWindow::PreviewWindow(QImage dimage, int interval, int delay, QWidget *pa
         }
     });
     QFuture<void> start = QtConcurrent::run([=]() {
+#ifdef _WIN32
+
+#endif
         if(pyCode("start") && !stopAutodraw) {
             Draw();
-            new ConsoleWindow("Started drawing {\n   Interval: "+QString::number(interval)+"\n   Click Delay: "+QString::number(delay)+"\n}");
         };
     });
     QFuture<void> stop = QtConcurrent::run([=]() {
@@ -234,7 +236,7 @@ void PreviewWindow::clickCursor(){
 void PreviewWindow::holdCursor(){
     //This code is not cross platform, so you have to run different code on different OS'.
     #ifdef _WIN32
-11!11!
+
     #elif  __linux__
         hold (display, Button1);
     #elif __APPLE__
@@ -292,8 +294,8 @@ void PreviewWindow::Draw()
     QJsonDocument doc = QJsonDocument::fromJson(data, &errorPtr);
     QJsonObject rootObj2 = doc.object();
     auto printer = rootObj2.value("printer").toBool();
-
-
+    inFile.close();
+    new ConsoleWindow("Started drawing {\n   Interval: "+QString::number(interval)+"\n   Click Delay: "+QString::number(clickDelay)+"\n}");
 
     loopRunning = false;
     this->hide();
@@ -358,4 +360,3 @@ void PreviewWindow::on_Draw_released()
 {
     Draw();
 }
-

@@ -12,7 +12,7 @@
 #include <QJsonObject>
 #include <QStandardPaths>
 
-auto pathAUD = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/AutoDrawer";
+auto pathAUD = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/AutoDraw";
 
 downloadthemes::downloadthemes(QWidget *parent) :
     QMainWindow(parent),
@@ -108,7 +108,7 @@ void downloadthemes::on_Violet_released()
 {
     if (ui->Violet->text() == "Installed") return;
     ui->Violet->setText("Downloading...");
-    downloadSet("https://raw.githubusercontent.com/AlexCYP/autodraw-roblox/main/AutoDrawer%20v2/themes/violet.drawtheme", "violet");
+    downloadSet("https://raw.githubusercontent.com/AlexCYP/autodraw-roblox/main/AutoDrawer_v2/themes/violet.drawtheme", "violet");
     ui->Violet->setText("Installed Violet");
 }
 
@@ -116,7 +116,7 @@ void downloadthemes::on_Blue_released()
 {
     if (ui->Blue->text() == "Installed") return;
     ui->Blue->setText("Downloading...");
-    downloadSet("https://raw.githubusercontent.com/AlexCYP/autodraw-roblox/main/AutoDrawer%20v2/themes/blue.drawtheme", "blue");
+    downloadSet("https://raw.githubusercontent.com/AlexCYP/autodraw-roblox/main/AutoDrawer_v2/themes/blue.drawtheme", "blue");
     ui->Blue->setText("Installed Blue");
 }
 
@@ -125,7 +125,7 @@ void downloadthemes::on_Black_released()
 {
     if (ui->Black->text() == "Installed") return;
     ui->Black->setText("Downloading...");
-    downloadSet("https://raw.githubusercontent.com/AlexCYP/autodraw-roblox/main/AutoDrawer%20v2/themes/black.drawtheme", "black");
+    downloadSet("https://raw.githubusercontent.com/AlexCYP/autodraw-roblox/main/AutoDrawer_v2/themes/black.drawtheme", "black");
     ui->Black->setText("Installed Black");
 }
 
@@ -134,7 +134,7 @@ void downloadthemes::on_OrangeYellow_released()
 {
     if (ui->OrangeYellow->text() == "Installed") return;
     ui->OrangeYellow->setText("Downloading...");
-    downloadSet("https://raw.githubusercontent.com/AlexCYP/autodraw-roblox/main/AutoDrawer%20v2/themes/banana.drawtheme", "banana");
+    downloadSet("https://raw.githubusercontent.com/AlexCYP/autodraw-roblox/main/AutoDrawer_v2/themes/banana.drawtheme", "banana");
     ui->OrangeYellow->setText("Installed");
 }
 
@@ -143,7 +143,7 @@ void downloadthemes::on_Red_released()
 {
     if (ui->Red->text() == "Installed") return;
     ui->Red->setText("Downloading...");
-    downloadSet("https://raw.githubusercontent.com/AlexCYP/autodraw-roblox/main/AutoDrawer%20v2/themes/red.drawtheme", "red");
+    downloadSet("https://raw.githubusercontent.com/AlexCYP/autodraw-roblox/main/AutoDrawer_v2/themes/red.drawtheme", "red");
     ui->Red->setText("Installed Banana");
 }
 
@@ -152,7 +152,7 @@ void downloadthemes::on_Green_released()
 {
     if (ui->Green->text() == "Installed") return;
     ui->Green->setText("Downloading...");
-    downloadSet("https://raw.githubusercontent.com/AlexCYP/autodraw-roblox/main/AutoDrawer%20v2/themes/green.drawtheme", "green");
+    downloadSet("https://raw.githubusercontent.com/AlexCYP/autodraw-roblox/main/AutoDrawer_v2/themes/green.drawtheme", "green");
     ui->Green->setText("Installed Green");
 }
 
