@@ -137,6 +137,7 @@ PreviewWindow::PreviewWindow(QImage dimage, int interval, int delay, QWidget *pa
     clickDelay = delay;
     image = dimage;
     MainWin = parent;
+    new ConsoleWindow("Opened Preview window.");
     reloadThemes();
     cursorHeld = false;
     //parent->show();
@@ -285,17 +286,21 @@ void PreviewWindow::Draw()
     QFile inFile(path+"/user.cfg");
     inFile.open(QIODevice::ReadOnly|QIODevice::Text);
     QByteArray data = inFile.readAll();
+    inFile.close();
 
     QJsonParseError errorPtr;
     QJsonDocument doc = QJsonDocument::fromJson(data, &errorPtr);
     QJsonObject rootObj2 = doc.object();
     auto printer = rootObj2.value("printer").toBool();
-    inFile.close();
+
+
 
     loopRunning = false;
     this->hide();
-    int x = QCursor::pos().x() - (image.width()/2);
-    int y = QCursor::pos().y() - (image.height()/2);
+    int offsetX = 0, offsetY = 0;
+    if(rootObj2["offsetEnabled"].toBool()){offsetX = rootObj2["offsetX"].toInt();offsetY = rootObj2["offsetY"].toInt();}
+    int x = QCursor::pos().x() - (image.width()/2) + offsetX;
+    int y = QCursor::pos().y() - (image.height()/2) + offsetY;
     if (printer){
         //printer mode
         for (int yImg = 0; yImg < image.height(); ++yImg) {

@@ -393,8 +393,6 @@ void AutoDrawer::on_ScaleSlider_sliderReleased()
         float value = ui->ScaleSlider->value() / 100;
         ui->heightBox->setText(QString::number(ui->heightBox->text().toInt()*value));
         ui->widthBox->setText(QString::number(ui->widthBox->text().toInt()*value));
-        on_heightBox_textEdited();
-        on_widthBox_textEdited();
     }
 }
 
@@ -402,11 +400,13 @@ void AutoDrawer::on_ScaleSlider_sliderReleased()
 void AutoDrawer::on_scaleNumber_textEdited()
 {
     ui->ScaleSlider->setSliderPosition(ui->scaleNumber->text().toInt());
+    new ConsoleWindow("Scale Number changed to "+ui->ScaleText->text());
 }
 
 
 void AutoDrawer::on_exitButton_released()
 {
+    new ConsoleWindow("Closed Autodrawer.");
     QCoreApplication::quit();
 }
 
@@ -419,6 +419,7 @@ void AutoDrawer::on_ScaleSlider_valueChanged(int value)
 
 void AutoDrawer::on_Minimize_released()
 {
+    new ConsoleWindow("Minimized Autodrawer.");
     QWidget::showMinimized();
 }
 
@@ -453,6 +454,7 @@ void AutoDrawer::on_widthBox_textEdited()
     QPixmap id = ui->ImageSource->pixmap(Qt::ReturnByValue);
     if (!id.isNull())
         changeImage(id.scaled(ui->widthBox->text().toInt(), ui->heightBox->text().toInt()));
+    new ConsoleWindow("Width changed to "+ui->widthBox->text());
 }
 
 
@@ -461,6 +463,7 @@ void AutoDrawer::on_heightBox_textEdited()
     QPixmap id = ui->ImageSource->pixmap(Qt::ReturnByValue);
     if (!id.isNull())
         changeImage(id.scaled(ui->widthBox->text().toInt(), ui->heightBox->text().toInt()));
+    new ConsoleWindow("Height changed to "+ui->heightBox->text());
 }
 
 void AutoDrawer::on_pushButton_2_released()
@@ -491,6 +494,7 @@ void AutoDrawer::on_saveConfig_released()
             filters, &defaultFilter);
 
     if (filename.isNull()) return;
+    new ConsoleWindow("Saved config at "+filename);
     ofstream MyFile(filename.toStdString());
     MyFile << ui->intervalTextBox->text().toStdString() + "\n" + ui->clickDelayTextBox->text().toStdString() + "\n"
               + ui->blackThresh->text().toStdString() + "\n"+ ui->transThresh->text().toStdString();
@@ -506,7 +510,7 @@ void AutoDrawer::on_loadConfig_released()
                 QDir::currentPath(),
                 QObject::tr("AutoDraw Config(*.drawcfg);;All files (*.*)"));
 
-
+    new ConsoleWindow("Opened config at "+filename);
     loadConfig(filename);
 }
 
@@ -534,6 +538,7 @@ void AutoDrawer::on_clearImage_released()
     ui->heightBox->setText("");
     ui->widthBox->setText("");
     ui->ScaleSlider->setSliderPosition(100);
+    new ConsoleWindow("Cleared image.");
 }
 
 
@@ -568,6 +573,7 @@ void AutoDrawer::on_processImage_released()
         }
     }
     changeImage(QPixmap::fromImage(im.convertToFormat(QImage::Format_Grayscale8)));
+    new ConsoleWindow("Processing image {\n    Black Threshold: "+ui->blackThresh->text()+"\n    Transparency Threshold: "+ui->transThresh->text()+"\n}");
     ui->processImage->setText("Process Image");
 }
 
@@ -583,6 +589,7 @@ void AutoDrawer::on_uploadImage_released()
     if (filename.isNull()) return;
     QString url = filename;
     QPixmap img(url);
+    new ConsoleWindow("Uploaded image ("+url+")");
     ui->heightBox->setText(QString::number(img.height()));
     ui->widthBox->setText(QString::number(img.width()));
     changeImage(img);
@@ -602,7 +609,7 @@ void AutoDrawer::on_reloadButton_released()
     QJsonObject rootObj2 = doc.object();
     auto dir = rootObj2.value("dir").toString();
     inFile.close();
-
+    new ConsoleWindow("Refreshed directory list");
     QStringList list;
     QDirIterator it(dir, QStringList() << "*.drawcfg");
     while (it.hasNext()){
@@ -623,6 +630,7 @@ void AutoDrawer::on_dirButton_released()
     QJsonDocument doc = QJsonDocument::fromJson(data, &errorPtr);
     QJsonObject doc_obj = doc.object();
     doc_obj.insert("dir", filename);
+    new ConsoleWindow("Set listed directory to "+filename);
     QJsonDocument new_doc(doc_obj);
     inFile.resize(0);
     inFile.write(new_doc.toJson());
@@ -642,6 +650,7 @@ void AutoDrawer::on_listView_itemClicked(QListWidgetItem *item)
     QJsonObject rootObj2 = doc.object();
     auto dir = rootObj2.value("dir").toString();
     if (!QFile::exists(dir+"/"+Item+".drawcfg")) return;
+    new ConsoleWindow("Set config to item in list ("+dir+"/"+Item+".drawcfg)");
     loadConfig(dir+"/"+Item+".drawcfg");
     //on_reloadButton_released();
 }
@@ -657,6 +666,7 @@ void AutoDrawer::on_drawingList_itemClicked(QListWidgetItem *item)
     QJsonDocument doc = QJsonDocument::fromJson(data, &errorPtr);
     QJsonObject doc_obj = doc.object();
     doc_obj.insert("pattern", Item);
+    new ConsoleWindow("Set drawing pattern to item in list ("+QString::number(Item)+")");
     QJsonDocument new_doc(doc_obj);
     inFile.resize(0);
     inFile.write(new_doc.toJson());
@@ -669,5 +679,29 @@ void AutoDrawer::on_DP_released()
 {
     custompattern *c = new custompattern();
     c->show();
+}
+
+
+void AutoDrawer::on_intervalTextBox_textEdited()
+{
+    new ConsoleWindow("Interval changed to "+ui->intervalTextBox->text());
+}
+
+
+void AutoDrawer::on_clickDelayTextBox_textChanged()
+{
+    new ConsoleWindow("Click Delay changed to "+ui->clickDelayTextBox->text());
+}
+
+
+void AutoDrawer::on_blackThresh_textChanged()
+{
+    new ConsoleWindow("Black Threshold changed to "+ui->blackThresh->text());
+}
+
+
+void AutoDrawer::on_transThresh_textChanged()
+{
+    new ConsoleWindow("Transparency Threshold changed to "+ui->transThresh->text());
 }
 

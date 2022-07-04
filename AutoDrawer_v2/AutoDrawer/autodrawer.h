@@ -95,6 +95,14 @@ private slots:
 
     void on_DP_released();
 
+    void on_intervalTextBox_textEdited();
+
+    void on_clickDelayTextBox_textChanged();
+
+    void on_blackThresh_textChanged();
+
+    void on_transThresh_textChanged();
+
 private:
     Ui::AutoDrawer *ui;
     InfoWindow *infoDialog;
