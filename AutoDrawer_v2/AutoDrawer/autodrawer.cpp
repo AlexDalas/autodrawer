@@ -14,6 +14,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <thread>
 #include <vector>
 #include <QDragEnterEvent>
 #include <QMimeData>
@@ -220,6 +221,9 @@ AutoDrawer::AutoDrawer(QWidget *parent)
     }
     reloadThemes();
     on_reloadButton_released();
+    #ifdef __linux
+        sendMessage("Linux's version is not working in Roblox!", 3, this);
+    #endif
 }
 
 void AutoDrawer::reloadThemes(){
