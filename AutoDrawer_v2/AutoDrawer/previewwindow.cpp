@@ -17,87 +17,18 @@
 #include <QJsonObject>
 #include <QStandardPaths>
 #include <QTest>
+
+int SCREEN_WIDTH = 1080;
+int SCREEN_HEIGHT = 4920;
+
 #ifdef _WIN32
+    #define WINVER 0x0500
+    #define WIN32_LEAN_AND_MEAN
     #include <Windows.h>
 #elif  __linux__
     #include <X11/Xlib.h>
     #include <X11/Xutil.h>
     Display *display = XOpenDisplay (NULL);
-    void click (Display *display, int button)
-    {
-      // Create and setting up the event
-      XEvent event;
-      memset (&event, 0, sizeof (event));
-      event.xbutton.button = button;
-      event.xbutton.same_screen = True;
-      event.xbutton.subwindow = DefaultRootWindow (display);
-      while (event.xbutton.subwindow)
-        {
-          event.xbutton.window = event.xbutton.subwindow;
-          XQueryPointer (display, event.xbutton.window,
-                 &event.xbutton.root, &event.xbutton.subwindow,
-                 &event.xbutton.x_root, &event.xbutton.y_root,
-                 &event.xbutton.x, &event.xbutton.y,
-                 &event.xbutton.state);
-        }
-      // Press
-      event.type = ButtonPress;
-      if (XSendEvent (display, PointerWindow, True, ButtonPressMask, &event) == 0)
-        fprintf (stderr, "Error to send the event!\n");
-      XFlush (display);
-      std::this_thread::sleep_for(std::chrono::microseconds(1));
-      // Release
-      event.type = ButtonRelease;
-      if (XSendEvent (display, PointerWindow, True, ButtonReleaseMask, &event) == 0)
-        fprintf (stderr, "Error to send the event!\n");
-      XFlush (display);
-      std::this_thread::sleep_for(std::chrono::microseconds(1));
-    }
-    void hold (Display *display, int button){
-        XEvent event;
-        memset (&event, 0, sizeof (event));
-        event.xbutton.button = button;
-        event.xbutton.same_screen = True;
-        event.xbutton.subwindow = DefaultRootWindow (display);
-        while (event.xbutton.subwindow)
-          {
-            event.xbutton.window = event.xbutton.subwindow;
-            XQueryPointer (display, event.xbutton.window,
-                   &event.xbutton.root, &event.xbutton.subwindow,
-                   &event.xbutton.x_root, &event.xbutton.y_root,
-                   &event.xbutton.x, &event.xbutton.y,
-                   &event.xbutton.state);
-          }
-        // Press
-        event.type = ButtonPress;
-        if (XSendEvent (display, PointerWindow, True, ButtonPressMask, &event) == 0)
-          fprintf (stderr, "Error to send the event!\n");
-        XFlush (display);
-        std::this_thread::sleep_for(std::chrono::microseconds(1));
-    }
-    void release (Display *display, int button){
-        XEvent event;
-        memset (&event, 0, sizeof (event));
-        event.xbutton.button = button;
-        event.xbutton.same_screen = True;
-        event.xbutton.subwindow = DefaultRootWindow (display);
-        while (event.xbutton.subwindow)
-          {
-            event.xbutton.window = event.xbutton.subwindow;
-            XQueryPointer (display, event.xbutton.window,
-                   &event.xbutton.root, &event.xbutton.subwindow,
-                   &event.xbutton.x_root, &event.xbutton.y_root,
-                   &event.xbutton.x, &event.xbutton.y,
-                   &event.xbutton.state);
-          }
-        // Release
-        event.type = ButtonRelease;
-        if (XSendEvent (display, PointerWindow, True, ButtonReleaseMask, &event) == 0)
-          fprintf (stderr, "Error to send the event!\n");
-        XFlush (display);
-        std::this_thread::sleep_for(std::chrono::microseconds(1));
-    }
-
 #elif __APPLE__
 
 #endif
@@ -137,19 +68,30 @@ PreviewWindow::PreviewWindow(QImage dimage, int interval, int delay, QWidget *pa
     clickDelay = delay;
     image = dimage;
     MainWin = parent;
-    new ConsoleWindow("Opened Preview window.");
     reloadThemes();
+    loopRunning = true;
     cursorHeld = false;
     //parent->show();
+    if (!QFile::exists(path+"/hotkey.py")){
+        std::ofstream MyFile((path+"/hotkey.py").toStdString());
+        // I really do not want a super long string
+        MyFile << "from pynput import keyboard\nfrom pynput.keyboard import Key\nimport sys\n";
+        MyFile << "def stop():\n    listener.stop()\n    sys.exit(0)\n";
+        MyFile << "def on_press(key):\n    if(key==Key.shift and sys.argv[1] == \"start\"):\n";
+        MyFile << "        stop()\n    elif(key==Key.ctrl and sys.argv[1] == \"lock\"):\n        stop()";
+        MyFile << "\n    elif(key==Key.alt and sys.argv[1] == \"stop\"):\n        stop()";
+        MyFile << "\nwith keyboard.Listener(on_press=on_press) as listener:\n    listener.join()";
+        MyFile.close();
+    }
     QFuture<void> future = QtConcurrent::run([=]() {
         while (loopRunning){
             move(QCursor::pos().x() - ui->ShownImage->width()/2, QCursor::pos().y() - ui->ShownImage->height()/2);
         }
     });
     QFuture<void> start = QtConcurrent::run([=]() {
-#ifdef _WIN32
+    #ifdef _WIN32
 
-#endif
+    #endif
         if(pyCode("start") && !stopAutodraw) {
             Draw();
         };
@@ -218,8 +160,32 @@ bool PreviewWindow::pyCode(std::string str){
 }
 
 void PreviewWindow::setCursor(int x, int y){
-    //This code is cross-platform
-    QCursor::setPos(QPoint(x,y));
+    //This code is cross-platform, but does not work with games.
+    //QCursor::setPos(QPoint(x,y));
+    #ifdef _WIN32
+
+
+    #elif  __linux__
+        // Create and setting up the event
+        XEvent event;
+        memset (&event, 0, sizeof (event));
+        event.xbutton.button = Button1;
+        event.xbutton.same_screen = True;
+        event.xbutton.subwindow = DefaultRootWindow (display);
+        while (event.xbutton.subwindow)
+          {
+            event.xbutton.window = event.xbutton.subwindow;
+            XQueryPointer (display, event.xbutton.window,
+                   &event.xbutton.root, &event.xbutton.subwindow,
+                   &event.xbutton.x_root, &event.xbutton.y_root,
+                   &event.xbutton.x, &event.xbutton.y,
+                   &event.xbutton.state);
+          }
+
+        XWarpPointer (display, None, None, 0,0,0,0, x-QCursor::pos().x(), y-QCursor::pos().y());
+        XFlush (display);
+
+    #endif
 }
 
 void PreviewWindow::clickCursor(){
@@ -227,7 +193,33 @@ void PreviewWindow::clickCursor(){
     #ifdef _WIN32
 
     #elif  __linux__
-        click (display, Button1);
+        // Create and setting up the event
+        XEvent event;
+        memset (&event, 0, sizeof (event));
+        event.xbutton.button = Button1;
+        event.xbutton.same_screen = True;
+        event.xbutton.subwindow = DefaultRootWindow (display);
+        while (event.xbutton.subwindow)
+          {
+            event.xbutton.window = event.xbutton.subwindow;
+            XQueryPointer (display, event.xbutton.window,
+                   &event.xbutton.root, &event.xbutton.subwindow,
+                   &event.xbutton.x_root, &event.xbutton.y_root,
+                   &event.xbutton.x, &event.xbutton.y,
+                   &event.xbutton.state);
+          }
+        // Press
+        event.type = ButtonPress;
+        if (XSendEvent (display, PointerWindow, True, ButtonPressMask, &event) == 0)
+          fprintf (stderr, "Error to send the event!\n");
+        XFlush (display);
+        std::this_thread::sleep_for(std::chrono::microseconds(1));
+        // Release
+        event.type = ButtonRelease;
+        if (XSendEvent (display, PointerWindow, True, ButtonReleaseMask, &event) == 0)
+          fprintf (stderr, "Error to send the event!\n");
+        XFlush (display);
+        std::this_thread::sleep_for(std::chrono::microseconds(1));
     #elif __APPLE__
 
     #endif
@@ -238,7 +230,26 @@ void PreviewWindow::holdCursor(){
     #ifdef _WIN32
 
     #elif  __linux__
-        hold (display, Button1);
+        XEvent event;
+        memset (&event, 0, sizeof (event));
+        event.xbutton.button = Button1;
+        event.xbutton.same_screen = True;
+        event.xbutton.subwindow = DefaultRootWindow (display);
+        while (event.xbutton.subwindow)
+          {
+            event.xbutton.window = event.xbutton.subwindow;
+            XQueryPointer (display, event.xbutton.window,
+                   &event.xbutton.root, &event.xbutton.subwindow,
+                   &event.xbutton.x_root, &event.xbutton.y_root,
+                   &event.xbutton.x, &event.xbutton.y,
+                   &event.xbutton.state);
+          }
+        // Press
+        event.type = ButtonPress;
+        if (XSendEvent (display, PointerWindow, True, ButtonPressMask, &event) == 0)
+          fprintf (stderr, "Error to send the event!\n");
+        XFlush (display);
+        std::this_thread::sleep_for(std::chrono::microseconds(1));
     #elif __APPLE__
 
     #endif
@@ -249,7 +260,26 @@ void PreviewWindow::releaseCursor(){
     #ifdef _WIN32
 
     #elif  __linux__
-        release (display, Button1);
+        XEvent event;
+        memset (&event, 0, sizeof (event));
+        event.xbutton.button = Button1;
+        event.xbutton.same_screen = True;
+        event.xbutton.subwindow = DefaultRootWindow (display);
+        while (event.xbutton.subwindow)
+          {
+            event.xbutton.window = event.xbutton.subwindow;
+            XQueryPointer (display, event.xbutton.window,
+                   &event.xbutton.root, &event.xbutton.subwindow,
+                   &event.xbutton.x_root, &event.xbutton.y_root,
+                   &event.xbutton.x, &event.xbutton.y,
+                   &event.xbutton.state);
+          }
+        // Release
+        event.type = ButtonRelease;
+        if (XSendEvent (display, PointerWindow, True, ButtonReleaseMask, &event) == 0)
+          fprintf (stderr, "Error to send the event!\n");
+        XFlush (display);
+        std::this_thread::sleep_for(std::chrono::microseconds(1));
     #elif __APPLE__
 
     #endif
@@ -261,6 +291,9 @@ PreviewWindow::~PreviewWindow()
 }
 void PreviewWindow::closeDraw(int a){
     //0 is stopped, 1 is success
+    #ifdef __linux__
+            XCloseDisplay (display);
+    #endif
     if (a == 1){
         new ConsoleWindow("Drawing finished.");
         sendMessage("Drawing finished", 4, MainWin);
@@ -277,7 +310,7 @@ void PreviewWindow::lockPos(){
 
 void PreviewWindow::on_pushButton_2_released()
 {
-    if (!loopRunning) stopAutodraw = true; else {
+    if (loopRunning) stopAutodraw = true; else {
         MainWin->show();
         this->close();
     }
@@ -288,7 +321,6 @@ void PreviewWindow::Draw()
     QFile inFile(path+"/user.cfg");
     inFile.open(QIODevice::ReadOnly|QIODevice::Text);
     QByteArray data = inFile.readAll();
-    inFile.close();
 
     QJsonParseError errorPtr;
     QJsonDocument doc = QJsonDocument::fromJson(data, &errorPtr);
@@ -299,10 +331,8 @@ void PreviewWindow::Draw()
 
     loopRunning = false;
     this->hide();
-    int offsetX = 0, offsetY = 0;
-    if(rootObj2["offsetEnabled"].toBool()){offsetX = rootObj2["offsetX"].toInt();offsetY = rootObj2["offsetY"].toInt();}
-    int x = QCursor::pos().x() - (image.width()/2) + offsetX;
-    int y = QCursor::pos().y() - (image.height()/2) + offsetY;
+    int x = QCursor::pos().x() - (image.width()/2);
+    int y = QCursor::pos().y() - (image.height()/2);
     if (printer){
         //printer mode
         for (int yImg = 0; yImg < image.height(); ++yImg) {
@@ -323,6 +353,7 @@ void PreviewWindow::Draw()
                     }
                     ++scanLine;
                 }
+                std::this_thread::sleep_for(std::chrono::microseconds(clickdelay));
             }
             else{
                 --scanLine;
@@ -340,6 +371,7 @@ void PreviewWindow::Draw()
                     }
                     --scanLine;
                 }
+                std::this_thread::sleep_for(std::chrono::microseconds(clickdelay));
             }
         }
     }
@@ -353,10 +385,11 @@ void PreviewWindow::Draw()
             //std::future<void> fut = std::async(std::launch::async, setCursor, this, i, y);
         }
     }
-    if (stopAutodraw) closeDraw(0); else closeDraw(1);
+    if (!stopAutodraw) closeDraw(0); else closeDraw(1);
 }
 
 void PreviewWindow::on_Draw_released()
 {
     Draw();
 }
+
