@@ -70,7 +70,7 @@ This software officially supports Windows 10 and above. Any versions below may n
 <a name="Mac"/>
 <h3> Mac </h3>
 
-Mac is not supported, as WPF is Windows-Only. (Version 2 may have Mac support)
+Mac is not supported, as no one really uses it in our community.
 
 Mac users may use [Parallels](https://www.parallels.com/au/products/desktop/)
 
