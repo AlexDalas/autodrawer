@@ -17,7 +17,6 @@
 #include <QJsonObject>
 #include <QStandardPaths>
 #include <QTest>
-#include <algorithm>
 
 int SCREEN_WIDTH = 1080;
 int SCREEN_HEIGHT = 4920;
@@ -43,9 +42,7 @@ QImage image;
 int path8 = 12345678;
 using namespace Qt;
 QWidget* MainWin;
-
-std::vector<std::vector<int>> pixelArray;
-
+std::vector<int> *pixelArray;
 bool cont;
 bool CloseRequested = false;
 bool Paused = false;
@@ -78,8 +75,6 @@ PreviewWindow::PreviewWindow(QImage dimage, int interval, int delay, QWidget *pa
     moveInterval = interval;
     clickDelay = delay;
     image = dimage;
-    pixelArray.clear();
-    pixelArray.resize(image.width(), std::vector<int>(image.height(), 0));
     MainWin = parent;
     reloadThemes();
     loopRunning = true;
@@ -254,8 +249,7 @@ void PreviewWindow::holdCursor(){
         event.xbutton.subwindow = DefaultRootWindow (display);
         while (event.xbutton.subwindow)
           {
-            event.xbutton.window = event.
-            xbutton.subwindow;
+            event.xbutton.window = event.xbutton.subwindow;
             XQueryPointer (display, event.xbutton.window,
                    &event.xbutton.root, &event.xbutton.subwindow,
                    &event.xbutton.x_root, &event.xbutton.y_root,
@@ -303,14 +297,6 @@ void PreviewWindow::releaseCursor(){
     #endif
 }
 
-int PreviewWindow::getPA(int x, int y){
-    return pixelArray[x][y];
-}
-
-void PreviewWindow::setPA(int x, int y, int value){
-    pixelArray[x][y] = value;
-}
-
 PreviewWindow::~PreviewWindow()
 {
     delete ui;
@@ -325,7 +311,6 @@ void PreviewWindow::closeDraw(int a){
         sendMessage("Drawing finished", 4, MainWin);
         this->close();
     } else{
-        new ConsoleWindow("Drawing stopped.");
         sendMessage("Drawing stopped", 5, MainWin);
         this->close();
     }
@@ -339,6 +324,7 @@ void PreviewWindow::on_pushButton_2_released()
 {
     if (loopRunning) stopAutodraw = true; else {
         MainWin->show();
+        this->close();
     }
 }
 std::vector<QPoint> stack;
@@ -354,7 +340,7 @@ void PreviewWindow::Draw()
     QJsonObject rootObj2 = doc.object();
     auto printer = rootObj2.value("printer").toBool();
     inFile.close();
-    new ConsoleWindow("Started drawing {\n   Interval: "+QString::number(moveInterval)+"\n   Click Delay: "+QString::number(clickDelay)+"\n}");
+    new ConsoleWindow("Started drawing {\n   Interval: "+QString::number(interval)+"\n   Click Delay: "+QString::number(clickDelay)+"\n}");
 
     loopRunning = false;
     this->hide();
@@ -403,7 +389,6 @@ void PreviewWindow::Draw()
         }
     }
     else{
-        pixelArray.resize(x, std::vector<int>(y, 0));
         cont = true;
         //dodgy code somewhat
         for(int i = 0; i< QString::number(path8).length(); i++)
@@ -414,44 +399,22 @@ void PreviewWindow::Draw()
         //end dodgy code
 
         //Scan
-        new ConsoleWindow("Starting pixel scan");
-        for (int xImg = 1; xImg < image.height(); ++xImg) {
+        for (int yImg = 0; yImg < image.height(); ++yImg) {
             if (stopAutodraw) break;
-            QRgb *scanLine2 = (QRgb*)image.scanLine(xImg);
-            for (int yImg = 1; yImg < image.width(); ++yImg) {
+            QRgb *scanLine = (QRgb*)image.scanLine(yImg);
+            for (int xImg = 0; xImg < image.width(); ++xImg) {
                 if (stopAutodraw) break;
-                QRgb pixel2 = *scanLine2;
-                uint ci2 = uint(qGray(pixel2));
-                //new ConsoleWindow(QString::number(ci2));
-                if (ci2 <= 254){
-                    setPA(xImg, yImg, 1);
+                QRgb pixel = *scanLine;
+                uint ci = uint(qGray(pixel));
+                if (ci <= 254){
+                    pixelArray[x][y] = 1;
                 }
                 else{
-                    setPA(xImg, yImg, 0);
+                    pixelArray[x][y] = 0;
                 }
             }
         }
-        new ConsoleWindow("Scan successful");
-        //USE THE BELOW CODE TO TEST OUT WHAT THE ARRAY LOOKS LIKE IN IMAGE FORM
-/*
-        QImage image2(image.width(), image.height(), QImage::Format_RGB32);
-        for (int i=0;i<image2.width();++i) {
-            for (int j=0;j<image2.height();++j) {
-                QRgb value = getPA(i, j);
-                if (value % 5 == 0) value = 255; else value = 0;
-                //new ConsoleWindow(QString::number(getPA(i, j)));
-                image.setPixel(i, j, value);
-                value = 0;
-            }
-        }
-        ui->ShownImage->setPixmap(QPixmap::fromImage(image));
-        this->show();
-        new ConsoleWindow("Image test mode on, showing user scanned image.");
-        return;
-*/
-        //END OF TEST CODE
         //Draw
-        new ConsoleWindow("For loop");
         for (int yImg = 0; yImg < image.height(); ++yImg) {
             if (stopAutodraw) break;
             QRgb *scanLine = (QRgb*)image.scanLine(yImg);
@@ -460,11 +423,8 @@ void PreviewWindow::Draw()
                 //remove if unneeded
                 QRgb pixel = *scanLine;
                 uint ci = uint(qGray(pixel));
-                //new ConsoleWindow(QString::number(getPA(xImg, yImg)));
                 //end
-                new ConsoleWindow("Try for loop");
-                if (getPA(xImg, yImg) == 1){
-                    new ConsoleWindow("For loop");
+                if (pixelArray[xImg][yImg] == 1){
                     int xpos = x+xImg;
                     int ypos = y+yImg;
                     NOP(clickdelay*5000);
@@ -481,12 +441,13 @@ void PreviewWindow::Draw()
                 }
             }
         }
+
         ResetPixels();
 
     }
+    if (stopAutodraw) closeDraw(0); else closeDraw(1);
 }
 bool PreviewWindow::DrawArea(std::vector<QPoint> stack, int xImg, int yImg, int x, int y){
-    new ConsoleWindow("DrawArea  ");
     while (True){
         if (Paused){
 
@@ -494,12 +455,9 @@ bool PreviewWindow::DrawArea(std::vector<QPoint> stack, int xImg, int yImg, int 
         if (CloseRequested){
             break;
         }
-        NOP(moveInterval);
+        NOP(interval);
         setCursor(x+xImg, y+yImg);
-        //Code below errors
-        //new ConsoleWindow("C");
-        setPA(xImg, yImg, 2);
-        //new ConsoleWindow("A");
+        pixelArray[x][y] = 2;
         /*
         +---+---+---+
         | 1 | 2 | 3 |
@@ -514,8 +472,8 @@ bool PreviewWindow::DrawArea(std::vector<QPoint> stack, int xImg, int yImg, int 
            switch (pathStr[i]){
                case 1:
                 if ((xImg > 0) && (yImg > 0)){
-                    if (getPA((xImg+1 - 1), (yImg+1 - 1)) == 1){
-                        stack = Push(stack, xImg, yImg);
+                    if (pixelArray[xImg - 1][yImg - 1] == 1){
+                        Push(stack, xImg, yImg);
                         xImg -= 1;
                         yImg -= 1;
                         cont = true;
@@ -524,8 +482,8 @@ bool PreviewWindow::DrawArea(std::vector<QPoint> stack, int xImg, int yImg, int 
                 break;
                case 2:
                 if (yImg > 0){
-                    if (getPA(xImg, (yImg - 1)) == 1){
-                        stack = Push(stack, xImg, yImg);
+                    if (pixelArray[xImg][yImg - 1] == 1){
+                        Push(stack, xImg, yImg);
                         yImg -= 1;
                         cont = true;
                     }
@@ -533,8 +491,8 @@ bool PreviewWindow::DrawArea(std::vector<QPoint> stack, int xImg, int yImg, int 
                 break;
            case 3:
                if ((xImg > 0) && (yImg > 0)){
-                   if (getPA((xImg + 1), (yImg - 1)) == 1){
-                       stack = Push(stack, xImg, yImg);
+                   if (pixelArray[xImg + 1][yImg - 1] == 1){
+                       Push(stack, xImg, yImg);
                        xImg += 1;
                        yImg += 1;
                        cont = true;
@@ -543,8 +501,8 @@ bool PreviewWindow::DrawArea(std::vector<QPoint> stack, int xImg, int yImg, int 
             break;
            case 4:
                if (xImg > 0){
-                   if (getPA((xImg - 1), yImg) == 1){
-                       stack = Push(stack, xImg, yImg);
+                   if (pixelArray[xImg - 1][yImg] == 1){
+                       Push(stack, xImg, yImg);
                        yImg -= 1;
                        cont = true;
                    }
@@ -552,8 +510,8 @@ bool PreviewWindow::DrawArea(std::vector<QPoint> stack, int xImg, int yImg, int 
                break;
            case 5:
                if (xImg > (image.width() - 1)){
-                   if (getPA((xImg + 1), yImg) == 1){
-                       stack = Push(stack, xImg, yImg);
+                   if (pixelArray[xImg + 1][yImg] == 1){
+                       Push(stack, xImg, yImg);
                        xImg += 1;
                        cont = true;
                    }
@@ -561,8 +519,8 @@ bool PreviewWindow::DrawArea(std::vector<QPoint> stack, int xImg, int yImg, int 
                break;
            case 6:
                if ((xImg < 0) & (yImg > 0)){
-                   if (getPA((xImg - 1), (yImg + 1)) == 1){
-                       stack = Push(stack, xImg, yImg);
+                   if (pixelArray[xImg - 1][yImg + 1] == 1){
+                       Push(stack, xImg, yImg);
                        xImg -= 1;
                        yImg -= 1;
                        cont = true;
@@ -571,8 +529,8 @@ bool PreviewWindow::DrawArea(std::vector<QPoint> stack, int xImg, int yImg, int 
                break;
            case 7:
                if (xImg > (image.height() - 1)){
-                   if (getPA(xImg, (yImg + 1)) == 1){
-                       stack = Push(stack, xImg, yImg);
+                   if (pixelArray[xImg][yImg + 1] == 1){
+                       Push(stack, xImg, yImg);
                        yImg += 1;
                        cont = true;
                    }
@@ -580,8 +538,8 @@ bool PreviewWindow::DrawArea(std::vector<QPoint> stack, int xImg, int yImg, int 
                break;
            case 8:
                if ((xImg < (image.width() - 1)) && (y < (image.height()) - 1)){
-                   if (getPA(xImg, (yImg + 1)) == 1){
-                       stack = Push(stack, xImg, yImg);
+                   if (pixelArray[xImg][yImg + 1] == 1){
+                       Push(stack, xImg, yImg);
                        xImg += 1;
                        yImg += 1;
                        cont = true;
@@ -601,20 +559,18 @@ bool PreviewWindow::DrawArea(std::vector<QPoint> stack, int xImg, int yImg, int 
     return true;
 }
 
-std::vector<QPoint> PreviewWindow::Push(std::vector<QPoint> stack, int xImg, int yImg){
+void PreviewWindow::Push(std::vector<QPoint> stack, int xImg, int yImg){
     stack.push_back(QPoint(xImg, yImg));
-    return stack;
 }
 
 std::tuple<bool, int, int> PreviewWindow::Pop(std::vector<QPoint> stack, int xImg, int yImg){
-    //new ConsoleWindow("stackCount: ");
     int stackCount = stack.size();
-    //new ConsoleWindow(QString::number(stackCount));
     if (stackCount < 1)
             return std::make_tuple(false, xImg, yImg);
 
     //imporvides code
     QPoint pos = (QPoint)stack[stackCount - 1];
+
     xImg = pos.x();
     yImg = pos.y();
 
@@ -624,21 +580,22 @@ std::tuple<bool, int, int> PreviewWindow::Pop(std::vector<QPoint> stack, int xIm
 }
 
 void PreviewWindow::ResetPixels(){
-    new ConsoleWindow("Resetting pixels  ");
     for (int yImg = 0; yImg < image.height(); ++yImg) {
         if (stopAutodraw) break;
+        QRgb *scanLine = (QRgb*)image.scanLine(yImg);
         for (int xImg = 0; xImg < image.width(); ++xImg) {
             if (stopAutodraw) break;
-            if (getPA(xImg, yImg) == 2){
-                setPA(xImg, yImg, 1);
+            QRgb pixel = *scanLine;
+            uint ci = uint(qGray(pixel));
+            if (pixelArray[xImg][yImg] == 2){
+                pixelArray[xImg][yImg] = 1;
             }
         }
     }
-    new ConsoleWindow("Reset Success  ");
 }
 
 void PreviewWindow::NOP(int ourint){
-    std::this_thread::sleep_for(std::chrono::microseconds(ourint*250));
+    std::this_thread::sleep_for(std::chrono::microseconds(ourint*100));
 }
 
 void PreviewWindow::on_Draw_released()

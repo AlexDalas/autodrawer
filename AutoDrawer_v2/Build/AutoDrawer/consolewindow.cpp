@@ -49,7 +49,7 @@ ConsoleWindow::ConsoleWindow(QString text, QWidget *parent) :
             MyFile.write(text.toUtf8()+"\n");
             MyFile.close();
         }
-        this->close();
+
     }
     else{
         new ConsoleWindow("Console opened.");

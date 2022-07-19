@@ -42,13 +42,9 @@ private slots:
 
     void NOP(int ourint);
 
-    void setPA(int x, int y, int value);
-
-    int getPA(int x, int y);
-
     bool DrawArea(std::vector<QPoint> stack, int xImg, int yImg, int x, int y);
 
-    std::vector<QPoint> Push(std::vector<QPoint> stack, int xImg, int yImg);
+    void Push(std::vector<QPoint> stack, int xImg, int yImg);
 
     std::tuple<bool, int, int> Pop(std::vector<QPoint> stack, int xImg, int yImg);
 

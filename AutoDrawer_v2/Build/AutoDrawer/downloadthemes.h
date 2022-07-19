@@ -19,7 +19,7 @@ public:
 private slots:
     void on_Violet_released();
 
-    bool downloadSet(QString url, QString saveAS);
+    void downloadSet(QString url, QString saveAS);
 
     void on_Blue_released();
 

@@ -84,7 +84,7 @@ void downloadthemes::reloadThemes(){
     ui->Text->setStyleSheet("background: transparent; color: "+preview["text"].toString());
 }
 
-bool downloadthemes::downloadSet(QString url, QString saveAS){
+void downloadthemes::downloadSet(QString url, QString saveAS){
     new ConsoleWindow("Requested to download \""+saveAS+"\" at \""+url+"\"");
     QNetworkAccessManager manager;
     QNetworkReply *response = manager.get(QNetworkRequest(QUrl(url)));
@@ -92,15 +92,10 @@ bool downloadthemes::downloadSet(QString url, QString saveAS){
     connect(response, SIGNAL(finished()), &event, SLOT(quit()));
     event.exec();
     std::string content = response->readAll().toStdString();
-    QVariant statusCode = response->attribute( QNetworkRequest::HttpStatusCodeAttribute );
-    if ( !statusCode.isValid() ) return false;
-    int status = statusCode.toInt();
-    if (status == 200){
-        std::ofstream Download((pathAUD+"/themes/"+saveAS+".drawtheme").toStdString());
-        Download << content;
-        Download.close();
-        return true;
-    } else return false;
+
+    std::ofstream Download((pathAUD+"/themes/"+saveAS+".drawtheme").toStdString());
+    Download << content;
+    Download.close();
 }
 
 void downloadthemes::on_Exit_released()
@@ -113,7 +108,7 @@ void downloadthemes::on_Violet_released()
 {
     if (ui->Violet->text() == "Installed") return;
     ui->Violet->setText("Downloading...");
-    if (!downloadSet("https://raw.githubusercontent.com/AlexCYP/autodraw-roblox/main/AutoDrawer_v2/themes/violet.drawtheme", "violet")) return ui->Violet->setText("Download failed");
+    downloadSet("https://raw.githubusercontent.com/AlexCYP/autodraw-roblox/main/AutoDrawer_v2/themes/violet.drawtheme", "violet");
     ui->Violet->setText("Installed Violet");
 }
 
@@ -121,7 +116,7 @@ void downloadthemes::on_Blue_released()
 {
     if (ui->Blue->text() == "Installed") return;
     ui->Blue->setText("Downloading...");
-    if (!downloadSet("https://raw.githubusercontent.com/AlexCYP/autodraw-roblox/main/AutoDrawer_v2/themes/blue.drawtheme", "blue")) return ui->Blue->setText("Download failed");
+    downloadSet("https://raw.githubusercontent.com/AlexCYP/autodraw-roblox/main/AutoDrawer_v2/themes/blue.drawtheme", "blue");
     ui->Blue->setText("Installed Blue");
 }
 
@@ -130,7 +125,7 @@ void downloadthemes::on_Black_released()
 {
     if (ui->Black->text() == "Installed") return;
     ui->Black->setText("Downloading...");
-    if (!downloadSet("https://raw.githubusercontent.com/AlexCYP/autodraw-roblox/main/AutoDrawer_v2/themes/black.drawtheme", "black")) return ui->Black->setText("Download failed");
+    downloadSet("https://raw.githubusercontent.com/AlexCYP/autodraw-roblox/main/AutoDrawer_v2/themes/black.drawtheme", "black");
     ui->Black->setText("Installed Black");
 }
 
@@ -139,8 +134,8 @@ void downloadthemes::on_OrangeYellow_released()
 {
     if (ui->OrangeYellow->text() == "Installed") return;
     ui->OrangeYellow->setText("Downloading...");
-    if (!downloadSet("https://raw.githubusercontent.com/AlexCYP/autodraw-roblox/main/AutoDrawer_v2/themes/banana.drawtheme", "banana")) return ui->OrangeYellow->setText("Download failed");
-    ui->OrangeYellow->setText("Installed Banana");
+    downloadSet("https://raw.githubusercontent.com/AlexCYP/autodraw-roblox/main/AutoDrawer_v2/themes/banana.drawtheme", "banana");
+    ui->OrangeYellow->setText("Installed");
 }
 
 
@@ -148,7 +143,7 @@ void downloadthemes::on_Red_released()
 {
     if (ui->Red->text() == "Installed") return;
     ui->Red->setText("Downloading...");
-    if (!downloadSet("https://raw.githubusercontent.com/AlexCYP/autodraw-roblox/main/AutoDrawer_v2/themes/red.drawtheme", "red")) return ui->Red->setText("Download failed");
+    downloadSet("https://raw.githubusercontent.com/AlexCYP/autodraw-roblox/main/AutoDrawer_v2/themes/red.drawtheme", "red");
     ui->Red->setText("Installed Banana");
 }
 
@@ -157,7 +152,7 @@ void downloadthemes::on_Green_released()
 {
     if (ui->Green->text() == "Installed") return;
     ui->Green->setText("Downloading...");
-    if (!downloadSet("https://raw.githubusercontent.com/AlexCYP/autodraw-roblox/main/AutoDrawer_v2/themes/green.drawtheme", "green")) return ui->Green->setText("Download failed");
+    downloadSet("https://raw.githubusercontent.com/AlexCYP/autodraw-roblox/main/AutoDrawer_v2/themes/green.drawtheme", "green");
     ui->Green->setText("Installed Green");
 }
 

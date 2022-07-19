@@ -1,0 +1,18 @@
+<RCC>
+    <qresource prefix="/images">
+        <file alias="violet">images/violet.png</file>
+        <file>images/Icon.ico</file>
+        <file>images/RefreshIcon.png</file>
+        <file>images/RefreshIcon_Light.png</file>
+        <file>images/InfoIcon.png</file>
+        <file>images/InfoIcon_Light.png</file>
+        <file>images/Icon_Light.ico</file>
+        <file>images/black.png</file>
+        <file>images/yellow.png</file>
+        <file>images/red.png</file>
+        <file>images/green.png</file>
+        <file>images/blue.png</file>
+        <file>images/pattern.png</file>
+        <file>images/pattern_black.png</file>
+    </qresource>
+</RCC>
