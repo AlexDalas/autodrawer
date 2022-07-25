@@ -1,5 +1,4 @@
 #include "previewwindow.h"
-#include "autodrawer.h"
 #include "consolewindow.h"
 #include "ui_previewwindow.h"
 #include "messagewindow.h"
@@ -304,6 +303,7 @@ void PreviewWindow::releaseCursor(){
 }
 
 int PreviewWindow::getPA(int x, int y){
+    new ConsoleWindow("uhhhh");
     return pixelArray[x][y];
 }
 
@@ -403,7 +403,6 @@ void PreviewWindow::Draw()
         }
     }
     else{
-        pixelArray.resize(x, std::vector<int>(y, 0));
         cont = true;
         //dodgy code somewhat
         for(int i = 0; i< QString::number(path8).length(); i++)
@@ -433,7 +432,7 @@ void PreviewWindow::Draw()
         }
         new ConsoleWindow("Scan successful");
         //USE THE BELOW CODE TO TEST OUT WHAT THE ARRAY LOOKS LIKE IN IMAGE FORM
-/*
+
         QImage image2(image.width(), image.height(), QImage::Format_RGB32);
         for (int i=0;i<image2.width();++i) {
             for (int j=0;j<image2.height();++j) {
@@ -441,14 +440,13 @@ void PreviewWindow::Draw()
                 if (value % 5 == 0) value = 255; else value = 0;
                 //new ConsoleWindow(QString::number(getPA(i, j)));
                 image.setPixel(i, j, value);
-                value = 0;
             }
         }
         ui->ShownImage->setPixmap(QPixmap::fromImage(image));
         this->show();
         new ConsoleWindow("Image test mode on, showing user scanned image.");
         return;
-*/
+
         //END OF TEST CODE
         //Draw
         new ConsoleWindow("For loop");
@@ -607,7 +605,7 @@ std::vector<QPoint> PreviewWindow::Push(std::vector<QPoint> stack, int xImg, int
 }
 
 std::tuple<bool, int, int> PreviewWindow::Pop(std::vector<QPoint> stack, int xImg, int yImg){
-    //new ConsoleWindow("stackCount: ");
+    new ConsoleWindow("stackCount: ");
     int stackCount = stack.size();
     //new ConsoleWindow(QString::number(stackCount));
     if (stackCount < 1)
