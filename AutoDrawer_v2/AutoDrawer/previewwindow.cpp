@@ -78,7 +78,7 @@ PreviewWindow::PreviewWindow(QImage dimage, int interval, int delay, QWidget *pa
     clickDelay = delay;
     image = dimage;
     pixelArray.clear();
-    pixelArray.resize(image.width(), std::vector<int>(image.height(), 0));
+    //pixelArray.resize(image.width(), std::vector<int>(image.height(), 0));
     MainWin = parent;
     reloadThemes();
     loopRunning = true;
@@ -304,11 +304,13 @@ void PreviewWindow::releaseCursor(){
 
 int PreviewWindow::getPA(int x, int y){
     new ConsoleWindow("uhhhh");
-    return pixelArray[x][y];
+    //return pixelArray[x][y];
+    return pixelArray.at(x).at(y);
 }
 
 void PreviewWindow::setPA(int x, int y, int value){
     pixelArray[x][y] = value;
+    new ConsoleWindow("y");
 }
 
 PreviewWindow::~PreviewWindow()
@@ -404,6 +406,7 @@ void PreviewWindow::Draw()
     }
     else{
         cont = true;
+        pixelArray.resize(image.width(), std::vector<int>(image.height(), 0));
         //dodgy code somewhat
         for(int i = 0; i< QString::number(path8).length(); i++)
         {
@@ -415,19 +418,26 @@ void PreviewWindow::Draw()
         //Scan
         new ConsoleWindow("Starting pixel scan");
         for (int xImg = 1; xImg < image.height(); ++xImg) {
-            if (stopAutodraw) break;
+            //if (stopAutodraw) break;
+            new ConsoleWindow("S");
             QRgb *scanLine2 = (QRgb*)image.scanLine(xImg);
+            new ConsoleWindow("T");
             for (int yImg = 1; yImg < image.width(); ++yImg) {
-                if (stopAutodraw) break;
+                new ConsoleWindow("3");
+                //if (stopAutodraw) break;
+                new ConsoleWindow("line "+QString::number(yImg));
                 QRgb pixel2 = *scanLine2;
-                uint ci2 = uint(qGray(pixel2));
-                //new ConsoleWindow(QString::number(ci2));
-                if (ci2 <= 254){
+                new ConsoleWindow("12");
+                if (uint(qGray(pixel2)) != 255){
+                    new ConsoleWindow("your try !");
                     setPA(xImg, yImg, 1);
-                }
+                    new ConsoleWindow("your did it once !");
+                }/*
                 else{
                     setPA(xImg, yImg, 0);
-                }
+                }*/
+                new ConsoleWindow("your did it !");
+                //new ConsoleWindow(QString::number(getPA(xImg, yImg)));
             }
         }
         new ConsoleWindow("Scan successful");

@@ -180,11 +180,12 @@ AutoDrawer::AutoDrawer(QWidget *parent)
     setAcceptDrops(true);
     ui->setupUi(this);
     qApp->installEventFilter(this);
-
+    this->setFixedSize(this->width(),this->height());
     if (!QDir(pathAD).exists()) QDir().mkdir(pathAD);
     if (!QDir(pathAD+"/themes/").exists()) QDir().mkdir(pathAD+"/themes/");
     if (!QDir(pathAD+"/logs/").exists()) QDir().mkdir(pathAD+"/logs/");
 
+    if (!QDir(pathAD).exists()) QDir().mkdir(pathAD);
     if (!QFile(pathAD+"/user.cfg").exists()){
         QJsonObject UserCFG;
 

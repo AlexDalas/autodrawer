@@ -11,7 +11,6 @@
 #include <QFile>
 #include <QJsonParseError>
 #include <QJsonObject>
-#include <QStandardPaths>
 #include <QDirIterator>
 #include <QApplication>
 #include <QProcess>
