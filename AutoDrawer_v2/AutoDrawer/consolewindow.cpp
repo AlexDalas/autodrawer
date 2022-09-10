@@ -21,7 +21,7 @@ ConsoleWindow::ConsoleWindow(QString text, QWidget *parent) :
     ui(new Ui::ConsoleWindow)
 {
     if (text != "openWindow"){
-        std::cout << text.toStdString();
+        std::cout << text.toStdString() << "\n";
         QFile inFile(pathAPD+"/user.cfg");
         inFile.open(QIODevice::ReadOnly|QIODevice::Text);
         QByteArray data = inFile.readAll();

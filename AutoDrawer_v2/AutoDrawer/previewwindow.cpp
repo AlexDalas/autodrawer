@@ -26,9 +26,67 @@ int SCREEN_HEIGHT = 4920;
     #define WIN32_LEAN_AND_MEAN
     #include <Windows.h>
 #elif  __linux__
-    #include <X11/Xlib.h>
-    #include <X11/Xutil.h>
-    Display *display = XOpenDisplay (NULL);
+    #include <errno.h>
+    #include <fcntl.h>
+    #include <signal.h>
+    #include <string.h>
+    #include <stdio.h>
+    #include <sys/types.h>
+    #include <sys/stat.h>
+    #include <unistd.h>
+    #include <linux/uinput.h>
+// https://www.froglogic.com/blog/tip-of-the-week/using-linux-uinput-from-a-test-script/
+
+static void emitSig(int fd, int type, int code, int val) {
+    struct input_event ie;
+
+    ie.type = type;
+    ie.code = code;
+    ie.value = val;
+    ie.time.tv_sec = 0;
+    ie.time.tv_usec = 0;
+
+    write(fd, &ie, sizeof(ie));
+}
+int fd = 0;
+void setupMouse() {
+    struct uinput_setup usetup;
+    int i = 50;
+
+    int fc = open("/dev/uinput", O_WRONLY | O_NONBLOCK);
+    if (fc < 0) {
+        fprintf(stderr, "failed to open device %s\n", strerror(errno));
+        fc = 0;
+    }
+    /* enable mouse button left and relative events */
+    ioctl(fc, UI_SET_EVBIT, EV_KEY);
+    ioctl(fc, UI_SET_KEYBIT, BTN_LEFT);
+
+    ioctl(fc, UI_SET_EVBIT, EV_REL);
+    ioctl(fc, UI_SET_RELBIT, REL_X);
+    ioctl(fc, UI_SET_RELBIT, REL_Y);
+
+    memset(&usetup, 0, sizeof(usetup));
+    usetup.id.bustype = BUS_USB;
+    usetup.id.vendor = 0x1234; /* sample vendor */
+    usetup.id.product = 0x5678; /* sample product */
+    strcpy(usetup.name, "AutoDrawer");
+
+    ioctl(fd, UI_DEV_SETUP, &usetup);
+    ioctl(fd, UI_DEV_CREATE);
+    sleep(1);
+    fd = fc;
+}
+
+void deleteDevice(int fd) {
+    if (fd > 0) {
+        ioctl(fd, UI_DEV_DESTROY);
+        close(fd);
+    }
+}
+
+
+
 #elif __APPLE__
 
 #endif
@@ -50,9 +108,6 @@ bool CloseRequested = false;
 bool Paused = false;
 
 auto path = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/AutoDraw";
-
-int fd;
-Display *dpy;
 
 PreviewWindow::PreviewWindow(QImage dimage, int interval, int delay, QWidget *parent) :
     QMainWindow(parent),
@@ -182,25 +237,11 @@ void PreviewWindow::setCursor(int x, int y){
     //QCursor::setPos(QPoint(x,y));
     #ifdef _WIN32
 
-
     #elif  __linux__
-        XEvent event;
-        memset (&event, 0, sizeof (event));
-        event.xbutton.button = Button1;
-        event.xbutton.same_screen = True;
-        event.xbutton.subwindow = DefaultRootWindow (display);
-        while (event.xbutton.subwindow)
-          {
-            event.xbutton.window = event.xbutton.subwindow;
-            XQueryPointer (display, event.xbutton.window,
-                   &event.xbutton.root, &event.xbutton.subwindow,
-                   &event.xbutton.x_root, &event.xbutton.y_root,
-                   &event.xbutton.x, &event.xbutton.y,
-                   &event.xbutton.state);
-          }
-
-        XWarpPointer (display, None, None, 0,0,0,0, x-QCursor::pos().x(), y-QCursor::pos().y());
-        XFlush (display);
+        emitSig(fd, EV_REL, REL_X, x);
+        emitSig(fd, EV_REL, REL_Y, y);
+        emitSig(fd, EV_SYN, SYN_REPORT, 0);
+        std::this_thread::sleep_for(std::chrono::microseconds(1));
     #endif
 }
 
@@ -209,32 +250,10 @@ void PreviewWindow::clickCursor(){
     #ifdef _WIN32
 
     #elif  __linux__
-        // Create and setting up the event
-        XEvent event;
-        memset (&event, 0, sizeof (event));
-        event.xbutton.button = Button1;
-        event.xbutton.same_screen = True;
-        event.xbutton.subwindow = DefaultRootWindow (display);
-        while (event.xbutton.subwindow)
-          {
-            event.xbutton.window = event.xbutton.subwindow;
-            XQueryPointer (display, event.xbutton.window,
-                   &event.xbutton.root, &event.xbutton.subwindow,
-                   &event.xbutton.x_root, &event.xbutton.y_root,
-                   &event.xbutton.x, &event.xbutton.y,
-                   &event.xbutton.state);
-          }
-        // Press
-        event.type = ButtonPress;
-        if (XSendEvent (display, PointerWindow, True, ButtonPressMask, &event) == 0)
-          fprintf (stderr, "Error to send the event!\n");
-        XFlush (display);
-        std::this_thread::sleep_for(std::chrono::microseconds(1));
-        // Release
-        event.type = ButtonRelease;
-        if (XSendEvent (display, PointerWindow, True, ButtonReleaseMask, &event) == 0)
-          fprintf (stderr, "Error to send the event!\n");
-        XFlush (display);
+        emitSig(fd, EV_KEY, BTN_MOUSE, 1);
+        emitSig(fd, EV_SYN, SYN_REPORT, 0);
+        emitSig(fd, EV_KEY, BTN_MOUSE, 0);
+        emitSig(fd, EV_SYN, SYN_REPORT, 0);
         std::this_thread::sleep_for(std::chrono::microseconds(1));
     #elif __APPLE__
 
@@ -246,26 +265,7 @@ void PreviewWindow::holdCursor(){
     #ifdef _WIN32
 
     #elif  __linux__
-        XEvent event;
-        memset (&event, 0, sizeof (event));
-        event.xbutton.button = Button1;
-        event.xbutton.same_screen = True;
-        event.xbutton.subwindow = DefaultRootWindow (display);
-        while (event.xbutton.subwindow)
-          {
-            event.xbutton.window = event.
-            xbutton.subwindow;
-            XQueryPointer (display, event.xbutton.window,
-                   &event.xbutton.root, &event.xbutton.subwindow,
-                   &event.xbutton.x_root, &event.xbutton.y_root,
-                   &event.xbutton.x, &event.xbutton.y,
-                   &event.xbutton.state);
-          }
-        // Press
-        event.type = ButtonPress;
-        if (XSendEvent (display, PointerWindow, True, ButtonPressMask, &event) == 0)
-          fprintf (stderr, "Error to send the event!\n");
-        XFlush (display);
+
         std::this_thread::sleep_for(std::chrono::microseconds(1));
     #elif __APPLE__
 
@@ -277,25 +277,7 @@ void PreviewWindow::releaseCursor(){
     #ifdef _WIN32
 
     #elif  __linux__
-        XEvent event;
-        memset (&event, 0, sizeof (event));
-        event.xbutton.button = Button1;
-        event.xbutton.same_screen = True;
-        event.xbutton.subwindow = DefaultRootWindow (display);
-        while (event.xbutton.subwindow)
-          {
-            event.xbutton.window = event.xbutton.subwindow;
-            XQueryPointer (display, event.xbutton.window,
-                   &event.xbutton.root, &event.xbutton.subwindow,
-                   &event.xbutton.x_root, &event.xbutton.y_root,
-                   &event.xbutton.x, &event.xbutton.y,
-                   &event.xbutton.state);
-          }
-        // Release
-        event.type = ButtonRelease;
-        if (XSendEvent (display, PointerWindow, True, ButtonReleaseMask, &event) == 0)
-          fprintf (stderr, "Error to send the event!\n");
-        XFlush (display);
+
         std::this_thread::sleep_for(std::chrono::microseconds(1));
     #elif __APPLE__
 
@@ -320,7 +302,7 @@ PreviewWindow::~PreviewWindow()
 void PreviewWindow::closeDraw(int a){
     //0 is stopped, 1 is success
     #ifdef __linux__
-            XCloseDisplay (display);
+
     #endif
     if (a == 1){
         new ConsoleWindow("Drawing finished.");
@@ -359,9 +341,16 @@ void PreviewWindow::Draw()
     new ConsoleWindow("Started drawing {\n   Interval: "+QString::number(moveInterval)+"\n   Click Delay: "+QString::number(clickDelay)+"\n}");
 
     loopRunning = false;
-    this->hide();
     int x = QCursor::pos().x() - (image.width()/2);
     int y = QCursor::pos().y() - (image.height()/2);
+    this->hide();
+    #ifdef __linux
+        setupMouse();
+        if (true){
+            clickCursor();
+        }
+        else
+    #endif
     if (printer){
         //printer mode
         for (int yImg = 0; yImg < image.height(); ++yImg) {
@@ -495,7 +484,7 @@ void PreviewWindow::Draw()
 }
 bool PreviewWindow::DrawArea(std::vector<QPoint> stack, int xImg, int yImg, int x, int y){
     new ConsoleWindow("DrawArea  ");
-    while (True){
+    while (true){
         if (Paused){
 
         }
