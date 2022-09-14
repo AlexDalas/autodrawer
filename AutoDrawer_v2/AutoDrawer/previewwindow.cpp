@@ -37,46 +37,23 @@ int SCREEN_HEIGHT = 4920;
     #include <linux/uinput.h>
 // https://www.froglogic.com/blog/tip-of-the-week/using-linux-uinput-from-a-test-script/
 
-static void emitSig(int fd, int type, int code, int val) {
-    struct input_event ie;
 
-    ie.type = type;
-    ie.code = code;
-    ie.value = val;
-    ie.time.tv_sec = 0;
-    ie.time.tv_usec = 0;
+void emitLX(int fd, int type, int code, int val)
+{
+   struct input_event ie;
 
-    write(fd, &ie, sizeof(ie));
+   ie.type = type;
+   ie.code = code;
+   ie.value = val;
+   /* timestamp values below are ignored */
+   ie.time.tv_sec = 0;
+   ie.time.tv_usec = 0;
+
+   write(fd, &ie, sizeof(ie));
 }
-int fd = 0;
-void setupMouse() {
-    struct uinput_setup usetup;
-    int i = 50;
 
-    int fc = open("/dev/uinput", O_WRONLY | O_NONBLOCK);
-    if (fc < 0) {
-        fprintf(stderr, "failed to open device %s\n", strerror(errno));
-        fc = 0;
-    }
-    /* enable mouse button left and relative events */
-    ioctl(fc, UI_SET_EVBIT, EV_KEY);
-    ioctl(fc, UI_SET_KEYBIT, BTN_LEFT);
 
-    ioctl(fc, UI_SET_EVBIT, EV_REL);
-    ioctl(fc, UI_SET_RELBIT, REL_X);
-    ioctl(fc, UI_SET_RELBIT, REL_Y);
 
-    memset(&usetup, 0, sizeof(usetup));
-    usetup.id.bustype = BUS_USB;
-    usetup.id.vendor = 0x1234; /* sample vendor */
-    usetup.id.product = 0x5678; /* sample product */
-    strcpy(usetup.name, "AutoDrawer");
-
-    ioctl(fd, UI_DEV_SETUP, &usetup);
-    ioctl(fd, UI_DEV_CREATE);
-    sleep(1);
-    fd = fc;
-}
 
 void deleteDevice(int fd) {
     if (fd > 0) {
@@ -109,6 +86,7 @@ bool Paused = false;
 
 auto path = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/AutoDraw";
 
+
 PreviewWindow::PreviewWindow(QImage dimage, int interval, int delay, QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::PreviewWindow)
@@ -139,6 +117,7 @@ PreviewWindow::PreviewWindow(QImage dimage, int interval, int delay, QWidget *pa
     loopRunning = true;
     cursorHeld = false;
     //parent->show();
+
     if (!QFile::exists(path+"/hotkey.py")){
         std::ofstream MyFile((path+"/hotkey.py").toStdString());
         // I really do not want a super long string
@@ -232,52 +211,82 @@ bool PreviewWindow::pyCode(std::string str){
     if(myProcess->exitCode() == 0) return true; else return false;
 }
 
-void PreviewWindow::setCursor(int x, int y){
+int i = 10;
+struct uinput_setup usetup;
+int fd = open("/dev/uinput", O_WRONLY | O_NONBLOCK);
+
+void setupLXMouse(){
+
+    ioctl(fd, UI_SET_EVBIT, EV_KEY);
+    ioctl(fd, UI_SET_KEYBIT, BTN_LEFT);
+
+    ioctl(fd, UI_SET_EVBIT, EV_REL);
+    ioctl(fd, UI_SET_RELBIT, REL_X);
+    ioctl(fd, UI_SET_RELBIT, REL_Y);
+    memset(&usetup, 0, sizeof(usetup));
+    usetup.id.bustype = BUS_USB;
+    usetup.id.vendor = 0x1234; /* sample vendor */
+    usetup.id.product = 0x5678; /* sample product */
+    strcpy(usetup.name, "AutoDrawer");
+
+    ioctl(fd, UI_DEV_SETUP, &usetup);
+    ioctl(fd, UI_DEV_CREATE);
+    std::this_thread::sleep_for(std::chrono::microseconds(1000000));
+}
+//fix tmr: cursor doesn't click down
+void setCursor(int x, int y){
     //This code is cross-platform, but does not work with games.
     //QCursor::setPos(QPoint(x,y));
     #ifdef _WIN32
 
     #elif  __linux__
-        emitSig(fd, EV_REL, REL_X, x);
-        emitSig(fd, EV_REL, REL_Y, y);
-        emitSig(fd, EV_SYN, SYN_REPORT, 0);
+        std::this_thread::sleep_for(std::chrono::microseconds(1));
+        emitLX(fd, EV_REL, REL_X, (x-QCursor::pos().x())*2);
+        emitLX(fd, EV_REL, REL_Y, (y-QCursor::pos().y())*2);
+        emitLX(fd, EV_SYN, SYN_REPORT, 0);
         std::this_thread::sleep_for(std::chrono::microseconds(1));
     #endif
 }
 
-void PreviewWindow::clickCursor(){
+void clickCursor(){
     //This code is not cross platform, so you have to run different code on different OS'.
     #ifdef _WIN32
 
     #elif  __linux__
-        emitSig(fd, EV_KEY, BTN_MOUSE, 1);
-        emitSig(fd, EV_SYN, SYN_REPORT, 0);
-        emitSig(fd, EV_KEY, BTN_MOUSE, 0);
-        emitSig(fd, EV_SYN, SYN_REPORT, 0);
         std::this_thread::sleep_for(std::chrono::microseconds(1));
-    #elif __APPLE__
-
-    #endif
-}
-
-void PreviewWindow::holdCursor(){
-    //This code is not cross platform, so you have to run different code on different OS'.
-    #ifdef _WIN32
-
-    #elif  __linux__
-
+        emitLX(fd, EV_KEY, BTN_LEFT, 1);
+        emitLX(fd, EV_SYN, SYN_REPORT, 0);
+        std::this_thread::sleep_for(std::chrono::microseconds(1));
+        emitLX(fd, EV_KEY, BTN_LEFT, 0);
+        emitLX(fd, EV_SYN, SYN_REPORT, 0);
         std::this_thread::sleep_for(std::chrono::microseconds(1));
     #elif __APPLE__
 
     #endif
 }
 
-void PreviewWindow::releaseCursor(){
+void holdCursor(){
     //This code is not cross platform, so you have to run different code on different OS'.
     #ifdef _WIN32
 
     #elif  __linux__
+        std::this_thread::sleep_for(std::chrono::microseconds(1));
+        emitLX(fd, EV_KEY, BTN_LEFT, 1);
+        emitLX(fd, EV_SYN, SYN_REPORT, 0);
+        std::this_thread::sleep_for(std::chrono::microseconds(1));
+    #elif __APPLE__
 
+    #endif
+}
+
+void releaseCursor(){
+    //This code is not cross platform, so you have to run different code on different OS'.
+    #ifdef _WIN32
+
+    #elif  __linux__
+        std::this_thread::sleep_for(std::chrono::microseconds(1));
+        emitLX(fd, EV_KEY, BTN_LEFT, 0);
+        emitLX(fd, EV_SYN, SYN_REPORT, 0);
         std::this_thread::sleep_for(std::chrono::microseconds(1));
     #elif __APPLE__
 
@@ -285,14 +294,12 @@ void PreviewWindow::releaseCursor(){
 }
 
 int PreviewWindow::getPA(int x, int y){
-    new ConsoleWindow("uhhhh");
     //return pixelArray[x][y];
     return pixelArray.at(x).at(y);
 }
 
 void PreviewWindow::setPA(int x, int y, int value){
     pixelArray[x][y] = value;
-    new ConsoleWindow("y");
 }
 
 PreviewWindow::~PreviewWindow()
@@ -316,14 +323,23 @@ void PreviewWindow::closeDraw(int a){
 }
 
 void PreviewWindow::lockPos(){
-    //To be done when the save config code is done
+
+    QFile inFile(path+"/user.cfg");
+    QByteArray data = inFile.readAll();
+
+    QJsonParseError errorPtr;
+    QJsonDocument doc = QJsonDocument::fromJson(data, &errorPtr);
+    QJsonObject rootObj2 = doc.object();
+    inFile.close();
+
+    ::setCursor(rootObj2.value("lockpos_x").toInt(), rootObj2.value("lockpos_y").toInt());
 }
 
 void PreviewWindow::on_pushButton_2_released()
 {
-    if (loopRunning) stopAutodraw = true; else {
-        MainWin->show();
-    }
+    stopAutodraw = true;
+    releaseCursor();
+    MainWin->show();
 }
 std::vector<QPoint> stack;
 std::vector<int> pathStr;
@@ -338,59 +354,37 @@ void PreviewWindow::Draw()
     QJsonObject rootObj2 = doc.object();
     auto printer = rootObj2.value("printer").toBool();
     inFile.close();
-    new ConsoleWindow("Started drawing {\n   Interval: "+QString::number(moveInterval)+"\n   Click Delay: "+QString::number(clickDelay)+"\n}");
+
+    new ConsoleWindow("Started drawing {\n   Interval: "+QString::number(interval)+"\n   Click Delay: "+QString::number(clickDelay)+"\n}");
 
     loopRunning = false;
     int x = QCursor::pos().x() - (image.width()/2);
     int y = QCursor::pos().y() - (image.height()/2);
     this->hide();
     #ifdef __linux
-        setupMouse();
-        if (true){
-            clickCursor();
-        }
-        else
+        setupLXMouse();
     #endif
     if (printer){
         //printer mode
         for (int yImg = 0; yImg < image.height(); ++yImg) {
             if (stopAutodraw) break;
             QRgb *scanLine = (QRgb*)image.scanLine(yImg);
-            if (yImg % 2 == 0){
-                for (int xImg = 0; xImg < image.width(); ++xImg) {
-                    if (stopAutodraw) break;
-                    QRgb pixel = *scanLine;
-                    uint ci = uint(qGray(pixel));
-                    if (ci <= 254){
-                        setCursor(x+xImg, y+(yImg));
-                        if (!cursorHeld) {holdCursor(); cursorHeld = true;}
-                        std::this_thread::sleep_for(std::chrono::microseconds(moveInterval));
-                    }
-                    else{
-                        if (cursorHeld) {releaseCursor(); cursorHeld = false;}
-                    }
-                    ++scanLine;
+            for (int xImg = 0; xImg < image.width(); ++xImg) {
+                if (stopAutodraw) break;
+                QRgb pixel = *scanLine;
+                uint ci = uint(qGray(pixel));
+                std::cout << ci << "\n" << xImg << "\n";
+                if (ci <= 254){
+                    ::setCursor(x+xImg, y+(yImg));
+                    if (!cursorHeld) {::holdCursor(); cursorHeld = true;}
+                    std::this_thread::sleep_for(std::chrono::microseconds(moveInterval));
                 }
-                std::this_thread::sleep_for(std::chrono::microseconds(clickdelay));
-            }
-            else{
-                --scanLine;
-                for (int xImg = image.width(); xImg --> 0;) {
-                    if (stopAutodraw) break;
-                    QRgb pixel = *scanLine;
-                    uint ci = uint(qGray(pixel));
-                    if (ci <= 254){
-                        setCursor(x+xImg, y+(yImg));
-                        if (!cursorHeld) {holdCursor(); cursorHeld = true;}
-                        std::this_thread::sleep_for(std::chrono::microseconds(moveInterval));
-                    }
-                    else{
-                        if (cursorHeld) {releaseCursor(); cursorHeld = false;}
-                    }
-                    --scanLine;
+                else{
+                    if (cursorHeld) {::releaseCursor(); cursorHeld = false; std::this_thread::sleep_for(std::chrono::microseconds(clickdelay*2));}
                 }
-                std::this_thread::sleep_for(std::chrono::microseconds(clickdelay));
+                ++scanLine;
             }
+            if (cursorHeld) {::releaseCursor(); cursorHeld = false; std::this_thread::sleep_for(std::chrono::microseconds(clickdelay*2));}
         }
     }
     else{
@@ -405,50 +399,38 @@ void PreviewWindow::Draw()
         //end dodgy code
 
         //Scan
-        new ConsoleWindow("Starting pixel scan");
-        for (int xImg = 1; xImg < image.height(); ++xImg) {
-            //if (stopAutodraw) break;
-            new ConsoleWindow("S");
-            QRgb *scanLine2 = (QRgb*)image.scanLine(xImg);
-            new ConsoleWindow("T");
-            for (int yImg = 1; yImg < image.width(); ++yImg) {
-                new ConsoleWindow("3");
-                //if (stopAutodraw) break;
-                new ConsoleWindow("line "+QString::number(yImg));
-                QRgb pixel2 = *scanLine2;
-                new ConsoleWindow("12");
-                if (uint(qGray(pixel2)) != 255){
-                    new ConsoleWindow("your try !");
-                    setPA(xImg, yImg, 1);
-                    new ConsoleWindow("your did it once !");
-                }/*
+        for (int y = 0; y < image.height(); ++y) {
+            QRgb *scanLine = (QRgb*)image.scanLine(y);
+            for (int x = 0; x < image.width(); ++x) {
+                QRgb pixel = *scanLine;
+                uint ci = uint(qGray(pixel));
+                if (ci >= (unsigned int) 200){
+                    setPA(x, y, 1);
+                }
                 else{
-                    setPA(xImg, yImg, 0);
-                }*/
-                new ConsoleWindow("your did it !");
-                //new ConsoleWindow(QString::number(getPA(xImg, yImg)));
+                    setPA(x, y, 0);
+                }
+                ++scanLine;
             }
         }
-        new ConsoleWindow("Scan successful");
         //USE THE BELOW CODE TO TEST OUT WHAT THE ARRAY LOOKS LIKE IN IMAGE FORM
-
+/*
         QImage image2(image.width(), image.height(), QImage::Format_RGB32);
         for (int i=0;i<image2.width();++i) {
             for (int j=0;j<image2.height();++j) {
                 QRgb value = getPA(i, j);
-                if (value % 5 == 0) value = 255; else value = 0;
+                if (value % 5 == 0) value = qRgb(0, 0, 0); else value = qRgb(255, 255, 255);
                 //new ConsoleWindow(QString::number(getPA(i, j)));
                 image.setPixel(i, j, value);
             }
         }
         ui->ShownImage->setPixmap(QPixmap::fromImage(image));
         this->show();
-        new ConsoleWindow("Image test mode on, showing user scanned image.");
+        //new ConsoleWindow("Image test mode on, showing user scanned image.");
         return;
-
+*/
         //END OF TEST CODE
         //Draw
-        new ConsoleWindow("For loop");
         for (int yImg = 0; yImg < image.height(); ++yImg) {
             if (stopAutodraw) break;
             QRgb *scanLine = (QRgb*)image.scanLine(yImg);
@@ -459,16 +441,14 @@ void PreviewWindow::Draw()
                 uint ci = uint(qGray(pixel));
                 //new ConsoleWindow(QString::number(getPA(xImg, yImg)));
                 //end
-                new ConsoleWindow("Try for loop");
                 if (getPA(xImg, yImg) == 1){
-                    new ConsoleWindow("For loop");
                     int xpos = x+xImg;
                     int ypos = y+yImg;
                     NOP(clickdelay*5000);
-                    //checkpause
-                    setCursor(xpos, ypos+1);
+                    if (stopAutodraw) break;
+                    ::setCursor(xpos, ypos+1);
                     NOP(clickdelay*5000);
-                    //checkpause
+                    if (stopAutodraw) break;
                     holdCursor();
                     cont = DrawArea(stack, xImg, yImg, x, y);//drawarea
                     releaseCursor();
@@ -479,20 +459,19 @@ void PreviewWindow::Draw()
             }
         }
         ResetPixels();
-
     }
 }
 bool PreviewWindow::DrawArea(std::vector<QPoint> stack, int xImg, int yImg, int x, int y){
-    new ConsoleWindow("DrawArea  ");
+    //new ConsoleWindow("DrawArea  ");
     while (true){
         if (Paused){
 
         }
-        if (CloseRequested){
+        if (stopAutodraw){
             break;
         }
         NOP(moveInterval);
-        setCursor(x+xImg, y+yImg);
+        ::setCursor(x+xImg, y+yImg);
         //Code below errors
         //new ConsoleWindow("C");
         setPA(xImg, yImg, 2);
@@ -604,12 +583,12 @@ std::vector<QPoint> PreviewWindow::Push(std::vector<QPoint> stack, int xImg, int
 }
 
 std::tuple<bool, int, int> PreviewWindow::Pop(std::vector<QPoint> stack, int xImg, int yImg){
-    new ConsoleWindow("stackCount: ");
+    //new ConsoleWindow("stackCount: ");
     int stackCount = stack.size();
     //new ConsoleWindow(QString::number(stackCount));
-    if (stackCount < 1)
+    if (stackCount < 1){
             return std::make_tuple(false, xImg, yImg);
-
+    }
     //imporvides code
     QPoint pos = (QPoint)stack[stackCount - 1];
     xImg = pos.x();
@@ -621,7 +600,7 @@ std::tuple<bool, int, int> PreviewWindow::Pop(std::vector<QPoint> stack, int xIm
 }
 
 void PreviewWindow::ResetPixels(){
-    new ConsoleWindow("Resetting pixels  ");
+    //new ConsoleWindow("Resetting pixels  ");
     for (int yImg = 0; yImg < image.height(); ++yImg) {
         if (stopAutodraw) break;
         for (int xImg = 0; xImg < image.width(); ++xImg) {
@@ -631,7 +610,7 @@ void PreviewWindow::ResetPixels(){
             }
         }
     }
-    new ConsoleWindow("Reset Success  ");
+    //new ConsoleWindow("Reset Success  ");
 }
 
 void PreviewWindow::NOP(int ourint){

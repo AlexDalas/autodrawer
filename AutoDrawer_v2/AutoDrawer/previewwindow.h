@@ -22,10 +22,6 @@ private slots:
 
     void Draw();
 
-    void setCursor(int x, int y);
-
-    void clickCursor();
-
     void on_Draw_released();
 
     void lockPos();
@@ -33,10 +29,6 @@ private slots:
     bool pyCode(std::string str);
 
     void reloadThemes();
-
-    void holdCursor();
-
-    void releaseCursor();
 
     void ResetPixels();
 

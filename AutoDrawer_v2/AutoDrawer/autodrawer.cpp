@@ -666,7 +666,6 @@ void AutoDrawer::on_drawingList_itemClicked(QListWidgetItem *item)
     on_reloadButton_released();
 }
 
-
 void AutoDrawer::on_DP_released()
 {
     custompattern *c = new custompattern();

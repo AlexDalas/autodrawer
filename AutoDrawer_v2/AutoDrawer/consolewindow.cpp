@@ -1,7 +1,5 @@
 #include "consolewindow.h"
 #include "messagewindow.h"
-#include "qdiriterator.h"
-#include "qfilesystemwatcher.h"
 #include "ui_consolewindow.h"
 #include <QDesktopServices>
 #include <QStandardPaths>
