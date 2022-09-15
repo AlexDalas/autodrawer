@@ -59,7 +59,7 @@
         "background": "#FF000000",
         "console-background": "#FF1E1E1E",
         "button": "#FF1E1E1E",
-        "close": "#FF1E1E1EE"
+        "close": "#FF1E1E1E"
     },
     "preview": {
         "text": "#FFFFFFFF",
