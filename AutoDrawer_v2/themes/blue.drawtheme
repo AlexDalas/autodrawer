@@ -1,68 +1,68 @@
 {
-    "ver": 2.0,
-    "light-icons": "false",
-    "main": {
-        "text": "#090E06",
-        "background": "#92AFD7",
-        "background-1": "#8BA8CD",
-        "background-2": "#7D9AB9",
-        "image-background": "#7693AE",
-        "pattern-listbox": "#7D9AB9",
-        "config-listbox": "#7D9AB9",
-        "loadconfig-button": "#84A1C3",
-        "loadconfig-button-hover": "#7D9AB9",
-        "saveconfig-button": "#84A1C3",
-        "saveconfig-button-hover": "#7D9AB9",
-        "settings-info-buttons": "#84A1C3",
-        "settings-info-buttons-hover": "#7D9AB9",
-        "pattern-button": "#84A1C3",
-        "pattern-button-hover": "#7D9AB9",
-        "directory-buttons": "#84A1C3",
-        "directory-buttons-hover": "#7D9AB9",
-        "textbox-backgrounds": "#7D9AB9",
-        "upload-buttons": "#84A1C3",
-        "upload-buttons-hover": "#7D9AB9",
-        "clear-buttons": "#84A1C3",
-        "clear-buttons-hover": "#7D9AB9",
-        "process-button": "#84A1C3",
-        "process-button-hover": "#7D9AB9",
-        "start-button": "#84A1C3",
-        "start-button-hover": "#7D9AB9",
-        "scalebar-background": "#7D9AB9",
-        "scale-textbox": "#7693AE",
-        "width-textbox": "#7D9AB9",
-        "height-textbox": "#7D9AB9"
-    },
-    "settings": {
-        "text": "#FF000000",
-        "background": "#819EBE",
-        "buttons": "#7693AE",
-        "textbox": "#7693AE",
-        "checkbox-box": "#F2C77E",
-        "close": "#7693AE"
+    "console": {
+        "background": "#363D4A",
+        "button": "#2F3540",
+        "close": "#2F3540",
+        "console-background": "#2F3540",
+        "text": "#FFFFFFFF"
     },
     "info": {
-        "text": "#090E06",
-        "background": "#7D9AB9",
-        "close": "#84A1C3"
+        "background": "#363D4A",
+        "close": "#2F3540",
+        "text": "#FFFFFFFF"
+    },
+    "light-icons": "true",
+    "main": {
+        "background": "#394152",
+        "background-1": "#363D4A",
+        "background-2": "#363D4A",
+        "clear-buttons": "#2F3540",
+        "clear-buttons-hover": "#292E37",
+        "config-listbox": "#2F3540",
+        "directory-buttons": "#2F3540",
+        "directory-buttons-hover": "#292E37",
+        "height-textbox": "#2F3540",
+        "image-background": "#2F3540",
+        "loadconfig-button": "#2F3540",
+        "loadconfig-button-hover": "#292E37",
+        "pattern-button": "#2F3540",
+        "pattern-button-hover": "#292E37",
+        "pattern-listbox": "#2F3540",
+        "process-button": "#2F3540",
+        "process-button-hover": "#292E37",
+        "saveconfig-button": "#2F3540",
+        "saveconfig-button-hover": "#292E37",
+        "scale-textbox": "#2F3540",
+        "scalebar-background": "#2F3540",
+        "settings-info-buttons": "#2F3540",
+        "settings-info-buttons-hover": "#292E37",
+        "start-button": "#2F3540",
+        "start-button-hover": "#292E37",
+        "text": "#FFFFFF",
+        "textbox-backgrounds": "#2F3540",
+        "upload-buttons": "#2F3540",
+        "upload-buttons-hover": "#292E37",
+        "width-textbox": "#2F3540"
     },
     "pattern": {
-        "text": "#090E06",
-        "background": "#7D9AB9",
-        "image-background": "#92AFD7",
-        "button": "#7693AE",
-        "textbox": "#7693AE",
-        "close": "#84A1C3"
-    },
-    "console": {
-        "text": "#090E06",
-        "background": "#7D9AB9",
-        "console-background": "#7D9AB9",
-        "button": "#7693AE",
-        "close": "#84A1C3"
+        "background": "#363D4A",
+        "button": "#2F3540",
+        "close": "#2F3540",
+        "image-background": "#2F3540",
+        "text": "#FFFFFFFF",
+        "textbox": "#2F3540"
     },
     "preview": {
-        "text": "#090E06",
-        "background": "#7D9AB9"
-    }
+        "background": "#363D4A",
+        "text": "#FFFFFFFF"
+    },
+    "settings": {
+        "background": "#363D4A",
+        "buttons": "#2F3540",
+        "checkbox-box": "#2F3540",
+        "close": "#2F3540",
+        "text": "#FFFFFFFF",
+        "textbox": "#2F3540"
+    },
+    "ver": 2
 }
