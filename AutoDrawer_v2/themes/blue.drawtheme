@@ -57,7 +57,7 @@
     "console": {
         "text": "#090E06",
         "background": "#7D9AB9",
-        "console-background": "#F1D9A7",
+        "console-background": "#7D9AB9",
         "button": "#7693AE",
         "close": "#84A1C3"
     },
