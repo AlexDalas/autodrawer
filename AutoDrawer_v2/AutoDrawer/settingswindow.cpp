@@ -228,17 +228,11 @@ void SettingsWindow::on_OffsetBox_released()
     QJsonParseError errorPtr;
     QJsonDocument doc = QJsonDocument::fromJson(data, &errorPtr);
     QJsonObject doc_obj = doc.object();
-    if (!ui->OffsetBox->checkState()) {
-        doc_obj.insert("offset_enabled", true);
-        new ConsoleWindow("Offset enabled");}
-    else {doc_obj.insert("offset_enabled", false );
-        new ConsoleWindow("Offset disabled");}
+    if (!ui->OffsetBox->checkState()) {doc_obj.insert("offset_enabled", false); new ConsoleWindow("Logs Enabled");} else {new ConsoleWindow("Logs Disabled");doc_obj.insert("offset_enabled", true);}
     QJsonDocument new_doc(doc_obj);
     inFile.resize(0);
     inFile.write(new_doc.toJson());
     inFile.close();
-    ui->intervalTextBox->setEnabled(ui->OffsetBox->checkState());
-    ui->intervalTextBox_2->setEnabled(ui->OffsetBox->checkState());
 }
 
 void SettingsWindow::on_LogBox_released()

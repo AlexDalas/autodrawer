@@ -18,7 +18,7 @@
     <normaloff>:/images/images/Icon.ico</normaloff>:/images/images/Icon.ico</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QFrame" name="Background_2">
+   <widget class="QFrame" name="Background">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -170,6 +170,9 @@ background: rgb(55,55,55);
       <font>
        <pointsize>14</pointsize>
       </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-radius:10px;</string>
      </property>
      <item>
       <property name="text">

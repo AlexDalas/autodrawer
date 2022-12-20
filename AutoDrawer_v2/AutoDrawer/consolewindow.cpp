@@ -64,12 +64,56 @@ ConsoleWindow::ConsoleWindow(QString text, QWidget *parent) :
         std::string logName = "autodraw_"+year+month+day;
         if (QFile::exists(pathAPD+"/logs/"+QString::fromStdString(logName)+".log")) {
             reloadConsole(logName);
+            reloadThemes();
         }else{
             MessageWindow *w = new MessageWindow("Logs are not enabled!", 1, this);
             w->show();
             this->close();
         }
     }
+}
+
+void ConsoleWindow::reloadThemes(){
+    QFile inFile(pathAPD+"/user.cfg");
+    inFile.open(QIODevice::ReadOnly|QIODevice::Text);
+    QByteArray data = inFile.readAll();
+
+    new ConsoleWindow("Opened Custom Pattern window.");
+    QJsonParseError errorPtr;
+    QJsonDocument doc = QJsonDocument::fromJson(data, &errorPtr);
+    QJsonObject rootObj2 = doc.object();
+    auto theme = rootObj2.value("theme").toString();
+    inFile.close();
+
+    QJsonObject pattern;
+    QJsonObject rootObj;
+    if (theme == "dark") {
+        extern QString darkJson;
+        QByteArray br = darkJson.toUtf8();
+        QJsonDocument doc = QJsonDocument::fromJson(br);
+        rootObj = doc.object();
+    } else if (theme == "light"){
+        extern QString lightJson;
+        QByteArray br = lightJson.toUtf8();
+        QJsonDocument doc = QJsonDocument::fromJson(br);
+        rootObj = doc.object();
+    } else if (QFile::exists(pathAPD+"/themes/"+theme+".drawtheme") ){
+        QFile inFile2(pathAPD+"/themes/"+theme+".drawtheme");
+        inFile2.open(QIODevice::ReadOnly|QIODevice::Text);
+        QByteArray themeData = inFile2.readAll();
+        QJsonParseError errorPtr;
+        QJsonDocument docT = QJsonDocument::fromJson(themeData, &errorPtr);
+        rootObj = docT.object();
+        inFile2.close();
+    }
+    auto console = rootObj["console"].toObject();
+    ui->Exit->setStyleSheet("color: "+console["text"].toString()+";background: "+console["close"].toString()+";border-radius: 10px;");
+    ui->Exit_2->setStyleSheet("color: "+console["text"].toString()+";background: "+console["button"].toString()+";border-radius: 10px;");
+    ui->Exit_3->setStyleSheet("color: "+console["text"].toString()+";background: "+console["button"].toString()+";border-radius: 10px;");
+    ui->Exit_4->setStyleSheet("color: "+console["text"].toString()+";background: "+console["button"].toString()+";border-radius: 10px;");
+    ui->Exit_5->setStyleSheet("color: "+console["text"].toString()+";background: "+console["button"].toString()+";border-radius: 10px;");
+    ui->Background->setStyleSheet("background: "+console["background"].toString()+";border-radius:25px;");
+    ui->listWidget->setStyleSheet("background: "+console["console-background"].toString()+";border-radius:10px;");
 }
 
 ConsoleWindow::~ConsoleWindow()

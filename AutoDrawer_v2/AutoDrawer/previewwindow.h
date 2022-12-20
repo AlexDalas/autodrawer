@@ -26,8 +26,6 @@ private slots:
 
     void lockPos();
 
-    bool pyCode(std::string str);
-
     void reloadThemes();
 
     void ResetPixels();

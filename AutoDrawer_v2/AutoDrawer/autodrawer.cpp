@@ -19,6 +19,7 @@
 #include <QDragEnterEvent>
 #include <QMimeData>
 #include <QStandardPaths>
+#include <QProcess>
 
 using namespace std;
 
@@ -339,28 +340,35 @@ void AutoDrawer::dropEvent(QDropEvent* event)
 {
     QList<QUrl> urls = event->mimeData()->urls();
     if (urls.isEmpty()) return;
-    string url = urls[0].toString().toStdString();
-    cout << url;
-    if (url.find(".drawcfg") != string::npos || url.find(".autodrawconfig") != string::npos
-            || url.find(".autodrawconfi") != string::npos || url.find(".autodrawconf") != string::npos){
-
-        ifstream is(url);
-        string line;
-
-        vector<string> x = {};
-        while (getline(is, line)) {
-            x.push_back(line);
+    QString url = QString::fromStdString(urls[0].toLocalFile().toStdString());
+    //sendMessage(url +" "+ pathAD+"/themes/"+urls[0].fileName(), 1, this);
+    //return;
+    if (url.toStdString().find(".drawcfg") != string::npos || url.toStdString().find(".autodrawconfig") != string::npos
+            || url.toStdString().find(".autodrawconfi") != string::npos || url.toStdString().find(".autodrawconf") != string::npos){loadConfig(url);}
+    else if (url.toStdString().find(".drawtheme") != string::npos ){
+        new ConsoleWindow("Changing theme to "+url);
+        if (!QFile::copy(url, pathAD+"/themes/"+urls[0].fileName())){
+            sendMessage("Permission denied to access this file or theme is already installed!", 1, this);
+            return;
         }
-        ui->intervalTextBox->setText(QString::fromStdString(x[0]));
-        ui->clickDelayTextBox->setText(QString::fromStdString(x[1]));
-        ui->blackThresh->setText(QString::fromStdString(x[2]));
-        ui->transThresh->setText(QString::fromStdString(x[3]));
-
+        QString Item = urls[0].fileName().split(".").at(0);
+        QFile inFile(pathAD+"/user.cfg");
+        inFile.open(QIODevice::ReadWrite|QIODevice::Text);
+        QByteArray data = inFile.readAll();
+        QJsonParseError errorPtr;
+        QJsonDocument doc = QJsonDocument::fromJson(data, &errorPtr);
+        QJsonObject doc_obj = doc.object();
+        doc_obj.insert("theme", Item);
+        QJsonDocument new_doc(doc_obj);
+        inFile.resize(0);
+        inFile.write(new_doc.toJson());
+        inFile.close();
+        QApplication::closeAllWindows();
+        QProcess::startDetached(qApp->arguments()[0], qApp->arguments());
     }
     else{
         try{
-            QString url2 = urls[0].toString();
-            QPixmap img(url2);
+            QPixmap img(url);
             ui->heightBox->setText(QString::number(img.height()));
             ui->widthBox->setText(QString::number(img.width()));
             changeImage(img);
@@ -388,36 +396,11 @@ void AutoDrawer::on_ScaleSlider_sliderMoved(int position)
     ui->scaleNumber->setText(QString::number(position));
 }
 
-void AutoDrawer::on_ScaleSlider_sliderReleased()
-{
-    QPixmap pm = ui->ImageSource->pixmap(Qt::ReturnByValue);
-    if (pm.isQBitmap()){
-        float value = ui->ScaleSlider->value() / 100;
-        ui->heightBox->setText(QString::number(ui->heightBox->text().toInt()*value));
-        ui->widthBox->setText(QString::number(ui->widthBox->text().toInt()*value));
-        on_heightBox_textEdited();
-        on_widthBox_textEdited();
-    }
-}
-
-
-void AutoDrawer::on_scaleNumber_textEdited()
-{
-    ui->ScaleSlider->setSliderPosition(ui->scaleNumber->text().toInt());
-}
-
 
 void AutoDrawer::on_exitButton_released()
 {
     QCoreApplication::quit();
 }
-
-void AutoDrawer::on_ScaleSlider_valueChanged(int value)
-{
-    ui->scaleNumber->setText(QString::number(value));
-    qApp->processEvents();
-}
-
 
 void AutoDrawer::on_Minimize_released()
 {
@@ -672,3 +655,20 @@ void AutoDrawer::on_DP_released()
     c->show();
 }
 
+void AutoDrawer::on_ScaleSlider_sliderReleased()
+{
+    if (ui->ScaleSlider->value() > 200){ui->ScaleSlider->setMaximum(ui->scaleNumber->text().toInt());} else {ui->ScaleSlider->setMaximum(200);}
+    QPixmap pm = ui->ImageSource->pixmap(Qt::ReturnByValue);
+    float value = ui->ScaleSlider->value();
+    ui->heightBox->setText(QString::number(((pm.height()/100)*value)));
+    ui->widthBox->setText(QString::number((pm.width()/100)*value));
+    on_heightBox_textEdited();
+    on_widthBox_textEdited();
+}
+
+void AutoDrawer::on_scaleNumber_textEdited()
+{
+    if (ui->scaleNumber->text().toInt() > 200){ui->ScaleSlider->setMaximum(ui->scaleNumber->text().toInt());} else {ui->ScaleSlider->setMaximum(200);}
+    ui->ScaleSlider->setSliderPosition(ui->scaleNumber->text().toInt());
+    on_ScaleSlider_sliderReleased();
+}

@@ -38,6 +38,7 @@ private slots:
     void on_LogBox_released();
 
     void reloadList();
+
     void on_OpenLogs_released();
 
     void on_PrinterBox_released();
@@ -49,7 +50,6 @@ private slots:
     void on_intervalTextBox_textChanged(const QString &arg1);
 
     void on_intervalTextBox_2_textChanged(const QString &arg1);
-
 private:
     Ui::SettingsWindow *ui;
 };

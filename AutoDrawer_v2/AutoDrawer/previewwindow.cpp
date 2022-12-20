@@ -86,6 +86,8 @@ bool Paused = false;
 
 auto path = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/AutoDraw";
 
+auto offsetX = 0;
+auto offsetY = 0;
 
 PreviewWindow::PreviewWindow(QImage dimage, int interval, int delay, QWidget *parent) :
     QMainWindow(parent),
@@ -117,41 +119,28 @@ PreviewWindow::PreviewWindow(QImage dimage, int interval, int delay, QWidget *pa
     loopRunning = true;
     cursorHeld = false;
     //parent->show();
-
-    if (!QFile::exists(path+"/hotkey.py")){
-        std::ofstream MyFile((path+"/hotkey.py").toStdString());
-        // I really do not want a super long string
-        MyFile << "from pynput import keyboard\nfrom pynput.keyboard import Key\nimport sys\n";
-        MyFile << "def stop():\n    listener.stop()\n    sys.exit(0)\n";
-        MyFile << "def on_press(key):\n    if(key==Key.shift and sys.argv[1] == \"start\"):\n";
-        MyFile << "        stop()\n    elif(key==Key.ctrl and sys.argv[1] == \"lock\"):\n        stop()";
-        MyFile << "\n    elif(key==Key.alt and sys.argv[1] == \"stop\"):\n        stop()";
-        MyFile << "\nwith keyboard.Listener(on_press=on_press) as listener:\n    listener.join()";
-        MyFile.close();
-    }
+    // Code that puts window under mouse until done
     QFuture<void> future = QtConcurrent::run([=]() {
         while (loopRunning){
             move(QCursor::pos().x() - ui->ShownImage->width()/2, QCursor::pos().y() - ui->ShownImage->height()/2);
         }
     });
+    //To-do:
         #ifdef __linux__
 
 
         #endif
     QFuture<void> start = QtConcurrent::run([=]() {
-    #ifdef _WIN32
+        #ifdef _WIN32
 
 
-    #endif
-        if(pyCode("start") && !stopAutodraw) {
-            Draw();
-        };
+        #endif
     });
     QFuture<void> stop = QtConcurrent::run([=]() {
-        if(pyCode("stop")) {on_pushButton_2_released(); new ConsoleWindow("Stopped drawing.");}
+
     });
     QFuture<void> lockpos = QtConcurrent::run([=]() {
-        if(pyCode("lock")) {lockPos(); new ConsoleWindow("Locked window position.");}
+
     });
 }
 
@@ -202,19 +191,10 @@ void PreviewWindow::reloadThemes(){
     ui->Background->setStyleSheet("border-radius: 25px; background: "+preview["background"].toString());
 }
 
-bool PreviewWindow::pyCode(std::string str){
-    QStringList arguments;
-    arguments << path+"/hotkey.py" << str.c_str();
-    QProcess *myProcess = new QProcess(this);
-    myProcess->start("python3", arguments);
-    myProcess->waitForFinished(-1);
-    if(myProcess->exitCode() == 0) return true; else return false;
-}
-
 int i = 10;
 struct uinput_setup usetup;
 int fd = open("/dev/uinput", O_WRONLY | O_NONBLOCK);
-
+#ifdef __linux__
 void setupLXMouse(){
 
     ioctl(fd, UI_SET_EVBIT, EV_KEY);
@@ -233,8 +213,11 @@ void setupLXMouse(){
     ioctl(fd, UI_DEV_CREATE);
     std::this_thread::sleep_for(std::chrono::microseconds(1000000));
 }
+#endif
 //fix tmr: cursor doesn't click down
 void setCursor(int x, int y){
+    x += offsetX;
+    y += offsetY;
     //This code is cross-platform, but does not work with games.
     //QCursor::setPos(QPoint(x,y));
     #ifdef _WIN32
@@ -245,6 +228,8 @@ void setCursor(int x, int y){
         emitLX(fd, EV_REL, REL_Y, (y-QCursor::pos().y())*2);
         emitLX(fd, EV_SYN, SYN_REPORT, 0);
         std::this_thread::sleep_for(std::chrono::microseconds(1));
+    #elif  __APPLE__
+
     #endif
 }
 
@@ -332,7 +317,7 @@ void PreviewWindow::lockPos(){
     QJsonObject rootObj2 = doc.object();
     inFile.close();
 
-    ::setCursor(rootObj2.value("lockpos_x").toInt(), rootObj2.value("lockpos_y").toInt());
+    ::setCursor(rootObj2.value("lockpos_x").toInt() + offsetX, rootObj2.value("lockpos_y").toInt() + offsetY);
 }
 
 void PreviewWindow::on_pushButton_2_released()
@@ -346,20 +331,28 @@ std::vector<int> pathStr;
 void PreviewWindow::Draw()
 {
     QFile inFile(path+"/user.cfg");
-    inFile.open(QIODevice::ReadOnly|QIODevice::Text);
+    inFile.open(QIODevice::ReadWrite|QIODevice::Text);
     QByteArray data = inFile.readAll();
 
     QJsonParseError errorPtr;
     QJsonDocument doc = QJsonDocument::fromJson(data, &errorPtr);
     QJsonObject rootObj2 = doc.object();
     auto printer = rootObj2.value("printer").toBool();
+    path8 = rootObj2.value("pattern").toInt();
+    offsetX = rootObj2.value("lockpos_x").toInt();
+    offsetY = rootObj2.value("lockpos_x").toInt();
+    rootObj2.insert("lockpos_x", QCursor::pos().x());
+    rootObj2.insert("lockpos_y", QCursor::pos().y());
+    QJsonDocument new_doc(rootObj2);
+    inFile.resize(0);
+    inFile.write(new_doc.toJson());
     inFile.close();
+    int x = QCursor::pos().x() - (image.width()/2);
+    int y = QCursor::pos().y() - (image.height()/2);
 
     new ConsoleWindow("Started drawing {\n   Interval: "+QString::number(interval)+"\n   Click Delay: "+QString::number(clickDelay)+"\n}");
 
     loopRunning = false;
-    int x = QCursor::pos().x() - (image.width()/2);
-    int y = QCursor::pos().y() - (image.height()/2);
     this->hide();
     #ifdef __linux
         setupLXMouse();
@@ -485,6 +478,7 @@ bool PreviewWindow::DrawArea(std::vector<QPoint> stack, int xImg, int yImg, int 
         | 6 | 7 | 8 |
         +---+---+---+
         */
+        //User chosen path is defined by "path8" integer and (mostly used) "pathStr" array.
         cont = false;
         for (int i = 1; i <= 8; ++i) {
            switch (pathStr[i]){

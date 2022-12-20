@@ -49,8 +49,6 @@ private slots:
 
     void on_exitButton_released();
 
-    void on_ScaleSlider_valueChanged(int value);
-
     void on_Minimize_released();
 
     void dropEvent(QDropEvent *e) override;

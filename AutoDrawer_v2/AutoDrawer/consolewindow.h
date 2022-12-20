@@ -28,6 +28,8 @@ private slots:
 
     void on_Exit_5_released();
 
+    void reloadThemes();
+
 private:
     Ui::ConsoleWindow *ui;
 };

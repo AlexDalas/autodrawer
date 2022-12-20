@@ -21,27 +21,23 @@ MessageWindow::MessageWindow(QString text, int type, QWidget *parent) :
     setAttribute(Qt::WA_NoSystemBackground, true);
     setAttribute(Qt::WA_TranslucentBackground, true);
 
+    ui->Text->setText(text);
+    QFont myFont("Sans Serrif", 16);;
+    QFontMetrics fm(myFont);
+    int width=fm.horizontalAdvance(text)+50;
+
+    if (width > 450){
+        resize(width, this->height());
+        ui->Background->resize(width, ui->Background->height());
+        ui->Header->resize(width, ui->Header->height());
+        ui->Text->resize(width, ui->Text->height());
+    }
+
     reloadThemes();
     //new ConsoleWindow("Sent message \""+text+"\" (with code "+QString::number(type)+")");
-    if (type == 1){
-        ui->Header->setText("Info");
-        buttonType(0);
-    } else if (type == 2){
-        ui->Header->setText("Error");
-        buttonType(0);
-    }else if (type == 3){
-        ui->Header->setText("Alert");
-        buttonType(0);
-    }else if (type == 4){
-        //Only to be used in context of drawing finished
-        ui->Header->setText("Success");
-        buttonType(1);
-    }else if (type == 5){
-        //Only to be used in context of drawing stopped
-        ui->Header->setText("Stopped");
-        buttonType(1);
-    }
-    ui->Text->setText(text);
+    QStringList textTypes; textTypes << "Info" << "Error" << "Alert" << "Success" << "Stopped";
+    ui->Header->setText(textTypes[type-1]);
+    if (type<=3) {buttonType(0);} else {buttonType(1);}
 }
 
 void MessageWindow::reloadThemes(){
@@ -94,11 +90,13 @@ void MessageWindow::buttonType(int a){
         ui->pushButton_7->show();
         ui->pushButton_8->show();
         ui->pushButton_9->show();
+        ui->pushButton_9->move(ui->Background->width()-ui->pushButton_9->width(), 0);
+        ui->frame->move((ui->Background->width()/2-ui->pushButton_7->width())-5, 150);
     }else{
         ui->pushButton_6->show();
-        ui->pushButton_7->hide();
-        ui->pushButton_8->hide();
+        ui->frame->hide();
         ui->pushButton_9->hide();
+        ui->pushButton_6->move((ui->Background->width()/2-ui->pushButton_6->width()/2), 150);
     }
 }
 

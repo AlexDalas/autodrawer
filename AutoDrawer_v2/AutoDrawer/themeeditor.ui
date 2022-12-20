@@ -1232,7 +1232,7 @@ background: rgb(55,55,55);
         }</string>
      </property>
      <property name="text">
-      <string>Upload</string>
+      <string>Import</string>
      </property>
     </widget>
     <widget class="QScrollArea" name="scrollArea">
@@ -1272,380 +1272,29 @@ background: rgb(55,55,55);
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>0</y>
+        <y>-1243</y>
         <width>277</width>
-        <height>1970</height>
+        <height>1914</height>
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout">
-       <item row="48" column="0" colspan="2">
-        <widget class="QLabel" name="ADText_89">
+       <item row="29" column="0" colspan="4">
+        <widget class="QLabel" name="ADText_15">
          <property name="font">
           <font>
            <pointsize>12</pointsize>
            <bold>false</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Text</string>
-         </property>
-        </widget>
-       </item>
-       <item row="11" column="3" colspan="2">
-        <widget class="QLineEdit" name="intervalTextBox_29">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">background: rgb(56, 56, 56);
-border-top-left-radius: 10px;
-border-top-right-radius: 0px;
-border-bottom-right-radius: 0px;
-border-bottom-left-radius: 10px;</string>
+          <string notr="true">color:rgb(160, 160, 160);</string>
          </property>
          <property name="text">
-          <string>#FFFFFF</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
+          <string>Hover</string>
          </property>
         </widget>
        </item>
-       <item row="18" column="3" colspan="2">
-        <widget class="QLineEdit" name="intervalTextBox_35">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background: rgb(56, 56, 56);
-border-top-left-radius: 10px;
-border-top-right-radius: 0px;
-border-bottom-right-radius: 0px;
-border-bottom-left-radius: 10px;</string>
-         </property>
-         <property name="text">
-          <string>#FFFFFF</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="35" column="0" colspan="3">
-        <widget class="QLabel" name="ADText_28">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Process Image Button</string>
-         </property>
-        </widget>
-       </item>
-       <item row="12" column="0" colspan="2">
-        <widget class="QLabel" name="ADText_35">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Boxes</string>
-         </property>
-        </widget>
-       </item>
-       <item row="49" column="2" colspan="3">
-        <widget class="QLineEdit" name="intervalTextBox_77">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background: rgb(56, 56, 56);
-border-top-left-radius: 10px;
-border-top-right-radius: 0px;
-border-bottom-right-radius: 0px;
-border-bottom-left-radius: 10px;</string>
-         </property>
-         <property name="text">
-          <string>#FFFFFF</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="55" column="3" colspan="2">
-        <widget class="QLineEdit" name="intervalTextBox_82">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background: rgb(56, 56, 56);
-border-top-left-radius: 10px;
-border-top-right-radius: 0px;
-border-bottom-right-radius: 0px;
-border-bottom-left-radius: 10px;</string>
-         </property>
-         <property name="text">
-          <string>#FFFFFF</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="15" column="0" colspan="3">
-        <widget class="QLabel" name="ADText_36">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Config Listbox</string>
-         </property>
-        </widget>
-       </item>
-       <item row="17" column="3" colspan="2">
-        <widget class="QLineEdit" name="intervalTextBox_34">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background: rgb(56, 56, 56);
-border-top-left-radius: 10px;
-border-top-right-radius: 0px;
-border-bottom-right-radius: 0px;
-border-bottom-left-radius: 10px;</string>
-         </property>
-         <property name="text">
-          <string>#FFFFFF</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="3" colspan="2">
-        <widget class="QLineEdit" name="intervalTextBox_4">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background: rgb(56, 56, 56);
-border-top-left-radius: 10px;
-border-top-right-radius: 0px;
-border-bottom-right-radius: 0px;
-border-bottom-left-radius: 10px;</string>
-         </property>
-         <property name="text">
-          <string>#FFFFFF</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="29" column="0" colspan="3">
-        <widget class="QLabel" name="ADText_21">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Set Directory Button</string>
-         </property>
-        </widget>
-       </item>
-       <item row="41" column="2" colspan="3">
-        <widget class="QLineEdit" name="intervalTextBox_28">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background: rgb(56, 56, 56);
-border-top-left-radius: 10px;
-border-top-right-radius: 0px;
-border-bottom-right-radius: 0px;
-border-bottom-left-radius: 10px;</string>
-         </property>
-         <property name="text">
-          <string>#FFFFFF</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="26" column="3" colspan="2">
-        <widget class="QLineEdit" name="intervalTextBox_16">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background: rgb(56, 56, 56);
-border-top-left-radius: 10px;
-border-top-right-radius: 0px;
-border-bottom-right-radius: 0px;
-border-bottom-left-radius: 10px;</string>
-         </property>
-         <property name="text">
-          <string>#FFFFFF</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="44" column="0" colspan="2">
-        <widget class="QLabel" name="ADText_85">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Preview</string>
-         </property>
-        </widget>
-       </item>
-       <item row="54" column="3" colspan="2">
-        <widget class="QLineEdit" name="intervalTextBox_73">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background: rgb(56, 56, 56);
-border-top-left-radius: 10px;
-border-top-right-radius: 0px;
-border-bottom-right-radius: 0px;
-border-bottom-left-radius: 10px;</string>
-         </property>
-         <property name="text">
-          <string>#FFFFFF</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="59" column="0" colspan="2">
-        <widget class="QLabel" name="ADText_103">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Console</string>
-         </property>
-        </widget>
-       </item>
-       <item row="63" column="0" colspan="3">
-        <widget class="QLabel" name="ADText_101">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Console Background</string>
-         </property>
-        </widget>
-       </item>
-       <item row="65" column="0" colspan="2">
-        <widget class="QLabel" name="ADText_105">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Close</string>
-         </property>
-        </widget>
-       </item>
-       <item row="14" column="0" colspan="3">
-        <widget class="QLabel" name="ADText_37">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Pattern Listbox</string>
-         </property>
-        </widget>
-       </item>
-       <item row="56" column="0" colspan="2">
-        <widget class="QLabel" name="ADText_93">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Buttons</string>
-         </property>
-        </widget>
-       </item>
-       <item row="30" column="0" colspan="4">
-        <widget class="QLabel" name="ADText_20">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Set Directory Hover</string>
-         </property>
-        </widget>
-       </item>
-       <item row="9" column="0" colspan="3">
-        <widget class="QLabel" name="ADText_9">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Image Background</string>
-         </property>
-        </widget>
-       </item>
-       <item row="40" column="2" colspan="3">
+       <item row="59" column="2" colspan="3">
         <widget class="QLineEdit" name="intervalTextBox_70">
          <property name="font">
           <font>
@@ -1667,8 +1316,8 @@ border-bottom-left-radius: 10px;</string>
          </property>
         </widget>
        </item>
-       <item row="33" column="3" colspan="2">
-        <widget class="QLineEdit" name="intervalTextBox_24">
+       <item row="9" column="3" colspan="2">
+        <widget class="QLineEdit" name="intervalTextBox_20">
          <property name="font">
           <font>
            <pointsize>12</pointsize>
@@ -1689,134 +1338,94 @@ border-bottom-left-radius: 10px;</string>
          </property>
         </widget>
        </item>
-       <item row="25" column="4">
-        <widget class="QLineEdit" name="intervalTextBox_15">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background: rgb(56, 56, 56);
-border-top-left-radius: 10px;
-border-top-right-radius: 0px;
-border-bottom-right-radius: 0px;
-border-bottom-left-radius: 10px;</string>
-         </property>
-         <property name="text">
-          <string>#FFFFFF</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="31" column="0" colspan="3">
-        <widget class="QLabel" name="ADText_23">
+       <item row="73" column="0" colspan="2">
+        <widget class="QLabel" name="ADText_92">
          <property name="font">
           <font>
            <pointsize>12</pointsize>
            <bold>false</bold>
           </font>
          </property>
+         <property name="styleSheet">
+          <string notr="true">color:rgb(190, 190, 190);</string>
+         </property>
          <property name="text">
-          <string>Upload Image Button</string>
+          <string>Close</string>
          </property>
         </widget>
        </item>
-       <item row="50" column="2" colspan="3">
-        <widget class="QLineEdit" name="intervalTextBox_78">
+       <item row="86" column="0" colspan="2">
+        <widget class="QLabel" name="ADText_103">
          <property name="font">
           <font>
            <pointsize>12</pointsize>
+           <bold>true</bold>
           </font>
          </property>
-         <property name="styleSheet">
-          <string notr="true">background: rgb(56, 56, 56);
-border-top-left-radius: 10px;
-border-top-right-radius: 0px;
-border-bottom-right-radius: 0px;
-border-bottom-left-radius: 10px;</string>
-         </property>
          <property name="text">
-          <string>#FFFFFF</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
+          <string>Console</string>
          </property>
         </widget>
        </item>
-       <item row="35" column="3" colspan="2">
-        <widget class="QLineEdit" name="intervalTextBox_30">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background: rgb(56, 56, 56);
-border-top-left-radius: 10px;
-border-top-right-radius: 0px;
-border-bottom-right-radius: 0px;
-border-bottom-left-radius: 10px;</string>
-         </property>
-         <property name="text">
-          <string>#FFFFFF</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="65" column="2" colspan="3">
-        <widget class="QLineEdit" name="intervalTextBox_88">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background: rgb(56, 56, 56);
-border-top-left-radius: 10px;
-border-top-right-radius: 0px;
-border-bottom-right-radius: 0px;
-border-bottom-left-radius: 10px;</string>
-         </property>
-         <property name="text">
-          <string>#FFFFFF</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="52" column="0" colspan="2">
-        <widget class="QLabel" name="ADText_95">
+       <item row="16" column="0" colspan="3">
+        <widget class="QLabel" name="ADText_12">
          <property name="font">
           <font>
            <pointsize>12</pointsize>
            <bold>false</bold>
           </font>
          </property>
+         <property name="styleSheet">
+          <string notr="true">color:rgb(190, 190, 190);</string>
+         </property>
          <property name="text">
-          <string>Text</string>
+          <string>Config Listbox</string>
          </property>
         </widget>
        </item>
-       <item row="38" column="0" colspan="2">
-        <widget class="QLabel" name="ADText_29">
+       <item row="67" column="0" colspan="2">
+        <widget class="QLabel" name="ADText_85">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Preview</string>
+         </property>
+        </widget>
+       </item>
+       <item row="21" column="0" colspan="2">
+        <widget class="QLabel" name="ADText_40">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Top Buttons</string>
+         </property>
+        </widget>
+       </item>
+       <item row="18" column="0" colspan="3">
+        <widget class="QLabel" name="ADText_32">
          <property name="font">
           <font>
            <pointsize>12</pointsize>
            <bold>false</bold>
           </font>
          </property>
+         <property name="styleSheet">
+          <string notr="true">color:rgb(190, 190, 190);</string>
+         </property>
          <property name="text">
-          <string>Text</string>
+          <string>Scale Textbox</string>
          </property>
         </widget>
        </item>
-       <item row="14" column="3" colspan="2">
+       <item row="17" column="3" colspan="2">
         <widget class="QLineEdit" name="intervalTextBox_32">
          <property name="font">
           <font>
@@ -1838,8 +1447,148 @@ border-bottom-left-radius: 10px;</string>
          </property>
         </widget>
        </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="ADText_4">
+       <item row="71" column="2" colspan="3">
+        <widget class="QLineEdit" name="intervalTextBox_76">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background: rgb(56, 56, 56);
+border-top-left-radius: 10px;
+border-top-right-radius: 0px;
+border-bottom-right-radius: 0px;
+border-bottom-left-radius: 10px;</string>
+         </property>
+         <property name="text">
+          <string>#FFFFFF</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="23" column="0" colspan="4">
+        <widget class="QLabel" name="ADText_13">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:rgb(160, 160, 160);</string>
+         </property>
+         <property name="text">
+          <string>Hover</string>
+         </property>
+        </widget>
+       </item>
+       <item row="79" column="0" colspan="2">
+        <widget class="QLabel" name="ADText_95">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:rgb(190, 190, 190);</string>
+         </property>
+         <property name="text">
+          <string>Text</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0" colspan="3">
+        <widget class="QLabel" name="ADText_6">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:rgb(190, 190, 190);</string>
+         </property>
+         <property name="text">
+          <string>Background</string>
+         </property>
+        </widget>
+       </item>
+       <item row="59" column="0" colspan="2">
+        <widget class="QLabel" name="ADText_80">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:rgb(190, 190, 190);</string>
+         </property>
+         <property name="text">
+          <string>Buttons</string>
+         </property>
+        </widget>
+       </item>
+       <item row="19" column="0" colspan="3">
+        <widget class="QLabel" name="ADText_38">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:rgb(190, 190, 190);</string>
+         </property>
+         <property name="text">
+          <string>Width Textbox</string>
+         </property>
+        </widget>
+       </item>
+       <item row="92" column="0" colspan="2">
+        <widget class="QLabel" name="ADText_106">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:rgb(190, 190, 190);</string>
+         </property>
+         <property name="text">
+          <string>Buttons</string>
+         </property>
+        </widget>
+       </item>
+       <item row="72" column="2" colspan="3">
+        <widget class="QLineEdit" name="intervalTextBox_77">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background: rgb(56, 56, 56);
+border-top-left-radius: 10px;
+border-top-right-radius: 0px;
+border-bottom-right-radius: 0px;
+border-bottom-left-radius: 10px;</string>
+         </property>
+         <property name="text">
+          <string>#FFFFFF</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="ADText_3">
          <property name="font">
           <font>
            <pointsize>12</pointsize>
@@ -1847,24 +1596,33 @@ border-bottom-left-radius: 10px;</string>
           </font>
          </property>
          <property name="text">
-          <string>Version</string>
+          <string>Icon Colour</string>
          </property>
         </widget>
        </item>
-       <item row="51" column="0" colspan="2">
-        <widget class="QLabel" name="ADText_87">
+       <item row="49" column="4">
+        <widget class="QLineEdit" name="intervalTextBox_23">
          <property name="font">
           <font>
            <pointsize>12</pointsize>
-           <bold>true</bold>
           </font>
          </property>
+         <property name="styleSheet">
+          <string notr="true">background: rgb(56, 56, 56);
+border-top-left-radius: 10px;
+border-top-right-radius: 0px;
+border-bottom-right-radius: 0px;
+border-bottom-left-radius: 10px;</string>
+         </property>
          <property name="text">
-          <string>Pattern</string>
+          <string>#FFFFFF</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
          </property>
         </widget>
        </item>
-       <item row="27" column="4">
+       <item row="33" column="4">
         <widget class="QLineEdit" name="intervalTextBox_17">
          <property name="font">
           <font>
@@ -1886,20 +1644,633 @@ border-bottom-left-radius: 10px;</string>
          </property>
         </widget>
        </item>
-       <item row="41" column="0" colspan="2">
-        <widget class="QLabel" name="ADText_84">
+       <item row="6" column="3" colspan="2">
+        <widget class="QLineEdit" name="intervalTextBox_6">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background: rgb(56, 56, 56);
+border-top-left-radius: 10px;
+border-top-right-radius: 0px;
+border-bottom-right-radius: 0px;
+border-bottom-left-radius: 10px;</string>
+         </property>
+         <property name="text">
+          <string>#FFFFFF</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="68" column="2" colspan="3">
+        <widget class="QLineEdit" name="intervalTextBox_74">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background: rgb(56, 56, 56);
+border-top-left-radius: 10px;
+border-top-right-radius: 0px;
+border-bottom-right-radius: 0px;
+border-bottom-left-radius: 10px;</string>
+         </property>
+         <property name="text">
+          <string>#FFFFFF</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="33" column="0" colspan="4">
+        <widget class="QLabel" name="ADText_18">
          <property name="font">
           <font>
            <pointsize>12</pointsize>
            <bold>false</bold>
           </font>
          </property>
+         <property name="styleSheet">
+          <string notr="true">color:rgb(160, 160, 160);</string>
+         </property>
+         <property name="text">
+          <string>Hover</string>
+         </property>
+        </widget>
+       </item>
+       <item row="73" column="2" colspan="3">
+        <widget class="QLineEdit" name="intervalTextBox_78">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background: rgb(56, 56, 56);
+border-top-left-radius: 10px;
+border-top-right-radius: 0px;
+border-bottom-right-radius: 0px;
+border-bottom-left-radius: 10px;</string>
+         </property>
+         <property name="text">
+          <string>#FFFFFF</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="17" column="0" colspan="3">
+        <widget class="QLabel" name="ADText_37">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:rgb(190, 190, 190);</string>
+         </property>
+         <property name="text">
+          <string>Pattern Listbox</string>
+         </property>
+        </widget>
+       </item>
+       <item row="10" column="0" colspan="3">
+        <widget class="QLabel" name="ADText_31">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:rgb(190, 190, 190);</string>
+         </property>
+         <property name="text">
+          <string>Scale Bar Background</string>
+         </property>
+        </widget>
+       </item>
+       <item row="31" column="0" colspan="4">
+        <widget class="QLabel" name="ADText_17">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:rgb(160, 160, 160);</string>
+         </property>
+         <property name="text">
+          <string>Hover</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="0" colspan="3">
+        <widget class="QLabel" name="ADText_9">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:rgb(190, 190, 190);</string>
+         </property>
+         <property name="text">
+          <string>Image Background</string>
+         </property>
+        </widget>
+       </item>
+       <item row="69" column="0" colspan="2">
+        <widget class="QLabel" name="ADText_86">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:rgb(190, 190, 190);</string>
+         </property>
+         <property name="text">
+          <string>Background</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0" colspan="2">
+        <widget class="QLabel" name="ADText_34">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Backgrounds</string>
+         </property>
+        </widget>
+       </item>
+       <item row="87" column="2" colspan="3">
+        <widget class="QLineEdit" name="intervalTextBox_84">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background: rgb(56, 56, 56);
+border-top-left-radius: 10px;
+border-top-right-radius: 0px;
+border-bottom-right-radius: 0px;
+border-bottom-left-radius: 10px;</string>
+         </property>
+         <property name="text">
+          <string>#FFFFFF</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="3" colspan="2">
+        <widget class="QLineEdit" name="intervalTextBox_8">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background: rgb(56, 56, 56);
+border-top-left-radius: 10px;
+border-top-right-radius: 0px;
+border-bottom-right-radius: 0px;
+border-bottom-left-radius: 10px;</string>
+         </property>
+         <property name="text">
+          <string>#FFFFFF</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="50" column="0" colspan="3">
+        <widget class="QLabel" name="ADText_28">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:rgb(190, 190, 190);</string>
+         </property>
+         <property name="text">
+          <string>Process Image Button</string>
+         </property>
+        </widget>
+       </item>
+       <item row="83" column="0" colspan="2">
+        <widget class="QLabel" name="ADText_93">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:rgb(190, 190, 190);</string>
+         </property>
+         <property name="text">
+          <string>Buttons</string>
+         </property>
+        </widget>
+       </item>
+       <item row="84" column="2" colspan="3">
+        <widget class="QLineEdit" name="intervalTextBox_83">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background: rgb(56, 56, 56);
+border-top-left-radius: 10px;
+border-top-right-radius: 0px;
+border-bottom-right-radius: 0px;
+border-bottom-left-radius: 10px;</string>
+         </property>
+         <property name="text">
+          <string>#FFFFFF</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="80" column="2" colspan="3">
+        <widget class="QLineEdit" name="intervalTextBox_90">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background: rgb(56, 56, 56);
+border-top-left-radius: 10px;
+border-top-right-radius: 0px;
+border-bottom-right-radius: 0px;
+border-bottom-left-radius: 10px;</string>
+         </property>
+         <property name="text">
+          <string>#FFFFFF</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="37" column="0">
+        <widget class="QLabel" name="ADText_21">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:rgb(190, 190, 190);</string>
+         </property>
+         <property name="text">
+          <string>Set Directory Button</string>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="0" colspan="3">
+        <widget class="QLabel" name="ADText_22">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:rgb(190, 190, 190);</string>
+         </property>
+         <property name="text">
+          <string>Textbox Backgrounds</string>
+         </property>
+        </widget>
+       </item>
+       <item row="80" column="0" colspan="2">
+        <widget class="QLabel" name="ADText_97">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:rgb(190, 190, 190);</string>
+         </property>
+         <property name="text">
+          <string>Background</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0" colspan="2">
+        <widget class="QLabel" name="ADText_2">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:rgb(205, 205, 205);</string>
+         </property>
+         <property name="text">
+          <string>Text</string>
+         </property>
+        </widget>
+       </item>
+       <item row="84" column="0" colspan="2">
+        <widget class="QLabel" name="ADText_94">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:rgb(190, 190, 190);</string>
+         </property>
          <property name="text">
           <string>Textbox</string>
          </property>
         </widget>
        </item>
-       <item row="24" column="3" colspan="2">
+       <item row="88" column="2" colspan="3">
+        <widget class="QLineEdit" name="intervalTextBox_86">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background: rgb(56, 56, 56);
+border-top-left-radius: 10px;
+border-top-right-radius: 0px;
+border-bottom-right-radius: 0px;
+border-bottom-left-radius: 10px;</string>
+         </property>
+         <property name="text">
+          <string>#FFFFFF</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="61" column="0" colspan="2">
+        <widget class="QLabel" name="ADText_83">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:rgb(190, 190, 190);</string>
+         </property>
+         <property name="text">
+          <string>Checkbox</string>
+         </property>
+        </widget>
+       </item>
+       <item row="23" column="4">
+        <widget class="QLineEdit" name="intervalTextBox_13">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background: rgb(56, 56, 56);
+border-top-left-radius: 10px;
+border-top-right-radius: 0px;
+border-bottom-right-radius: 0px;
+border-bottom-left-radius: 10px;</string>
+         </property>
+         <property name="text">
+          <string>#FFFFFF</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="66" column="0" colspan="2">
+        <widget class="QLabel" name="ADText_82">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:rgb(190, 190, 190);</string>
+         </property>
+         <property name="text">
+          <string>Close</string>
+         </property>
+        </widget>
+       </item>
+       <item row="81" column="0">
+        <widget class="QLabel" name="ADText_98">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:rgb(190, 190, 190);</string>
+         </property>
+         <property name="text">
+          <string>Pattern Background</string>
+         </property>
+        </widget>
+       </item>
+       <item row="74" column="0" colspan="2">
+        <widget class="QLabel" name="ADText_87">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Pattern</string>
+         </property>
+        </widget>
+       </item>
+       <item row="89" column="0">
+        <widget class="QLabel" name="ADText_101">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:rgb(190, 190, 190);</string>
+         </property>
+         <property name="text">
+          <string>Console Background</string>
+         </property>
+        </widget>
+       </item>
+       <item row="53" column="0">
+        <widget class="QLabel" name="ADText_33">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:rgb(190, 190, 190);</string>
+         </property>
+         <property name="text">
+          <string>Start Button</string>
+         </property>
+        </widget>
+       </item>
+       <item row="72" column="0" colspan="2">
+        <widget class="QLabel" name="ADText_90">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:rgb(190, 190, 190);</string>
+         </property>
+         <property name="text">
+          <string>Background</string>
+         </property>
+        </widget>
+       </item>
+       <item row="57" column="0" colspan="2">
+        <widget class="QLabel" name="ADText_29">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:rgb(190, 190, 190);</string>
+         </property>
+         <property name="text">
+          <string>Text</string>
+         </property>
+        </widget>
+       </item>
+       <item row="61" column="2" colspan="3">
+        <widget class="QLineEdit" name="intervalTextBox_72">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background: rgb(56, 56, 56);
+border-top-left-radius: 10px;
+border-top-right-radius: 0px;
+border-bottom-right-radius: 0px;
+border-bottom-left-radius: 10px;</string>
+         </property>
+         <property name="text">
+          <string>#FFFFFF</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="44" column="0" colspan="3">
+        <widget class="QLabel" name="ADText_26">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:rgb(190, 190, 190);</string>
+         </property>
+         <property name="text">
+          <string>Clear Image Button</string>
+         </property>
+        </widget>
+       </item>
+       <item row="18" column="3" colspan="2">
+        <widget class="QLineEdit" name="intervalTextBox_26">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background: rgb(56, 56, 56);
+border-top-left-radius: 10px;
+border-top-right-radius: 0px;
+border-bottom-right-radius: 0px;
+border-bottom-left-radius: 10px;</string>
+         </property>
+         <property name="text">
+          <string>#FFFFFF</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="32" column="3" colspan="2">
+        <widget class="QLineEdit" name="intervalTextBox_16">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background: rgb(56, 56, 56);
+border-top-left-radius: 10px;
+border-top-right-radius: 0px;
+border-bottom-right-radius: 0px;
+border-bottom-left-radius: 10px;</string>
+         </property>
+         <property name="text">
+          <string>#FFFFFF</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="30" column="3" colspan="2">
         <widget class="QLineEdit" name="intervalTextBox_14">
          <property name="font">
           <font>
@@ -1921,29 +2292,57 @@ border-bottom-left-radius: 10px;</string>
          </property>
         </widget>
        </item>
-       <item row="32" column="0" colspan="4">
-        <widget class="QLabel" name="ADText_24">
+       <item row="81" column="2" colspan="3">
+        <widget class="QLineEdit" name="intervalTextBox_87">
          <property name="font">
           <font>
            <pointsize>12</pointsize>
-           <bold>false</bold>
           </font>
          </property>
+         <property name="styleSheet">
+          <string notr="true">background: rgb(56, 56, 56);
+border-top-left-radius: 10px;
+border-top-right-radius: 0px;
+border-bottom-right-radius: 0px;
+border-bottom-left-radius: 10px;</string>
+         </property>
          <property name="text">
-          <string>Upload Image Hover</string>
+          <string>#FFFFFF</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
          </property>
         </widget>
        </item>
-       <item row="34" column="0" colspan="4">
-        <widget class="QLabel" name="ADText_25">
+       <item row="93" column="0" colspan="2">
+        <widget class="QLabel" name="ADText_105">
          <property name="font">
           <font>
            <pointsize>12</pointsize>
            <bold>false</bold>
           </font>
          </property>
+         <property name="styleSheet">
+          <string notr="true">color:rgb(190, 190, 190);</string>
+         </property>
          <property name="text">
-          <string>Clear Image Hover</string>
+          <string>Close</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="0" colspan="3">
+        <widget class="QLabel" name="ADText_7">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:rgb(190, 190, 190);</string>
+         </property>
+         <property name="text">
+          <string>Background (alt #1)</string>
          </property>
         </widget>
        </item>
@@ -1969,60 +2368,40 @@ border-bottom-left-radius: 10px;</string>
          </property>
         </widget>
        </item>
-       <item row="3" column="0" colspan="2">
-        <widget class="QLabel" name="ADText_2">
+       <item row="87" column="0" colspan="2">
+        <widget class="QLabel" name="ADText_102">
          <property name="font">
           <font>
            <pointsize>12</pointsize>
            <bold>false</bold>
           </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:rgb(190, 190, 190);</string>
          </property>
          <property name="text">
           <string>Text</string>
          </property>
         </widget>
        </item>
-       <item row="22" column="0" colspan="3">
-        <widget class="QLabel" name="ADText_14">
+       <item row="49" column="0" colspan="4">
+        <widget class="QLabel" name="ADText_25">
          <property name="font">
           <font>
            <pointsize>12</pointsize>
            <bold>false</bold>
           </font>
          </property>
+         <property name="styleSheet">
+          <string notr="true">color:rgb(160, 160, 160);</string>
+         </property>
          <property name="text">
-          <string>Save Config Button</string>
+          <string>Hover</string>
          </property>
         </widget>
        </item>
-       <item row="43" column="0" colspan="2">
-        <widget class="QLabel" name="ADText_82">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Close</string>
-         </property>
-        </widget>
-       </item>
-       <item row="20" column="0" colspan="3">
-        <widget class="QLabel" name="ADText_10">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Load Config Button</string>
-         </property>
-        </widget>
-       </item>
-       <item row="45" column="2" colspan="3">
-        <widget class="QLineEdit" name="intervalTextBox_74">
+       <item row="93" column="2" colspan="3">
+        <widget class="QLineEdit" name="intervalTextBox_88">
          <property name="font">
           <font>
            <pointsize>12</pointsize>
@@ -2043,199 +2422,7 @@ border-bottom-left-radius: 10px;</string>
          </property>
         </widget>
        </item>
-       <item row="10" column="0" colspan="3">
-        <widget class="QLabel" name="ADText_22">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Textbox Backgrounds</string>
-         </property>
-        </widget>
-       </item>
-       <item row="26" column="0" colspan="3">
-        <widget class="QLabel" name="ADText_19">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Pattern Button</string>
-         </property>
-        </widget>
-       </item>
-       <item row="53" column="0" colspan="2">
-        <widget class="QLabel" name="ADText_99">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Backgrounds</string>
-         </property>
-        </widget>
-       </item>
-       <item row="57" column="0" colspan="2">
-        <widget class="QLabel" name="ADText_94">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Textbox</string>
-         </property>
-        </widget>
-       </item>
-       <item row="36" column="4">
-        <widget class="QLineEdit" name="intervalTextBox_25">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background: rgb(56, 56, 56);
-border-top-left-radius: 10px;
-border-top-right-radius: 0px;
-border-bottom-right-radius: 0px;
-border-bottom-left-radius: 10px;</string>
-         </property>
-         <property name="text">
-          <string>#FFFFFF</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="36" column="0" colspan="4">
-        <widget class="QLabel" name="ADText_27">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Process Image Hover</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1" colspan="4">
-        <widget class="QLineEdit" name="intervalTextBox_3">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background: rgb(56, 56, 56);
-border-top-left-radius: 10px;
-border-top-right-radius: 0px;
-border-bottom-right-radius: 0px;
-border-bottom-left-radius: 10px;</string>
-         </property>
-         <property name="text">
-          <string>2.0</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="16" column="0" colspan="3">
-        <widget class="QLabel" name="ADText_32">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Scale Textbox</string>
-         </property>
-        </widget>
-       </item>
-       <item row="46" column="0" colspan="2">
-        <widget class="QLabel" name="ADText_86">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Background</string>
-         </property>
-        </widget>
-       </item>
-       <item row="8" column="3" colspan="2">
-        <widget class="QLineEdit" name="intervalTextBox_5">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background: rgb(56, 56, 56);
-border-top-left-radius: 10px;
-border-top-right-radius: 0px;
-border-bottom-right-radius: 0px;
-border-bottom-left-radius: 10px;</string>
-         </property>
-         <property name="text">
-          <string>#FFFFFF</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="29" column="3" colspan="2">
-        <widget class="QLineEdit" name="intervalTextBox_19">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background: rgb(56, 56, 56);
-border-top-left-radius: 10px;
-border-top-right-radius: 0px;
-border-bottom-right-radius: 0px;
-border-bottom-left-radius: 10px;</string>
-         </property>
-         <property name="text">
-          <string>#FFFFFF</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="11" column="0" colspan="3">
-        <widget class="QLabel" name="ADText_31">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Scale Bar Background</string>
-         </property>
-        </widget>
-       </item>
-       <item row="39" column="0" colspan="2">
+       <item row="58" column="0" colspan="2">
         <widget class="QLabel" name="ADText_30">
          <property name="font">
           <font>
@@ -2243,57 +2430,16 @@ border-bottom-left-radius: 10px;</string>
            <bold>false</bold>
           </font>
          </property>
+         <property name="styleSheet">
+          <string notr="true">color:rgb(190, 190, 190);</string>
+         </property>
          <property name="text">
           <string>Background</string>
          </property>
         </widget>
        </item>
-       <item row="48" column="2" colspan="3">
-        <widget class="QLineEdit" name="intervalTextBox_76">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background: rgb(56, 56, 56);
-border-top-left-radius: 10px;
-border-top-right-radius: 0px;
-border-bottom-right-radius: 0px;
-border-bottom-left-radius: 10px;</string>
-         </property>
-         <property name="text">
-          <string>#FFFFFF</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="32" column="4">
-        <widget class="QLineEdit" name="intervalTextBox_22">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background: rgb(56, 56, 56);
-border-top-left-radius: 10px;
-border-top-right-radius: 0px;
-border-bottom-right-radius: 0px;
-border-bottom-left-radius: 10px;</string>
-         </property>
-         <property name="text">
-          <string>#FFFFFF</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="54" column="0" colspan="3">
-        <widget class="QLabel" name="ADText_97">
+       <item row="1" column="0">
+        <widget class="QLabel" name="ADText_4">
          <property name="font">
           <font>
            <pointsize>12</pointsize>
@@ -2301,46 +2447,27 @@ border-bottom-left-radius: 10px;</string>
           </font>
          </property>
          <property name="text">
-          <string>Background</string>
+          <string>Version</string>
          </property>
         </widget>
        </item>
-       <item row="61" column="0" colspan="2">
-        <widget class="QLabel" name="ADText_104">
+       <item row="60" column="0" colspan="2">
+        <widget class="QLabel" name="ADText_84">
          <property name="font">
           <font>
            <pointsize>12</pointsize>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Backgrounds</string>
-         </property>
-        </widget>
-       </item>
-       <item row="7" column="3" colspan="2">
-        <widget class="QLineEdit" name="intervalTextBox_6">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
+           <bold>false</bold>
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">background: rgb(56, 56, 56);
-border-top-left-radius: 10px;
-border-top-right-radius: 0px;
-border-bottom-right-radius: 0px;
-border-bottom-left-radius: 10px;</string>
+          <string notr="true">color:rgb(190, 190, 190);</string>
          </property>
          <property name="text">
-          <string>#FFFFFF</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
+          <string>Textbox</string>
          </property>
         </widget>
        </item>
-       <item row="37" column="0" colspan="2">
+       <item row="56" column="0" colspan="2">
         <widget class="QLabel" name="ADText_81">
          <property name="font">
           <font>
@@ -2353,34 +2480,8 @@ border-bottom-left-radius: 10px;</string>
          </property>
         </widget>
        </item>
-       <item row="7" column="0" colspan="3">
-        <widget class="QLabel" name="ADText_7">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Background (alt #1)</string>
-         </property>
-        </widget>
-       </item>
-       <item row="60" column="0" colspan="2">
-        <widget class="QLabel" name="ADText_102">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Text</string>
-         </property>
-        </widget>
-       </item>
-       <item row="31" column="3" colspan="2">
-        <widget class="QLineEdit" name="intervalTextBox_21">
+       <item row="16" column="3" colspan="2">
+        <widget class="QLineEdit" name="intervalTextBox_7">
          <property name="font">
           <font>
            <pointsize>12</pointsize>
@@ -2401,8 +2502,8 @@ border-bottom-left-radius: 10px;</string>
          </property>
         </widget>
        </item>
-       <item row="4" column="2" colspan="3">
-        <widget class="QLineEdit" name="intervalTextBox_9">
+       <item row="29" column="4">
+        <widget class="QLineEdit" name="intervalTextBox_11">
          <property name="font">
           <font>
            <pointsize>12</pointsize>
@@ -2423,20 +2524,39 @@ border-bottom-left-radius: 10px;</string>
          </property>
         </widget>
        </item>
-       <item row="27" column="0" colspan="4">
-        <widget class="QLabel" name="ADText_18">
+       <item row="55" column="0">
+        <widget class="QLabel" name="ADText_36">
          <property name="font">
           <font>
            <pointsize>12</pointsize>
            <bold>false</bold>
           </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:rgb(160, 160, 160);</string>
          </property>
          <property name="text">
           <string>Hover</string>
          </property>
         </widget>
        </item>
-       <item row="46" column="2" colspan="3">
+       <item row="24" column="0" colspan="3">
+        <widget class="QLabel" name="ADText_14">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:rgb(190, 190, 190);</string>
+         </property>
+         <property name="text">
+          <string>Save Config Button</string>
+         </property>
+        </widget>
+       </item>
+       <item row="69" column="2" colspan="3">
         <widget class="QLineEdit" name="intervalTextBox_75">
          <property name="font">
           <font>
@@ -2458,47 +2578,8 @@ border-bottom-left-radius: 10px;</string>
          </property>
         </widget>
        </item>
-       <item row="50" column="0" colspan="2">
-        <widget class="QLabel" name="ADText_92">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Close</string>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="0" colspan="2">
-        <widget class="QLabel" name="ADText_34">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Backgrounds</string>
-         </property>
-        </widget>
-       </item>
-       <item row="23" column="0" colspan="4">
-        <widget class="QLabel" name="ADText_15">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Hover</string>
-         </property>
-        </widget>
-       </item>
-       <item row="57" column="2" colspan="3">
-        <widget class="QLineEdit" name="intervalTextBox_83">
+       <item row="43" column="4">
+        <widget class="QLineEdit" name="intervalTextBox_22">
          <property name="font">
           <font>
            <pointsize>12</pointsize>
@@ -2519,7 +2600,20 @@ border-bottom-left-radius: 10px;</string>
          </property>
         </widget>
        </item>
-       <item row="28" column="0" colspan="2">
+       <item row="70" column="0" colspan="2">
+        <widget class="QLabel" name="ADText_91">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Info</string>
+         </property>
+        </widget>
+       </item>
+       <item row="39" column="0" colspan="2">
         <widget class="QLabel" name="ADText_79">
          <property name="font">
           <font>
@@ -2532,21 +2626,138 @@ border-bottom-left-radius: 10px;</string>
          </property>
         </widget>
        </item>
-       <item row="6" column="0" colspan="3">
-        <widget class="QLabel" name="ADText_6">
+       <item row="42" column="0" colspan="3">
+        <widget class="QLabel" name="ADText_23">
          <property name="font">
           <font>
            <pointsize>12</pointsize>
            <bold>false</bold>
           </font>
          </property>
+         <property name="styleSheet">
+          <string notr="true">color:rgb(190, 190, 190);</string>
+         </property>
          <property name="text">
-          <string>Background</string>
+          <string>Upload Image Button</string>
          </property>
         </widget>
        </item>
-       <item row="38" column="2" colspan="3">
+       <item row="22" column="3" colspan="2">
+        <widget class="QLineEdit" name="intervalTextBox_10">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background: rgb(56, 56, 56);
+border-top-left-radius: 10px;
+border-top-right-radius: 0px;
+border-bottom-right-radius: 0px;
+border-bottom-left-radius: 10px;</string>
+         </property>
+         <property name="text">
+          <string>#FFFFFF</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="57" column="2" colspan="3">
         <widget class="QLineEdit" name="intervalTextBox_68">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background: rgb(56, 56, 56);
+border-top-left-radius: 10px;
+border-top-right-radius: 0px;
+border-bottom-right-radius: 0px;
+border-bottom-left-radius: 10px;</string>
+         </property>
+         <property name="text">
+          <string>#FFFFFF</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="0" colspan="3">
+        <widget class="QLabel" name="ADText_8">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:rgb(190, 190, 190);</string>
+         </property>
+         <property name="text">
+          <string>Background (alt #2)</string>
+         </property>
+        </widget>
+       </item>
+       <item row="38" column="0">
+        <widget class="QLabel" name="ADText_20">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:rgb(160, 160, 160);</string>
+         </property>
+         <property name="text">
+          <string>Hover</string>
+         </property>
+        </widget>
+       </item>
+       <item row="58" column="2" colspan="3">
+        <widget class="QLineEdit" name="intervalTextBox_69">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background: rgb(56, 56, 56);
+border-top-left-radius: 10px;
+border-top-right-radius: 0px;
+border-bottom-right-radius: 0px;
+border-bottom-left-radius: 10px;</string>
+         </property>
+         <property name="text">
+          <string>#FFFFFF</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="68" column="0" colspan="2">
+        <widget class="QLabel" name="ADText_88">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:rgb(190, 190, 190);</string>
+         </property>
+         <property name="text">
+          <string>Text</string>
+         </property>
+        </widget>
+       </item>
+       <item row="79" column="2" colspan="3">
+        <widget class="QLineEdit" name="intervalTextBox_81">
          <property name="font">
           <font>
            <pointsize>12</pointsize>
@@ -2580,34 +2791,46 @@ border-bottom-left-radius: 10px;</string>
          </property>
         </widget>
        </item>
-       <item row="49" column="0" colspan="2">
-        <widget class="QLabel" name="ADText_90">
+       <item row="89" column="2" colspan="3">
+        <widget class="QLineEdit" name="intervalTextBox_82">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background: rgb(56, 56, 56);
+border-top-left-radius: 10px;
+border-top-right-radius: 0px;
+border-bottom-right-radius: 0px;
+border-bottom-left-radius: 10px;</string>
+         </property>
+         <property name="text">
+          <string>#FFFFFF</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="32" column="0" colspan="3">
+        <widget class="QLabel" name="ADText_19">
          <property name="font">
           <font>
            <pointsize>12</pointsize>
            <bold>false</bold>
           </font>
          </property>
+         <property name="styleSheet">
+          <string notr="true">color:rgb(190, 190, 190);</string>
+         </property>
          <property name="text">
-          <string>Background</string>
+          <string>Pattern Button</string>
          </property>
         </widget>
        </item>
-       <item row="17" column="0" colspan="3">
-        <widget class="QLabel" name="ADText_38">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Width Textbox</string>
-         </property>
-        </widget>
-       </item>
-       <item row="21" column="4">
-        <widget class="QLineEdit" name="intervalTextBox_13">
+       <item row="5" column="3" colspan="2">
+        <widget class="QLineEdit" name="intervalTextBox_4">
          <property name="font">
           <font>
            <pointsize>12</pointsize>
@@ -2628,8 +2851,8 @@ border-bottom-left-radius: 10px;</string>
          </property>
         </widget>
        </item>
-       <item row="56" column="2" colspan="3">
-        <widget class="QLineEdit" name="intervalTextBox_80">
+       <item row="44" column="3" colspan="2">
+        <widget class="QLineEdit" name="intervalTextBox_24">
          <property name="font">
           <font>
            <pointsize>12</pointsize>
@@ -2650,192 +2873,8 @@ border-bottom-left-radius: 10px;</string>
          </property>
         </widget>
        </item>
-       <item row="33" column="0" colspan="3">
-        <widget class="QLabel" name="ADText_26">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Clear Image Button</string>
-         </property>
-        </widget>
-       </item>
-       <item row="63" column="3" colspan="2">
-        <widget class="QLineEdit" name="intervalTextBox_87">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background: rgb(56, 56, 56);
-border-top-left-radius: 10px;
-border-top-right-radius: 0px;
-border-bottom-right-radius: 0px;
-border-bottom-left-radius: 10px;</string>
-         </property>
-         <property name="text">
-          <string>#FFFFFF</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="15" column="3" colspan="2">
-        <widget class="QLineEdit" name="intervalTextBox_33">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background: rgb(56, 56, 56);
-border-top-left-radius: 10px;
-border-top-right-radius: 0px;
-border-bottom-right-radius: 0px;
-border-bottom-left-radius: 10px;</string>
-         </property>
-         <property name="text">
-          <string>#FFFFFF</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="42" column="0" colspan="2">
-        <widget class="QLabel" name="ADText_83">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Checkbox</string>
-         </property>
-        </widget>
-       </item>
-       <item row="30" column="4">
-        <widget class="QLineEdit" name="intervalTextBox_18">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background: rgb(56, 56, 56);
-border-top-left-radius: 10px;
-border-top-right-radius: 0px;
-border-bottom-right-radius: 0px;
-border-bottom-left-radius: 10px;</string>
-         </property>
-         <property name="text">
-          <string>#FFFFFF</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="52" column="2" colspan="3">
-        <widget class="QLineEdit" name="intervalTextBox_81">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background: rgb(56, 56, 56);
-border-top-left-radius: 10px;
-border-top-right-radius: 0px;
-border-bottom-right-radius: 0px;
-border-bottom-left-radius: 10px;</string>
-         </property>
-         <property name="text">
-          <string>#FFFFFF</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="8" column="0" colspan="3">
-        <widget class="QLabel" name="ADText_8">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Background (alt #2)</string>
-         </property>
-        </widget>
-       </item>
-       <item row="9" column="3" colspan="2">
-        <widget class="QLineEdit" name="intervalTextBox_8">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background: rgb(56, 56, 56);
-border-top-left-radius: 10px;
-border-top-right-radius: 0px;
-border-bottom-right-radius: 0px;
-border-bottom-left-radius: 10px;</string>
-         </property>
-         <property name="text">
-          <string>#FFFFFF</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="58" column="0" colspan="2">
-        <widget class="QLabel" name="ADText_96">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Close</string>
-         </property>
-        </widget>
-       </item>
-       <item row="60" column="2" colspan="3">
-        <widget class="QLineEdit" name="intervalTextBox_84">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background: rgb(56, 56, 56);
-border-top-left-radius: 10px;
-border-top-right-radius: 0px;
-border-bottom-right-radius: 0px;
-border-bottom-left-radius: 10px;</string>
-         </property>
-         <property name="text">
-          <string>#FFFFFF</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="19" column="0" colspan="2">
-        <widget class="QLabel" name="ADText_40">
+       <item row="15" column="0" colspan="2">
+        <widget class="QLabel" name="ADText_35">
          <property name="font">
           <font>
            <pointsize>12</pointsize>
@@ -2843,12 +2882,12 @@ border-bottom-left-radius: 10px;</string>
           </font>
          </property>
          <property name="text">
-          <string>Top Buttons</string>
+          <string>Boxes</string>
          </property>
         </widget>
        </item>
-       <item row="20" column="3" colspan="2">
-        <widget class="QLineEdit" name="intervalTextBox_10">
+       <item row="42" column="3" colspan="2">
+        <widget class="QLineEdit" name="intervalTextBox_21">
          <property name="font">
           <font>
            <pointsize>12</pointsize>
@@ -2869,339 +2908,7 @@ border-bottom-left-radius: 10px;</string>
          </property>
         </widget>
        </item>
-       <item row="55" column="0" colspan="3">
-        <widget class="QLabel" name="ADText_98">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Image Background</string>
-         </property>
-        </widget>
-       </item>
-       <item row="16" column="3" colspan="2">
-        <widget class="QLineEdit" name="intervalTextBox_26">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background: rgb(56, 56, 56);
-border-top-left-radius: 10px;
-border-top-right-radius: 0px;
-border-bottom-right-radius: 0px;
-border-bottom-left-radius: 10px;</string>
-         </property>
-         <property name="text">
-          <string>#FFFFFF</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="22" column="3" colspan="2">
-        <widget class="QLineEdit" name="intervalTextBox_12">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background: rgb(56, 56, 56);
-border-top-left-radius: 10px;
-border-top-right-radius: 0px;
-border-bottom-right-radius: 0px;
-border-bottom-left-radius: 10px;</string>
-         </property>
-         <property name="text">
-          <string>#FFFFFF</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="62" column="3" colspan="2">
-        <widget class="QLineEdit" name="intervalTextBox_86">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background: rgb(56, 56, 56);
-border-top-left-radius: 10px;
-border-top-right-radius: 0px;
-border-bottom-right-radius: 0px;
-border-bottom-left-radius: 10px;</string>
-         </property>
-         <property name="text">
-          <string>#FFFFFF</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="40" column="0" colspan="2">
-        <widget class="QLabel" name="ADText_80">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Buttons</string>
-         </property>
-        </widget>
-       </item>
-       <item row="25" column="0" colspan="4">
-        <widget class="QLabel" name="ADText_17">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Hover</string>
-         </property>
-        </widget>
-       </item>
-       <item row="45" column="0" colspan="2">
-        <widget class="QLabel" name="ADText_88">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Text</string>
-         </property>
-        </widget>
-       </item>
-       <item row="13" column="0" colspan="3">
-        <widget class="QLabel" name="ADText_12">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Config Listbox</string>
-         </property>
-        </widget>
-       </item>
-       <item row="64" column="2" colspan="3">
-        <widget class="QLineEdit" name="intervalTextBox_85">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background: rgb(56, 56, 56);
-border-top-left-radius: 10px;
-border-top-right-radius: 0px;
-border-bottom-right-radius: 0px;
-border-bottom-left-radius: 10px;</string>
-         </property>
-         <property name="text">
-          <string>#FFFFFF</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="42" column="2" colspan="3">
-        <widget class="QLineEdit" name="intervalTextBox_72">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background: rgb(56, 56, 56);
-border-top-left-radius: 10px;
-border-top-right-radius: 0px;
-border-bottom-right-radius: 0px;
-border-bottom-left-radius: 10px;</string>
-         </property>
-         <property name="text">
-          <string>#FFFFFF</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="58" column="2" colspan="3">
-        <widget class="QLineEdit" name="intervalTextBox_79">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background: rgb(56, 56, 56);
-border-top-left-radius: 10px;
-border-top-right-radius: 0px;
-border-bottom-right-radius: 0px;
-border-bottom-left-radius: 10px;</string>
-         </property>
-         <property name="text">
-          <string>#FFFFFF</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="47" column="0" colspan="2">
-        <widget class="QLabel" name="ADText_91">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Info</string>
-         </property>
-        </widget>
-       </item>
-       <item row="62" column="0" colspan="3">
-        <widget class="QLabel" name="ADText_100">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Background</string>
-         </property>
-        </widget>
-       </item>
-       <item row="24" column="0" colspan="3">
-        <widget class="QLabel" name="ADText_16">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Settings &amp; Info Button</string>
-         </property>
-        </widget>
-       </item>
-       <item row="23" column="4">
-        <widget class="QLineEdit" name="intervalTextBox_11">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background: rgb(56, 56, 56);
-border-top-left-radius: 10px;
-border-top-right-radius: 0px;
-border-bottom-right-radius: 0px;
-border-bottom-left-radius: 10px;</string>
-         </property>
-         <property name="text">
-          <string>#FFFFFF</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="64" column="0" colspan="2">
-        <widget class="QLabel" name="ADText_106">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Buttons</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="0" colspan="2">
-        <widget class="QLabel" name="ADText_11">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Pattern Listbox</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="0">
-        <widget class="QLabel" name="ADText_3">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Icon Colour</string>
-         </property>
-        </widget>
-       </item>
-       <item row="21" column="0" colspan="4">
-        <widget class="QLabel" name="ADText_13">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Hover</string>
-         </property>
-        </widget>
-       </item>
-       <item row="34" column="4">
-        <widget class="QLineEdit" name="intervalTextBox_23">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background: rgb(56, 56, 56);
-border-top-left-radius: 10px;
-border-top-right-radius: 0px;
-border-bottom-right-radius: 0px;
-border-bottom-left-radius: 10px;</string>
-         </property>
-         <property name="text">
-          <string>#FFFFFF</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="43" column="2" colspan="3">
+       <item row="66" column="2" colspan="3">
         <widget class="QLineEdit" name="intervalTextBox_71">
          <property name="font">
           <font>
@@ -3223,7 +2930,307 @@ border-bottom-left-radius: 10px;</string>
          </property>
         </widget>
        </item>
-       <item row="18" column="0" colspan="3">
+       <item row="43" column="0" colspan="4">
+        <widget class="QLabel" name="ADText_24">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:rgb(160, 160, 160);</string>
+         </property>
+         <property name="text">
+          <string>Hover</string>
+         </property>
+        </widget>
+       </item>
+       <item row="24" column="3" colspan="2">
+        <widget class="QLineEdit" name="intervalTextBox_12">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background: rgb(56, 56, 56);
+border-top-left-radius: 10px;
+border-top-right-radius: 0px;
+border-bottom-right-radius: 0px;
+border-bottom-left-radius: 10px;</string>
+         </property>
+         <property name="text">
+          <string>#FFFFFF</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="22" column="0" colspan="3">
+        <widget class="QLabel" name="ADText_10">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:rgb(190, 190, 190);</string>
+         </property>
+         <property name="text">
+          <string>Load Config Button</string>
+         </property>
+        </widget>
+       </item>
+       <item row="60" column="2" colspan="3">
+        <widget class="QLineEdit" name="intervalTextBox_28">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background: rgb(56, 56, 56);
+border-top-left-radius: 10px;
+border-top-right-radius: 0px;
+border-bottom-right-radius: 0px;
+border-bottom-left-radius: 10px;</string>
+         </property>
+         <property name="text">
+          <string>#FFFFFF</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="51" column="0" colspan="4">
+        <widget class="QLabel" name="ADText_27">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:rgb(160, 160, 160);</string>
+         </property>
+         <property name="text">
+          <string>Hover</string>
+         </property>
+        </widget>
+       </item>
+       <item row="50" column="3" colspan="2">
+        <widget class="QLineEdit" name="intervalTextBox_30">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background: rgb(56, 56, 56);
+border-top-left-radius: 10px;
+border-top-right-radius: 0px;
+border-bottom-right-radius: 0px;
+border-bottom-left-radius: 10px;</string>
+         </property>
+         <property name="text">
+          <string>#FFFFFF</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="85" column="0" colspan="2">
+        <widget class="QLabel" name="ADText_96">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:rgb(190, 190, 190);</string>
+         </property>
+         <property name="text">
+          <string>Close</string>
+         </property>
+        </widget>
+       </item>
+       <item row="88" column="0" colspan="2">
+        <widget class="QLabel" name="ADText_100">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:rgb(190, 190, 190);</string>
+         </property>
+         <property name="text">
+          <string>Background</string>
+         </property>
+        </widget>
+       </item>
+       <item row="10" column="3" colspan="2">
+        <widget class="QLineEdit" name="intervalTextBox_29">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background: rgb(56, 56, 56);
+border-top-left-radius: 10px;
+border-top-right-radius: 0px;
+border-bottom-right-radius: 0px;
+border-bottom-left-radius: 10px;</string>
+         </property>
+         <property name="text">
+          <string>#FFFFFF</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="38" column="4">
+        <widget class="QLineEdit" name="intervalTextBox_18">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background: rgb(56, 56, 56);
+border-top-left-radius: 10px;
+border-top-right-radius: 0px;
+border-bottom-right-radius: 0px;
+border-bottom-left-radius: 10px;</string>
+         </property>
+         <property name="text">
+          <string>#FFFFFF</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="20" column="3" colspan="2">
+        <widget class="QLineEdit" name="intervalTextBox_35">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background: rgb(56, 56, 56);
+border-top-left-radius: 10px;
+border-top-right-radius: 0px;
+border-bottom-right-radius: 0px;
+border-bottom-left-radius: 10px;</string>
+         </property>
+         <property name="text">
+          <string>#FFFFFF</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="19" column="3" colspan="2">
+        <widget class="QLineEdit" name="intervalTextBox_34">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background: rgb(56, 56, 56);
+border-top-left-radius: 10px;
+border-top-right-radius: 0px;
+border-bottom-right-radius: 0px;
+border-bottom-left-radius: 10px;</string>
+         </property>
+         <property name="text">
+          <string>#FFFFFF</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="3" colspan="2">
+        <widget class="QLineEdit" name="intervalTextBox_5">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background: rgb(56, 56, 56);
+border-top-left-radius: 10px;
+border-top-right-radius: 0px;
+border-bottom-right-radius: 0px;
+border-bottom-left-radius: 10px;</string>
+         </property>
+         <property name="text">
+          <string>#FFFFFF</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="83" column="2" colspan="3">
+        <widget class="QLineEdit" name="intervalTextBox_80">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background: rgb(56, 56, 56);
+border-top-left-radius: 10px;
+border-top-right-radius: 0px;
+border-bottom-right-radius: 0px;
+border-bottom-left-radius: 10px;</string>
+         </property>
+         <property name="text">
+          <string>#FFFFFF</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="85" column="2" colspan="3">
+        <widget class="QLineEdit" name="intervalTextBox_79">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background: rgb(56, 56, 56);
+border-top-left-radius: 10px;
+border-top-right-radius: 0px;
+border-bottom-right-radius: 0px;
+border-bottom-left-radius: 10px;</string>
+         </property>
+         <property name="text">
+          <string>#FFFFFF</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="20" column="0" colspan="3">
         <widget class="QLabel" name="ADText_39">
          <property name="font">
           <font>
@@ -3231,13 +3238,38 @@ border-bottom-left-radius: 10px;</string>
            <bold>false</bold>
           </font>
          </property>
+         <property name="styleSheet">
+          <string notr="true">color:rgb(190, 190, 190);</string>
+         </property>
          <property name="text">
           <string>Height Textbox</string>
          </property>
         </widget>
        </item>
-       <item row="10" column="3" colspan="2">
-        <widget class="QLineEdit" name="intervalTextBox_20">
+       <item row="1" column="1" colspan="4">
+        <widget class="QLineEdit" name="intervalTextBox_3">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background: rgb(56, 56, 56);
+border-top-left-radius: 10px;
+border-top-right-radius: 0px;
+border-bottom-right-radius: 0px;
+border-bottom-left-radius: 10px;</string>
+         </property>
+         <property name="text">
+          <string>2.0</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="31" column="4">
+        <widget class="QLineEdit" name="intervalTextBox_15">
          <property name="font">
           <font>
            <pointsize>12</pointsize>
@@ -3258,8 +3290,8 @@ border-bottom-left-radius: 10px;</string>
          </property>
         </widget>
        </item>
-       <item row="39" column="2" colspan="3">
-        <widget class="QLineEdit" name="intervalTextBox_69">
+       <item row="51" column="4">
+        <widget class="QLineEdit" name="intervalTextBox_25">
          <property name="font">
           <font>
            <pointsize>12</pointsize>
@@ -3280,8 +3312,24 @@ border-bottom-left-radius: 10px;</string>
          </property>
         </widget>
        </item>
-       <item row="13" column="3" colspan="2">
-        <widget class="QLineEdit" name="intervalTextBox_7">
+       <item row="71" column="0" colspan="2">
+        <widget class="QLabel" name="ADText_89">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:rgb(190, 190, 190);</string>
+         </property>
+         <property name="text">
+          <string>Text</string>
+         </property>
+        </widget>
+       </item>
+       <item row="92" column="2" colspan="3">
+        <widget class="QLineEdit" name="intervalTextBox_85">
          <property name="font">
           <font>
            <pointsize>12</pointsize>
@@ -3299,6 +3347,22 @@ border-bottom-left-radius: 10px;</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="30" column="0" colspan="3">
+        <widget class="QLabel" name="ADText_16">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color:rgb(190, 190, 190);</string>
+         </property>
+         <property name="text">
+          <string>Settings &amp; Info Button</string>
          </property>
         </widget>
        </item>
@@ -3324,33 +3388,74 @@ border-bottom-left-radius: 10px;</string>
          </property>
         </widget>
        </item>
+       <item row="55" column="4">
+        <widget class="QLineEdit" name="intervalTextBox_33">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background: rgb(56, 56, 56);
+border-top-left-radius: 10px;
+border-top-right-radius: 0px;
+border-bottom-right-radius: 0px;
+border-bottom-left-radius: 10px;</string>
+         </property>
+         <property name="text">
+          <string>#FFFFFF</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="53" column="3" colspan="2">
+        <widget class="QLineEdit" name="intervalTextBox_31">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background: rgb(56, 56, 56);
+border-top-left-radius: 10px;
+border-top-right-radius: 0px;
+border-bottom-right-radius: 0px;
+border-bottom-left-radius: 10px;</string>
+         </property>
+         <property name="text">
+          <string>#FFFFFF</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="37" column="3" colspan="2">
+        <widget class="QLineEdit" name="intervalTextBox_19">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background: rgb(56, 56, 56);
+border-top-left-radius: 10px;
+border-top-right-radius: 0px;
+border-bottom-right-radius: 0px;
+border-bottom-left-radius: 10px;</string>
+         </property>
+         <property name="text">
+          <string>#FFFFFF</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
       </layout>
      </widget>
-    </widget>
-    <widget class="QLabel" name="ADText_33">
-     <property name="geometry">
-      <rect>
-       <x>530</x>
-       <y>670</y>
-       <width>161</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>12</pointsize>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="layoutDirection">
-      <enum>Qt::RightToLeft</enum>
-     </property>
-     <property name="text">
-      <string>Theme Editor</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
     </widget>
     <widget class="QPushButton" name="Exit_3">
      <property name="geometry">
@@ -3417,7 +3522,7 @@ background: rgb(55,55,55);
       <rect>
        <x>320</x>
        <y>670</y>
-       <width>201</width>
+       <width>271</width>
        <height>31</height>
       </rect>
      </property>
@@ -3439,15 +3544,15 @@ background: rgb(55,55,55);
         }</string>
      </property>
      <property name="text">
-      <string>Info, Pattern, Preview</string>
+      <string>Info, Pattern, Preview, Console</string>
      </property>
     </widget>
     <widget class="QPushButton" name="Exit_2">
      <property name="geometry">
       <rect>
-       <x>700</x>
+       <x>610</x>
        <y>670</y>
-       <width>61</width>
+       <width>51</width>
        <height>31</height>
       </rect>
      </property>
@@ -3487,11 +3592,11 @@ background: rgb(55,55,55);
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
-     <widget class="QFrame" name="Background">
+     <widget class="QFrame" name="BackgroundINFO">
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>170</y>
+        <y>110</y>
         <width>421</width>
         <height>391</height>
        </rect>
@@ -3506,7 +3611,7 @@ border-radius: 25px;</string>
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-      <widget class="QLabel" name="Header_2">
+      <widget class="QLabel" name="HeaderINFO">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -3531,7 +3636,7 @@ border-radius: 25px;</string>
         <set>Qt::AlignCenter</set>
        </property>
       </widget>
-      <widget class="QLabel" name="Text">
+      <widget class="QLabel" name="TextINFO">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -3559,7 +3664,7 @@ border-radius: 25px;</string>
         <set>Qt::AlignCenter</set>
        </property>
       </widget>
-      <widget class="QPushButton" name="Button">
+      <widget class="QPushButton" name="ButtonINFO">
        <property name="geometry">
         <rect>
          <x>110</x>
@@ -3589,7 +3694,7 @@ border-radius: 10px;</string>
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>100</y>
+        <y>40</y>
         <width>421</width>
         <height>21</height>
        </rect>
@@ -3616,7 +3721,7 @@ border-radius: 0px;</string>
          <x>0</x>
          <y>0</y>
          <width>421</width>
-         <height>20</height>
+         <height>21</height>
         </rect>
        </property>
        <property name="font">
@@ -3636,7 +3741,7 @@ border-radius: 0px;</string>
       <property name="geometry">
        <rect>
         <x>450</x>
-        <y>90</y>
+        <y>30</y>
         <width>431</width>
         <height>471</height>
        </rect>
@@ -3676,7 +3781,7 @@ border-radius: 25px;</string>
         <set>Qt::AlignCenter</set>
        </property>
       </widget>
-      <widget class="QPushButton" name="Close">
+      <widget class="QPushButton" name="ClosePTN">
        <property name="geometry">
         <rect>
          <x>120</x>
@@ -3813,7 +3918,7 @@ border-bottom-left-radius: 0px;</string>
         <string>Submit</string>
        </property>
       </widget>
-      <widget class="QFrame" name="ImageBackground_2">
+      <widget class="QFrame" name="ImageBackgroundPTN">
        <property name="geometry">
         <rect>
          <x>110</x>
@@ -3857,7 +3962,7 @@ border-radius: 25px;</string>
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>130</y>
+        <y>70</y>
         <width>421</width>
         <height>21</height>
        </rect>
@@ -3880,6 +3985,244 @@ border-radius: 25px;</string>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
+     </widget>
+     <widget class="QFrame" name="ConsoleWND">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>510</y>
+        <width>861</width>
+        <height>101</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background:rgb(35, 38, 37);
+border-radius: 25px;</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QPushButton" name="Exit_6">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>30</y>
+         <width>131</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+background: rgb(58,61,59);
+border-radius: 10px;
+}
+        QPushButton:hover {
+background: rgb(55,55,55);
+        }</string>
+       </property>
+       <property name="text">
+        <string>Exit</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="Exit_7">
+       <property name="geometry">
+        <rect>
+         <x>180</x>
+         <y>30</y>
+         <width>131</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+background: rgb(58,61,59);
+border-radius: 10px;
+}
+        QPushButton:hover {
+background: rgb(55,55,55);
+        }</string>
+       </property>
+       <property name="text">
+        <string>Save Logs</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="Exit_8">
+       <property name="geometry">
+        <rect>
+         <x>320</x>
+         <y>30</y>
+         <width>131</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+background: rgb(58,61,59);
+border-radius: 10px;
+}
+        QPushButton:hover {
+background: rgb(55,55,55);
+        }</string>
+       </property>
+       <property name="text">
+        <string>Open Logs</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="Exit_9">
+       <property name="geometry">
+        <rect>
+         <x>460</x>
+         <y>30</y>
+         <width>131</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+background: rgb(58,61,59);
+border-radius: 10px;
+}
+        QPushButton:hover {
+background: rgb(55,55,55);
+        }</string>
+       </property>
+       <property name="text">
+        <string>Clear Logs</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="Exit_10">
+       <property name="geometry">
+        <rect>
+         <x>600</x>
+         <y>30</y>
+         <width>131</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>-1</pointsize>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+background: rgb(58,61,59);
+border-radius: 10px;
+font: 16px;
+}
+        QPushButton:hover {
+background: rgb(55,55,55);
+        }</string>
+       </property>
+       <property name="text">
+        <string>Update Console</string>
+       </property>
+      </widget>
+      <widget class="QListWidget" name="listWidget">
+       <property name="geometry">
+        <rect>
+         <x>750</x>
+         <y>20</y>
+         <width>91</width>
+         <height>61</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <item>
+        <property name="text">
+         <string>The</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Quick</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Brown</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Fox</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Jumps</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Over</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>The</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Red</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Lazy</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Dog</string>
+        </property>
+       </item>
+      </widget>
      </widget>
     </widget>
     <widget class="QFrame" name="Settings">
@@ -4554,6 +4897,21 @@ border-radius: 25px;</string>
          <height>25</height>
         </rect>
        </property>
+       <item>
+        <property name="text">
+         <string>example</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>dark</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>white</string>
+        </property>
+       </item>
       </widget>
      </widget>
      <widget class="QFrame" name="BackgroundINF">
@@ -4649,7 +5007,7 @@ background: rgb(55,55,55);
         </font>
        </property>
        <property name="text">
-        <string>Info</string>
+        <string>Error</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -4657,17 +5015,47 @@ background: rgb(55,55,55);
       </widget>
      </widget>
     </widget>
+    <widget class="QPushButton" name="Exit_11">
+     <property name="geometry">
+      <rect>
+       <x>670</x>
+       <y>670</y>
+       <width>91</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+background: rgb(58,61,59);
+border-radius: 10px;
+}
+        QPushButton:hover {
+background: rgb(55,55,55);
+        }</string>
+     </property>
+     <property name="text">
+      <string>Minimize</string>
+     </property>
+    </widget>
+    <zorder>IPP</zorder>
     <zorder>Exit</zorder>
     <zorder>Upload</zorder>
     <zorder>scrollArea</zorder>
-    <zorder>ADText_33</zorder>
     <zorder>Exit_3</zorder>
     <zorder>Exit_4</zorder>
     <zorder>Exit_5</zorder>
     <zorder>Exit_2</zorder>
-    <zorder>Settings</zorder>
     <zorder>Main</zorder>
-    <zorder>IPP</zorder>
+    <zorder>Exit_11</zorder>
+    <zorder>Settings</zorder>
    </widget>
   </widget>
  </widget>
