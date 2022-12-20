@@ -52,7 +52,7 @@
         "image-background": "#F3DB63",
         "button": "#F2C77E",
         "textbox": "#F2C77E",
-        "close": "#FF2C302E"
+        "close": "#F2C77E"
     },
     "console": {
         "text": "#0D1321",
