@@ -205,9 +205,9 @@ void PreviewWindow::reloadThemes(){
 }
 
 int i = 10;
+#ifdef __linux__
 struct uinput_setup usetup;
 int fd = open("/dev/uinput", O_WRONLY | O_NONBLOCK);
-#ifdef __linux__
 void setupLXMouse(){
 
     ioctl(fd, UI_SET_EVBIT, EV_KEY);
