@@ -17,6 +17,10 @@
 #include <QStandardPaths>
 #include <QTest>
 #include <algorithm>
+#include <QApplication>
+#include <QTextStream>
+#include <QKeyEvent>
+#include <uglobalhotkeys.h>
 
 int SCREEN_WIDTH = 1080;
 int SCREEN_HEIGHT = 4920;
@@ -94,7 +98,7 @@ PreviewWindow::PreviewWindow(QImage dimage, int interval, int delay, QWidget *pa
     ui(new Ui::PreviewWindow)
 {
     ui->setupUi(this);
-    setWindowFlags(Qt::Widget | Qt::FramelessWindowHint | Qt::X11BypassWindowManagerHint);
+    setWindowFlags(Qt::Widget | Qt::FramelessWindowHint | Qt::X11BypassWindowManagerHint | Qt::WindowTransparentForInput | Qt::WindowStaysOnTopHint);
     setParent(0);
     setMouseTracking(true);
     setAttribute(Qt::WA_NoSystemBackground, true);
@@ -106,9 +110,6 @@ PreviewWindow::PreviewWindow(QImage dimage, int interval, int delay, QWidget *pa
     ui->Header->setFixedWidth(dimage.width());
     ui->Background->setFixedWidth(dimage.width());
     ui->Background->setFixedHeight(dimage.height()+21);
-    ui->LastPOS->setShortcut(Qt::CTRL);
-    ui->Stop->setShortcut(Qt::ALT);
-    ui->Draw->setShortcut(QKeySequence(Qt::SHIFT));
     moveInterval = interval;
     clickDelay = delay;
     image = dimage;
@@ -125,23 +126,35 @@ PreviewWindow::PreviewWindow(QImage dimage, int interval, int delay, QWidget *pa
             move(QCursor::pos().x() - ui->ShownImage->width()/2, QCursor::pos().y() - ui->ShownImage->height()/2);
         }
     });
-    //To-do:
-        #ifdef __linux__
-
-
-        #endif
-    QFuture<void> start = QtConcurrent::run([=]() {
-        #ifdef _WIN32
-
-
-        #endif
+    //To-do: Make code run on Windows
+    UGlobalHotkeys *hotkeyManager = new UGlobalHotkeys();
+    hotkeyManager->registerHotkey("Ctrl+Alt+Q");
+    connect(hotkeyManager, &::UGlobalHotkeys::activated, [=](size_t id)
+    {
+        QApplication::quit();
+        Draw();
     });
-    QFuture<void> stop = QtConcurrent::run([=]() {
-
+    UGlobalHotkeys *hotkeyManager1 = new UGlobalHotkeys();
+    hotkeyManager1->registerHotkey("Ctrl+Alt+W");
+    connect(hotkeyManager1, &::UGlobalHotkeys::activated, [=](size_t id)
+    {
+        QApplication::quit();
+        Draw();
     });
-    QFuture<void> lockpos = QtConcurrent::run([=]() {
-
+    UGlobalHotkeys *hotkeyManager2 = new UGlobalHotkeys();
+    hotkeyManager2->registerHotkey("Ctrl+Alt+E");
+    connect(hotkeyManager2, &::UGlobalHotkeys::activated, [=](size_t id)
+    {
+        QApplication::quit();
+        Draw();
     });
+    UGlobalHotkeys *hotkeyManager3 = new UGlobalHotkeys();
+    hotkeyManager3->registerHotkey("Ctrl+Alt+R");
+    connect(hotkeyManager3, &::UGlobalHotkeys::activated, [=](size_t id)
+    {
+        closeDraw(0);
+    });
+
 }
 
 static void sendMessage(QString a, int b, QWidget *t){
@@ -224,8 +237,29 @@ void setCursor(int x, int y){
 
     #elif  __linux__
         std::this_thread::sleep_for(std::chrono::microseconds(1));
-        emitLX(fd, EV_REL, REL_X, (x-QCursor::pos().x())*2);
-        emitLX(fd, EV_REL, REL_Y, (y-QCursor::pos().y())*2);
+        emitLX(fd, EV_REL, REL_X, (x - QCursor::pos().x()/2));
+        emitLX(fd, EV_REL, REL_Y, (y - QCursor::pos().y()/2));
+        qDebug() << QCursor::pos().x()-x << "\n1";
+        //emitLX(fd, EV_REL, REL_X, (x-QCursor::pos().x()));
+        //emitLX(fd, EV_REL, REL_Y, (y-QCursor::pos().y()));
+        emitLX(fd, EV_SYN, SYN_REPORT, 0);
+        std::this_thread::sleep_for(std::chrono::microseconds(1));
+    #elif  __APPLE__
+
+    #endif
+}
+
+void setCursorREL(int x, int y){
+    x += offsetX;
+    y += offsetY;
+    //This code is cross-platform, but does not work with games.
+    //QCursor::setPos(QPoint(x,y));
+    #ifdef _WIN32
+
+    #elif  __linux__
+        std::this_thread::sleep_for(std::chrono::microseconds(1));
+        emitLX(fd, EV_REL, REL_X, (x));
+        emitLX(fd, EV_REL, REL_Y, (y));
         emitLX(fd, EV_SYN, SYN_REPORT, 0);
         std::this_thread::sleep_for(std::chrono::microseconds(1));
     #elif  __APPLE__
@@ -368,7 +402,7 @@ void PreviewWindow::Draw()
                 uint ci = uint(qGray(pixel));
                 std::cout << ci << "\n" << xImg << "\n";
                 if (ci <= 254){
-                    ::setCursor(x+xImg, y+(yImg));
+                    ::setCursor(x+xImg, y+yImg);
                     if (!cursorHeld) {::holdCursor(); cursorHeld = true;}
                     std::this_thread::sleep_for(std::chrono::microseconds(moveInterval));
                 }

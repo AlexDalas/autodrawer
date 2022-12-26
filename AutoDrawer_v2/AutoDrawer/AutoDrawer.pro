@@ -68,3 +68,10 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     resources.qrc
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/UGlobalHotkey/release/ -lUGlobalHotkey
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/UGlobalHotkey/debug/ -lUGlobalHotkey
+else:unix: LIBS += -L$$PWD/UGlobalHotkey/ -lUGlobalHotkey
+
+INCLUDEPATH += $$PWD/UGlobalHotkey
+DEPENDPATH += $$PWD/UGlobalHotkey
