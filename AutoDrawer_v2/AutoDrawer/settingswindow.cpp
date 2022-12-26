@@ -214,8 +214,8 @@ void SettingsWindow::on_ThemeCombo_currentIndexChanged()
         inFile.write(new_doc.toJson());
         inFile.close();
         on_Reload_released();
-        QApplication::closeAllWindows();
-        QProcess::startDetached(qApp->arguments()[0], qApp->arguments());
+ //       QApplication::closeAllWindows();
+   //     QProcess::startDetached(qApp->arguments()[0], qApp->arguments());
     }
 }
 

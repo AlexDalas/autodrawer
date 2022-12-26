@@ -5,6 +5,7 @@
 #include "messagewindow.h"
 #include "previewwindow.h"
 #include "qdiriterator.h"
+#include "qfilesystemwatcher.h"
 #include "qjsonarray.h"
 #include "qjsondocument.h"
 #include "consolewindow.h"
@@ -185,7 +186,6 @@ AutoDrawer::AutoDrawer(QWidget *parent)
     if (!QDir(pathAD).exists()) QDir().mkdir(pathAD);
     if (!QDir(pathAD+"/themes/").exists()) QDir().mkdir(pathAD+"/themes/");
     if (!QDir(pathAD+"/logs/").exists()) QDir().mkdir(pathAD+"/logs/");
-
     if (!QDir(pathAD).exists()) QDir().mkdir(pathAD);
     if (!QFile(pathAD+"/user.cfg").exists()){
         QJsonObject UserCFG;
@@ -222,6 +222,9 @@ AutoDrawer::AutoDrawer(QWidget *parent)
         MyFile.close();
     }
     reloadThemes();
+    QFileSystemWatcher watcher;
+    watcher.addPath(pathAD+"/user.cfg");
+    QObject::connect(&watcher, &QFileSystemWatcher::fileChanged, this, &AutoDrawer::reloadThemes);
     on_reloadButton_released();
 }
 
