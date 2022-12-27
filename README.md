@@ -58,13 +58,14 @@ Join [the Discord](https://discord.gg/rwvUFraDnb) for help, as we are active on 
 
 </a>
 <a name="OperatingSystems"/>
-<h1> Operating Systems </h1>v
+<h1> Operating Systems </h1>
 </a>
 | Operating System | Version 2 | Version 1 |
 |------------------|-----------|-----------|
-| Windows          | <span style="color:green">Supported</span> | <span style="color:green">Supported</span> |
-| Linux            | <span style="color:green">Supported</span> | <span style="color:red">Not supported</span> |
-| Mac              | <span style="color:red">Not supported</span> | <span style="color:red">Not supported</span> |
+| Windows          | <p style="color:green">Supported</p> | <p style="color:green">Supported</p> |
+| Linux            | <p style="color:green">Supported</p> | <p style="color:red">Not supported</p> |
+| Mac              | <p style="color:red">Not supported</p> | <p style="color:red">Not supported</p> |
+
 <a name="Documentation"/>
 <h1> Documentation </h1>
 
