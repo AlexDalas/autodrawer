@@ -61,15 +61,14 @@ Join [the Discord](https://discord.gg/rwvUFraDnb) for help, as we are active on 
 <h1> Operating Systems </h1>
 </a>
 
+| Operating System | Version 2 | Version 1 |
+|------------------|-----------|-----------|
+| Windows          | :white_check_mark: | :white_check_mark: |
+| Linux            | :white_check_mark: | :x: |
+| Mac              | :x: | :x: |
 
 <a name="Documentation"/>
 <h1> Documentation </h1>
 
 Documentation can [be found here]() (TBD)
 </a>
-
-| Operating System | Version 2 | Version 1 |
-|------------------|-----------|-----------|
-| Windows          | :white_check_mark: | :white_check_mark: |
-| Linux            | :white_check_mark: | :x: |
-| Mac              | :x: | :x: |
