@@ -54,7 +54,7 @@ Join [the Discord](https://discord.gg/rwvUFraDnb) for help, as we are active on 
 <a name="FAQ"/>
 <h1> FAQ </h1>
 </a>
-<p> See the FAQ board on the wiki [here](https://github.com/AlexCYP/autodrawer/FAQ).  </p>
+See the FAQ board on the wiki [here](https://github.com/AlexCYP/autodrawer/FAQ) 
 </a>
 
 </a>
