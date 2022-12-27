@@ -22,6 +22,8 @@ private slots:
 
     void on_Close_released();
 
+    void onFileChanged(const QString& path);
+
 private:
     Ui::custompattern *ui;
 };

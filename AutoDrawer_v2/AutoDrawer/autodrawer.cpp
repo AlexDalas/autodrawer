@@ -4,12 +4,14 @@
 #include "infowindow.h"
 #include "messagewindow.h"
 #include "previewwindow.h"
+#include "qcryptographichash.h"
 #include "qdiriterator.h"
 #include "qfilesystemwatcher.h"
 #include "qjsonarray.h"
 #include "qjsondocument.h"
 #include "consolewindow.h"
 #include "qjsonobject.h"
+#include "qtimer.h"
 #include <qapplication.h>
 #include <QFileDialog>
 #include <iostream>
@@ -222,10 +224,17 @@ AutoDrawer::AutoDrawer(QWidget *parent)
         MyFile.close();
     }
     reloadThemes();
-    QFileSystemWatcher watcher;
-    watcher.addPath(pathAD+"/user.cfg");
-    QObject::connect(&watcher, &QFileSystemWatcher::fileChanged, this, &AutoDrawer::reloadThemes);
+    QFileSystemWatcher* watcher = new QFileSystemWatcher(this);
+    watcher->addPath(pathAD+"/user.cfg");
+    connect(watcher, &QFileSystemWatcher::fileChanged, this, &AutoDrawer::onFileChanged);
     on_reloadButton_released();
+}
+
+void AutoDrawer::onFileChanged(const QString& path)
+{
+  if (path == pathAD+"/user.cfg") {
+   reloadThemes();
+  }
 }
 
 void AutoDrawer::reloadThemes(){

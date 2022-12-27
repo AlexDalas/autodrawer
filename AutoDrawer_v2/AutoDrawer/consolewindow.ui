@@ -40,7 +40,7 @@ border-radius: 25px;</string>
     <widget class="QPushButton" name="Exit">
      <property name="geometry">
       <rect>
-       <x>55</x>
+       <x>120</x>
        <y>540</y>
        <width>131</width>
        <height>41</height>
@@ -70,7 +70,7 @@ background: rgb(55,55,55);
     <widget class="QPushButton" name="Exit_2">
      <property name="geometry">
       <rect>
-       <x>195</x>
+       <x>260</x>
        <y>540</y>
        <width>131</width>
        <height>41</height>
@@ -100,7 +100,7 @@ background: rgb(55,55,55);
     <widget class="QPushButton" name="Exit_3">
      <property name="geometry">
       <rect>
-       <x>335</x>
+       <x>400</x>
        <y>540</y>
        <width>131</width>
        <height>41</height>
@@ -130,7 +130,7 @@ background: rgb(55,55,55);
     <widget class="QPushButton" name="Exit_4">
      <property name="geometry">
       <rect>
-       <x>475</x>
+       <x>540</x>
        <y>540</y>
        <width>131</width>
        <height>41</height>
@@ -289,39 +289,6 @@ background: rgb(55,55,55);
        <string>e</string>
       </property>
      </item>
-    </widget>
-    <widget class="QPushButton" name="Exit_5">
-     <property name="geometry">
-      <rect>
-       <x>615</x>
-       <y>540</y>
-       <width>131</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>-1</pointsize>
-       <italic>false</italic>
-       <bold>false</bold>
-      </font>
-     </property>
-     <property name="cursor">
-      <cursorShape>PointingHandCursor</cursorShape>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QPushButton{
-background: rgb(58,61,59);
-border-radius: 10px;
-font: 16px;
-}
-        QPushButton:hover {
-background: rgb(55,55,55);
-        }</string>
-     </property>
-     <property name="text">
-      <string>Update Console</string>
-     </property>
     </widget>
    </widget>
   </widget>

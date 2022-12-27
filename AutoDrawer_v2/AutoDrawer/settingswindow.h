@@ -50,6 +50,8 @@ private slots:
     void on_intervalTextBox_textChanged(const QString &arg1);
 
     void on_intervalTextBox_2_textChanged(const QString &arg1);
+
+    void onFileChanged(const QString& path);
 private:
     Ui::SettingsWindow *ui;
 };

@@ -1,5 +1,6 @@
 #include "settingswindow.h"
 #include "consolewindow.h"
+#include "qfilesystemwatcher.h"
 #include "qjsondocument.h"
 #include "themeeditor.h"
 #include "ui_settingswindow.h"
@@ -46,6 +47,21 @@ SettingsWindow::SettingsWindow(QWidget *parent) :
     ui->intervalTextBox_2->setText(QString::number(rootObj["offset_y"].toInt()));
     inFile.close();
     indexReady = true;
+    QFileSystemWatcher* watcher = new QFileSystemWatcher(this);
+    watcher->addPath(PathAD+"/user.cfg");
+    connect(watcher, &QFileSystemWatcher::fileChanged, this, &SettingsWindow::onFileChanged);
+}
+void SettingsWindow::onFileChanged(const QString& path)
+{
+    if (path == PathAD+"/user.cfg") {
+        QFile inFile(PathAD+"/user.cfg");
+        inFile.open(QIODevice::ReadOnly|QIODevice::Text);
+        QByteArray data = inFile.readAll();
+        QJsonParseError errorPtr;
+        QJsonDocument doc = QJsonDocument::fromJson(data, &errorPtr);
+        QJsonObject rootObj = doc.object();
+        reloadThemes(rootObj.value("theme").toString());
+    }
 }
 
 SettingsWindow::~SettingsWindow()
@@ -82,9 +98,9 @@ void SettingsWindow::reloadThemes(QString theme){
     QPixmap in;
     auto lightmode = rootObj.value("light-icons").toString();
     if(lightmode=="true"){
-        in = QPixmap (":/images/images/InfoIcon_Light.png");
+        in = QPixmap (":/images/images/RefreshIcon_Light.png");
     }else{
-        in = QPixmap (":/images/images/InfoIcon.png");
+        in = QPixmap (":/images/images/RefreshIcon.png");
     }
     QIcon InfoIcon(in);
     ui->Reload->setIcon(InfoIcon);
@@ -228,7 +244,7 @@ void SettingsWindow::on_OffsetBox_released()
     QJsonParseError errorPtr;
     QJsonDocument doc = QJsonDocument::fromJson(data, &errorPtr);
     QJsonObject doc_obj = doc.object();
-    if (!ui->OffsetBox->checkState()) {doc_obj.insert("offset_enabled", false); new ConsoleWindow("Logs Enabled");} else {new ConsoleWindow("Logs Disabled");doc_obj.insert("offset_enabled", true);}
+    if (!ui->OffsetBox->checkState()) {doc_obj.insert("offset_enabled", false); new ConsoleWindow("Offset Enabled");} else {new ConsoleWindow("Offset Disabled");doc_obj.insert("offset_enabled", true);}
     QJsonDocument new_doc(doc_obj);
     inFile.resize(0);
     inFile.write(new_doc.toJson());

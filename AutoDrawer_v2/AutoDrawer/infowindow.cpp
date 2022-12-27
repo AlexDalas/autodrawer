@@ -1,5 +1,6 @@
 #include "infowindow.h"
 #include "consolewindow.h"
+#include "qfilesystemwatcher.h"
 #include "ui_infowindow.h"
 #include <QFile>
 #include <QJsonParseError>
@@ -18,6 +19,15 @@ InfoWindow::InfoWindow(QWidget *parent) :
     setAttribute(Qt::WA_TranslucentBackground, true);
     new ConsoleWindow("Opened Info window.");
     reloadThemes();
+    QFileSystemWatcher* watcher = new QFileSystemWatcher(this);
+    watcher->addPath(PathATD+"/user.cfg");
+    connect(watcher, &QFileSystemWatcher::fileChanged, this, &InfoWindow::onFileChanged);
+}
+void InfoWindow::onFileChanged(const QString& path)
+{
+    if (path == PathATD+"/user.cfg") {
+   reloadThemes();
+  }
 }
 InfoWindow::~InfoWindow()
 {

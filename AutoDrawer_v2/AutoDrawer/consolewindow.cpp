@@ -1,5 +1,6 @@
 #include "consolewindow.h"
 #include "messagewindow.h"
+#include "qfilesystemwatcher.h"
 #include "ui_consolewindow.h"
 #include <QDesktopServices>
 #include <QStandardPaths>
@@ -38,13 +39,13 @@ ConsoleWindow::ConsoleWindow(QString text, QWidget *parent) :
         std::string logName = "autodraw_"+year+month+day;
         if (!QFile::exists(QString::fromStdString(logPath+logName+".log"))){
             std::ofstream MyFile(logPath+logName+".log");;
-            MyFile << text.toStdString() << "\n";
+            MyFile << "\n" + text.toStdString();
             MyFile.close();
         }
         else{
             QFile MyFile(QString::fromStdString(logPath+logName+".log"));
             MyFile.open(QIODevice::Append |QIODevice::Text);
-            MyFile.write(text.toUtf8()+"\n");
+            MyFile.write("\n" + text.toUtf8());
             MyFile.close();
         }
         this->close();
@@ -70,6 +71,24 @@ ConsoleWindow::ConsoleWindow(QString text, QWidget *parent) :
             w->show();
             this->close();
         }
+        QFileSystemWatcher* watcher = new QFileSystemWatcher(this);
+        watcher->addPath(pathAPD+"/user.cfg");
+        watcher->addPath(pathAPD+"/logs/"+QString::fromStdString(logName)+".log");
+        connect(watcher, &QFileSystemWatcher::fileChanged, this, &ConsoleWindow::onFileChanged);
+    }
+}
+
+void ConsoleWindow::onFileChanged(const QString& path)
+{
+    if (path == pathAPD+"/user.cfg") {
+       reloadThemes();
+      }else{
+        std::string year = std::to_string(QDate::currentDate().year());
+        std::string month = std::to_string(QDate::currentDate().month());
+        if (std::stoi(month)<=9) month="0"+month;
+        std::string day = std::to_string(QDate::currentDate().day());
+        std::string logName = "autodraw_"+year+month+day;
+        reloadConsole(logName);
     }
 }
 
@@ -111,7 +130,6 @@ void ConsoleWindow::reloadThemes(){
     ui->Exit_2->setStyleSheet("color: "+console["text"].toString()+";background: "+console["button"].toString()+";border-radius: 10px;");
     ui->Exit_3->setStyleSheet("color: "+console["text"].toString()+";background: "+console["button"].toString()+";border-radius: 10px;");
     ui->Exit_4->setStyleSheet("color: "+console["text"].toString()+";background: "+console["button"].toString()+";border-radius: 10px;");
-    ui->Exit_5->setStyleSheet("color: "+console["text"].toString()+";background: "+console["button"].toString()+";border-radius: 10px;");
     ui->Background->setStyleSheet("background: "+console["background"].toString()+";border-radius:25px;");
     ui->listWidget->setStyleSheet("background: "+console["console-background"].toString()+";border-radius:10px;");
 }
@@ -129,7 +147,6 @@ void ConsoleWindow::reloadConsole(std::string logName){
     QStringList Q = QTS.readAll().split("\n");
     for(int i = Q.size(); i --> 0;)
     {
-        if (Q[i].toStdString() == "") return;
         ui->listWidget->addItem(Q[i]);
     }
 }
@@ -167,7 +184,16 @@ void ConsoleWindow::on_Exit_released()
 
 void ConsoleWindow::on_Exit_4_released()
 {
-    ui->listWidget->clear();
+    std::string year = std::to_string(QDate::currentDate().year());
+    std::string month = std::to_string(QDate::currentDate().month());
+    if (std::stoi(month)<=9) month="0"+month;
+    std::string day = std::to_string(QDate::currentDate().day());
+    std::string logName = "autodraw_"+year+month+day;
+    QFile file(pathAPD+"/logs/"+QString::fromStdString(logName)+".log");
+    if (file.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
+      file.resize(0);
+      file.close();
+    }
 }
 
 

@@ -1,5 +1,6 @@
 #include "messagewindow.h"
 #include "consolewindow.h"
+#include "qfilesystemwatcher.h"
 #include "ui_messagewindow.h"
 #include "autodrawer.h"
 #include <QFile>
@@ -38,6 +39,15 @@ MessageWindow::MessageWindow(QString text, int type, QWidget *parent) :
     QStringList textTypes; textTypes << "Info" << "Error" << "Alert" << "Success" << "Stopped";
     ui->Header->setText(textTypes[type-1]);
     if (type<=3) {buttonType(0);} else {buttonType(1);}
+    QFileSystemWatcher* watcher = new QFileSystemWatcher(this);
+    watcher->addPath(PathAT+"/user.cfg");
+    connect(watcher, &QFileSystemWatcher::fileChanged, this, &MessageWindow::onFileChanged);
+}
+void MessageWindow::onFileChanged(const QString& path)
+{
+    if (path == PathAT+"/user.cfg") {
+   reloadThemes();
+  }
 }
 
 void MessageWindow::reloadThemes(){
