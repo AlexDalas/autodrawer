@@ -44,7 +44,7 @@ Currently, AutoDraw Version 2 is still in development and is not yet ready for r
 AutoDrawer was originally created as a fork of [rainzhao2000](https://github.com/rainzhao2000/autodrawer)'s software and has since been modified to support automatic drawing in more drawing games. This version is coded in C# and uses the WPF user interface framework. AutoDrawer is open source and only supports the Windows operating systems.
 </p>
 
-Install v1.4 [here](https://github.com/Siydge/autodraw-roblox/releases/tag/v1.4).
+Install v1.4 [here](https://github.com/AlexCYP/autodrawer/releases/latest).
  
 <a name="Support"/>
 <h1> Support </h1>
@@ -55,7 +55,7 @@ Join [the Discord](https://discord.gg/rwvUFraDnb) for help, as we are active on 
 <h1> FAQ </h1>
 </a>
 
-    <p> See the FAQ board on the wiki. (TBD) </p>
+    <p> See the FAQ board on the wiki [here](https://github.com/AlexCYP/autodrawer/FAQ).  </p>
 </a>
 
 </a>
@@ -72,5 +72,5 @@ Join [the Discord](https://discord.gg/rwvUFraDnb) for help, as we are active on 
 <a name="Documentation"/>
 <h1> Documentation </h1>
 
-Documentation can [be found here]() (TBD)
+Documentation can [be found here](https://github.com/AlexCYP/autodrawer/wiki) 
 </a>
