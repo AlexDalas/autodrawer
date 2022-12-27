@@ -1,5 +1,5 @@
 <h1 align="center">
-Roblox Auto-Draw
+AutoDrawer
 <br>
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -16,73 +16,54 @@ Roblox Auto-Draw
 - [Introduction](#Introduction)  
 - [Installation](#Installation)  
   - Release
-        - [Version 1 and Version 0](#Version1)  
+        - [Version 1](#Version1)  
   - In development
-        - [Version 2 and Lua Script](#Version2)  
+        - [Version 2](#Version2)  
 - [Support](#Support)  
     - [FAQ](#FAQ)  
-    - [Windows](#Windows)  
-    - [Mac](#Mac)  
-    - [Linux](#Linux)  
+    - [Operating Systems](#OperatingSystems)  
 - [Documentation](#Documentation)  
 <p>
 <a name="Introduction"/>
 <h1> Introduction </h1>
-This Autodraw Software is designed to automatically draw images. 
+AutoDrawer is a program that allows users to draw imported images using their cursor. It is an open source project that has both a C++ (v2) and C# (v1, discontinued) version. The program supports Windows (v1 onwards) and Linux (v2 onwards). The program controls the movement of the cursor, allowing for precise tracing of an imported image. AutoDrawer is often used as a utility in drawing games, providing an easy and intuitive way for players to draw images.
 <a name="Installation"/>
 <h1> Installation </h1>
 
- Install the latest autodrawer from [here](https://github.com/Siydge/autodraw-roblox/releases).
+ Follow [this guide](https://github.com/Siydge/autodraw-roblox/releases) to install AutoDrawer and [this guide](https://github.com/AlexCYP/autodrawer/wiki/Quickstart) to get up and running.
 
+<a name="Version2"/>
+<h3> Version 2 </h3>
+AutoDraw Version 2 is a significant update to the original AutoDraw program. It has been completely rewritten in the C++ programming language, which allows it to run on both Windows and Linux systems. This new version consists of a C++ application that uses the QT framework for design. 
+
+Currently, AutoDraw Version 2 is still in development and is not yet ready for release.
+</a>
 <a name="Version1"/>
-<h3> Version 0 and Version 1</h3>
+<h3> Version 1</h3>
 
-Version 1 and Version 0 are both forks of [rainzhao2000](https://github.com/rainzhao2000/autodrawer)'s software, and has been modified to support automatically drawing in Roblox games. Version 0 and 1 are both coded in C#, but Version 0 uses Winforms, while Version 1 uses WPF.
+AutoDrawer was originally created as a fork of [rainzhao2000](https://github.com/rainzhao2000/autodrawer)'s software and has since been modified to support automatic drawing in more drawing games. This version is coded in C# and uses the WPF user interface framework. AutoDrawer is open source and only supports the Windows operating systems.
 </p>
 
-Install v1.4 [here](https://github.com/Siydge/autodraw-roblox/releases/tag/v1.4).
-
-Get v0 source code [here](https://github.com/Siydge/autodraw-roblox/tree/main/AutoDrawer%20v0).
+Install v1.4 [here](https://github.com/AlexCYP/autodrawer/releases/latest).
  
-<a name="Version2"/>
-<h3> Version 2 and Lua Script</h3>
-Version 2 is a complete rewrite of the original Autodraw program. It is rewritten in C++, and is expected to run on Windows, Mac, and Linux. Version 2 will have a C++ application, and a Lua script. The C++ application will run like a normal autodrawer, and the Lua script will be designed specifically for Roblox games.
-Version 2 is currently not ready.
-
-</a>
 <a name="Support"/>
 <h1> Support </h1>
 
 Join [the Discord](https://discord.gg/rwvUFraDnb) for help, as we are active on there!
- 
- 
-<a name="FAQ"/>
-    <p> We don't really have any FAQ right now, so just ask us in the Discord! </p>
+
+<a name="OperatingSystems"/>
+<h1> Operating Systems </h1>
 </a>
 
-</a>
-<a name="Windows"/>
-<h3> Windows </h3>
+| Operating System | Version 2 | Version 1 |
+|------------------|-----------|-----------|
+| Windows          | :white_check_mark: | :white_check_mark: |
+| Linux            | :white_check_mark: | :x: |
+| Mac              | :x: | :x: |
 
-This software officially supports Windows 10 and above. Any versions below may not work properly, but Windows 7 - 8(.1) *can* work.
-
-</a>
-<a name="Mac"/>
-<h3> Mac </h3>
-
-Mac is not supported, as no one really uses it in our community.
-
-Mac users may use [Parallels](https://www.parallels.com/au/products/desktop/)
-
-</a>
-<a name="Linux"/>
-<h3> Linux </h3>
-
-Linux is not supported. Under WINE, it should somewhat work but drawing is not functional. (Version 2 may have Linux support)
-
-</a>
 <a name="Documentation"/>
-<h1> Documentation </h1>
+<a name="FAQ"/>
+<h1> Documentation and FAQ</h1>
 
-Documentation can [be found here](https://alexcyp.github.io/autodraw-roblox/docs)
+Documentation and FAQ can [be found here](https://github.com/AlexCYP/autodrawer/wiki) 
 </a>
