@@ -50,12 +50,11 @@ Install v1.4 [here](https://github.com/AlexCYP/autodrawer/releases/latest).
 <h1> Support </h1>
 
 Join [the Discord](https://discord.gg/rwvUFraDnb) for help, as we are active on there!
-
+</a>
 <a name="FAQ"/>
 <h1> FAQ </h1>
 </a>
 See the FAQs on [the wiki](https://github.com/AlexCYP/autodrawer/FAQ)
-</a>
 
 </a>
 <a name="OperatingSystems"/>
