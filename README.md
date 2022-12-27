@@ -62,9 +62,9 @@ Join [the Discord](https://discord.gg/rwvUFraDnb) for help, as we are active on 
 </a>
 | Operating System | Version 2 | Version 1 |
 |------------------|-----------|-----------|
-| Windows          | <p style="color:green">Supported</p> | <p style="color:green">Supported</p> |
-| Linux            | <p style="color:green">Supported</p> | <p style="color:red">Not supported</p> |
-| Mac              | <p style="color:red">Not supported</p> | <p style="color:red">Not supported</p> |
+| Windows          | :white_check_mark: | :white_check_mark: |
+| Linux            | :white_check_mark: | :x: |
+| Mac              | :x: | :x: |
 
 <a name="Documentation"/>
 <h1> Documentation </h1>
