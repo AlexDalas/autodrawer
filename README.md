@@ -50,9 +50,11 @@ Install v1.4 [here](https://github.com/Siydge/autodraw-roblox/releases/tag/v1.4)
 <h1> Support </h1>
 
 Join [the Discord](https://discord.gg/rwvUFraDnb) for help, as we are active on there!
- 
- 
+
 <a name="FAQ"/>
+<h1> FAQ </h1>
+</a>
+
     <p> See the FAQ board on the wiki. (TBD) </p>
 </a>
 
