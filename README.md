@@ -53,9 +53,9 @@ Join [the Discord](https://discord.gg/rwvUFraDnb) for help, as we are active on 
 
 <a name="FAQ"/>
 <h1> FAQ </h1>
-See the FAQs on [the wiki](https://github.com/AlexCYP/autodrawer/FAQ)
 
 <a name="OperatingSystems"/>
+See the FAQs on [the wiki](https://github.com/AlexCYP/autodrawer/FAQ)
 <h1> Operating Systems </h1>
 </a>
 
