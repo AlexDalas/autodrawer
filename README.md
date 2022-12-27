@@ -51,11 +51,7 @@ Install v1.4 [here](https://github.com/AlexCYP/autodrawer/releases/latest).
 
 Join [the Discord](https://discord.gg/rwvUFraDnb) for help, as we are active on there!
 
-<a name="FAQ"/>
-<h1> FAQ </h1>
-
 <a name="OperatingSystems"/>
-See the FAQs on [the wiki](https://github.com/AlexCYP/autodrawer/FAQ)
 <h1> Operating Systems </h1>
 </a>
 
@@ -66,7 +62,8 @@ See the FAQs on [the wiki](https://github.com/AlexCYP/autodrawer/FAQ)
 | Mac              | :x: | :x: |
 
 <a name="Documentation"/>
-<h1> Documentation </h1>
+<a name="FAQ"/>
+<h1> Documentation and FAQ</h1>
 
-Documentation can [be found here](https://github.com/AlexCYP/autodrawer/wiki) 
+Documentation and FAQ can [be found here](https://github.com/AlexCYP/autodrawer/wiki) 
 </a>
