@@ -241,11 +241,21 @@ void AutoDrawer::mousePressEvent(QMouseEvent* event){
 }
 
 void AutoDrawer::mouseMoveEvent(QMouseEvent* event){
-  move(event->globalX()-m_nMouseClick_X_Coordinate,event->globalY()-m_nMouseClick_Y_Coordinate);
-  //qDebug() << event->globalX();
-  //qDebug() << event->globalY();
-}
+    // Check if the mouse is currently over a QPushButton
+    bool mouseOverButton = false;
+    // Iterate over all the QPushButtons in the window
+    foreach (QPushButton* button, findChildren<QPushButton*>()) {
+        if (button->underMouse()) {
+            mouseOverButton = true;
+            break;
+        }
+    }
 
+    // If the mouse is not over a QPushButton, move the window
+    if (!mouseOverButton) {
+        move(event->globalX()-m_nMouseClick_X_Coordinate,event->globalY()-m_nMouseClick_Y_Coordinate);
+    }
+}
 
 void AutoDrawer::onFileChanged(const QString& path)
 {
