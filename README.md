@@ -33,12 +33,6 @@ AutoDrawer is a program that allows users to draw imported images using their cu
 
  Follow [this guide](https://github.com/Siydge/autodraw-roblox/releases) to install AutoDrawer and [this guide](https://github.com/AlexCYP/autodrawer/wiki/Quickstart) to get up and running.
 
-<a name="Build"/>
-<h1> Build</h1>
-
-Build guide can [be found here](https://github.com/AlexCYP/autodrawer/Build) 
-</a>
-
 <a name="Version2"/>
 <h3> Version 2 </h3>
 AutoDraw Version 2 is a significant update to the original AutoDraw program. It has been completely rewritten in the C++ programming language, which allows it to run on both Windows and Linux systems. This new version consists of a C++ application that uses the QT framework for design. 
@@ -53,6 +47,12 @@ AutoDrawer was originally created as a fork of [rainzhao2000](https://github.com
 
 Install v1.4 [here](https://github.com/AlexCYP/autodrawer/releases/latest).
  
+<a name="Build"/>
+<h1> Build</h1>
+
+Build guide can [be found here](https://github.com/AlexCYP/autodrawer/Build) 
+</a>
+
 <a name="Support"/>
 <h1> Support </h1>
 
