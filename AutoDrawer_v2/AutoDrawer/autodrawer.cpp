@@ -177,7 +177,7 @@ AutoDrawer::AutoDrawer(QWidget *parent)
     , ui(new Ui::AutoDrawer)
 
 {
-    setWindowFlags(Qt::Widget | Qt::FramelessWindowHint);
+    setWindowFlags(Qt::Widget | Qt::FramelessWindowHint | Qt::WindowFullscreenButtonHint);
     setParent(0);
     setAttribute(Qt::WA_NoSystemBackground, true);
     setAttribute(Qt::WA_TranslucentBackground, true);

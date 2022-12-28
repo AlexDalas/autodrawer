@@ -85,7 +85,7 @@ ThemeEditor::ThemeEditor(QWidget *parent) :
     ui(new Ui::ThemeEditor)
 {
     ui->setupUi(this);
-    setWindowFlags(Qt::Widget | Qt::FramelessWindowHint);
+    setWindowFlags(Qt::Widget | Qt::FramelessWindowHint | Qt::WindowFullscreenButtonHint);
     setParent(0);
     setAttribute(Qt::WA_NoSystemBackground, true);
     setAttribute(Qt::WA_TranslucentBackground, true);

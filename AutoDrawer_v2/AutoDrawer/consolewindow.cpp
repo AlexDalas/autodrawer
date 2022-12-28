@@ -53,7 +53,7 @@ ConsoleWindow::ConsoleWindow(QString text, QWidget *parent) :
     else{
         new ConsoleWindow("Console opened.");
         ui->setupUi(this);
-        setWindowFlags(Qt::Widget | Qt::FramelessWindowHint);
+        setWindowFlags(Qt::Widget | Qt::FramelessWindowHint | Qt::WindowFullscreenButtonHint);
         setParent(0);
         setAttribute(Qt::WA_NoSystemBackground, true);
         setAttribute(Qt::WA_TranslucentBackground, true);
