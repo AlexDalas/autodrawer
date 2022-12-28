@@ -52,6 +52,10 @@ private slots:
     void on_intervalTextBox_2_textChanged(const QString &arg1);
 
     void onFileChanged(const QString& path);
+
+    void mousePressEvent(QMouseEvent* event);
+
+    void mouseMoveEvent(QMouseEvent* event);
 private:
     Ui::SettingsWindow *ui;
 };

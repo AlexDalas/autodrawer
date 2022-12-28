@@ -151,6 +151,10 @@ private slots:
 
     void on_ButtonINF_released();
 
+    void mousePressEvent(QMouseEvent* event);
+
+    void mouseMoveEvent(QMouseEvent* event);
+
 private:
     Ui::ThemeEditor *ui;
 };

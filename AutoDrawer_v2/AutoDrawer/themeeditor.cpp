@@ -1,4 +1,5 @@
 #include "themeeditor.h"
+#include "qevent.h"
 #include "qjsonobject.h"
 #include "ui_themeeditor.h"
 #include "consolewindow.h"
@@ -94,6 +95,33 @@ ThemeEditor::ThemeEditor(QWidget *parent) :
     on_Exit_3_released();
     updateText(themesrc.toUtf8());
     updateTheme();
+}
+
+int m_nMouseClick_X_Coordinate8;
+int m_nMouseClick_Y_Coordinate8;
+
+void ThemeEditor::mousePressEvent(QMouseEvent* event){
+  m_nMouseClick_X_Coordinate8 = event->x();
+  m_nMouseClick_Y_Coordinate8 = event->y();
+  //qDebug() << m_nMouseClick_X_Coordinate;
+  //qDebug() << m_nMouseClick_Y_Coordinate;
+}
+
+void ThemeEditor::mouseMoveEvent(QMouseEvent* event){
+    // Check if the mouse is currently over a QPushButton
+    bool mouseOverButton = false;
+    // Iterate over all the QPushButtons in the window
+    foreach (QPushButton* button, findChildren<QPushButton*>()) {
+        if (button->underMouse()) {
+            mouseOverButton = true;
+            break;
+        }
+    }
+
+    // If the mouse is not over a QPushButton, move the window
+    if (!mouseOverButton) {
+        move(event->globalX()-m_nMouseClick_X_Coordinate8,event->globalY()-m_nMouseClick_Y_Coordinate8);
+    }
 }
 
 void ThemeEditor::updateTheme(){

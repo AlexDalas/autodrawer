@@ -37,6 +37,10 @@ private slots:
 
     void onFileChanged(const QString& path);
 
+    void mousePressEvent(QMouseEvent* event);
+
+    void mouseMoveEvent(QMouseEvent* event);
+
 private:
     Ui::downloadthemes *ui;
 };

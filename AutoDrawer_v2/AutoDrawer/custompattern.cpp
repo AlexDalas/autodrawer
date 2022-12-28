@@ -1,5 +1,6 @@
 #include "custompattern.h"
 #include "consolewindow.h"
+#include "qevent.h"
 #include "qfilesystemwatcher.h"
 #include "qjsondocument.h"
 #include "qjsonobject.h"
@@ -30,6 +31,33 @@ void custompattern::onFileChanged(const QString& path)
     if (path == pathATD+"/user.cfg") {
    reloadThemes();
   }
+}
+
+int m_nMouseClick_X_Coordinate3;
+int m_nMouseClick_Y_Coordinate3;
+
+void custompattern::mousePressEvent(QMouseEvent* event){
+  m_nMouseClick_X_Coordinate3 = event->x();
+  m_nMouseClick_Y_Coordinate3 = event->y();
+  //qDebug() << m_nMouseClick_X_Coordinate;
+  //qDebug() << m_nMouseClick_Y_Coordinate;
+}
+
+void custompattern::mouseMoveEvent(QMouseEvent* event){
+    // Check if the mouse is currently over a QPushButton
+    bool mouseOverButton = false;
+    // Iterate over all the QPushButtons in the window
+    foreach (QPushButton* button, findChildren<QPushButton*>()) {
+        if (button->underMouse()) {
+            mouseOverButton = true;
+            break;
+        }
+    }
+
+    // If the mouse is not over a QPushButton, move the window
+    if (!mouseOverButton) {
+        move(event->globalX()-m_nMouseClick_X_Coordinate3,event->globalY()-m_nMouseClick_Y_Coordinate3);
+    }
 }
 
 custompattern::~custompattern()

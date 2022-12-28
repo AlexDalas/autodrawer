@@ -50,6 +50,33 @@ void MessageWindow::onFileChanged(const QString& path)
   }
 }
 
+int m_nMouseClick_X_Coordinate6;
+int m_nMouseClick_Y_Coordinate6;
+
+void MessageWindow::mousePressEvent(QMouseEvent* event){
+  m_nMouseClick_X_Coordinate6 = event->x();
+  m_nMouseClick_Y_Coordinate6 = event->y();
+  //qDebug() << m_nMouseClick_X_Coordinate;
+  //qDebug() << m_nMouseClick_Y_Coordinate;
+}
+
+void MessageWindow::mouseMoveEvent(QMouseEvent* event){
+    // Check if the mouse is currently over a QPushButton
+    bool mouseOverButton = false;
+    // Iterate over all the QPushButtons in the window
+    foreach (QPushButton* button, findChildren<QPushButton*>()) {
+        if (button->underMouse()) {
+            mouseOverButton = true;
+            break;
+        }
+    }
+
+    // If the mouse is not over a QPushButton, move the window
+    if (!mouseOverButton) {
+        move(event->globalX()-m_nMouseClick_X_Coordinate6,event->globalY()-m_nMouseClick_Y_Coordinate6);
+    }
+}
+
 void MessageWindow::reloadThemes(){
     QFile inFile(PathAT+"/user.cfg");
     inFile.open(QIODevice::ReadOnly|QIODevice::Text);

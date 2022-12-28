@@ -69,6 +69,33 @@ SettingsWindow::~SettingsWindow()
     delete ui;
 }
 
+int m_nMouseClick_X_Coordinate7;
+int m_nMouseClick_Y_Coordinate7;
+
+void SettingsWindow::mousePressEvent(QMouseEvent* event){
+  m_nMouseClick_X_Coordinate7 = event->x();
+  m_nMouseClick_Y_Coordinate7 = event->y();
+  //qDebug() << m_nMouseClick_X_Coordinate;
+  //qDebug() << m_nMouseClick_Y_Coordinate;
+}
+
+void SettingsWindow::mouseMoveEvent(QMouseEvent* event){
+    // Check if the mouse is currently over a QPushButton
+    bool mouseOverButton = false;
+    // Iterate over all the QPushButtons in the window
+    foreach (QPushButton* button, findChildren<QPushButton*>()) {
+        if (button->underMouse()) {
+            mouseOverButton = true;
+            break;
+        }
+    }
+
+    // If the mouse is not over a QPushButton, move the window
+    if (!mouseOverButton) {
+        move(event->globalX()-m_nMouseClick_X_Coordinate7,event->globalY()-m_nMouseClick_Y_Coordinate7);
+    }
+}
+
 void SettingsWindow::reloadThemes(QString theme){
 
     QJsonObject preview;
