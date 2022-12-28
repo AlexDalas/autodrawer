@@ -241,29 +241,16 @@ void AutoDrawer::mousePressEvent(QMouseEvent* event){
 }
 
 void AutoDrawer::mouseMoveEvent(QMouseEvent* event){
+  QPoint mousePos = event->globalPos();
+  QWidget *widgetUnderMouse = QApplication::widgetAt(mousePos);
 
-  move(event->globalX()-m_nMouseClick_X_Coordinate,event->globalY()-m_nMouseClick_Y_Coordinate);
-  QGuiApplication::setOverrideCursor(QCursor(Qt::PointingHandCursor));
-}
-
-bool AutoDrawer::eventFilter(QObject *obj, QEvent *event)
-{
-    QFrame *bkg = ui->Background;
-    QList<QWidget *> items = bkg->findChildren<QWidget *>();
-
-    for (QWidget *widget : items) {
-        if (QPushButton *frameButton = qobject_cast<QPushButton *>(widget)){
-          if (obj == widget && event->type()==QMouseEvent::MouseButtonPress){
-            QMouseEvent *mouseEvent = static_cast<QMouseEvent*>(event);
-            absPosX = widget->mapToParent(QPoint(0,0)).x();
-            absPosY = widget->mapToParent(QPoint(0,0)).y();
-            m_nMouseClick_X_Coordinate = mouseEvent->x() + absPosX;
-            m_nMouseClick_Y_Coordinate = mouseEvent->y() + absPosY;
-            return true;
-          }
-        }
-    }
-    return false;
+  if (widgetUnderMouse && qobject_cast<QPushButton*>(widgetUnderMouse)) {
+    // Mouse is over a button, do nothing
+  } else {
+    // Mouse is not over a button, move the widget
+    move(event->globalX()-m_nMouseClick_X_Coordinate,event->globalY()-m_nMouseClick_Y_Coordinate);
+    QGuiApplication::setOverrideCursor(QCursor(Qt::PointingHandCursor));
+  }
 }
 
 void AutoDrawer::onFileChanged(const QString& path)
