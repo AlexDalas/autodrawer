@@ -234,33 +234,30 @@ int m_nMouseClick_X_Coordinate;
 int m_nMouseClick_Y_Coordinate;
 int absPosX;
 int absPosY;
-bool disableMove = true; // Initialize disableMove to true
 
 void AutoDrawer::mousePressEvent(QMouseEvent* event){
-#if __win32
-    QPoint mousePos = event->globalPos();
-    QWidget *widgetUnderMouse = QApplication::widgetAt(mousePos);
-
-    if (widgetUnderMouse && qobject_cast<QPushButton*>(widgetUnderMouse)) {
-      // Mouse is over a button, do nothing
-        disableMove = true;
-    } else {
-      // Mouse is not over a button, move the widget
-        disableMove = false;
-        m_nMouseClick_X_Coordinate = event->globalX(); // Set m_nMouseClick_X_Coordinate based on global coordinates
-        m_nMouseClick_Y_Coordinate = event->globalY(); // Set m_nMouseClick_Y_Coordinate based on global coordinates
-    }
-#endif
+    m_nMouseClick_X_Coordinate = event->globalX(); // Set m_nMouseClick_X_Coordinate based on global coordinates
+    m_nMouseClick_Y_Coordinate = event->globalY(); // Set m_nMouseClick_Y_Coordinate based on global coordinates
 }
 
 void AutoDrawer::mouseMoveEvent(QMouseEvent* event){
-#if __win32
-    if (disableMove == false){
-        move(event->globalX()-m_nMouseClick_X_Coordinate,event->globalY()-m_nMouseClick_Y_Coordinate);
-        QGuiApplication::setOverrideCursor(QCursor(Qt::PointingHandCursor)); // Change cursor to pointing hand cursor
+    // Check if the mouse is currently over a QPushButton
+    bool mouseOverButton = false;
+    // Iterate over all the QPushButtons in the window
+    foreach (QPushButton* button, findChildren<QPushButton*>()) {
+        if (button->underMouse()) {
+            mouseOverButton = true;
+            break;
+        }
     }
-#endif
+
+    // If the mouse is not over a QPushButton, move the window
+    if (!mouseOverButton) {
+        move(event->globalX()-m_nMouseClick_X_Coordinate,event->globalY()-m_nMouseClick_Y_Coordinate);
+        QGuiApplication::setOverrideCursor(QCursor(Qt::PointingHandCursor));
+    }
 }
+
 
 void AutoDrawer::onFileChanged(const QString& path)
 {
