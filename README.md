@@ -15,11 +15,11 @@ AutoDrawer
 ##### Table of Contents  
 - [Introduction](#Introduction)  
 - [Installation](#Installation)  
-- [Build](#Build)  
   - Release
         - [Version 1](#Version1)  
   - In development
         - [Version 2](#Version2)  
+- [Build](#Build)  
 - [Support](#Support)  
     - [FAQ](#FAQ)  
     - [Operating Systems](#OperatingSystems)  
