@@ -232,30 +232,18 @@ AutoDrawer::AutoDrawer(QWidget *parent)
 
 int m_nMouseClick_X_Coordinate;
 int m_nMouseClick_Y_Coordinate;
-int absPosX;
-int absPosY;
 
 void AutoDrawer::mousePressEvent(QMouseEvent* event){
-    m_nMouseClick_X_Coordinate = event->globalX(); // Set m_nMouseClick_X_Coordinate based on global coordinates
-    m_nMouseClick_Y_Coordinate = event->globalY(); // Set m_nMouseClick_Y_Coordinate based on global coordinates
+  m_nMouseClick_X_Coordinate = event->x();
+  m_nMouseClick_Y_Coordinate = event->y();
+  //qDebug() << m_nMouseClick_X_Coordinate;
+  //qDebug() << m_nMouseClick_Y_Coordinate;
 }
 
 void AutoDrawer::mouseMoveEvent(QMouseEvent* event){
-    // Check if the mouse is currently over a QPushButton
-    bool mouseOverButton = false;
-    // Iterate over all the QPushButtons in the window
-    foreach (QPushButton* button, findChildren<QPushButton*>()) {
-        if (button->underMouse()) {
-            mouseOverButton = true;
-            break;
-        }
-    }
-
-    // If the mouse is not over a QPushButton, move the window
-    if (!mouseOverButton) {
-        move(event->globalX()-m_nMouseClick_X_Coordinate,event->globalY()-m_nMouseClick_Y_Coordinate);
-
-    }
+  move(event->globalX()-m_nMouseClick_X_Coordinate,event->globalY()-m_nMouseClick_Y_Coordinate);
+  //qDebug() << event->globalX();
+  //qDebug() << event->globalY();
 }
 
 
