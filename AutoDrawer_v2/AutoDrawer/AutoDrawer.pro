@@ -66,6 +66,9 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
+LIBS += -L$$PWD/UGlobalHotkey -UGlobalHotkey.lib
+LIBS += -L$$PWD/UGlobalHotkey -UGlobalHotkey.dll
+
 RESOURCES += \
     resources.qrc
 
