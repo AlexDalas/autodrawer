@@ -4,14 +4,8 @@
 #include <QMainWindow>
 #include "infowindow.h"
 #include "settingswindow.h"
-#include "autodrawer.h"
 #include "./ui_autodrawer.h"
 #include "infowindow.h"
-#include "messagewindow.h"
-#include "previewwindow.h"
-#include "qjsonarray.h"
-#include "qjsondocument.h"
-#include "qjsonobject.h"
 #include <qapplication.h>
 #include <QFileDialog>
 #include <iostream>
@@ -94,6 +88,10 @@ private slots:
     void on_DP_released();
 
     void onFileChanged(const QString& path);
+
+    void mousePressEvent(QMouseEvent* event);
+
+    void mouseMoveEvent(QMouseEvent* event);
 
 private:
     Ui::AutoDrawer *ui;

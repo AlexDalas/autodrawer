@@ -230,6 +230,22 @@ AutoDrawer::AutoDrawer(QWidget *parent)
     on_reloadButton_released();
 }
 
+int m_nMouseClick_X_Coordinate;
+int m_nMouseClick_Y_Coordinate;
+
+void AutoDrawer::mousePressEvent(QMouseEvent* event){
+  m_nMouseClick_X_Coordinate = event->x();
+  m_nMouseClick_Y_Coordinate = event->y();
+  //qDebug() << m_nMouseClick_X_Coordinate;
+  //qDebug() << m_nMouseClick_Y_Coordinate;
+}
+
+void AutoDrawer::mouseMoveEvent(QMouseEvent* event){
+  move(event->globalX()-m_nMouseClick_X_Coordinate,event->globalY()-m_nMouseClick_Y_Coordinate);
+  //qDebug() << event->globalX();
+  //qDebug() << event->globalY();
+}
+
 void AutoDrawer::onFileChanged(const QString& path)
 {
   if (path == pathAD+"/user.cfg") {
