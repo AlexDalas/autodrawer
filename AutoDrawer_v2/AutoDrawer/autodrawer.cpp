@@ -234,9 +234,10 @@ int m_nMouseClick_X_Coordinate;
 int m_nMouseClick_Y_Coordinate;
 int absPosX;
 int absPosY;
-bool disableMove = false;
+bool disableMove = true; // Initialize disableMove to true
 
 void AutoDrawer::mousePressEvent(QMouseEvent* event){
+#if __win32
     QPoint mousePos = event->globalPos();
     QWidget *widgetUnderMouse = QApplication::widgetAt(mousePos);
 
@@ -246,15 +247,19 @@ void AutoDrawer::mousePressEvent(QMouseEvent* event){
     } else {
       // Mouse is not over a button, move the widget
         disableMove = false;
-        m_nMouseClick_X_Coordinate = event->x();
-        m_nMouseClick_Y_Coordinate = event->y();
+        m_nMouseClick_X_Coordinate = event->globalX(); // Set m_nMouseClick_X_Coordinate based on global coordinates
+        m_nMouseClick_Y_Coordinate = event->globalY(); // Set m_nMouseClick_Y_Coordinate based on global coordinates
     }
+#endif
 }
 
 void AutoDrawer::mouseMoveEvent(QMouseEvent* event){
-    if (disableMove){
+#if __win32
+    if (disableMove == false){
         move(event->globalX()-m_nMouseClick_X_Coordinate,event->globalY()-m_nMouseClick_Y_Coordinate);
+        QGuiApplication::setOverrideCursor(QCursor(Qt::PointingHandCursor)); // Change cursor to pointing hand cursor
     }
+#endif
 }
 
 void AutoDrawer::onFileChanged(const QString& path)
