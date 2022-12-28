@@ -232,18 +232,38 @@ AutoDrawer::AutoDrawer(QWidget *parent)
 
 int m_nMouseClick_X_Coordinate;
 int m_nMouseClick_Y_Coordinate;
+int absPosX;
+int absPosY;
 
 void AutoDrawer::mousePressEvent(QMouseEvent* event){
   m_nMouseClick_X_Coordinate = event->x();
   m_nMouseClick_Y_Coordinate = event->y();
-  //qDebug() << m_nMouseClick_X_Coordinate;
-  //qDebug() << m_nMouseClick_Y_Coordinate;
 }
 
 void AutoDrawer::mouseMoveEvent(QMouseEvent* event){
+
   move(event->globalX()-m_nMouseClick_X_Coordinate,event->globalY()-m_nMouseClick_Y_Coordinate);
-  //qDebug() << event->globalX();
-  //qDebug() << event->globalY();
+  QGuiApplication::setOverrideCursor(QCursor(Qt::PointingHandCursor));
+}
+
+bool AutoDrawer::eventFilter(QObject *obj, QEvent *event)
+{
+    QFrame *bkg = ui->Background;
+    QList<QWidget *> items = bkg->findChildren<QWidget *>();
+
+    for (QWidget *widget : items) {
+        if (QPushButton *frameButton = qobject_cast<QPushButton *>(widget)){
+          if (obj == widget && event->type()==QMouseEvent::MouseButtonPress){
+            QMouseEvent *mouseEvent = static_cast<QMouseEvent*>(event);
+            absPosX = widget->mapToParent(QPoint(0,0)).x();
+            absPosY = widget->mapToParent(QPoint(0,0)).y();
+            m_nMouseClick_X_Coordinate = mouseEvent->x() + absPosX;
+            m_nMouseClick_Y_Coordinate = mouseEvent->y() + absPosY;
+            return true;
+          }
+        }
+    }
+    return false;
 }
 
 void AutoDrawer::onFileChanged(const QString& path)
