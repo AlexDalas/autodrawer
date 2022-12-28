@@ -93,6 +93,8 @@ private slots:
 
     void on_DP_released();
 
+    void onFileChanged(const QString& path);
+
 private:
     Ui::AutoDrawer *ui;
     InfoWindow *infoDialog;

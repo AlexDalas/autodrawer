@@ -1,5 +1,6 @@
 #include "custompattern.h"
 #include "consolewindow.h"
+#include "qfilesystemwatcher.h"
 #include "qjsondocument.h"
 #include "qjsonobject.h"
 #include "ui_custompattern.h"
@@ -20,6 +21,15 @@ custompattern::custompattern(QWidget *parent) :
     setAttribute(Qt::WA_NoSystemBackground, true);
     setAttribute(Qt::WA_TranslucentBackground, true);
     reloadThemes();
+    QFileSystemWatcher* watcher = new QFileSystemWatcher(this);
+    watcher->addPath(pathATD+"/user.cfg");
+    connect(watcher, &QFileSystemWatcher::fileChanged, this, &custompattern::onFileChanged);
+}
+void custompattern::onFileChanged(const QString& path)
+{
+    if (path == pathATD+"/user.cfg") {
+   reloadThemes();
+  }
 }
 
 custompattern::~custompattern()

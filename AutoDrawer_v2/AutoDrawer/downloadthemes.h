@@ -35,6 +35,8 @@ private slots:
 
     void on_Exit_released();
 
+    void onFileChanged(const QString& path);
+
 private:
     Ui::downloadthemes *ui;
 };

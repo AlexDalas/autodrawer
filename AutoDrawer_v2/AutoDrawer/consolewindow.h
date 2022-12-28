@@ -30,6 +30,8 @@ private slots:
 
     void reloadThemes();
 
+    void onFileChanged(const QString& path);
+
 private:
     Ui::ConsoleWindow *ui;
 };

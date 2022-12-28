@@ -1,5 +1,6 @@
 #include "downloadthemes.h"
 #include "consolewindow.h"
+#include "qfilesystemwatcher.h"
 #include "ui_downloadthemes.h"
 #include <QUrl>
 #include <QtNetwork/QNetworkAccessManager>
@@ -31,6 +32,15 @@ downloadthemes::downloadthemes(QWidget *parent) :
     if (QFile(pathAUD+"/themes/red.drawtheme").exists()) ui->Red->setText("Installed Red");
     if (QFile(pathAUD+"/themes/violet.drawtheme").exists()) ui->Violet->setText("Installed Violet");
     reloadThemes();
+    QFileSystemWatcher* watcher = new QFileSystemWatcher(this);
+    watcher->addPath(pathAUD+"/user.cfg");
+    connect(watcher, &QFileSystemWatcher::fileChanged, this, &downloadthemes::onFileChanged);
+}
+void downloadthemes::onFileChanged(const QString& path)
+{
+    if (path == pathAUD+"/user.cfg") {
+   reloadThemes();
+  }
 }
 
 downloadthemes::~downloadthemes()

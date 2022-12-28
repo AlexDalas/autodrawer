@@ -26,6 +26,8 @@ private slots:
     void on_pushButton_9_released();
 
     void reloadThemes();
+
+    void onFileChanged(const QString& path);
 private:
     Ui::MessageWindow *ui;
     QString sharedText;
