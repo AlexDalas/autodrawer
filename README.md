@@ -50,7 +50,7 @@ Install v1.4 [here](https://github.com/AlexCYP/autodrawer/releases/latest).
 <a name="Build"/>
 <h1> Build</h1>
 
-Build guide can [be found here](https://github.com/AlexCYP/autodrawer/Build) 
+Build guide can [be found here](https://github.com/AlexCYP/autodrawer/wiki/Build) 
 </a>
 
 <a name="Support"/>
