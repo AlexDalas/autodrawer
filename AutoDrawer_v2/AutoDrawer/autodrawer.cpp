@@ -212,6 +212,7 @@ AutoDrawer::AutoDrawer(QWidget *parent)
         else{
             UserCFG.insert("dir", QJsonValue::fromVariant(""));
         }
+        UserCFG.insert("dirImg", QJsonValue::fromVariant(""));
         UserCFG.insert("offset_enabled", true);
         UserCFG.insert("offset_x", 0);
         UserCFG.insert("offset_y", 0);
@@ -228,6 +229,7 @@ AutoDrawer::AutoDrawer(QWidget *parent)
     watcher->addPath(pathAD+"/user.cfg");
     connect(watcher, &QFileSystemWatcher::fileChanged, this, &AutoDrawer::onFileChanged);
     on_reloadButton_released();
+    on_configsDir_released();
 }
 
 int m_nMouseClick_X_Coordinate;
@@ -355,6 +357,9 @@ void AutoDrawer::reloadThemes(){
         ui->loadConfig->setStyleSheet("QPushButton{color: "+main["text"].toString()+";background: "+main["loadconfig-button"].toString()+"; border-radius:0px;}QPushButton:hover {background: "+main["loadconfig-button-hover"].toString()+";}");
         ui->saveConfig->setStyleSheet("QPushButton{color: "+main["text"].toString()+";background: "+main["saveconfig-button"].toString()+";border-top-left-radius: 0px;border-top-right-radius: 0px;border-bottom-right-radius: 10px;border-bottom-left-radius: 10px;}QPushButton:hover {background: "+main["saveconfig-button-hover"].toString()+";}");
         ui->listView->setStyleSheet("color: "+main["text"].toString()+";background: "+main["config-listbox"].toString()+";border-top-left-radius: 10px;border-top-right-radius: 10px;border-bottom-right-radius: 0px;border-bottom-left-radius: 0px;");
+        ui->listView_img->setStyleSheet("color: "+main["text"].toString()+";background: "+main["config-listbox"].toString()+";border-top-left-radius: 10px;border-top-right-radius: 10px;border-bottom-right-radius: 0px;border-bottom-left-radius: 0px;");
+        ui->configsDir->setStyleSheet("QPushButton{color: "+main["text"].toString()+";background: "+main["directory-buttons"].toString()+";border-radius: 0px;}QPushButton:hover {background: "+main["directory-buttons-hover"].toString()+";}");
+        ui->imagesDir->setStyleSheet("QPushButton{color: "+main["text"].toString()+";background: "+main["directory-buttons"].toString()+";border-radius: 0px;}QPushButton:hover {background: "+main["directory-buttons-hover"].toString()+";}");
         ui->dirButton->setStyleSheet("QPushButton{color: "+main["text"].toString()+";background: "+main["directory-buttons"].toString()+";border-top-left-radius: 0px;border-top-right-radius: 0px;border-bottom-right-radius: 0px;border-bottom-left-radius: 10px;}QPushButton:hover {background: "+main["directory-buttons-hover"].toString()+";}");
         ui->reloadButton->setStyleSheet("QPushButton{color: "+main["text"].toString()+";background: "+main["directory-buttons"].toString()+";border-top-left-radius: 0px;border-top-right-radius: 0px;border-bottom-right-radius: 10px;border-bottom-left-radius: 0px;}QPushButton:hover {background: "+main["directory-buttons-hover"].toString()+";}");
         ui->DPText->setStyleSheet("color: "+main["text"].toString());
@@ -617,6 +622,7 @@ void AutoDrawer::on_uploadImage_released()
 void AutoDrawer::on_reloadButton_released()
 {
     ui->listView->clear();
+    ui->listView_img->clear();
     QFile inFile(pathAD+"/user.cfg");
     inFile.open(QIODevice::ReadOnly|QIODevice::Text);
     QByteArray data = inFile.readAll();
@@ -625,6 +631,7 @@ void AutoDrawer::on_reloadButton_released()
     QJsonDocument doc = QJsonDocument::fromJson(data, &errorPtr);
     QJsonObject rootObj2 = doc.object();
     auto dir = rootObj2.value("dir").toString();
+    auto dirImg = rootObj2.value("dirImg").toString();
     inFile.close();
 
     QStringList list;
@@ -634,6 +641,14 @@ void AutoDrawer::on_reloadButton_released()
         list << it.fileName().replace(".drawcfg", "");
     }
     ui->listView->addItems(list);
+
+    QStringList list2;
+    QDirIterator it2(dirImg, QStringList() << "*.png" << "*.jpg" << "*.jpeg" << "*.bmp" << "*.gif");
+    while (it2.hasNext()){
+        it2.next();
+        list2 << it2.fileName();
+    }
+    ui->listView_img->addItems(list2);
 }
 
 void AutoDrawer::on_dirButton_released()
@@ -646,12 +661,22 @@ void AutoDrawer::on_dirButton_released()
     QJsonParseError errorPtr;
     QJsonDocument doc = QJsonDocument::fromJson(data, &errorPtr);
     QJsonObject doc_obj = doc.object();
-    doc_obj.insert("dir", filename);
-    QJsonDocument new_doc(doc_obj);
-    inFile.resize(0);
-    inFile.write(new_doc.toJson());
-    inFile.close();
-    on_reloadButton_released();
+    if (ui->listView->isVisible()){
+        doc_obj.insert("dir", filename);
+        QJsonDocument new_doc(doc_obj);
+        inFile.resize(0);
+        inFile.write(new_doc.toJson());
+        inFile.close();
+        on_reloadButton_released();
+    }
+    else{
+        doc_obj.insert("dirImg", filename);
+        QJsonDocument new_doc(doc_obj);
+        inFile.resize(0);
+        inFile.write(new_doc.toJson());
+        inFile.close();
+        on_reloadButton_released();
+    }
 }
 
 void AutoDrawer::on_listView_itemClicked(QListWidgetItem *item)
@@ -668,6 +693,26 @@ void AutoDrawer::on_listView_itemClicked(QListWidgetItem *item)
     if (!QFile::exists(dir+"/"+Item+".drawcfg")) return;
     loadConfig(dir+"/"+Item+".drawcfg");
     //on_reloadButton_released();
+}
+
+void AutoDrawer::on_listView_img_itemClicked(QListWidgetItem *item)
+{
+    QString Item = item->text();
+    //ui->listView->clear();
+    QFile inFile(pathAD+"/user.cfg");
+    inFile.open(QIODevice::ReadOnly|QIODevice::Text);
+    QByteArray data = inFile.readAll();
+    QJsonParseError errorPtr;
+    QJsonDocument doc = QJsonDocument::fromJson(data, &errorPtr);
+    QJsonObject rootObj2 = doc.object();
+    auto dir = rootObj2.value("dir").toString();
+    if (!QFile::exists(dir+"/"+Item)) return;
+    QPixmap img(dir+"/"+Item);
+    ui->heightBox->setText(QString::number(img.height()));
+    ui->widthBox->setText(QString::number(img.width()));
+    changeImage(img);
+    ui->ImageSource->setPixmap(img);
+    ui->ScaleSlider->setSliderPosition(100);
 }
 
 
@@ -711,3 +756,17 @@ void AutoDrawer::on_scaleNumber_textEdited()
     ui->ScaleSlider->setSliderPosition(ui->scaleNumber->text().toInt());
     on_ScaleSlider_sliderReleased();
 }
+
+void AutoDrawer::on_configsDir_released()
+{
+    ui->listView->setVisible(true);
+    ui->listView_img->setVisible(false);
+}
+
+
+void AutoDrawer::on_imagesDir_released()
+{
+    ui->listView->setVisible(false);
+    ui->listView_img->setVisible(true);
+}
+

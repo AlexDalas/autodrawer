@@ -80,7 +80,7 @@ border-radius: 25px;</string>
       <string notr="true">color: white;</string>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Program developed by Siydge and AlexCYP&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;This program is under the MIT Lisense.&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;GitHub Page &amp;quot;autodrawer-roblox&amp;quot; is by AlexCYP. &lt;span style=&quot; font-size:6pt;&quot;&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;If you have gotten this program from another repository,&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;we may not be able to provide support.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Program developed by Siydge and AlexCYP&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;This program is under the MIT Lisense.&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;GitHub Page &amp;quot;autodrawer&amp;quot; is by AlexCYP. &lt;span style=&quot; font-size:6pt;&quot;&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;If you have gotten this program from another repository,&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;we may not be able to provide support.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="textFormat">
       <enum>Qt::RichText</enum>

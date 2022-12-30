@@ -81,6 +81,8 @@ private slots:
 
     void on_listView_itemClicked(QListWidgetItem *item);
 
+    void on_listView_img_itemClicked(QListWidgetItem *item);
+
     void loadConfig(QString a);
 
     void on_drawingList_itemClicked(QListWidgetItem *item);
@@ -92,6 +94,10 @@ private slots:
     void mousePressEvent(QMouseEvent* event);
 
     void mouseMoveEvent(QMouseEvent* event);
+
+    void on_configsDir_released();
+
+    void on_imagesDir_released();
 
 private:
     Ui::AutoDrawer *ui;

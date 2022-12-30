@@ -317,7 +317,7 @@ border-bottom-left-radius: 0px;</string>
       </font>
      </property>
      <property name="text">
-      <string>AutoDrawer v2.0</string>
+      <string>AutoDrawer v2.0 (Preview)</string>
      </property>
     </widget>
     <widget class="QPushButton" name="DP">
@@ -777,7 +777,7 @@ border-bottom-left-radius: 0px;</string>
      <property name="geometry">
       <rect>
        <x>705</x>
-       <y>171</y>
+       <y>170</y>
        <width>143</width>
        <height>26</height>
       </rect>
@@ -805,7 +805,7 @@ border-bottom-left-radius: 10px;</string>
      <property name="geometry">
       <rect>
        <x>850</x>
-       <y>171</y>
+       <y>170</y>
        <width>26</width>
        <height>26</height>
       </rect>
@@ -1069,7 +1069,7 @@ background:transparent</string>
        <x>705</x>
        <y>60</y>
        <width>171</width>
-       <height>109</height>
+       <height>85</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -1078,6 +1078,12 @@ border-top-left-radius: 10px;
 border-top-right-radius: 10px;
 border-bottom-right-radius: 0px;
 border-bottom-left-radius: 0px;</string>
+     </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAsNeeded</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
      </property>
     </widget>
     <widget class="QListWidget" name="drawingList">
@@ -1114,6 +1120,82 @@ border-radius: 10px;</string>
       </property>
      </item>
     </widget>
+    <widget class="QPushButton" name="configsDir">
+     <property name="geometry">
+      <rect>
+       <x>705</x>
+       <y>147</y>
+       <width>85</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background: rgb(58,61,59);
+border-radius: 0px;</string>
+     </property>
+     <property name="text">
+      <string>Configs</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="imagesDir">
+     <property name="geometry">
+      <rect>
+       <x>792</x>
+       <y>147</y>
+       <width>84</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background: rgb(58,61,59);
+border-radius: 0px;</string>
+     </property>
+     <property name="text">
+      <string>Images</string>
+     </property>
+    </widget>
+    <widget class="QListWidget" name="listView_img">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>705</x>
+       <y>60</y>
+       <width>171</width>
+       <height>85</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background: rgb(58,61,59);
+border-top-left-radius: 10px;
+border-top-right-radius: 10px;
+border-bottom-right-radius: 0px;
+border-bottom-left-radius: 0px;</string>
+     </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAsNeeded</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+    </widget>
     <zorder>DarkLogo</zorder>
     <zorder>ImageOpt</zorder>
     <zorder>exitButton</zorder>
@@ -1144,8 +1226,11 @@ border-radius: 10px;</string>
     <zorder>ImageDrawn</zorder>
     <zorder>ShownImage</zorder>
     <zorder>LightLogo</zorder>
-    <zorder>listView</zorder>
     <zorder>drawingList</zorder>
+    <zorder>configsDir</zorder>
+    <zorder>imagesDir</zorder>
+    <zorder>listView_img</zorder>
+    <zorder>listView</zorder>
    </widget>
   </widget>
  </widget>
