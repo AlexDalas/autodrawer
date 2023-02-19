@@ -4,14 +4,12 @@
 #include "infowindow.h"
 #include "messagewindow.h"
 #include "previewwindow.h"
-#include "qcryptographichash.h"
 #include "qdiriterator.h"
 #include "qfilesystemwatcher.h"
 #include "qjsonarray.h"
 #include "qjsondocument.h"
 #include "consolewindow.h"
 #include "qjsonobject.h"
-#include "qtimer.h"
 #include <qapplication.h>
 #include <QFileDialog>
 #include <iostream>
@@ -244,17 +242,24 @@ void AutoDrawer::mousePressEvent(QMouseEvent* event){
 
 void AutoDrawer::mouseMoveEvent(QMouseEvent* event){
     // Check if the mouse is currently over a QPushButton
-    bool mouseOverButton = false;
+    bool noMove = false;
     // Iterate over all the QPushButtons in the window
     foreach (QPushButton* button, findChildren<QPushButton*>()) {
         if (button->underMouse()) {
-            mouseOverButton = true;
+            noMove = true;
+            break;
+        }
+    }
+
+    foreach (QSlider* slider, findChildren<QSlider*>()) {
+        if (slider->underMouse()) {
+            noMove = true;
             break;
         }
     }
 
     // If the mouse is not over a QPushButton, move the window
-    if (!mouseOverButton) {
+    if (!noMove) {
         move(event->globalX()-m_nMouseClick_X_Coordinate,event->globalY()-m_nMouseClick_Y_Coordinate);
     }
 }
