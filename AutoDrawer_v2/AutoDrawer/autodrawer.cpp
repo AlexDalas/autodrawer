@@ -705,7 +705,7 @@ void AutoDrawer::on_listView_img_itemClicked(QListWidgetItem *item)
     QJsonParseError errorPtr;
     QJsonDocument doc = QJsonDocument::fromJson(data, &errorPtr);
     QJsonObject rootObj2 = doc.object();
-    auto dir = rootObj2.value("dir").toString();
+    auto dir = rootObj2.value("dirImg").toString();
     if (!QFile::exists(dir+"/"+Item)) return;
     QPixmap img(dir+"/"+Item);
     ui->heightBox->setText(QString::number(img.height()));
