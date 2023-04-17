@@ -1,27 +1,3 @@
-
-AutoDrawer Program/.vs/AutoDrawer/project-colors.json
-AutoDrawer Program/.vs/AutoDrawer/v16/.suo
-AutoDrawer Program/.vs/AutoDrawer/v17/.suo
-AutoDrawer Program/bin/
-AutoDrawer Program/obj/Debug/AutoDrawer.csproj.FileListAbsolute.txt
-AutoDrawer Program/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
-AutoDrawer Program/obj/Debug/AutoDrawer_MarkupCompile.i.cache
-AutoDrawer Program/obj/Debug/AutoDrawer_MarkupCompile.i.lref
-AutoDrawer Program/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
-AutoDrawer Program/obj/Debug/AutoDrawer_MarkupCompile.i.cache
-AutoDrawer Program/.vs/AutoDrawer/v16/.suo
-AutoDrawer Program/obj/Debug/AutoDrawer.exe.manifest
-AutoDrawer Program/obj/Debug/AutoDrawer.g.resources
-AutoDrawer Program/obj/Debug/AutoDrawer.pdb
-AutoDrawer Program/obj/Debug/AutoDrawer.application
-AutoDrawer_v2/AutoDrawer/AutoDrawer.pro.user
-AutoDrawer Program/obj/Debug/ConsoleWindow.baml
-AutoDrawer_v2/build-AutoDrawer-Desktop-Debug/
-AutoDrawer_v2/build-AutoDrawer-Desktop-Release/
-AutoDrawer_v2/build-AutoDrawer-Desktop_Qt_5_15_2_MSVC2019_64bit-Debug/
-AutoDrawer_v2/build-AutoDrawer-Desktop_Qt_5_15_2_MSVC2019_64bit-Release/
-AutoDrawer_v2/build-AutoDrawer-Desktop*/
-# C++ objects and libs
 *.slo
 *.lo
 *.o
