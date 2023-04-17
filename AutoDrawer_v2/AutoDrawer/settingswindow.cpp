@@ -183,14 +183,14 @@ void SettingsWindow::reloadList(){
 void SettingsWindow::on_GH_released()
 {
     new ConsoleWindow("Opening Github page");
-    QDesktopServices::openUrl(QUrl("https://github.com/AlexCYP/autodraw-roblox"));
+    QDesktopServices::openUrl(QUrl("https://github.com/AlexDalas/autodrawer"));
 }
 
 
 void SettingsWindow::on_LR_released()
 {
     new ConsoleWindow("Opening Latest Release");
-    QDesktopServices::openUrl(QUrl("https://github.com/AlexCYP/autodraw-roblox/releases/latest"));
+    QDesktopServices::openUrl(QUrl("https://github.com/AlexDalas/autodrawer/releases/latest"));
 }
 
 
