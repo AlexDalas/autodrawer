@@ -20,12 +20,26 @@
 #include <QApplication>
 #include <QTextStream>
 #include <QKeyEvent>
-#include <uglobalhotkeys.h>
+//#include <uglobalhotkeys.h>
 
 #ifdef _WIN32
-
+#include <Windows.h>
 #elif  __linux__
+#include <iostream>
+#include <unistd.h>
+#include <fcntl.h>
+#include <sstream>
+#include <cstring>
+#include <stdlib.h>
+#include <stdio.h>
+#include <linux/uinput.h>
+#include <X11/Xlib.h>
+int fd;
+Display *dpy;
+void initMouse()
+{
 
+}
 #elif __APPLE__
 
 #endif
@@ -49,6 +63,85 @@ auto path = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + 
 auto offsetX = 0;
 auto offsetY = 0;
 
+void getMousePos(int &x, int &y)
+{
+#ifdef _WIN32
+    // for our use case, we don't really need this on windows, but it's here anyway (untested)
+    POINT cursorPos;
+    if (GetCursorPos(&cursorPos))
+    {
+        // The cursor position was successfully obtained
+        x = cursorPos.x;
+        y = cursorPos.y;
+        // Do something with the x and y coordinates...
+    }
+    else
+    {
+        // Failed to get the cursor position
+    }
+    return 0;
+#elif __linux__
+    //to do
+#endif
+}
+
+void setCursorABS(int x, int y){
+#ifdef _WIN32
+    INPUT input = {};
+    input.type = INPUT_MOUSE;
+    input.mi.dwFlags = MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE;
+    input.mi.dx = x * (65535 / GetSystemMetrics(SM_CXSCREEN));
+    input.mi.dy = y * (65535 / GetSystemMetrics(SM_CYSCREEN));
+    SendInput(1, &input, sizeof(INPUT));
+#elif  __linux__
+
+
+#endif
+}
+
+void setCursorREL(int dx, int dy){
+#ifdef _WIN32
+    INPUT input = {};
+    input.type = INPUT_MOUSE;
+    input.mi.dwFlags = MOUSEEVENTF_MOVE;
+    input.mi.dx = dx;
+    input.mi.dy = dy;
+    SendInput(1, &input, sizeof(INPUT));
+#elif  __linux__
+    int xx, yy;
+    getMousePos(xx, yy);
+    setCursorABS(xx + dx, yy + dy);
+#endif
+}
+
+void holdCursor(){
+#ifdef _WIN32
+    INPUT input = { 0 };
+    input.type = INPUT_MOUSE;
+    input.mi.dwFlags = MOUSEEVENTF_LEFTDOWN;
+    SendInput(1, &input, sizeof(INPUT));
+#elif  __linux__
+
+#endif
+}
+
+void releaseCursor(){
+#ifdef _WIN32
+    INPUT input = { 0 };
+    input.type = INPUT_MOUSE;
+    input.mi.dwFlags = MOUSEEVENTF_LEFTUP;
+    SendInput(1, &input, sizeof(INPUT));
+#elif  __linux__
+
+#endif
+}
+
+void clickCursor(){
+    holdCursor();
+    std::this_thread::sleep_for(std::chrono::microseconds(10000));
+    releaseCursor();
+}
+
 PreviewWindow::PreviewWindow(QImage dimage, int interval, int delay, QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::PreviewWindow)
@@ -68,6 +161,11 @@ PreviewWindow::PreviewWindow(QImage dimage, int interval, int delay, QWidget *pa
     ui->Background->setFixedHeight(dimage.height()+21);
     moveInterval = interval;
     clickDelay = delay;
+    #if  __linux__
+    //initialise mouse and display (linux only)
+    ::initMouse();
+    dpy = XOpenDisplay(NULL);
+    #endif
     image = dimage;
     //pixelArray.resize(image.width(), std::vector<int>(image.height(), 0));
     MainWin = parent;
@@ -76,58 +174,18 @@ PreviewWindow::PreviewWindow(QImage dimage, int interval, int delay, QWidget *pa
     cursorHeld = false;
     //parent->show();
     // Code that puts window under mouse until done
+    /*
     QFuture<void> future = QtConcurrent::run([=]() {
         while (loopRunning){
             move(QCursor::pos().x() - ui->ShownImage->width()/2, QCursor::pos().y() - ui->ShownImage->height()/2);
         }
     });
-    //To-do: Make code run on Windows
-    UGlobalHotkeys *hotkeyManager = new UGlobalHotkeys();
-    hotkeyManager->registerHotkey("Ctrl+Alt+Q");
-    connect(hotkeyManager, &::UGlobalHotkeys::activated, [=](size_t id)
-    {
-        QApplication::quit();
-        Draw();
-    });
-    UGlobalHotkeys *hotkeyManager1 = new UGlobalHotkeys();
-    hotkeyManager1->registerHotkey("Ctrl+Alt+W");
-    connect(hotkeyManager1, &::UGlobalHotkeys::activated, [=](size_t id)
-    {
-        QApplication::quit();
-        Draw();
-    });
-    UGlobalHotkeys *hotkeyManager2 = new UGlobalHotkeys();
-    hotkeyManager2->registerHotkey("Ctrl+Alt+E");
-    connect(hotkeyManager2, &::UGlobalHotkeys::activated, [=](size_t id)
-    {
-        QApplication::quit();
-        Draw();
-    });
-    UGlobalHotkeys *hotkeyManager3 = new UGlobalHotkeys();
-    hotkeyManager3->registerHotkey("Ctrl+Alt+R");
-    connect(hotkeyManager3, &::UGlobalHotkeys::activated, [=](size_t id)
-    {
-        closeDraw(0);
-    });
-
 }
 
 static void sendMessage(QString a, int b, QWidget *t){
     //1 for info, 2 for error, 3 for alert
     MessageWindow *w = new MessageWindow(a, b, t);
     w->show();
-}
-
-void setCursor(int x, int y){
-
-}
-
-void holdCursor(){
-
-}
-
-void releaseCursor(){
-
 }
 
 void PreviewWindow::reloadThemes(){
@@ -196,7 +254,7 @@ void PreviewWindow::lockPos(){
     QJsonObject rootObj2 = doc.object();
     inFile.close();
 
-    ::setCursor(rootObj2.value("lockpos_x").toInt(), rootObj2.value("lockpos_y").toInt());
+    ::setCursorABS(rootObj2.value("lockpos_x").toInt(), rootObj2.value("lockpos_y").toInt());
 }
 
 void PreviewWindow::on_pushButton_2_released()
@@ -245,7 +303,7 @@ void PreviewWindow::Draw()
                 uint ci = uint(qGray(pixel));
                 std::cout << ci << "\n" << xImg << "\n";
                 if (ci <= 254){
-                    ::setCursor(x+xImg, y+yImg);
+                    ::setCursorABS(x+xImg, y+yImg);
                     if (!cursorHeld) {::holdCursor(); cursorHeld = true;}
                     std::this_thread::sleep_for(std::chrono::microseconds(moveInterval));
                 }
