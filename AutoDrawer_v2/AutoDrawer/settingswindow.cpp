@@ -73,8 +73,13 @@ int m_nMouseClick_X_Coordinate7;
 int m_nMouseClick_Y_Coordinate7;
 
 void SettingsWindow::mousePressEvent(QMouseEvent* event){
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
   m_nMouseClick_X_Coordinate7 = event->x();
   m_nMouseClick_Y_Coordinate7 = event->y();
+#else
+    m_nMouseClick_X_Coordinate7 = event->position().x();
+    m_nMouseClick_Y_Coordinate7 = event->position().y();
+#endif
   //qDebug() << m_nMouseClick_X_Coordinate;
   //qDebug() << m_nMouseClick_Y_Coordinate;
 }
@@ -92,7 +97,11 @@ void SettingsWindow::mouseMoveEvent(QMouseEvent* event){
 
     // If the mouse is not over a QPushButton, move the window
     if (!mouseOverButton) {
+        #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
         move(event->globalX()-m_nMouseClick_X_Coordinate7,event->globalY()-m_nMouseClick_Y_Coordinate7);
+        #else
+        move(event->globalPosition().x()-m_nMouseClick_X_Coordinate7,event->globalPosition().y()-m_nMouseClick_Y_Coordinate7);
+        #endif
     }
 }
 
@@ -210,7 +219,7 @@ void SettingsWindow::on_CloseBox_released()
 void SettingsWindow::on_OpenThemes_released()
 {
     new ConsoleWindow("Opening theme path");
-    QDesktopServices::openUrl(PathAD+"/themes/");
+    QDesktopServices::openUrl(QUrl::fromLocalFile(PathAD+"/themes/"));
 }
 
 

@@ -39,8 +39,14 @@ int m_nMouseClick_X_Coordinate5;
 int m_nMouseClick_Y_Coordinate5;
 
 void InfoWindow::mousePressEvent(QMouseEvent* event){
+  //QT5, deprecated
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
   m_nMouseClick_X_Coordinate5 = event->x();
   m_nMouseClick_Y_Coordinate5 = event->y();
+#else
+    m_nMouseClick_X_Coordinate5 = event->position().x();
+    m_nMouseClick_Y_Coordinate5 = event->position().y();
+#endif
   //qDebug() << m_nMouseClick_X_Coordinate;
   //qDebug() << m_nMouseClick_Y_Coordinate;
 }
@@ -58,7 +64,12 @@ void InfoWindow::mouseMoveEvent(QMouseEvent* event){
 
     // If the mouse is not over a QPushButton, move the window
     if (!mouseOverButton) {
+        //QT5, deprecated
+        #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
         move(event->globalX()-m_nMouseClick_X_Coordinate5,event->globalY()-m_nMouseClick_Y_Coordinate5);
+        #else
+        move(event->globalPosition().x()-m_nMouseClick_X_Coordinate5,event->globalPosition().y()-m_nMouseClick_Y_Coordinate5);
+        #endif
     }
 }
 

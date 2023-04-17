@@ -13,10 +13,10 @@ macx {
 
 }
 
-
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++17
+CONFIG += debug
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -66,15 +66,15 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-LIBS += -L$$PWD/UGlobalHotkey -UGlobalHotkey.lib
-LIBS += -L$$PWD/UGlobalHotkey -UGlobalHotkey.dll
+#LIBS += -L$$PWD/UGlobalHotkey -UGlobalHotkey.lib
+#LIBS += -L$$PWD/UGlobalHotkey -UGlobalHotkey.dll
 
 RESOURCES += \
     resources.qrc
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/UGlobalHotkey/release/ -lUGlobalHotkey
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/UGlobalHotkey/debug/ -lUGlobalHotkey
-else:unix: LIBS += -L$$PWD/UGlobalHotkey/ -lUGlobalHotkey
+#win32:CONFIG(release, debug|release): LIBS += -L$$PWD/UGlobalHotkey/release/ -lUGlobalHotkey
+#else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/UGlobalHotkey/debug/ -lUGlobalHotkey
+#else:unix: LIBS += -L$$PWD/UGlobalHotkey/ -lUGlobalHotkey
 
-INCLUDEPATH += $$PWD/UGlobalHotkey
-DEPENDPATH += $$PWD/UGlobalHotkey
+#INCLUDEPATH += $$PWD/UGlobalHotkey
+#DEPENDPATH += $$PWD/UGlobalHotkey

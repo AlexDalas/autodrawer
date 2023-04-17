@@ -101,8 +101,13 @@ int m_nMouseClick_X_Coordinate8;
 int m_nMouseClick_Y_Coordinate8;
 
 void ThemeEditor::mousePressEvent(QMouseEvent* event){
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
   m_nMouseClick_X_Coordinate8 = event->x();
   m_nMouseClick_Y_Coordinate8 = event->y();
+#else
+    m_nMouseClick_X_Coordinate8 = event->position().x();
+    m_nMouseClick_Y_Coordinate8 = event->position().y();
+#endif
   //qDebug() << m_nMouseClick_X_Coordinate;
   //qDebug() << m_nMouseClick_Y_Coordinate;
 }
@@ -120,7 +125,11 @@ void ThemeEditor::mouseMoveEvent(QMouseEvent* event){
 
     // If the mouse is not over a QPushButton, move the window
     if (!mouseOverButton) {
+        #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
         move(event->globalX()-m_nMouseClick_X_Coordinate8,event->globalY()-m_nMouseClick_Y_Coordinate8);
+        #else
+        move(event->globalPosition().x()-m_nMouseClick_X_Coordinate8,event->globalPosition().y()-m_nMouseClick_Y_Coordinate8);
+        #endif
     }
 }
 

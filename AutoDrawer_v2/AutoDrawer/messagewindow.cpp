@@ -54,8 +54,13 @@ int m_nMouseClick_X_Coordinate6;
 int m_nMouseClick_Y_Coordinate6;
 
 void MessageWindow::mousePressEvent(QMouseEvent* event){
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
   m_nMouseClick_X_Coordinate6 = event->x();
   m_nMouseClick_Y_Coordinate6 = event->y();
+#else
+    m_nMouseClick_X_Coordinate6 = event->position().x();
+    m_nMouseClick_Y_Coordinate6 = event->position().y();
+#endif
   //qDebug() << m_nMouseClick_X_Coordinate;
   //qDebug() << m_nMouseClick_Y_Coordinate;
 }
@@ -73,7 +78,11 @@ void MessageWindow::mouseMoveEvent(QMouseEvent* event){
 
     // If the mouse is not over a QPushButton, move the window
     if (!mouseOverButton) {
+        #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
         move(event->globalX()-m_nMouseClick_X_Coordinate6,event->globalY()-m_nMouseClick_Y_Coordinate6);
+        #else
+        move(event->globalPosition().x()-m_nMouseClick_X_Coordinate6,event->globalPosition().y()-m_nMouseClick_Y_Coordinate6);
+        #endif
     }
 }
 

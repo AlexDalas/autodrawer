@@ -48,8 +48,13 @@ int m_nMouseClick_X_Coordinate4;
 int m_nMouseClick_Y_Coordinate4;
 
 void downloadthemes::mousePressEvent(QMouseEvent* event){
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
   m_nMouseClick_X_Coordinate4 = event->x();
   m_nMouseClick_Y_Coordinate4 = event->y();
+#else
+    m_nMouseClick_X_Coordinate4 = event->position().x();
+    m_nMouseClick_Y_Coordinate4 = event->position().y();
+#endif
   //qDebug() << m_nMouseClick_X_Coordinate;
   //qDebug() << m_nMouseClick_Y_Coordinate;
 }
@@ -67,7 +72,11 @@ void downloadthemes::mouseMoveEvent(QMouseEvent* event){
 
     // If the mouse is not over a QPushButton, move the window
     if (!mouseOverButton) {
+        #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
         move(event->globalX()-m_nMouseClick_X_Coordinate4,event->globalY()-m_nMouseClick_Y_Coordinate4);
+        #else
+        move(event->globalPosition().x()-m_nMouseClick_X_Coordinate4,event->globalPosition().y()-m_nMouseClick_Y_Coordinate4);
+        #endif
     }
 }
 

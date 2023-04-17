@@ -179,7 +179,8 @@ PreviewWindow::PreviewWindow(QImage dimage, int interval, int delay, QWidget *pa
         while (loopRunning){
             move(QCursor::pos().x() - ui->ShownImage->width()/2, QCursor::pos().y() - ui->ShownImage->height()/2);
         }
-    });
+    });*/
+
 }
 
 static void sendMessage(QString a, int b, QWidget *t){
