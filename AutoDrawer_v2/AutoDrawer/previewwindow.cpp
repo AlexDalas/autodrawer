@@ -169,11 +169,6 @@ PreviewWindow::PreviewWindow(QImage dimage, int interval, int delay, QWidget *pa
     ui->Background->setFixedHeight(dimage.height()+21);
     moveInterval = interval;
     clickDelay = delay;
-    #if  __linux__
-    //initialise mouse and display (linux only)
-    ::initMouse();
-    dpy = XOpenDisplay(NULL);
-    #endif
     image = dimage;
     //pixelArray.resize(image.width(), std::vector<int>(image.height(), 0));
     MainWin = parent;
@@ -183,7 +178,7 @@ PreviewWindow::PreviewWindow(QImage dimage, int interval, int delay, QWidget *pa
 #if _WIN32
     if (!RegisterHotKey(HWND(winId()), 1, MOD_SHIFT, VK_SHIFT))
     {
-        QMessageBox::warning(this, "Warning", "Can't register hotkey ALT+CTRL+M");
+        sendMessage("Can't register hotkey ALT+CTRL+M", 1, this);
     }
 
 #endif
