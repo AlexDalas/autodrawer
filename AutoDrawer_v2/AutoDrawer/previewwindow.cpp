@@ -20,6 +20,7 @@
 #include <QApplication>
 #include <QTextStream>
 #include <QKeyEvent>
+#include <stdio.h>
 //#include <uglobalhotkeys.h>
 
 #ifdef _WIN32
@@ -31,7 +32,6 @@
 #include <sstream>
 #include <cstring>
 #include <stdlib.h>
-#include <stdio.h>
 #include <linux/uinput.h>
 #include <X11/Xlib.h>
 int fd;
