@@ -15,6 +15,8 @@ public:
     explicit PreviewWindow(QImage image, int interval, int clickdelay, QWidget *parent = nullptr);
     ~PreviewWindow();
 
+    bool nativeEvent(const QByteArray &eventType, void *message, long *result);
+
 private slots:
     void on_pushButton_2_released();
 

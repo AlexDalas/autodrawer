@@ -134,6 +134,22 @@ void clickCursor(){
     std::this_thread::sleep_for(std::chrono::microseconds(10000));
     releaseCursor();
 }
+
+bool PreviewWindow::nativeEvent(const QByteArray& eventType, void* message, long* result)
+{
+#if _WIN32
+    Q_UNUSED(eventType);
+    Q_UNUSED(result);
+    MSG* msg = static_cast<MSG*>(message);
+    if (msg->message == WM_HOTKEY)
+    {
+        QMessageBox::information(this, "OK", "Hotkey pressed!");
+        true;
+    }
+    return false;
+#endif
+}
+
 PreviewWindow::PreviewWindow(QImage dimage, int interval, int delay, QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::PreviewWindow)
@@ -165,41 +181,11 @@ PreviewWindow::PreviewWindow(QImage dimage, int interval, int delay, QWidget *pa
     loopRunning = true;
     cursorHeld = false;
 #if _WIN32
-#define HOTKEY_ID_CTRL 1
-#define HOTKEY_ID_SHIFT 2
-#define HOTKEY_ID_ALT 3
-    if (RegisterHotKey(NULL, HOTKEY_ID_CTRL, MOD_CONTROL, 0x0002))
+    if (!RegisterHotKey(HWND(winId()), 1, MOD_SHIFT, VK_SHIFT))
     {
-        wprintf(L"Hotkey 'alt+b' registered, using MOD_NOREPEAT flag\n");
+        QMessageBox::warning(this, "Warning", "Can't register hotkey ALT+CTRL+M");
     }
 
-    // Register Shift hotkey
-    if (RegisterHotKey(NULL, HOTKEY_ID_SHIFT, MOD_SHIFT, 0x0004))
-    {
-        wprintf(L"Hotkey 'alt+b' registered, using MOD_NOREPEAT flag\n");
-    }
-
-    // Register Alt hotkey
-    if (RegisterHotKey(NULL, HOTKEY_ID_ALT, MOD_ALT, 0x0001))
-    {
-        wprintf(L"Hotkey 'alt+b' registered, using MOD_NOREPEAT flag\n");
-    }
-
-    QFuture<void> future = QtConcurrent::run([=]() {
-        MSG msg;
-        while (GetMessage(&msg, NULL, 0, 0))
-        {
-            if (msg.message == WM_HOTKEY)
-            {
-                wprintf(L"WM_HOTKEY received\n");
-            }
-        }
-
-        // Unregister the hotkeys
-        UnregisterHotKey(NULL, HOTKEY_ID_CTRL);
-        UnregisterHotKey(NULL, HOTKEY_ID_SHIFT);
-        UnregisterHotKey(NULL, HOTKEY_ID_ALT);
-    });
 #endif
     //parent->show();
     // Code that puts window under mouse until done
