@@ -135,6 +135,9 @@ void clickCursor(){
     releaseCursor();
 }
 #if _WIN32
+#define HOTKEY_ID_CTRL 1
+#define HOTKEY_ID_SHIFT 2
+#define HOTKEY_ID_ALT 3
 LRESULT CALLBACK HotkeyCallback(int nCode, WPARAM wParam, LPARAM lParam)
 {
     if (nCode == HC_ACTION)
@@ -192,12 +195,38 @@ PreviewWindow::PreviewWindow(QImage dimage, int interval, int delay, QWidget *pa
     loopRunning = true;
     cursorHeld = false;
 #if _WIN32
-    #define HOTKEY_ID_CTRL 1
-    #define HOTKEY_ID_SHIFT 2
-    #define HOTKEY_ID_ALT 3
-    RegisterHotKey(NULL, HOTKEY_ID_CTRL, MOD_CONTROL, 'C')
-    RegisterHotKey(NULL, HOTKEY_ID_SHIFT, MOD_SHIFT, 'S')
-    RegisterHotKey(NULL, HOTKEY_ID_ALT, MOD_ALT, 'A')
+    // Register Ctrl hotkey
+    if (RegisterHotKey(NULL, HOTKEY_ID_CTRL, MOD_CONTROL, 'C'))
+    {
+        std::cout << "Ctrl global hotkey registered!" << std::endl;
+    }
+    else
+    {
+        std::cerr << "Failed to register Ctrl global hotkey!" << std::endl;
+        return 1;
+    }
+
+    // Register Shift hotkey
+    if (RegisterHotKey(NULL, HOTKEY_ID_SHIFT, MOD_SHIFT, 'S'))
+    {
+        std::cout << "Shift global hotkey registered!" << std::endl;
+    }
+    else
+    {
+        std::cerr << "Failed to register Shift global hotkey!" << std::endl;
+        return 1;
+    }
+
+    // Register Alt hotkey
+    if (RegisterHotKey(NULL, HOTKEY_ID_ALT, MOD_ALT, 'A'))
+    {
+        std::cout << "Alt global hotkey registered!" << std::endl;
+    }
+    else
+    {
+        std::cerr << "Failed to register Alt global hotkey!" << std::endl;
+        return 1;
+    }
     QFuture<void> future = QtConcurrent::run([=]() {
         MSG msg;
         while (GetMessage(&msg, NULL, 0, 0))
