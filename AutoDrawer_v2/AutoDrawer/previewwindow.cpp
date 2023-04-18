@@ -44,6 +44,12 @@ void initMouse()
 
 #endif
 
+static void sendMessage(QString a, int b, QWidget *t){
+    //1 for info, 2 for error, 3 for alert
+    MessageWindow *w = new MessageWindow(a, b, t);
+    w->show();
+}
+
 bool cursorHeld = false;
 bool loopRunning = true;
 bool stopAutodraw;
@@ -143,7 +149,7 @@ bool PreviewWindow::nativeEvent(const QByteArray& eventType, void* message, long
     MSG* msg = static_cast<MSG*>(message);
     if (msg->message == WM_HOTKEY)
     {
-        QMessageBox::information(this, "OK", "Hotkey pressed!");
+        sendMessage("Hotkey pressed!", 1, this);
         true;
     }
     return false;
@@ -191,12 +197,6 @@ PreviewWindow::PreviewWindow(QImage dimage, int interval, int delay, QWidget *pa
         }
     });*/
 
-}
-
-static void sendMessage(QString a, int b, QWidget *t){
-    //1 for info, 2 for error, 3 for alert
-    MessageWindow *w = new MessageWindow(a, b, t);
-    w->show();
 }
 
 void PreviewWindow::reloadThemes(){
