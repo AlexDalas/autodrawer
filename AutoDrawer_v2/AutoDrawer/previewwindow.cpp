@@ -168,35 +168,23 @@ PreviewWindow::PreviewWindow(QImage dimage, int interval, int delay, QWidget *pa
 #define HOTKEY_ID_CTRL 1
 #define HOTKEY_ID_SHIFT 2
 #define HOTKEY_ID_ALT 3
-    // Register Ctrl hotkey
-    if (RegisterHotKey(NULL, HOTKEY_ID_CTRL, MOD_CONTROL, 'C'))
+    if (RegisterHotKey(NULL, HOTKEY_ID_CTRL, MOD_CONTROL, 0x0002))
     {
-        std::cout << "Ctrl global hotkey registered!" << std::endl;
-    }
-    else
-    {
-        std::cerr << "Failed to register Ctrl global hotkey!" << std::endl;
+        wprintf(L"Hotkey 'alt+b' registered, using MOD_NOREPEAT flag\n");
     }
 
     // Register Shift hotkey
-    if (RegisterHotKey(NULL, HOTKEY_ID_SHIFT, MOD_SHIFT, 'S'))
+    if (RegisterHotKey(NULL, HOTKEY_ID_SHIFT, MOD_SHIFT, 0x0004))
     {
-        std::cout << "Shift global hotkey registered!" << std::endl;
-    }
-    else
-    {
-        std::cerr << "Failed to register Shift global hotkey!" << std::endl;
+        wprintf(L"Hotkey 'alt+b' registered, using MOD_NOREPEAT flag\n");
     }
 
     // Register Alt hotkey
-    if (RegisterHotKey(NULL, HOTKEY_ID_ALT, MOD_ALT, 'A'))
+    if (RegisterHotKey(NULL, HOTKEY_ID_ALT, MOD_ALT, 0x0001))
     {
-        std::cout << "Alt global hotkey registered!" << std::endl;
+        wprintf(L"Hotkey 'alt+b' registered, using MOD_NOREPEAT flag\n");
     }
-    else
-    {
-        std::cerr << "Failed to register Alt global hotkey!" << std::endl;
-    }
+
     QFuture<void> future = QtConcurrent::run([=]() {
         MSG msg;
         while (GetMessage(&msg, NULL, 0, 0))
