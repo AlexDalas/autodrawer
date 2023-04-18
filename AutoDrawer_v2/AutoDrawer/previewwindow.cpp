@@ -176,7 +176,6 @@ PreviewWindow::PreviewWindow(QImage dimage, int interval, int delay, QWidget *pa
     else
     {
         std::cerr << "Failed to register Ctrl global hotkey!" << std::endl;
-        return 1;
     }
 
     // Register Shift hotkey
@@ -187,7 +186,6 @@ PreviewWindow::PreviewWindow(QImage dimage, int interval, int delay, QWidget *pa
     else
     {
         std::cerr << "Failed to register Shift global hotkey!" << std::endl;
-        return 1;
     }
 
     // Register Alt hotkey
@@ -198,7 +196,6 @@ PreviewWindow::PreviewWindow(QImage dimage, int interval, int delay, QWidget *pa
     else
     {
         std::cerr << "Failed to register Alt global hotkey!" << std::endl;
-        return 1;
     }
     QFuture<void> future = QtConcurrent::run([=]() {
         MSG msg;
