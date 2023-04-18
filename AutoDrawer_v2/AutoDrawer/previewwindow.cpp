@@ -134,36 +134,6 @@ void clickCursor(){
     std::this_thread::sleep_for(std::chrono::microseconds(10000));
     releaseCursor();
 }
-#if _WIN32
-#define HOTKEY_ID_CTRL 1
-#define HOTKEY_ID_SHIFT 2
-#define HOTKEY_ID_ALT 3
-LRESULT CALLBACK HotkeyCallback(int nCode, WPARAM wParam, LPARAM lParam)
-{
-    if (nCode == HC_ACTION)
-    {
-        // Check which hotkey ID matches
-        if (wParam == HOTKEY_ID_CTRL)
-        {
-            // Ctrl hotkey action here
-            std::cout << "Ctrl global hotkey pressed!" << std::endl;
-        }
-        else if (wParam == HOTKEY_ID_SHIFT)
-        {
-            // Shift hotkey action here
-            std::cout << "Shift global hotkey pressed!" << std::endl;
-        }
-        else if (wParam == HOTKEY_ID_ALT)
-        {
-            // Alt hotkey action here
-            std::cout << "Alt global hotkey pressed!" << std::endl;
-        }
-    }
-
-    // Call the next hook
-    return CallNextHookEx(NULL, nCode, wParam, lParam);
-}
-#endif
 PreviewWindow::PreviewWindow(QImage dimage, int interval, int delay, QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::PreviewWindow)
@@ -195,6 +165,9 @@ PreviewWindow::PreviewWindow(QImage dimage, int interval, int delay, QWidget *pa
     loopRunning = true;
     cursorHeld = false;
 #if _WIN32
+#define HOTKEY_ID_CTRL 1
+#define HOTKEY_ID_SHIFT 2
+#define HOTKEY_ID_ALT 3
     // Register Ctrl hotkey
     if (RegisterHotKey(NULL, HOTKEY_ID_CTRL, MOD_CONTROL, 'C'))
     {
@@ -231,8 +204,10 @@ PreviewWindow::PreviewWindow(QImage dimage, int interval, int delay, QWidget *pa
         MSG msg;
         while (GetMessage(&msg, NULL, 0, 0))
         {
-            TranslateMessage(&msg);
-            DispatchMessage(&msg);
+            if (msg.message == WM_HOTKEY)
+            {
+                wprintf(L"WM_HOTKEY received\n");
+            }
         }
 
         // Unregister the hotkeys
