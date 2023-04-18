@@ -70,16 +70,9 @@ void getMousePos(int &x, int &y)
     POINT cursorPos;
     if (GetCursorPos(&cursorPos))
     {
-        // The cursor position was successfully obtained
         x = cursorPos.x;
         y = cursorPos.y;
-        // Do something with the x and y coordinates...
     }
-    else
-    {
-        // Failed to get the cursor position
-    }
-    return 0;
 #elif __linux__
     //to do
 #endif
