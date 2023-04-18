@@ -176,7 +176,7 @@ PreviewWindow::PreviewWindow(QImage dimage, int interval, int delay, QWidget *pa
     loopRunning = true;
     cursorHeld = false;
 #if _WIN32
-    if (!RegisterHotKey(HWND(winId()), 1, MOD_SHIFT, VK_SHIFT))
+    if (!RegisterHotKey(HWND(winId()), 0, MOD_ALT | MOD_CONTROL, 0x4D))
     {
         sendMessage("Can't register hotkey ALT+CTRL+M", 1, this);
     }
