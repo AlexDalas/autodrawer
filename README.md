@@ -1,3 +1,7 @@
+<h2 align="center">
+This is a depreciated version. <a href="https://github.com/auto-draw/autodraw" alt="Discord">Go here</a> for new releases
+<br>
+    
 <h1 align="center">
 AutoDrawer
 <br>
