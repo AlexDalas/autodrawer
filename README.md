@@ -39,9 +39,7 @@ AutoDrawer is a program that allows users to draw imported images using their cu
 
 <a name="Version2"/>
 <h3> Version 2 </h3>
-AutoDraw Version 2 is a significant update to the original AutoDraw program. It has been completely rewritten in the C++ programming language, which allows it to run on both Windows and Linux systems. This new version consists of a C++ application that uses the QT framework for design. 
-
-Currently, AutoDraw Version 2 is still in development and is not yet ready for release.
+V2 can be found <a href="https://github.com/auto-draw/autodraw" alt="Discord">here</a>.
 </a>
 <a name="Version1"/>
 <h3> Version 1</h3>
